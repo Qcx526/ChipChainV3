@@ -9,6 +9,7 @@ from chipchain.domain.behavior import ProcessorBehavior
 from chipchain.domain.case import ArtifactRef, TargetDescriptor
 from chipchain.domain.common import Contract, EpistemicStatus, Identifier
 from chipchain.domain.evidence import BitRange, EvidenceRef, EvidenceTime
+from chipchain.domain.instruction import EncodingRepresentation
 from chipchain.domain.provenance import ToolDescriptor
 
 __all__ = [
@@ -81,6 +82,7 @@ class WaveformObservationDetails(Contract):
     reference: SignalValue | None = None
     register_name: str | None = None
     observation_stage: Literal["id", "local_state", "register_state"]
+    encoding_representation: EncodingRepresentation = EncodingRepresentation.UNKNOWN
 
     @model_validator(mode="after")
     def signal_roles(self) -> Self:

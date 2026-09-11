@@ -1,7 +1,7 @@
 # ChipChain V3
 
 大模型协同的芯片固件—硬件跨层漏洞攻击链路检测研究工程。
-当前阶段：**V3-1A1 — EnCorpus Ibex Deterministic Hardware Ingestion**。
+当前阶段：**V3-1A2 — Deterministic RISC-V Instruction Decoding**。
 已完成 **R0-B.1 dependency reproducibility patch**；版本边界由 `pyproject.toml` 管理。
 保留已冻结的 R0-A/R0-A.1 Case-first、多架构合同与 workflow。
 
@@ -19,6 +19,13 @@ Pydantic 报告；不注入模型时保留离线 stub。**尚不具备真实漏�
 `analyze(...)` 实现现有 HardwareAnalyzer 协议，仅返回 host 分析观察。
 没有自动接入 workflow，也不调用 LLM 或重跑 formal/fuzz。用法、格式边界与实测结果见
 [V3-1A1 ingestion 文档](docs/research/v3-1a1-encorpus-ibex-ingestion.md)。
+
+V3-1A2 增加独立 `RiscVInstructionDecoder`，使用稳定 Capstone 5（`>=5.0.9,<6`），
+显式 enrich A1 已识别的 host instruction observation，保留原 behavior identity 和 EvidenceRef。
+743 的三条编码得到 `addi x28, x6, 1`、`lui x10, 1`、`lw x10, 7(x28)`；820 仍为空。
+当前仅解释 RV32 ID-stage 解压路径的 32 位表示，不推断原始 compressed 长度、执行、退休或 trigger。
+架构中立合同、字节序、失败状态、调用方法和 fresh environment 验证见
+[V3-1A2 decoding 文档](docs/research/v3-1a2-riscv-decoding.md)。本轮在 A2 停止，未接入真实 LLM。
 
 长期计划面向约 5 种处理器架构，当前重点为 **ARM、RISC-V、PowerPC**；其他未来架构尚未冻结。
 PowerPC 使用一等枚举值 `powerpc`。架构专用提取结果统一进入架构中立的
@@ -114,7 +121,7 @@ smoke import，以捕获元数据校验无法发现的运行时不兼容。范�
 实际经过 LangChain structured-output parser；禁用 tracing 并阻止网络/外部进程。
 R0 不进行真实模型调用，请勿为本阶段启用外部 LangSmith tracing。
 
-R0-C 完成后 Architecture Reset 结束；下一阶段为 V3-1 Hardware Security Agent，本轮不实现 V3-1。
+R0-C 已完成 Architecture Reset；当前 V3-1A2 仅增加确定性解码，未进入 V3-1B Hardware Security Agent 集成。
 
 架构边界、准入条件、状态语义和后续扩展点见
 [docs/architecture/v3-r0.md](docs/architecture/v3-r0.md)。

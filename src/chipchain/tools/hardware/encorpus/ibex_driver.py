@@ -8,6 +8,7 @@ from chipchain.domain.behavior import BehaviorKind, ProcessorBehavior, Processor
 from chipchain.domain.case import ArtifactRef, ArtifactType, TargetDescriptor
 from chipchain.domain.common import AnalysisLayer, Architecture, EpistemicStatus
 from chipchain.domain.evidence import BitRange, EvidenceLocation, EvidenceRef, EvidenceSourceType, EvidenceTime
+from chipchain.domain.instruction import EncodingRepresentation
 from chipchain.tools.contracts import (
     FormalResultDetails, HardwareObservation, HardwareObservationKind as Kind,
     HardwareObservations, MutationAnchorDetails, ObservationRole, SignalValue, WaveformObservationDetails,
@@ -26,7 +27,7 @@ FORMAL_BOUNDARY = (
 )
 ANALYSIS_LIMITATIONS = [
     "Host ID-stage encoding changes in a supplied formal witness; not a retired instruction trace.",
-    "No instruction decoder, read/write inference, full control flow, or trigger causality is extracted.",
+    "A1 ingestion alone does not decode instructions or infer read/write effects, full control flow, or trigger causality.",
 ]
 ORACLE_LIMITATIONS = [
     FORMAL_BOUNDARY,
@@ -188,7 +189,11 @@ def _extract_waveform(text, artifact_id, case_id, *, include_oracle):
                         observation_id=oid, kind=Kind.INSTRUCTION_ENCODING_OBSERVED,
                         role=ObservationRole.ANALYSIS_INPUT, summary=behavior.summary,
                         evidence=evidence, behaviors=[behavior], epistemic_status=EpistemicStatus.DERIVED,
+                        # Both supported ID aliases latch instr_out, from the Ibex
+                        # decompressed/dummy instruction path (reference.v:6294-6373).
+                        # This identifies the presented word, not original fetch length.
                         details=WaveformObservationDetails(time=time, observation_stage="id",
+                            encoding_representation=EncodingRepresentation.DECOMPRESSED_WORD,
                             host=_signal_value(stage_signals[0], encoding, "host")),
                     ))
                 previous_encoding = encoding.bits

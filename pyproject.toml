@@ -9,6 +9,7 @@ description = "ChipChain V3-R0-A case-first contracts and offline workflow skele
 requires-python = ">=3.11"
 dependencies = [
     "pydantic>=2.7,<3",
+    "capstone>=5.0.9,<6",
     "langchain>=1.2.10,<1.3",
     "langgraph>=1.0.10,<1.1",
     # Bundled dependency compatibility guard: prebuilt 1.0.13 imports runtime

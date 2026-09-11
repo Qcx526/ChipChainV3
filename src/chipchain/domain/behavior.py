@@ -9,6 +9,7 @@ from chipchain.domain.common import (
     AnalysisLayer, Architecture, Contract, EpistemicStatus, Identifier, Metadata,
 )
 from chipchain.domain.evidence import EvidenceRef
+from chipchain.domain.instruction import DecodedInstruction
 
 
 class BehaviorKind(StrEnum):
@@ -34,6 +35,7 @@ class ProcessorBehavior(Contract):
     evidence: list[EvidenceRef] = Field(default_factory=list)
     epistemic_status: EpistemicStatus = EpistemicStatus.UNKNOWN
     attributes: Metadata = Field(default_factory=dict)
+    decoded_instruction: DecodedInstruction | None = None
 
 
 class ProcessorBehaviorIR(Contract):
