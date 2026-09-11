@@ -3,11 +3,30 @@
 from enum import StrEnum
 from typing import Annotated, Literal, TypeAlias
 
-from pydantic import BaseModel, ConfigDict, StringConstraints
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints
 
 Identifier: TypeAlias = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1)]
 Scalar: TypeAlias = str | int | float | bool | None
 Metadata: TypeAlias = dict[str, Scalar]
+Sha256: TypeAlias = Annotated[str, StringConstraints(
+    strict=True, min_length=64, max_length=64, pattern=r"^[0-9a-f]{64}$",
+)]
+FileSize: TypeAlias = Annotated[int, Field(strict=True, ge=0)]
+
+
+class AnalysisStatus(StrEnum):
+    PENDING = "pending"
+    NOT_APPLICABLE = "not_applicable"
+    COMPLETED = "completed"
+    FAILED = "failed"
+    BLOCKED = "blocked"
+
+
+class WorkflowStage(StrEnum):
+    HARDWARE = "hardware"
+    FIRMWARE = "firmware"
+    IR_AGGREGATION = "ir_aggregation"
+    CROSS_LAYER = "cross_layer"
 
 
 class Contract(BaseModel):

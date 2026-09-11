@@ -1,11 +1,18 @@
 """Cases contain references, never binary contents."""
 
 from enum import StrEnum
-from typing import Self
+from typing import Literal, Self
 
 from pydantic import Field, model_validator
 
-from chipchain.domain.common import Architecture, Contract, Endianness, Identifier, Metadata
+from chipchain.domain.common import Architecture, Contract, Endianness, FileSize, Identifier, Metadata, Sha256
+
+CASE_SCHEMA_VERSION = "1.0"
+
+
+class ArtifactFingerprint(Contract):
+    sha256: Sha256
+    size_bytes: FileSize
 
 
 class ArtifactType(StrEnum):
@@ -23,6 +30,8 @@ class ArtifactRef(Contract):
     path: Identifier
     format: Identifier
     metadata: Metadata = Field(default_factory=dict)
+    sha256: Sha256 | None = None
+    size_bytes: FileSize | None = None
 
 
 class TargetDescriptor(Contract):
@@ -42,6 +51,7 @@ class CaseLabel(StrEnum):
 
 
 class CaseBundle(Contract):
+    schema_version: Literal["1.0"] = CASE_SCHEMA_VERSION
     case_id: Identifier
     name: Identifier
     target: TargetDescriptor

@@ -1,32 +1,15 @@
 """Explicit lifecycle status distinguishes absence, failure and blocked analysis."""
 
-from enum import StrEnum
-
 from pydantic import Field
 
 from chipchain.agents.contracts import CrossLayerAgentInput
 from chipchain.domain.behavior import ProcessorBehavior, ProcessorBehaviorIR
 from chipchain.domain.case import CaseBundle
-from chipchain.domain.common import Contract, Identifier
+from chipchain.domain.common import AnalysisStatus, Contract, Identifier, WorkflowStage
 from chipchain.domain.cross_layer import CrossLayerAnalysisReport
 from chipchain.domain.firmware import FirmwareAnalysisReport
 from chipchain.domain.hardware import HardwareAnalysisReport
 from chipchain.tools.contracts import FirmwareObservations, HardwareObservations
-
-
-class AnalysisStatus(StrEnum):
-    PENDING = "pending"
-    NOT_APPLICABLE = "not_applicable"
-    COMPLETED = "completed"
-    FAILED = "failed"
-    BLOCKED = "blocked"
-
-
-class WorkflowStage(StrEnum):
-    HARDWARE = "hardware"
-    FIRMWARE = "firmware"
-    IR_AGGREGATION = "ir_aggregation"
-    CROSS_LAYER = "cross_layer"
 
 
 class WorkflowError(Contract):

@@ -1,3 +1,9 @@
+from chipchain.domain.provenance import AgentRole, PromptDescriptor
+
+PROMPT_DESCRIPTOR = PromptDescriptor(
+    agent_role=AgentRole.FIRMWARE, prompt_id="firmware-security-agent", prompt_version="v1",
+)
+
 SYSTEM_PROMPT = """You are the ChipChain Firmware Security Agent.
 Analyze original firmware behavior using deterministic firmware observations,
 case identity/target metadata and bounded processor behaviors/evidence.

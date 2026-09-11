@@ -8,3 +8,14 @@ dist/
 .coverage
 htmlcov/
 .env
+
+# Real samples and run outputs are local workspace data, not fixtures.
+/samples/hardware/*
+!/samples/hardware/README.md
+!/samples/hardware/.gitkeep
+/samples/firmware/*
+!/samples/firmware/README.md
+!/samples/firmware/.gitkeep
+/output/*
+!/output/README.md
+!/output/.gitkeep

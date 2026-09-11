@@ -1,3 +1,9 @@
+from chipchain.domain.provenance import AgentRole, PromptDescriptor
+
+PROMPT_DESCRIPTOR = PromptDescriptor(
+    agent_role=AgentRole.CROSS_LAYER, prompt_id="cross-layer-security-agent", prompt_version="v1",
+)
+
 SYSTEM_PROMPT = """You are the ChipChain Cross-Layer Security Agent.
 Analyze supplied HardwareAnalysisReport, FirmwareAnalysisReport, ProcessorBehaviorIR,
 bounded Behavior Graph context and bounded retrieved KG context. Do not rescan whole

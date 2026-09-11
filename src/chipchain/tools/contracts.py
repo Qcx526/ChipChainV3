@@ -8,6 +8,12 @@ from chipchain.domain.behavior import ProcessorBehavior
 from chipchain.domain.case import ArtifactRef, TargetDescriptor
 from chipchain.domain.common import Contract, EpistemicStatus, Identifier
 from chipchain.domain.evidence import EvidenceRef
+from chipchain.domain.provenance import ToolDescriptor
+
+__all__ = [
+    "DeterministicObservation", "HardwareObservations", "FirmwareObservations",
+    "HardwareAnalyzer", "FirmwareAnalyzer", "ToolDescriptor",
+]
 
 
 class DeterministicObservation(Contract):
