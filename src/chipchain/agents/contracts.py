@@ -11,7 +11,9 @@ from chipchain.domain.cross_layer import CrossLayerAnalysisReport
 from chipchain.domain.firmware import FirmwareAnalysisReport
 from chipchain.domain.hardware import HardwareAnalysisReport
 from chipchain.graphs.contracts import BehaviorGraphContext, RetrievedKnowledgeContext
-from chipchain.tools.contracts import FirmwareObservations, HardwareObservations
+from chipchain.tools.contracts import (
+    FirmwareObservations, HardwareObservation, HardwareObservations, ObservationRole,
+)
 
 
 def _validate_observations(
@@ -31,6 +33,8 @@ def _validate_observations(
     if len(observation_ids) != len(set(observation_ids)):
         raise ValueError("observation_id must be unique within an observation batch")
     for observation in observations.observations:
+        if isinstance(observation, HardwareObservation) and observation.role != ObservationRole.ANALYSIS_INPUT:
+            raise ValueError("Benchmark oracle observations cannot enter agent input")
         evidence = list(observation.evidence)
         for behavior in observation.behaviors:
             if behavior.origin != layer:

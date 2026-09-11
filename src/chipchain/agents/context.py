@@ -9,7 +9,7 @@ from chipchain.domain.case import ArtifactRef, ArtifactType, CaseBundle, TargetD
 from chipchain.domain.firmware import FirmwareAnalysisReport
 from chipchain.domain.hardware import HardwareAnalysisReport
 from chipchain.graphs.contracts import BehaviorGraphContext, RetrievedKnowledgeContext
-from chipchain.tools.contracts import DeterministicObservation
+from chipchain.tools.contracts import DeterministicObservation, HardwareObservation
 
 MAX_CONTEXT_ITEMS = 128
 MAX_CONTEXT_CHARS = 64_000
@@ -32,7 +32,7 @@ class _ArtifactProvenance(BaseModel):
 class _SideContext(BaseModel):
     case: _CaseIdentity
     artifacts: list[_ArtifactProvenance] = Field(max_length=MAX_CONTEXT_ITEMS)
-    observations: list[DeterministicObservation] = Field(max_length=MAX_CONTEXT_ITEMS)
+    observations: list[HardwareObservation | DeterministicObservation] = Field(max_length=MAX_CONTEXT_ITEMS)
     unresolved_questions: list[str] = Field(max_length=MAX_CONTEXT_ITEMS)
 
 

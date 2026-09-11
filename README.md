@@ -1,7 +1,7 @@
 # ChipChain V3
 
 大模型协同的芯片固件—硬件跨层漏洞攻击链路检测研究工程。
-当前阶段：**V3-R0-C — Case Lifecycle & Analysis Provenance**。
+当前阶段：**V3-1A1 — EnCorpus Ibex Deterministic Hardware Ingestion**。
 已完成 **R0-B.1 dependency reproducibility patch**；版本边界由 `pyproject.toml` 管理。
 保留已冻结的 R0-A/R0-A.1 Case-first、多架构合同与 workflow。
 
@@ -13,6 +13,12 @@
 
 三个 Security Agent 支持注入 LangChain ChatModel，通过官方 structured output 返回
 Pydantic 报告；不注入模型时保留离线 stub。**尚不具备真实漏洞检测、攻击链搜索或触发验证能力。**
+
+已增加 EnCorpus Ibex **driver family** 的只读确定性 adapter，实测 `driver/743` 和 `driver/820`。
+`ingest(sample_directory)` 返回 host 分析观察、ProcessorBehaviorIR 及独立 benchmark oracle；
+`analyze(...)` 实现现有 HardwareAnalyzer 协议，仅返回 host 分析观察。
+没有自动接入 workflow，也不调用 LLM 或重跑 formal/fuzz。用法、格式边界与实测结果见
+[V3-1A1 ingestion 文档](docs/research/v3-1a1-encorpus-ibex-ingestion.md)。
 
 长期计划面向约 5 种处理器架构，当前重点为 **ARM、RISC-V、PowerPC**；其他未来架构尚未冻结。
 PowerPC 使用一等枚举值 `powerpc`。架构专用提取结果统一进入架构中立的
