@@ -9,8 +9,12 @@ description = "ChipChain V3-R0-A case-first contracts and offline workflow skele
 requires-python = ">=3.11"
 dependencies = [
     "pydantic>=2.7,<3",
-    "langchain>=1.2,<1.3",
-    "langgraph>=1.0,<1.1",
+    "langchain>=1.2.10,<1.3",
+    "langgraph>=1.0.10,<1.1",
+    # Bundled dependency compatibility guard: prebuilt 1.0.13 imports runtime
+    # APIs absent from LangGraph 1.0.10. Keep the verified 1.0.8 release line.
+    # ChipChain does not import prebuilt APIs; see docs/architecture/v3-r0.md.
+    "langgraph-prebuilt>=1.0.8,<1.0.9",
 ]
 
 [project.optional-dependencies]
