@@ -1,0 +1,25 @@
+{
+  "target": {
+    "architecture": "unknown",
+    "processor_id": "synthetic-processor"
+  },
+  "metadata": {
+    "synthetic": true,
+    "phase": "V3-R0-A",
+    "description": "Lifecycle fixture only; not a vulnerability testcase."
+  },
+  "case_id": "synthetic:firmware_only",
+  "name": "Synthetic firmware_only lifecycle case",
+  "hardware_artifacts": [],
+  "firmware_artifacts": [
+    {
+      "artifact_id": "synthetic:firmware:artifact",
+      "artifact_type": "firmware_binary",
+      "path": "fixtures/firmware/demo.elf",
+      "format": "elf",
+      "metadata": {
+        "synthetic": true
+      }
+    }
+  ]
+}
