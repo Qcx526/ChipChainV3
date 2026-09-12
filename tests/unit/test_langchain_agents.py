@@ -68,8 +68,14 @@ def test_model_report_preserves_deterministic_ir(
     context = json.loads(human.content)
     assert len(context["artifacts"]) == 1
     assert context["artifacts"][0]["artifact_id"] == f"synthetic:{layer}:artifact"
-    assert context["observations"][0]["behaviors"][0]["behavior_id"] == item.behavior_id
-    assert context["observations"][0]["evidence"][0]["artifact_id"] == item.evidence[0].artifact_id
+    if layer == "hardware":
+        assert context["observations"][0]["behaviors"][0]["behavior_id"] == item.behavior_id
+        assert context["observations"][0]["evidence"][0]["artifact_id"] == item.evidence[0].artifact_id
+    else:
+        assert context["observations"][0]["behavior_ids"] == [item.behavior_id]
+        assert context["behaviors"][0]["behavior_id"] == item.behavior_id
+        assert context["evidence_catalog"][0]["artifact_id"] == item.evidence[0].artifact_id
+
 
 
 def test_cross_model_report_and_bounded_graph_context(load_case: Callable[[str], CaseBundle]) -> None:

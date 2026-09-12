@@ -75,14 +75,16 @@ def test_typed_roundtrip_context_and_evidence_resolution(tmp_path):
     inputs=FirmwareAgentInput(case=case,deterministic_observations=copy_batch)
     assert FirmwareAgentInput.model_validate_json(inputs.model_dump_json())==inputs
     context=json.loads(firmware_context(inputs))
-    refs={r['evidence_id']:r for o in context['observations'] for r in o['evidence']}
-    for original, rendered in zip(batch.observations,context['observations']):
-        for field in ['kind','role','scope','details']:
-            assert rendered[field]==original.model_dump(mode='json',exclude_none=True)[field]
-        for behavior in rendered['behaviors']:
-            for item in [behavior,behavior.get('decoded_instruction')]:
-                if item and 'evidence_ids' in item:
-                    assert item['evidence_ids'] and all(key in refs for key in item['evidence_ids'])
+    refs={r['evidence_id']:r for r in context['evidence_catalog']}
+    rendered={o['observation_id']:o for o in context['observations']}
+    for original in batch.observations:
+        assert rendered[original.observation_id]['kind']==original.kind.value
+        assert rendered[original.observation_id]['scope']==original.scope.value
+        assert set(rendered[original.observation_id]['behavior_ids'])=={b.behavior_id for b in original.behaviors}
+    for behavior in context['behaviors']:
+        for item in [behavior,behavior.get('decoded_instruction')]:
+            if item:
+                assert all(key in refs for key in item['evidence_ids'])
     assert inputs.deterministic_observations==batch  # context did not mutate contracts
 
 

@@ -10,6 +10,10 @@ import pytest
 from chipchain.agents.context import firmware_context
 from chipchain.agents.contracts import FirmwareAgentInput
 from chipchain.agents.firmware import FirmwareSecurityAgent
+from chipchain.agents.firmware_evidence import collect_firmware_evidence
+from chipchain.agents.projections.firmware import (
+    build_firmware_analysis_projection, serialize_firmware_analysis_projection, firmware_projection_sha256,
+)
 from chipchain.domain.case import CaseBundle, TargetDescriptor
 from chipchain.tools.firmware.fuzzware import FuzzwareHeatPressScenarioAnalyzer
 from tests.firmware_fakes import reference
@@ -55,12 +59,25 @@ def test_local_heat_press_scenario_13():
     assert counts=={'instruction':23,'mmio_access':32}
     refs={e.evidence_id:e for o in batch.observations for e in [*o.evidence,*(e for b in o.behaviors for e in b.evidence)]}
     assert len(refs)==57 and {e.artifact_id for e in refs.values()} <= {a.artifact_id for a in artifacts}
+    before=inputs.model_dump_json()
+    projection=build_firmware_analysis_projection(inputs)
     text=firmware_context(inputs);context=json.loads(text)
-    assert len(text)<64000 and len(context['observations'])==57
+    assert text==serialize_firmware_analysis_projection(projection)==firmware_context(inputs)
+    assert inputs.model_dump_json()==before
+    assert len(text)<=40000 and len(context['observations'])==57
+    assert {o['observation_id'] for o in context['observations']}=={o.observation_id for o in batch.observations}
+    assert len(context['behaviors'])==55
+    assert {b['behavior_id'] for b in context['behaviors']}=={b.behavior_id for b in output.processor_behavior_ir.behaviors}
+    assert len(context['evidence_catalog'])==57
+    assert {e.evidence_id:e for e in projection.evidence_catalog}==collect_firmware_evidence(inputs)
+    for marker in ('CVE-', 'known root cause', 'expected crash', 'exploitability', 'crash-analysis', 'crashing_input', '/home/'):
+        assert marker not in text
     assert not output.report.findings and not output.report.issue_anchors
     assert not output.report.external_input_paths and not output.report.reachable_behaviors
     assert all(o.role=='analysis_input' and o.scope!='runtime' for o in batch.observations)
     assert 'HardFault' not in text and 'crash_observed' not in text
     print(json.dumps({'observations':kinds,'scopes':scopes,'behaviors':counts,'successful_decodes':len(sites),
                       'unresolved_sites':0,'unique_evidence':len(refs),'context_characters':len(text),
-                      'dependencies':analyzer.dependency_versions},sort_keys=True))
+                      'dependencies':analyzer.dependency_versions, 'projection_sha256':firmware_projection_sha256(projection),
+                      'reduction_characters':62793-len(text), 'reduction_percent':(62793-len(text))*100/62793,
+                      'headroom':64000-len(text)},sort_keys=True))
