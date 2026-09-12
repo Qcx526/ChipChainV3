@@ -12,7 +12,7 @@ from chipchain.domain.firmware import FirmwareAnalysisReport
 from chipchain.domain.hardware import HardwareAnalysisReport
 from chipchain.graphs.contracts import BehaviorGraphContext, RetrievedKnowledgeContext
 from chipchain.tools.contracts import (
-    FirmwareObservations, HardwareObservation, HardwareObservations, ObservationRole,
+    FirmwareObservation, FirmwareObservations, HardwareObservation, HardwareObservations, ObservationRole,
 )
 
 
@@ -33,13 +33,15 @@ def _validate_observations(
     if len(observation_ids) != len(set(observation_ids)):
         raise ValueError("observation_id must be unique within an observation batch")
     for observation in observations.observations:
-        if isinstance(observation, HardwareObservation) and observation.role != ObservationRole.ANALYSIS_INPUT:
+        if isinstance(observation, (HardwareObservation, FirmwareObservation)) and observation.role != ObservationRole.ANALYSIS_INPUT:
             raise ValueError("Benchmark oracle observations cannot enter agent input")
         evidence = list(observation.evidence)
         for behavior in observation.behaviors:
             if behavior.origin != layer:
                 raise ValueError("Observation behavior origin does not match analysis layer")
             evidence.extend(behavior.evidence)
+            if isinstance(observation, FirmwareObservation) and behavior.decoded_instruction is not None:
+                evidence.extend(behavior.decoded_instruction.evidence)
         if any(ref.artifact_id not in artifact_ids for ref in evidence):
             raise ValueError("Observation evidence refers to an artifact outside its input layer")
 

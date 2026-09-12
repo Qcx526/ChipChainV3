@@ -3,16 +3,19 @@
 from enum import StrEnum
 from typing import Annotated, Literal, Protocol, Self
 
-from pydantic import Field, model_validator
+from pydantic import Field, field_validator, model_validator
 
 from chipchain.domain.behavior import ProcessorBehavior
 from chipchain.domain.case import ArtifactRef, TargetDescriptor
-from chipchain.domain.common import Contract, EpistemicStatus, Identifier
+from chipchain.domain.common import Contract, EpistemicStatus, Identifier, Sha256
 from chipchain.domain.evidence import BitRange, EvidenceRef, EvidenceTime
 from chipchain.domain.instruction import EncodingRepresentation
 from chipchain.domain.provenance import ToolDescriptor
 
 __all__ = [
+    "FirmwareObservation", "FirmwareObservationKind", "ObservationScope",
+    "StaticInstructionSiteDetails", "MmioModelDetails", "MmioModelKind",
+    "OpaqueInputDetails", "InterruptTriggerDetails",
     "DeterministicObservation", "HardwareObservations", "FirmwareObservations",
     "HardwareAnalyzer", "FirmwareAnalyzer", "ToolDescriptor",
     "HardwareObservation", "HardwareObservationKind", "ObservationRole",
@@ -158,9 +161,131 @@ class HardwareObservations(Contract):
     unresolved_questions: list[str] = Field(default_factory=list)
 
 
+class ObservationScope(StrEnum):
+    ARTIFACT = "artifact"
+    STATIC = "static"
+    CONFIGURATION = "configuration"
+    RUNTIME = "runtime"
+    UNKNOWN = "unknown"
+
+
+class FirmwareObservationKind(StrEnum):
+    STATIC_INSTRUCTION_SITE = "static_instruction_site"
+    MMIO_MODEL = "mmio_model"
+    ENVIRONMENT_INPUT = "environment_input"
+
+
+UInt32 = Annotated[int, Field(strict=True, ge=0, le=0xffffffff)]
+
+
+class StaticInstructionSiteDetails(Contract):
+    kind: Literal["static_instruction_site"] = "static_instruction_site"
+    address: UInt32
+    elf_offset: int = Field(ge=0, strict=True)
+    image_offset: int = Field(ge=0, strict=True)
+    raw_bytes: str = Field(pattern=r"^(?:[0-9a-f]{4}|[0-9a-f]{8})$")
+    width_bits: Literal[16, 32]
+    function: Identifier | None = None
+    raw_symbol_value: UInt32
+    canonical_function_address: UInt32
+    representation: Literal[EncodingRepresentation.MEMORY_BYTES] = EncodingRepresentation.MEMORY_BYTES
+    isa_mode: Literal["thumb-m-little"] = "thumb-m-little"
+
+    @model_validator(mode="after")
+    def address_and_bytes(self) -> Self:
+        if self.address % 2 or self.canonical_function_address != self.raw_symbol_value & ~1:
+            raise ValueError("Invalid Thumb address normalization")
+        if self.address < self.canonical_function_address or len(self.raw_bytes) * 4 != self.width_bits:
+            raise ValueError("Instruction site bytes/address disagree")
+        return self
+
+
+class MmioModelKind(StrEnum):
+    BITEXTRACT = "bitextract"
+    CONSTANT = "constant"
+    PASSTHROUGH = "passthrough"
+    SET = "set"
+    UNMODELED = "unmodeled"
+
+
+class MmioModelDetails(Contract):
+    kind: Literal["mmio_model"] = "mmio_model"
+    pc: UInt32
+    mmio_address: UInt32
+    access_size_bytes: Literal[1, 2, 4]
+    model_kind: MmioModelKind
+    parameters: dict[str, UInt32 | Annotated[list[UInt32], Field(max_length=32)]] = Field(default_factory=dict, max_length=4)
+    config_key: str = Field(min_length=1, max_length=128)
+
+    @field_validator("access_size_bytes", mode="before")
+    @classmethod
+    def integer_access_size(cls, value):
+        if type(value) is not int:
+            raise ValueError("Access size must be an integer")
+        return value
+
+    @model_validator(mode="after")
+    def parameters_match_model(self) -> Self:
+        required = {
+            MmioModelKind.BITEXTRACT: {"left_shift", "mask", "size"},
+            MmioModelKind.CONSTANT: {"val"}, MmioModelKind.PASSTHROUGH: {"init_val"},
+            MmioModelKind.SET: {"vals"}, MmioModelKind.UNMODELED: set(),
+        }[self.model_kind]
+        if set(self.parameters) != required or self.pc % 2:
+            raise ValueError("Unsupported MMIO model parameters/PC")
+        for name, value in self.parameters.items():
+            if (name == "vals") != isinstance(value, list):
+                raise ValueError("Only vals is a list parameter")
+        if self.model_kind == MmioModelKind.SET and not self.parameters["vals"]:
+            raise ValueError("Model value set must be nonempty")
+        if self.model_kind == MmioModelKind.BITEXTRACT:
+            if self.parameters["size"] not in (1, 2, 4) or self.parameters["left_shift"] > 31:
+                raise ValueError("Unsupported bitextract size/shift")
+        return self
+
+
+class OpaqueInputDetails(Contract):
+    kind: Literal["opaque_input"] = "opaque_input"
+    artifact_id: Identifier
+    size_bytes: int = Field(ge=0, strict=True)
+    sha256: Sha256
+
+
+class InterruptTriggerDetails(Contract):
+    kind: Literal["interrupt_trigger"] = "interrupt_trigger"
+    config_key: str = Field(min_length=1, max_length=128)
+    every_nth_tick: int = Field(gt=0, le=0xffffffff, strict=True)
+    fuzz_mode: Literal["round_robin"]
+    tick_unit: Literal["emulator_tick"] = "emulator_tick"
+
+
+class FirmwareObservation(DeterministicObservation):
+    kind: FirmwareObservationKind
+    scope: ObservationScope
+    role: ObservationRole = ObservationRole.BENCHMARK_ORACLE
+    details: Annotated[
+        StaticInstructionSiteDetails | MmioModelDetails | OpaqueInputDetails | InterruptTriggerDetails,
+        Field(discriminator="kind"),
+    ]
+
+    @model_validator(mode="after")
+    def semantics_match_details(self) -> Self:
+        expected = {
+            StaticInstructionSiteDetails: (FirmwareObservationKind.STATIC_INSTRUCTION_SITE, ObservationScope.STATIC),
+            MmioModelDetails: (FirmwareObservationKind.MMIO_MODEL, ObservationScope.CONFIGURATION),
+            OpaqueInputDetails: (FirmwareObservationKind.ENVIRONMENT_INPUT, ObservationScope.ARTIFACT),
+            InterruptTriggerDetails: (FirmwareObservationKind.ENVIRONMENT_INPUT, ObservationScope.CONFIGURATION),
+        }[type(self.details)]
+        if (self.kind, self.scope) != expected:
+            raise ValueError("Firmware kind/scope must match supported details semantics")
+        if isinstance(self.details, OpaqueInputDetails) and self.details.artifact_id not in {e.artifact_id for e in self.evidence}:
+            raise ValueError("Opaque input identity must have matching evidence")
+        return self
+
+
 class FirmwareObservations(Contract):
     case_id: Identifier
-    observations: list[DeterministicObservation] = Field(default_factory=list)
+    observations: list[FirmwareObservation | DeterministicObservation] = Field(default_factory=list)
     unresolved_questions: list[str] = Field(default_factory=list)
 
 

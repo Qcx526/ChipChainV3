@@ -1,5 +1,7 @@
 """Explicit model context projections; reject oversize inputs without truncation."""
 
+import json
+
 from pydantic import BaseModel, Field
 
 from chipchain.agents.contracts import CrossLayerAgentInput, FirmwareAgentInput, HardwareAgentInput
@@ -9,7 +11,7 @@ from chipchain.domain.case import ArtifactRef, ArtifactType, CaseBundle, TargetD
 from chipchain.domain.firmware import FirmwareAnalysisReport
 from chipchain.domain.hardware import HardwareAnalysisReport
 from chipchain.graphs.contracts import BehaviorGraphContext, RetrievedKnowledgeContext
-from chipchain.tools.contracts import DeterministicObservation, HardwareObservation
+from chipchain.tools.contracts import DeterministicObservation, FirmwareObservation, HardwareObservation
 
 MAX_CONTEXT_ITEMS = 128
 MAX_CONTEXT_CHARS = 64_000
@@ -32,7 +34,7 @@ class _ArtifactProvenance(BaseModel):
 class _SideContext(BaseModel):
     case: _CaseIdentity
     artifacts: list[_ArtifactProvenance] = Field(max_length=MAX_CONTEXT_ITEMS)
-    observations: list[HardwareObservation | DeterministicObservation] = Field(max_length=MAX_CONTEXT_ITEMS)
+    observations: list[HardwareObservation | FirmwareObservation | DeterministicObservation] = Field(max_length=MAX_CONTEXT_ITEMS)
     unresolved_questions: list[str] = Field(max_length=MAX_CONTEXT_ITEMS)
 
 
@@ -53,8 +55,30 @@ def _case_identity(case: CaseBundle) -> _CaseIdentity:
     )
 
 
-def _serialize(context: BaseModel) -> str:
-    serialized = context.model_dump_json(exclude_none=True)
+def _serialize(context: BaseModel, *, compact_firmware_evidence: bool = False) -> str:
+    if compact_firmware_evidence:
+        data = context.model_dump(mode="json", exclude_none=True)
+        # Full evidence stays on observations. Only identical nested copies are
+        # replaced by IDs, resolvable across this same context's observations.
+        refs = {}
+        for observation in data["observations"]:
+            for ref in observation["evidence"]:
+                key = ref["evidence_id"]
+                if key in refs and refs[key] != ref:
+                    raise AgentExecutionError("Conflicting firmware evidence IDs")
+                refs[key] = ref
+        for observation in data["observations"]:
+            if "scope" not in observation:
+                continue  # Preserve existing generic firmware context structure.
+            for behavior in observation["behaviors"]:
+                for item in (behavior, behavior.get("decoded_instruction")):
+                    if item is not None and item.get("evidence") and all(
+                        refs.get(ref["evidence_id"]) == ref for ref in item["evidence"]
+                    ):
+                        item["evidence_ids"] = [ref["evidence_id"] for ref in item.pop("evidence")]
+        serialized = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
+    else:
+        serialized = context.model_dump_json(exclude_none=True)
     if len(serialized) > MAX_CONTEXT_CHARS:
         raise AgentExecutionError("Model context exceeds the 64000-character limit")
     return serialized
@@ -62,7 +86,7 @@ def _serialize(context: BaseModel) -> str:
 
 def _side_context(
     case: CaseBundle, artifacts: list[ArtifactRef], observations: list[DeterministicObservation],
-    unresolved_questions: list[str],
+    unresolved_questions: list[str], *, compact_firmware_evidence: bool = False,
 ) -> str:
     try:
         # Check top-level sizes before copying large input collections.
@@ -74,7 +98,7 @@ def _side_context(
                 artifact_id=a.artifact_id, artifact_type=a.artifact_type, path=a.path, format=a.format,
             ) for a in artifacts],
             observations=observations, unresolved_questions=unresolved_questions,
-        ))
+        ), compact_firmware_evidence=compact_firmware_evidence)
     except ValueError as exc:
         raise AgentExecutionError("Model context failed construction or exceeds item limits") from exc
 
@@ -86,7 +110,8 @@ def hardware_context(inputs: HardwareAgentInput) -> str:
 
 def firmware_context(inputs: FirmwareAgentInput) -> str:
     batch = inputs.deterministic_observations
-    return _side_context(inputs.case, inputs.case.firmware_artifacts, batch.observations, batch.unresolved_questions)
+    return _side_context(inputs.case, inputs.case.firmware_artifacts, batch.observations,
+                         batch.unresolved_questions, compact_firmware_evidence=True)
 
 
 def cross_layer_context(inputs: CrossLayerAgentInput) -> str:

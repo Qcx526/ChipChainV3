@@ -1,7 +1,7 @@
 # ChipChain V3
 
 大模型协同的芯片固件—硬件跨层漏洞攻击链路检测研究工程。
-当前阶段：**V3-1B.1 — Operational Evidence Projection & Real-Agent Validation**。
+当前阶段：**V3-2A1 — Fuzzware Heat_Press Deterministic Firmware Ingestion**。
 已完成 **R0-B.1 dependency reproducibility patch**；版本边界由 `pyproject.toml` 管理。
 保留已冻结的 R0-A/R0-A.1 Case-first、多架构合同与 workflow。
 
@@ -39,6 +39,13 @@ V3-1B.1 将既有确定性 local/GPR divergence 和 formal tool results 纳入�
 投影集中在 `build_hardware_analysis_projection`，不扩展 parser；hardware prompt 保持 v2。
 配置原样接受 `deepseek-flash` 与版本化模型名，运行无需模型名 workaround。
 规则、诊断及与旧报告的比较见 [V3-1B.1 文档](docs/research/v3-1b1-operational-evidence.md)。
+
+V3-2A1 新增 `FuzzwareHeatPressScenarioAnalyzer`：显式提供四个带 fingerprint 的
+ELF/BIN/YAML/opaque input ArtifactRef，得到 typed FirmwareObservation 和静态/configuration IR。
+真实 Heat_Press scenario 13 为 23 个指令 site、32 个 MMIO model、2 个环境输入 observations；
+没有 replay、runtime observation、crash 或外部输入可达性结论。只调用无模型 Firmware Agent 验证合同。
+支持子集、离线调用示例、依赖和边界见
+[V3-2A1 ingestion 文档](docs/research/v3-2a1-fuzzware-heat-press-ingestion.md)。
 
 长期计划面向约 5 种处理器架构，当前重点为 **ARM、RISC-V、PowerPC**；其他未来架构尚未冻结。
 PowerPC 使用一等枚举值 `powerpc`。架构专用提取结果统一进入架构中立的

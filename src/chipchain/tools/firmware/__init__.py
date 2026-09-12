@@ -1,0 +1,1 @@
+"""Deterministic firmware artifact adapters."""

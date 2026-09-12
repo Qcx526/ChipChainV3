@@ -10,6 +10,8 @@ requires-python = ">=3.11"
 dependencies = [
     "pydantic>=2.7,<3",
     "capstone>=5.0.9,<6",
+    "PyYAML>=6.0.3,<7",
+    "pyelftools>=0.33,<1",
     "langchain-deepseek>=1.1,<1.2",
     "python-dotenv>=1.1,<2",
     "langchain>=1.2.10,<1.3",

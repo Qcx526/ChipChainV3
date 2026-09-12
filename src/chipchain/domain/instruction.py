@@ -11,6 +11,7 @@ from chipchain.domain.provenance import ToolDescriptor
 
 
 class EncodingRepresentation(StrEnum):
+    MEMORY_BYTES = "memory_bytes"
     INSTRUCTION_WORD = "instruction_word"
     DECOMPRESSED_WORD = "decompressed_word"
     UNKNOWN = "unknown"

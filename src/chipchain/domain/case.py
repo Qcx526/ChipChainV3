@@ -21,6 +21,8 @@ class ArtifactType(StrEnum):
     HARDWARE_DESCRIPTION = "hardware_description"
     FIRMWARE_BINARY = "firmware_binary"
     FIRMWARE_SOURCE = "firmware_source"
+    FIRMWARE_CONFIG = "firmware_config"
+    FIRMWARE_INPUT = "firmware_input"
     OTHER = "other"
 
 
