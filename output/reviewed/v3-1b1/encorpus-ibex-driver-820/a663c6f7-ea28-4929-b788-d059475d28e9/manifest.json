@@ -1,0 +1,43 @@
+{
+  "snapshot_schema_version": "1.0",
+  "phase": "v3-1b1",
+  "case_id": "encorpus:ibex:driver:820",
+  "safe_case_slug": "encorpus-ibex-driver-820",
+  "run_id": "a663c6f7-ea28-4929-b788-d059475d28e9",
+  "agent_role": "hardware",
+  "provider": "deepseek",
+  "model": "deepseek-flash",
+  "prompt_id": "hardware-security-agent",
+  "prompt_version": "v2",
+  "source_run_status": "completed",
+  "human_accepted": true,
+  "context_sha256": "b10f773a346bfc6e2f33b01d0ce7a2c8fb26925e6b6ea26f5bf93880c77c6d07",
+  "context_hash_basis": "single_terminal_lf_excluded",
+  "files": [
+    {
+      "filename": "analysis_run.json",
+      "sha256": "dda61c67747202923191796398222b05ea1d1e8230bf2514169907254a735fd2",
+      "size_bytes": 33090
+    },
+    {
+      "filename": "hardware_analysis_report.json",
+      "sha256": "0b509df4c3b0713951d5cb2f36208648b4a6ec9f2be6f380719286e6052dd387",
+      "size_bytes": 26211
+    },
+    {
+      "filename": "analysis_input.json",
+      "sha256": "d7ef7e02e517f1e8e146afd168c727cf7943bec892cae58612e711f4c3f6673a",
+      "size_bytes": 16153
+    },
+    {
+      "filename": "invocation.json",
+      "sha256": "a3411fe1a9eb1b9ddd65801a43e1fa31e3db39d8f8de740c005dacdcf16d6b4a",
+      "size_bytes": 1073
+    },
+    {
+      "filename": "invocation_attempts.jsonl",
+      "sha256": "ff4b353192c089735a3e7f1e9f123f24f850fb3bea87547ec4881c11a8f34a6e",
+      "size_bytes": 944
+    }
+  ]
+}

@@ -103,6 +103,10 @@ ArtifactRef 的可选 `sha256`/`size_bytes` 不会在构造时自动计算；Cas
 复用材料，不复制到 `samples/cross_layer/`。外部只读 artifact 路径也合法；工作区约定不属于 domain validation。
 workflow/run helper 不自动写文件；持久化由调用方显式触发，domain 不依赖 `output/` 路径。
 
+V3-1B.2 增加 `output/reviewed/` 作为唯一明确的 reviewed snapshot 区域：已人工接受的真实运行
+通过显式 exporter 校验后可提交，普通 runtime output 仍被忽略。快照原样保留结构化 report/context，
+附文件哈希 manifest；用法和当前 743/820 快照见 [output/README.md](output/README.md)。
+
 模型由调用方显式注入，三个 Agent 可以使用不同实例：
 
 ```python

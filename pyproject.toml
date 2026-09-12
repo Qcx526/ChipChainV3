@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "chipchain"
 version = "0.1.0"
-description = "ChipChain V3-R0-A case-first contracts and offline workflow skeleton"
+description = "ChipChain case-first firmware and hardware evidence analysis"
 requires-python = ">=3.11"
 dependencies = [
     "pydantic>=2.7,<3",

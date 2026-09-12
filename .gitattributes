@@ -1,0 +1,3 @@
+# Reviewed manifests hash exact bytes; disable checkout newline conversion only here.
+/output/reviewed/**/*.json -text
+/output/reviewed/**/*.jsonl -text

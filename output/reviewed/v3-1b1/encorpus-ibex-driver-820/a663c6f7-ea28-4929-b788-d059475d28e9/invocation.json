@@ -1,0 +1,36 @@
+{
+  "case_id": "encorpus:ibex:driver:820",
+  "run_id": "a663c6f7-ea28-4929-b788-d059475d28e9",
+  "model": "deepseek-flash",
+  "attempt_index": 2,
+  "prompt_id": "hardware-security-agent",
+  "prompt_version": "v2",
+  "provider": "deepseek",
+  "temperature": 0,
+  "max_tokens": 8192,
+  "timeout_seconds": 180,
+  "max_retries": 0,
+  "thinking": "disabled",
+  "structured_output_method": "function_calling",
+  "strict": false,
+  "usage": {
+    "input_tokens": 8026,
+    "output_tokens": 5167,
+    "total_tokens": 13193
+  },
+  "context_sha256": "b10f773a346bfc6e2f33b01d0ce7a2c8fb26925e6b6ea26f5bf93880c77c6d07",
+  "response_metadata": {
+    "id": "d089c837-bc60-4fb5-a3b1-84cfc42ddd48",
+    "model_name": "deepseek-flash"
+  },
+  "context_characters": 16152,
+  "observation_count": 9,
+  "observation_counts_by_kind": {
+    "local_effect_observed": 6,
+    "architectural_propagation_observed": 1,
+    "formal_result": 2
+  },
+  "behavior_count": 1,
+  "stub_ir_equal": true,
+  "projection": "encorpus-operational-projection/v1 + A2; no mutation answers or raw artifact contents"
+}

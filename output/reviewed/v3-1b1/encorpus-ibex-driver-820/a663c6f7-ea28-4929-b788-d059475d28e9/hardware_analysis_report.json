@@ -1,0 +1,661 @@
+{
+  "case_id": "encorpus:ibex:driver:820",
+  "findings": [
+    {
+      "finding_id": "F1",
+      "summary": "Across the supplied witness, the host and reference copies of the ID-stage controller debug_mode_q local state differ at six sampled times (100, 230, 330, 410, 490, 540 ns): host holds 0 while reference holds 1. This is a deterministic local-state divergence observation; causality is not established.",
+      "evidence": [
+        {
+          "evidence_id": "encorpus:ibex:driver:820:proof.vcd:e:5863a8d7eff3da238439",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:proof.vcd",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 9637,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": "miter.\\host.u_ibex_core.id_stage_i.controller_i.debug_mode_q",
+            "time": {
+              "value": 100,
+              "unit": "ns"
+            },
+            "bit_range": null
+          },
+          "summary": "Value at this time carried from source assignment.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "encorpus:ibex:driver:820:proof.vcd:e:feeacffcd930f5f13810",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:proof.vcd",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 7578,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": "miter.\\reference.u_ibex_core.id_stage_i.controller_i.debug_mode_q",
+            "time": {
+              "value": 100,
+              "unit": "ns"
+            },
+            "bit_range": null
+          },
+          "summary": "Value at this time carried from source assignment.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "encorpus:ibex:driver:820:proof.vcd:e:b2669b642a3636eca7e3",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:proof.vcd",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 14216,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": "miter.\\host.u_ibex_core.id_stage_i.controller_i.debug_mode_q",
+            "time": {
+              "value": 230,
+              "unit": "ns"
+            },
+            "bit_range": null
+          },
+          "summary": "Value at this time carried from source assignment.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "encorpus:ibex:driver:820:proof.vcd:e:82e0b370fa1dbe8f8516",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:proof.vcd",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 7578,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": "miter.\\reference.u_ibex_core.id_stage_i.controller_i.debug_mode_q",
+            "time": {
+              "value": 230,
+              "unit": "ns"
+            },
+            "bit_range": null
+          },
+          "summary": "Value at this time carried from source assignment.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "encorpus:ibex:driver:820:proof.vcd:e:36c362b2e829e6f0b6f7",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:proof.vcd",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 17351,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": "miter.\\host.u_ibex_core.id_stage_i.controller_i.debug_mode_q",
+            "time": {
+              "value": 330,
+              "unit": "ns"
+            },
+            "bit_range": null
+          },
+          "summary": "Value at this time carried from source assignment.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "encorpus:ibex:driver:820:proof.vcd:e:3e9b913ee2d7287a3f50",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:proof.vcd",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 7578,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": "miter.\\reference.u_ibex_core.id_stage_i.controller_i.debug_mode_q",
+            "time": {
+              "value": 330,
+              "unit": "ns"
+            },
+            "bit_range": null
+          },
+          "summary": "Value at this time carried from source assignment.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "encorpus:ibex:driver:820:proof.vcd:e:d1fca4bee719ebbd2b73",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:proof.vcd",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 20443,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": "miter.\\host.u_ibex_core.id_stage_i.controller_i.debug_mode_q",
+            "time": {
+              "value": 410,
+              "unit": "ns"
+            },
+            "bit_range": null
+          },
+          "summary": "Value at this time carried from source assignment.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "encorpus:ibex:driver:820:proof.vcd:e:e5f72b7fff84bcc383a1",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:proof.vcd",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 7578,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": "miter.\\reference.u_ibex_core.id_stage_i.controller_i.debug_mode_q",
+            "time": {
+              "value": 410,
+              "unit": "ns"
+            },
+            "bit_range": null
+          },
+          "summary": "Value at this time carried from source assignment.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "encorpus:ibex:driver:820:proof.vcd:e:fc4772333bab09f400e4",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:proof.vcd",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 23538,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": "miter.\\host.u_ibex_core.id_stage_i.controller_i.debug_mode_q",
+            "time": {
+              "value": 490,
+              "unit": "ns"
+            },
+            "bit_range": null
+          },
+          "summary": "Value at this time carried from source assignment.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "encorpus:ibex:driver:820:proof.vcd:e:657f3a0a7668ab1083fc",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:proof.vcd",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 7578,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": "miter.\\reference.u_ibex_core.id_stage_i.controller_i.debug_mode_q",
+            "time": {
+              "value": 490,
+              "unit": "ns"
+            },
+            "bit_range": null
+          },
+          "summary": "Value at this time carried from source assignment.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "encorpus:ibex:driver:820:proof.vcd:e:3c9fb4546669f9cdee92",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:proof.vcd",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 25511,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": "miter.\\host.u_ibex_core.id_stage_i.controller_i.debug_mode_q",
+            "time": {
+              "value": 540,
+              "unit": "ns"
+            },
+            "bit_range": null
+          },
+          "summary": "Value at this time carried from source assignment.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "encorpus:ibex:driver:820:proof.vcd:e:33cf907b7de18f09d1e3",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:proof.vcd",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 7578,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": "miter.\\reference.u_ibex_core.id_stage_i.controller_i.debug_mode_q",
+            "time": {
+              "value": 540,
+              "unit": "ns"
+            },
+            "bit_range": null
+          },
+          "summary": "Value at this time carried from source assignment.",
+          "epistemic_status": "derived"
+        }
+      ],
+      "processor_behavior_ids": [],
+      "epistemic_status": "derived"
+    },
+    {
+      "finding_id": "F2",
+      "summary": "At 580 ns the host and reference GPR x10 (rf_reg_q bits 351:320) differ: host reads 0x0 while reference reads 0x378. This is a deterministic architectural register-state divergence observation; read/write direction and retirement are not established.",
+      "evidence": [
+        {
+          "evidence_id": "encorpus:ibex:driver:820:proof.vcd:e:62e1de41ad8113751693",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:proof.vcd",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 4721,
+            "instruction_index": null,
+            "register_name": "x10",
+            "signal": "miter.\\host.gen_regfile_ff.register_file_i.rf_reg_q",
+            "time": {
+              "value": 580,
+              "unit": "ns"
+            },
+            "bit_range": {
+              "msb": 351,
+              "lsb": 320
+            }
+          },
+          "summary": "Value at this time carried from source assignment.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "encorpus:ibex:driver:820:proof.vcd:e:e328518d5eac0afd5647",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:proof.vcd",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 27328,
+            "instruction_index": null,
+            "register_name": "x10",
+            "signal": "miter.\\reference.gen_regfile_ff.register_file_i.rf_reg_q",
+            "time": {
+              "value": 580,
+              "unit": "ns"
+            },
+            "bit_range": {
+              "msb": 351,
+              "lsb": 320
+            }
+          },
+          "summary": "Value at this time carried from source assignment.",
+          "epistemic_status": "derived"
+        }
+      ],
+      "processor_behavior_ids": [
+        "encorpus:ibex:driver:820:difference:96a610aee373:580:register-state"
+      ],
+      "epistemic_status": "derived"
+    },
+    {
+      "finding_id": "F3",
+      "summary": "The supplied verify.log records a historical formal cover hit for property miter.i_miter.c_propagated (covered in 59 cycles) and a historical trace error EVS053 (no trace satisfying the configurations for any max_length). These are historical corpus tool results; the SVA/reset harness is incomplete, so no independent replay, verified trigger, or security impact is established.",
+      "evidence": [
+        {
+          "evidence_id": "encorpus:ibex:driver:820:verify.log:e:c5b1c1f116ba4180f47b",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:verify.log",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 518,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "INFO (IPF047): 0.0.J: The cover property \"miter.i_miter.c_propagated\" was covered in 59 cycles in 1.11 s.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "encorpus:ibex:driver:820:verify.log:e:9f30d4dd2269b85c0db9",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:verify.log",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 615,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ERROR (EVS053): No trace satisfying these configurations exists for any max_length.",
+          "epistemic_status": "derived"
+        }
+      ],
+      "processor_behavior_ids": [],
+      "epistemic_status": "observed"
+    }
+  ],
+  "trigger_hypotheses": [
+    {
+      "hypothesis_id": "H1",
+      "summary": "Hypothesized (not verified): the host/reference divergence in the ID-stage controller debug_mode_q local state may be associated with the later architectural divergence in GPR x10, i.e. a debug-mode state difference could influence the host's register-file outcome. This is an inferred association only; no supplied evidence establishes a causal or temporal trigger chain, and the missing instruction trace, harness, and replay constraints prevent verification.",
+      "hardware_finding_ids": [
+        "F1",
+        "F2"
+      ],
+      "processor_behavior_ids": [
+        "encorpus:ibex:driver:820:difference:96a610aee373:580:register-state"
+      ],
+      "evidence": [
+        {
+          "evidence_id": "encorpus:ibex:driver:820:proof.vcd:e:5863a8d7eff3da238439",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:proof.vcd",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 9637,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": "miter.\\host.u_ibex_core.id_stage_i.controller_i.debug_mode_q",
+            "time": {
+              "value": 100,
+              "unit": "ns"
+            },
+            "bit_range": null
+          },
+          "summary": "Value at this time carried from source assignment.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "encorpus:ibex:driver:820:proof.vcd:e:62e1de41ad8113751693",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:proof.vcd",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 4721,
+            "instruction_index": null,
+            "register_name": "x10",
+            "signal": "miter.\\host.gen_regfile_ff.register_file_i.rf_reg_q",
+            "time": {
+              "value": 580,
+              "unit": "ns"
+            },
+            "bit_range": {
+              "msb": 351,
+              "lsb": 320
+            }
+          },
+          "summary": "Value at this time carried from source assignment.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "encorpus:ibex:driver:820:proof.vcd:e:e328518d5eac0afd5647",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:proof.vcd",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 27328,
+            "instruction_index": null,
+            "register_name": "x10",
+            "signal": "miter.\\reference.gen_regfile_ff.register_file_i.rf_reg_q",
+            "time": {
+              "value": 580,
+              "unit": "ns"
+            },
+            "bit_range": {
+              "msb": 351,
+              "lsb": 320
+            }
+          },
+          "summary": "Value at this time carried from source assignment.",
+          "epistemic_status": "derived"
+        }
+      ],
+      "constraints": [
+        {
+          "subject": "debug_mode_q divergence",
+          "relation": "temporally_precedes",
+          "value": "x10 divergence at 580 ns"
+        },
+        {
+          "subject": "causal link debug_mode_q -> x10",
+          "relation": "not_established_by_supplied_evidence",
+          "value": true
+        },
+        {
+          "subject": "instruction trace",
+          "relation": "missing",
+          "value": "no retired-instruction trace supplied"
+        }
+      ],
+      "epistemic_status": "hypothesized"
+    }
+  ],
+  "abnormal_states": [
+    {
+      "state_id": "S1",
+      "summary": "Host/reference divergence in the ID-stage controller debug_mode_q local state: host=0, reference=1 at each of the six sampled times (100, 230, 330, 410, 490, 540 ns). The divergence is established by the supplied witness; its root cause and any security impact are not established.",
+      "hardware_finding_ids": [],
+      "processor_behavior_ids": [],
+      "evidence": [
+        {
+          "evidence_id": "encorpus:ibex:driver:820:proof.vcd:e:5863a8d7eff3da238439",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:proof.vcd",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 9637,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": "miter.\\host.u_ibex_core.id_stage_i.controller_i.debug_mode_q",
+            "time": {
+              "value": 100,
+              "unit": "ns"
+            },
+            "bit_range": null
+          },
+          "summary": "Value at this time carried from source assignment.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "encorpus:ibex:driver:820:proof.vcd:e:feeacffcd930f5f13810",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:proof.vcd",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 7578,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": "miter.\\reference.u_ibex_core.id_stage_i.controller_i.debug_mode_q",
+            "time": {
+              "value": 100,
+              "unit": "ns"
+            },
+            "bit_range": null
+          },
+          "summary": "Value at this time carried from source assignment.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "encorpus:ibex:driver:820:proof.vcd:e:3c9fb4546669f9cdee92",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:proof.vcd",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 25511,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": "miter.\\host.u_ibex_core.id_stage_i.controller_i.debug_mode_q",
+            "time": {
+              "value": 540,
+              "unit": "ns"
+            },
+            "bit_range": null
+          },
+          "summary": "Value at this time carried from source assignment.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "encorpus:ibex:driver:820:proof.vcd:e:33cf907b7de18f09d1e3",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:proof.vcd",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 7578,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": "miter.\\reference.u_ibex_core.id_stage_i.controller_i.debug_mode_q",
+            "time": {
+              "value": 540,
+              "unit": "ns"
+            },
+            "bit_range": null
+          },
+          "summary": "Value at this time carried from source assignment.",
+          "epistemic_status": "derived"
+        }
+      ],
+      "epistemic_status": "derived"
+    },
+    {
+      "state_id": "S2",
+      "summary": "Host/reference divergence in architectural GPR x10 at 580 ns: host=0x0, reference=0x378. The register-state difference is established by the supplied witness; read/write direction, retirement, and root cause are not established.",
+      "hardware_finding_ids": [],
+      "processor_behavior_ids": [
+        "encorpus:ibex:driver:820:difference:96a610aee373:580:register-state"
+      ],
+      "evidence": [
+        {
+          "evidence_id": "encorpus:ibex:driver:820:proof.vcd:e:62e1de41ad8113751693",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:proof.vcd",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 4721,
+            "instruction_index": null,
+            "register_name": "x10",
+            "signal": "miter.\\host.gen_regfile_ff.register_file_i.rf_reg_q",
+            "time": {
+              "value": 580,
+              "unit": "ns"
+            },
+            "bit_range": {
+              "msb": 351,
+              "lsb": 320
+            }
+          },
+          "summary": "Value at this time carried from source assignment.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "encorpus:ibex:driver:820:proof.vcd:e:e328518d5eac0afd5647",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "encorpus:ibex:driver:820:proof.vcd",
+          "analyzer": "encorpus-ibex-driver-v1",
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": 27328,
+            "instruction_index": null,
+            "register_name": "x10",
+            "signal": "miter.\\reference.gen_regfile_ff.register_file_i.rf_reg_q",
+            "time": {
+              "value": 580,
+              "unit": "ns"
+            },
+            "bit_range": {
+              "msb": 351,
+              "lsb": 320
+            }
+          },
+          "summary": "Value at this time carried from source assignment.",
+          "epistemic_status": "derived"
+        }
+      ],
+      "epistemic_status": "derived"
+    }
+  ],
+  "processor_behavior_ids": [],
+  "unresolved_questions": [
+    "Host ID-stage encoding changes appear in a supplied formal witness; this is not a retired instruction trace, so no instruction execution, commitment, or retirement can be claimed.",
+    "A1 ingestion alone does not decode instructions or infer read/write effects, full control flow, or trigger causality.",
+    "No known valid host ID instruction encodings were extracted from the supplied artifacts.",
+    "Historical corpus result only; SVA/reset harness is incomplete. No independent formal replay, verified trigger, or security impact is established.",
+    "DUT/reference differences are deterministic operational observations, not root-cause or trigger verification.",
+    "Local-state signals are internal waveform observations available in this corpus test setup; on-chip visibility is not assumed.",
+    "GPR packing uses the A0-checked Ibex 32-bit layout. Register-state differences do not establish read/write direction or retirement.",
+    "Only the existing selected local-state and architectural comparisons are projected; missing or unknown values are not inferred.",
+    "The causal relationship, if any, between the debug_mode_q local-state divergence and the x10 architectural divergence is unresolved; no trace, stage, harness, or replay evidence links them.",
+    "The EVS053 trace error and the c_propagated cover hit are historical tool outputs; their relationship to the observed host/reference divergences is not established."
+  ]
+}
