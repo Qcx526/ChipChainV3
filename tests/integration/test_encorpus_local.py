@@ -58,3 +58,30 @@ def test_local_ibex_decoding(sample_id):
         assert all(d.evidence[0].location.signal.endswith("instr_rdata_alu_id_o") for d in decoded)
     else:
         assert enriched.observations == [] and ir.behaviors == []
+
+
+@pytest.mark.parametrize("sample_id", ["743", "820"])
+def test_local_real_model_projection_is_operational(sample_id):
+    import json
+    from chipchain.agents.context import hardware_context
+    from chipchain.agents.hardware import HardwareSecurityAgent
+    from chipchain.integrations.deepseek_hardware import prepare_hardware_input
+
+    root = os.environ.get("CHIPCHAIN_ENCORPUS_IBEX_ROOT")
+    if not root:
+        pytest.skip("Set CHIPCHAIN_ENCORPUS_IBEX_ROOT explicitly to enable local corpus checks")
+    sample = Path(root) / "driver" / sample_id
+    original = EnCorpusIbexDriverAnalyzer().ingest(sample)
+    inputs = prepare_hardware_input(sample)
+    text = hardware_context(inputs)
+    context = json.loads(text)
+    oracle_ids = {o.observation_id for o in original.oracle.observations if o.kind == Kind.MUTATION_PRESENT}
+    assert not any(identifier in text for identifier in oracle_ids)
+    assert all(o["role"] == "analysis_input" for o in context["observations"])
+    assert not {"oracle", "ground_truth_label", "metadata"} & context.keys()
+    assert {a["format"] for a in context["artifacts"]} == {"vcd", "log"}
+    assert "reference_driver.rtlil" not in text and "verify.log" in text
+    assert "$var" not in text and "module \\host" not in text
+    assert len(context["observations"]) == (10 if sample_id == "743" else 9)
+    assert sum(o["kind"] == "instruction_encoding_observed" for o in context["observations"]) == (3 if sample_id == "743" else 0)
+    assert len(HardwareSecurityAgent().invoke(inputs).processor_behavior_ir.behaviors) == (5 if sample_id == "743" else 1)

@@ -29,7 +29,9 @@ def test_provenance_descriptors_dependency_snapshot_and_round_trip() -> None:
     assert len(provenance.models) == 3
     assert provenance.models[0].mode == "fake"
     assert provenance.models[1].mode == "unknown"
-    assert {p.prompt_version for p in provenance.prompts} == {"v1"}
+    assert {p.agent_role: p.prompt_version for p in provenance.prompts} == {
+        AgentRole.HARDWARE: "v2", AgentRole.FIRMWARE: "v1", AgentRole.CROSS_LAYER: "v1",
+    }
     assert provenance.tools[0].configuration_sha256 == "a" * 64
     assert "SYSTEM_PROMPT" not in provenance.model_dump_json()
     run = AnalysisRun(

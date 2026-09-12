@@ -144,10 +144,11 @@ class HardwareObservation(DeterministicObservation):
                     raise ValueError("Difference observation has the wrong stage")
                 if stage == "register_state" and not self.details.register_name:
                     raise ValueError("Register state observation requires a register identity")
-        # A1 analysis observations contain only host facts. Comparative results and
-        # golden-derived anchors remain benchmark data, even with observed status.
-        if self.role == ObservationRole.ANALYSIS_INPUT and self.kind != HardwareObservationKind.INSTRUCTION_ENCODING_OBSERVED:
-            raise ValueError("Comparative and formal observations belong to the benchmark oracle")
+        # B.1: approved differential/tool results may be operational inputs.
+        # The producer's projection policy decides availability; injected RTL
+        # anchors remain hidden regardless of their deterministic status.
+        if self.role == ObservationRole.ANALYSIS_INPUT and self.kind == HardwareObservationKind.MUTATION_PRESENT:
+            raise ValueError("Injected mutation anchors belong to the benchmark oracle")
         return self
 
 

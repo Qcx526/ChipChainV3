@@ -8,6 +8,8 @@ dist/
 .coverage
 htmlcov/
 .env
+.env.*
+!.env.example
 
 # Real samples and run outputs are local workspace data, not fixtures.
 /samples/hardware/*

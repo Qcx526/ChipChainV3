@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, Self
 from pydantic import Field, model_validator
 
 from chipchain.domain.behavior import ProcessorBehaviorIR
-from chipchain.domain.case import ArtifactRef, CaseBundle, TargetDescriptor
+from chipchain.domain.case import ArtifactRef, TargetDescriptor
 from chipchain.domain.common import Contract, Identifier
 from chipchain.tools.contracts import HardwareObservation, HardwareObservations, ObservationRole
 
@@ -79,20 +79,7 @@ class EnCorpusIngestionResult(Contract):
         return self
 
     def analysis_input(self) -> "HardwareAgentInput":
-        """Build the existing agent DTO without running an agent or exposing oracle.
+        """Explicit operational projection; raw benchmark containers stay private."""
+        from chipchain.tools.hardware.encorpus.projection import build_hardware_analysis_projection
 
-        Only source provenance for host instruction observations is included.
-        The referenced VCD itself is mixed-role; this DTO grants no raw-file tool.
-        """
-        from chipchain.agents.contracts import HardwareAgentInput
-
-        evidence_ids = {
-            e.artifact_id for o in self.observations.observations
-            for e in [*o.evidence, *(e for b in o.behaviors for e in b.evidence)]
-        }
-        # A VCD with no valid ID observations still supplies an explicit input artifact.
-        artifacts = [a.model_copy(deep=True) for a in self.artifacts
-                     if a.artifact_id in evidence_ids or a.format == "vcd"]
-        case = CaseBundle(case_id=self.observations.case_id, name=self.sample_identity,
-                          target=self.target.model_copy(deep=True), hardware_artifacts=artifacts)
-        return HardwareAgentInput(case=case, deterministic_observations=self.observations.model_copy(deep=True))
+        return build_hardware_analysis_projection(self)

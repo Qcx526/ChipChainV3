@@ -1,7 +1,7 @@
 # ChipChain V3
 
 大模型协同的芯片固件—硬件跨层漏洞攻击链路检测研究工程。
-当前阶段：**V3-1A2 — Deterministic RISC-V Instruction Decoding**。
+当前阶段：**V3-1B.1 — Operational Evidence Projection & Real-Agent Validation**。
 已完成 **R0-B.1 dependency reproducibility patch**；版本边界由 `pyproject.toml` 管理。
 保留已冻结的 R0-A/R0-A.1 Case-first、多架构合同与 workflow。
 
@@ -25,7 +25,20 @@ V3-1A2 增加独立 `RiscVInstructionDecoder`，使用稳定 Capstone 5（`>=5.0
 743 的三条编码得到 `addi x28, x6, 1`、`lui x10, 1`、`lw x10, 7(x28)`；820 仍为空。
 当前仅解释 RV32 ID-stage 解压路径的 32 位表示，不推断原始 compressed 长度、执行、退休或 trigger。
 架构中立合同、字节序、失败状态、调用方法和 fresh environment 验证见
-[V3-1A2 decoding 文档](docs/research/v3-1a2-riscv-decoding.md)。本轮在 A2 停止，未接入真实 LLM。
+[V3-1A2 decoding 文档](docs/research/v3-1a2-riscv-decoding.md)。A1/A2 工具本身不调用模型。
+
+V3-1B 通过官方 `langchain-deepseek` 将 `ChatDeepSeek` 注入既有 HardwareSecurityAgent，
+使用 `function_calling` structured output 和 hardware prompt v2；仅处理 A1/A2 的 host 分析投影。
+真实 743/820 已生成并保存经过校验的报告，均未产生 trigger hypothesis 或 abnormal state。
+首次结果较保守，不能据此宣称已具备可靠漏洞检测或 trigger 推理能力。
+实测报告、失败尝试、token usage 和人工审核问题见
+[V3-1B DeepSeek 文档](docs/research/v3-1b-deepseek-hardware-agent.md)。
+
+V3-1B.1 将既有确定性 local/GPR divergence 和 formal tool results 纳入运行证据投影，
+精确 injected mutation location/connection、benchmark root cause 和 raw RTL 继续隐藏。
+投影集中在 `build_hardware_analysis_projection`，不扩展 parser；hardware prompt 保持 v2。
+配置原样接受 `deepseek-flash` 与版本化模型名，运行无需模型名 workaround。
+规则、诊断及与旧报告的比较见 [V3-1B.1 文档](docs/research/v3-1b1-operational-evidence.md)。
 
 长期计划面向约 5 种处理器架构，当前重点为 **ARM、RISC-V、PowerPC**；其他未来架构尚未冻结。
 PowerPC 使用一等枚举值 `powerpc`。架构专用提取结果统一进入架构中立的
@@ -107,7 +120,7 @@ def workflow_with_models(hw: BaseChatModel, fw: BaseChatModel, cross: BaseChatMo
 ```
 
 `Security Agent != Model`：ChipChain 负责领域职责、prompt、上下文和数据合同；LangChain
-负责模型抽象、调用、structured output 与 provider interoperability。项目不创建 provider、
+负责模型抽象、调用、structured output 与 provider interoperability。领域 Agent 不创建 provider、
 读取 API key 或自动读取 artifact 内容。R0-B 使用 `BaseChatModel.with_structured_output`
 完成单次结构化报告；`create_agent` 已通过兼容性 smoke import，当前 runtime 不需要它，
 未来有主动工具编排需求时再评估。
@@ -117,11 +130,31 @@ def workflow_with_models(hw: BaseChatModel, fw: BaseChatModel, cross: BaseChatMo
 依赖升级后应同时执行 `python -m pip check` 和完整 `pytest -q`；测试包含 public API
 smoke import，以捕获元数据校验无法发现的运行时不兼容。范围与验证版本见架构文档。
 
-默认 stub 完全本地运行。测试以 `tests/fakes.py` 的确定性模型替代全部外部模型，
+默认 stub 完全本地运行。测试使用 `tests/fakes.py` 或 provider generation stub 替代外部模型，
 实际经过 LangChain structured-output parser；禁用 tracing 并阻止网络/外部进程。
 R0 不进行真实模型调用，请勿为本阶段启用外部 LangSmith tracing。
 
-R0-C 已完成 Architecture Reset；当前 V3-1A2 仅增加确定性解码，未进入 V3-1B Hardware Security Agent 集成。
+显式真实 Hardware Agent 运行（从 repository root 执行）：
+
+1. 首次配置时将 `.env.example` 复制为 `.env`，在本地填写 `DEEPSEEK_API_KEY`，不要覆盖已有配置。
+2. 使用下方明确 opt-in 命令；默认 pytest 即使已有 key 或 `.env` 也不访问 API。
+3. 检查终端给出的 `output/<case_id>/<run_id>/`，其中必须存在
+   `analysis_run.json` 和 `hardware_analysis_report.json`，再人工审核结论。
+
+```bash
+CHIPCHAIN_ENABLE_REAL_LLM=1 \
+  .venv/bin/python -m chipchain.integrations.deepseek_hardware \
+  --env-file .env --sample /path/to/ibex/ibex/driver/743
+```
+
+随后可将 sample 改为 `driver/820`。默认原样使用 `.env` 的 `CHIPCHAIN_HARDWARE_MODEL`；
+如需 override，可在命令前显式设置同名环境变量。文件只在显式入口读取，
+不修改进程环境，也不启用调用许可。模型名在 integration config 中注入，Agent 不绑定 DeepSeek。
+命令关闭 tracing、transport logging 和自动重试；每次保存 `invocation_attempts.jsonl` 的开始及终态记录，
+包含模型、prompt、context hash 和安全失败类别；失败不保存响应正文，成功必须写入
+validated report。每次使用新 UUID，既有 run directory 不会被覆盖。真实输出及 `.env` 均被 Git 忽略。
+
+R0-C 已完成 Architecture Reset；V3-1B 仅接通真实 Hardware Agent，未进入 V3-1C、V3-2 或 Cross-Layer 集成。
 
 架构边界、准入条件、状态语义和后续扩展点见
 [docs/architecture/v3-r0.md](docs/architecture/v3-r0.md)。

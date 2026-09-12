@@ -210,22 +210,19 @@ def test_oracle_does_not_enter_analysis_projection_or_agent_input(sample):
     analyzer = EnCorpusIbexDriverAnalyzer()
     before = analyzer.ingest(sample)
     before_context = hardware_context(before.analysis_input())
-    # Alter golden-derived location/value, known cover result and reference waveform
-    # state (including unknowns). Host facts and source line numbering stay fixed.
+    # B.1 hides RTL mutation answers, but permits operational waveform/log facts.
     for name in ["host_driver.rtlil", "reference_driver.rtlil"]:
         p = sample / name
         p.write_text(p.read_text().replace("\\address", "\\oracle_changed"))
-    (sample / "verify.log").write_text(LOG.replace("8 cycles", "999 cycles"))
-    p = sample / "proof.vcd"
-    p.write_text(p.read_text().replace("b1 c7", "bx c7").replace(f"b{1 << (32 * 27):b} c5", "bx c5"))
     after = analyzer.ingest(sample)
     assert before.oracle != after.oracle
     assert before.observations == after.observations
     assert before.processor_behavior_ir == after.processor_behavior_ir
     assert before_context == hardware_context(after.analysis_input())
-    assert not any(name in before_context for name in ["reference_connection", "cover_hit", "mutation_present"])
-    assert len(before.analysis_input().case.hardware_artifacts) == 1
-    assert all(a.format == "vcd" for a in before.analysis_input().case.hardware_artifacts)
+    assert not any(name in before_context for name in ["reference_connection", "oracle_changed", "mutation_present"])
+    assert "cover_hit" in before_context
+    assert len(before.analysis_input().case.hardware_artifacts) == 2
+    assert {a.format for a in before.analysis_input().case.hardware_artifacts} == {"vcd", "log"}
     unsafe = HardwareObservations(case_id=before.observations.case_id, observations=before.oracle.observations)
     with pytest.raises(ValidationError, match="oracle"):
         HardwareAgentInput(case=before.analysis_input().case, deterministic_observations=unsafe)
@@ -302,6 +299,10 @@ def test_observation_kind_status_and_details_are_orthogonal(sample):
     with pytest.raises(ValidationError, match="details"):
         HardwareObservation.model_validate(data)
     data = arch.model_dump()
+    data["role"] = "analysis_input"
+    assert HardwareObservation.model_validate(data).role == "analysis_input"
+    mutation = next(o for o in result.oracle.observations if o.kind == Kind.MUTATION_PRESENT)
+    data = mutation.model_dump()
     data["role"] = "analysis_input"
     with pytest.raises(ValidationError, match="oracle"):
         HardwareObservation.model_validate(data)
