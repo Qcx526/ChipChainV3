@@ -1,7 +1,7 @@
 # ChipChain V3
 
 大模型协同的芯片固件—硬件跨层漏洞攻击链路检测研究工程。
-当前阶段：**V3-2A2 — Ghidra Static Structure & Cortex-M IRQ Mapping**。
+当前阶段：**V3-2A3 — Bounded Relevant Static-Structure Projection**。
 Firmware R1 真实基线仍为 **machine-valid / human-rejected / NOT reviewed**。
 已完成 **R0-B.1 dependency reproducibility patch**；版本边界由 `pyproject.toml` 管理。
 保留已冻结的 R0-A/R0-A.1 Case-first、多架构合同与 workflow。
@@ -81,6 +81,13 @@ CHIPCHAIN_GHIDRA_HOME=/explicit/path/to/ghidra \
 该命令只接受本阶段冻结 fingerprint 的 ELF，在临时目录分析并清理 Ghidra project；
 成功后显式写入新的 `output/<case_id>/<uuid>/`，不覆盖历史运行。
 Python `extract_heat_press_structure` API 返回独立结果，不自动写持久化文件。
+
+V3-2A3 新增独立 `FirmwareRelevantStaticStructure`：MMIO/向量 handler seeds 的完整一跳确认调用，
+以及相关 unresolved calls、23 个 MMIO site 和 compact vector groups。真实 Heat_Press 投影为
+34 functions、22 confirmed calls、12 unresolved calls、14 handler groups；可逆去重后 16,631 字符，
+172 个 EvidenceRefs 可精确还原。没有接入 Agent、修改 prompt/projection v1 或创建运行可达性结论。
+选择规则、具名列式 JSON、精确 hash、测试和 B2 catalog/item-budget 限制见
+[V3-2A3 相关静态结构文档](docs/research/v3-2a3-relevant-static-structure.md)。
 
 长期计划面向约 5 种处理器架构，当前重点为 **ARM、RISC-V、PowerPC**；其他未来架构尚未冻结。
 PowerPC 使用一等枚举值 `powerpc`。架构专用提取结果统一进入架构中立的
