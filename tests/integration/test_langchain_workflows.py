@@ -9,6 +9,7 @@ from chipchain.agents.firmware import FirmwareSecurityAgent
 from chipchain.agents.hardware import HardwareSecurityAgent
 from chipchain.domain.case import CaseBundle
 from chipchain.domain.cross_layer import CrossLayerAnalysisReport
+from chipchain.agents.model_outputs.firmware import ModelFirmwareAnalysisReport
 from chipchain.domain.firmware import FirmwareAnalysisReport
 from chipchain.domain.hardware import HardwareAnalysisReport
 from chipchain.workflows import (
@@ -31,7 +32,7 @@ def test_case_routing_invokes_only_applicable_models(
         monkeypatch.setenv(key, "synthetic-unused-key")
     case = load_case(name)
     hw = fake_model(HardwareAnalysisReport, HardwareAnalysisReport(case_id=case.case_id))
-    fw = fake_model(FirmwareAnalysisReport, FirmwareAnalysisReport(case_id=case.case_id))
+    fw = fake_model(ModelFirmwareAnalysisReport, FirmwareAnalysisReport(case_id=case.case_id))
     cross = fake_model(CrossLayerAnalysisReport, CrossLayerAnalysisReport(case_id=case.case_id))
     result = CaseWorkflowState.model_validate(build_case_workflow(
         hardware_agent=HardwareSecurityAgent(model=hw), firmware_agent=FirmwareSecurityAgent(model=fw),
@@ -62,7 +63,7 @@ def test_model_failures_become_failed_state_and_block_cross_layer(
         HardwareAnalysisReport, {},
         failure=RuntimeError("synthetic-secret") if failure_kind == "invocation" else None,
     )
-    fw = fake_model(FirmwareAnalysisReport, FirmwareAnalysisReport(case_id=case.case_id))
+    fw = fake_model(ModelFirmwareAnalysisReport, FirmwareAnalysisReport(case_id=case.case_id))
     cross = fake_model(CrossLayerAnalysisReport, CrossLayerAnalysisReport(case_id=case.case_id))
     result = CaseWorkflowState.model_validate(build_case_workflow(
         hardware_agent=HardwareSecurityAgent(model=hw), firmware_agent=FirmwareSecurityAgent(model=fw),
@@ -85,7 +86,7 @@ def test_other_domains_reject_invalid_model_output_in_workflow(
 ) -> None:
     case = load_case("paired")
     hw = fake_model(HardwareAnalysisReport, HardwareAnalysisReport(case_id=case.case_id))
-    fw = fake_model(FirmwareAnalysisReport, {} if layer == "firmware" else FirmwareAnalysisReport(case_id=case.case_id))
+    fw = fake_model(ModelFirmwareAnalysisReport, {} if layer == "firmware" else FirmwareAnalysisReport(case_id=case.case_id))
     cross = fake_model(CrossLayerAnalysisReport, {})
     result = CaseWorkflowState.model_validate(build_case_workflow(
         hardware_agent=HardwareSecurityAgent(model=hw), firmware_agent=FirmwareSecurityAgent(model=fw),
@@ -101,7 +102,7 @@ def test_other_domains_reject_invalid_model_output_in_workflow(
 def test_each_standalone_workflow_accepts_model_backed_agent(load_case: Callable[[str], CaseBundle]) -> None:
     case = load_case("paired")
     hw = fake_model(HardwareAnalysisReport, HardwareAnalysisReport(case_id=case.case_id))
-    fw = fake_model(FirmwareAnalysisReport, FirmwareAnalysisReport(case_id=case.case_id))
+    fw = fake_model(ModelFirmwareAnalysisReport, FirmwareAnalysisReport(case_id=case.case_id))
     cross = fake_model(CrossLayerAnalysisReport, CrossLayerAnalysisReport(case_id=case.case_id))
     hardware = build_hardware_workflow(agent=HardwareSecurityAgent(model=hw)).invoke({"case": case})
     firmware = build_firmware_workflow(agent=FirmwareSecurityAgent(model=fw)).invoke({"case": case})

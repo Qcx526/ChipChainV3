@@ -10,7 +10,7 @@ from langchain_core.globals import get_debug, get_verbose
 from langchain_deepseek import ChatDeepSeek
 from pydantic import SecretStr
 
-from chipchain.domain.provenance import ModelDescriptor
+from chipchain.domain.provenance import AgentRole, ModelDescriptor
 
 
 class DeepSeekConfigurationError(ValueError):
@@ -20,7 +20,7 @@ class DeepSeekConfigurationError(ValueError):
 @dataclass(frozen=True)
 class DeepSeekConfig:
     api_key: SecretStr = field(repr=False)
-    model: str = "deepseek-v4-pro"
+    model: str = "deepseek-flash"
     temperature: float = 0
     max_tokens: int = 8192
     timeout: float = 180
@@ -34,8 +34,8 @@ class DeepSeekConfig:
         if not 0 <= self.temperature <= 2 or not 1 <= self.max_tokens <= 32768 or not 0 < self.timeout <= 600:
             raise DeepSeekConfigurationError("Invalid generation limits")
 
-    def descriptor(self) -> ModelDescriptor:
-        return ModelDescriptor(agent_role="hardware", provider_identifier="deepseek",
+    def descriptor(self, agent_role: AgentRole) -> ModelDescriptor:
+        return ModelDescriptor(agent_role=agent_role, provider_identifier="deepseek",
                                model_identifier=self.model, mode="real")
 
 
@@ -44,18 +44,23 @@ def require_real_opt_in(enabled: bool) -> None:
         raise DeepSeekConfigurationError("Real calls require CHIPCHAIN_ENABLE_REAL_LLM=1 at the explicit run command")
 
 
-def load_deepseek_config(environment: Mapping[str, str], *, env_file: Path | None = None) -> DeepSeekConfig:
+def load_deepseek_config(environment: Mapping[str, str], *, agent_role: AgentRole = AgentRole.HARDWARE,
+                         env_file: Path | None = None) -> DeepSeekConfig:
     """Explicit read only; no os.environ mutation, discovery, or interpolation.
 
     Shell values override the selected file. The file never grants network opt-in.
     """
+    model_variable = {AgentRole.HARDWARE: "CHIPCHAIN_HARDWARE_MODEL",
+                      AgentRole.FIRMWARE: "CHIPCHAIN_FIRMWARE_MODEL"}.get(agent_role)
+    if model_variable is None:
+        raise DeepSeekConfigurationError("Unsupported DeepSeek agent role")
     values = {}
     if env_file is not None:
         if not env_file.is_file():
             raise DeepSeekConfigurationError("The explicitly selected environment file is missing")
         values = dotenv_values(env_file, interpolate=False)
     key = environment.get("DEEPSEEK_API_KEY", values.get("DEEPSEEK_API_KEY") or "")
-    model = environment.get("CHIPCHAIN_HARDWARE_MODEL", values.get("CHIPCHAIN_HARDWARE_MODEL") or "deepseek-v4-pro")
+    model = environment.get(model_variable, values.get(model_variable) or "deepseek-flash")
     return DeepSeekConfig(api_key=SecretStr(key), model=model)
 
 

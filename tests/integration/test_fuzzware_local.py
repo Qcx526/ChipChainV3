@@ -59,6 +59,16 @@ def test_local_heat_press_scenario_13():
     assert counts=={'instruction':23,'mmio_access':32}
     refs={e.evidence_id:e for o in batch.observations for e in [*o.evidence,*(e for b in o.behaviors for e in b.evidence)]}
     assert len(refs)==57 and {e.artifact_id for e in refs.values()} <= {a.artifact_id for a in artifacts}
+    from chipchain.integrations.deepseek_firmware import prepare_firmware_input, validate_firmware_baseline
+    prepared=prepare_firmware_input(Path(root))
+    assert prepared==inputs
+    validate_firmware_baseline(prepared,firmware_context(prepared))
+    from chipchain.agents.runtime import AgentExecutionError
+    changed=prepared.model_copy(deep=True)
+    changed.case.target.processor_id='sam3y'  # same length/counts, different exact context
+    assert len(firmware_context(changed))==39438
+    with pytest.raises(AgentExecutionError,match='projection and sent context disagree'):
+        validate_firmware_baseline(changed,firmware_context(changed))
     before=inputs.model_dump_json()
     projection=build_firmware_analysis_projection(inputs)
     text=firmware_context(inputs);context=json.loads(text)

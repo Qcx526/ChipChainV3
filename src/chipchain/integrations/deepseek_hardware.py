@@ -22,6 +22,7 @@ from chipchain.agents.contracts import HardwareAgentInput, HardwareAgentOutput
 from chipchain.agents.hardware import HardwareSecurityAgent
 from chipchain.agents.prompts.hardware import PROMPT_DESCRIPTOR
 from chipchain.agents.runtime import AgentExecutionError, AgentStructuredOutputError
+from chipchain.domain.provenance import AgentRole
 from chipchain.domain.run import AnalysisRun
 from chipchain.execution.provenance import capture_provenance
 from chipchain.execution.runner import analysis_run_from_state, utc_now
@@ -140,7 +141,7 @@ def run_real_hardware(sample: Path, *, config: DeepSeekConfig, enabled: bool,
         validate_real_report(output)
         if inputs.model_dump_json() != before or output.processor_behavior_ir != stub.processor_behavior_ir:
             raise AgentStructuredOutputError("Model run changed deterministic input or IR")
-        provenance = capture_provenance(prompts=[PROMPT_DESCRIPTOR], models=[config.descriptor()],
+        provenance = capture_provenance(prompts=[PROMPT_DESCRIPTOR], models=[config.descriptor(AgentRole.HARDWARE)],
                                         tools=[RiscVInstructionDecoder().descriptor, PROJECTION_DESCRIPTOR])
         # Existing extension point, only distribution versions, never model object/config dumps.
         for package in ("langchain-deepseek", "langchain-openai", "openai", "python-dotenv", "capstone"):
@@ -223,7 +224,7 @@ def main() -> int:
     args = parser.parse_args()
     try:
         require_real_opt_in(os.environ.get("CHIPCHAIN_ENABLE_REAL_LLM") == "1")
-        config = load_deepseek_config(os.environ, env_file=args.env_file)
+        config = load_deepseek_config(os.environ, agent_role=AgentRole.HARDWARE, env_file=args.env_file)
         directory = run_real_hardware(args.sample, config=config, enabled=True, output_root=Path("output"),
                                      attempt_index=args.attempt_index)
     except DeepSeekConfigurationError as exc:

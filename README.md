@@ -1,7 +1,7 @@
 # ChipChain V3
 
 大模型协同的芯片固件—硬件跨层漏洞攻击链路检测研究工程。
-当前阶段：**V3-2A1.1 — Neutral & Compact Firmware Agent Projection + Grounding Gate**。
+当前阶段：**V3-2B-R1 — Evidence-ID Binding（deepseek-flash 真实运行通过校验，待人工审核）**。
 已完成 **R0-B.1 dependency reproducibility patch**；版本边界由 `pyproject.toml` 管理。
 保留已冻结的 R0-A/R0-A.1 Case-first、多架构合同与 workflow。
 
@@ -53,6 +53,16 @@ V3-2A1.1 将固件模型输入独立为版本化的 `firmware-analysis-projectio
 Firmware Agent 输出新增 exact EvidenceRef 和 finding-reference grounding gate，使用 fake model 离线验证。
 身份策略、实验结果和 B 阶段边界见
 [V3-2A1.1 projection 文档](docs/research/v3-2a1-1-firmware-agent-projection.md)。
+
+V3-2B 增加显式 Firmware runner 和 reviewed exporter 支持；两次 v4-pro 调用保留为
+pre-baseline rejected pilot runs，存在模型偏好不符且无 accepted report，记录见
+[V3-2B pilot 文档](docs/research/v3-2b-deepseek-firmware-agent.md)。
+
+V3-2B-R1 将 DeepSeek 默认统一为 `deepseek-flash`，模型只输出 evidence IDs，由 deterministic hydration
+构造完整 canonical EvidenceRefs，再执行原 exact grounding 和 IR 校验；prompt v1/projection v1 均不变。
+一次 corrected real run 已通过校验并保存 8 findings、4 paths、6 unknown reachability、3 anchors，**不是漏洞确认**。
+人工审查已发现 SystemInit 读写方向错误、outbound path 分类和 IRQ 关联过强等问题；未重跑或 reviewed-export。
+完整运行身份、文件链接、claim audit 与限制见 [R1 报告](docs/research/v3-2b-r1-evidence-binding.md)。
 
 长期计划面向约 5 种处理器架构，当前重点为 **ARM、RISC-V、PowerPC**；其他未来架构尚未冻结。
 PowerPC 使用一等枚举值 `powerpc`。架构专用提取结果统一进入架构中立的
@@ -172,7 +182,12 @@ CHIPCHAIN_ENABLE_REAL_LLM=1 \
 包含模型、prompt、context hash 和安全失败类别；失败不保存响应正文，成功必须写入
 validated report。每次使用新 UUID，既有 run directory 不会被覆盖。真实输出及 `.env` 均被 Git 忽略。
 
-R0-C 已完成 Architecture Reset；V3-1B 仅接通真实 Hardware Agent，未进入 V3-1C、V3-2 或 Cross-Layer 集成。
+Firmware 使用独立 opt-in 入口和 `CHIPCHAIN_FIRMWARE_MODEL`，不回退到 Hardware 模型变量。
+未配置时使用 `deepseek-flash`；`.env.example` 两侧模型示例均为 `deepseek-flash`。
+入口为 `python -m chipchain.integrations.deepseek_firmware --env-file .env --corpus-root /path/to/fuzzware-experiments`，
+仍需命令环境中显式 `CHIPCHAIN_ENABLE_REAL_LLM=1`；corrected Firmware runner 要求最终模型为 `deepseek-flash`。
+真实结果须人工审核，不自动重跑或 reviewed-export。
+R0-C 已完成 Architecture Reset；当前未进入 Cross-Layer 集成。
 
 架构边界、准入条件、状态语义和后续扩展点见
 [docs/architecture/v3-r0.md](docs/architecture/v3-r0.md)。

@@ -14,8 +14,12 @@ from dotenv import dotenv_values
 from pydantic import AwareDatetime, Field
 
 from chipchain.agents.context import _SideContext
-from chipchain.agents.contracts import HardwareAgentInput, HardwareAgentOutput
+from chipchain.agents.contracts import FirmwareAgentOutput, HardwareAgentInput, HardwareAgentOutput
+from chipchain.agents.projections.firmware import FirmwareAnalysisProjection, serialize_firmware_analysis_projection
+from chipchain.domain.firmware import FirmwareAnalysisReport
+from chipchain.integrations.deepseek_firmware import PROJECTION_DESCRIPTOR, validate_real_firmware_claims
 from chipchain.agents.hardware import validate_hardware_evidence
+from chipchain.agents.model_outputs.firmware import validate_firmware_report_references
 from chipchain.domain.case import CaseBundle
 from chipchain.domain.common import Contract, Sha256
 from chipchain.domain.hardware import HardwareAnalysisReport
@@ -23,7 +27,8 @@ from chipchain.domain.run import AnalysisRun
 from chipchain.tools.contracts import HardwareObservations
 
 # Extend explicitly when another Agent has reviewed, tested output support.
-REPORTS = {"hardware": ("hardware_analysis_report.json", HardwareAnalysisReport, "hardware_report")}
+REPORTS = {"hardware": ("hardware_analysis_report.json", HardwareAnalysisReport, "hardware_report"),
+           "firmware": ("firmware_analysis_report.json", FirmwareAnalysisReport, "firmware_report")}
 FILES = ("analysis_run.json", "hardware_analysis_report.json", "analysis_input.json",
          "invocation.json", "invocation_attempts.jsonl")
 MAX_FILE_BYTES = 8 * 1024 * 1024
@@ -63,7 +68,7 @@ class _Identity(Contract):
     attempt_index: int = Field(ge=1, strict=True)
 
 
-class _Invocation(_Identity):
+class _InvocationBase(_Identity):
     temperature: float
     max_tokens: int = Field(gt=0, strict=True)
     timeout_seconds: float
@@ -78,7 +83,20 @@ class _Invocation(_Identity):
     observation_counts_by_kind: dict[str, int] = Field(default_factory=dict)
     behavior_count: int = Field(ge=0, strict=True)
     stub_ir_equal: bool
-    projection: str
+
+
+class _Invocation(_InvocationBase):
+    projection: str  # Historical Hardware format is unchanged.
+
+
+class _FirmwareInvocation(_InvocationBase):
+    agent_role: Literal["firmware"]
+    projection_version: Literal["firmware-analysis-projection/v1"]
+    evidence_count: int = Field(ge=0, strict=True)
+    runtime_observation_count: int = Field(ge=0, strict=True)
+    observation_counts_by_scope: dict[str, int]
+    claim_counts: dict[str, int] = Field(default_factory=dict)
+    model_output_schema: Literal["ModelFirmwareAnalysisReport"] | None = None
 
 
 class _Diagnostic(Contract):
@@ -145,6 +163,51 @@ def _safety(value, secret: str | None) -> None:
             raise ReviewedExportError("Credential or raw-provider content detected")
 
 
+def _run_role(run: AnalysisRun) -> str:
+    if run.cross_layer_report is not None or (run.hardware_report is not None) == (run.firmware_report is not None):
+        raise ReviewedExportError("Only single-side hardware or firmware snapshots are supported")
+    return "firmware" if run.firmware_report is not None else "hardware"
+
+
+def _firmware_context(run, report, context_data):
+    context = FirmwareAnalysisProjection.model_validate(context_data)
+    serialize_firmware_analysis_projection(context)  # references, neutrality, size, version
+    validate_firmware_report_references(report)
+    FirmwareAgentOutput(report=report, processor_behavior_ir=run.processor_behavior_ir)
+    if context.case.case_id != run.case_id:
+        raise ReviewedExportError("Context and run case identities disagree")
+    if {b.behavior_id for b in context.behaviors} != {b.behavior_id for b in run.processor_behavior_ir.behaviors}:
+        raise ReviewedExportError("Projection and IR behavior identities disagree")
+    if {a.artifact_id for a in context.artifacts} != {a.artifact_id for a in run.artifacts}:
+        raise ReviewedExportError("Projection and run artifact identities disagree")
+    evidence = {e.evidence_id: e for e in context.evidence_catalog}
+    findings = {f.finding_id for f in report.findings}
+    for item in [*report.findings, *report.external_input_paths, *report.reachable_behaviors, *report.issue_anchors]:
+        if any(evidence.get(e.evidence_id) != e for e in item.evidence):
+            raise ReviewedExportError("Firmware report evidence differs from the projection")
+        if not set(getattr(item, "firmware_finding_ids", [])) <= findings:
+            raise ReviewedExportError("Firmware report references unknown findings")
+    scopes = {}
+    behaviors = {b.behavior_id: b for b in context.behaviors}
+    for observation in context.observations:
+        ids = set(observation.evidence_ids)
+        for bid in observation.behavior_ids:
+            b = behaviors[bid]
+            ids.update(b.evidence_ids)
+            if b.decoded_instruction is not None:
+                ids.update(b.decoded_instruction["evidence_ids"])
+        for eid in ids:
+            scopes.setdefault(eid, set()).add(observation.scope)
+    validate_real_firmware_claims(report, scopes)
+    expected_stages = {"hardware": "not_applicable", "firmware": "completed",
+                       "ir_aggregation": "completed", "cross_layer": "not_applicable"}
+    if {s.stage: s.status for s in run.stages} != expected_stages:
+        raise ReviewedExportError("Firmware snapshot requires a completed firmware-only run")
+    if PROJECTION_DESCRIPTOR not in run.provenance.tools:
+        raise ReviewedExportError("Firmware projection provenance is required")
+    return context
+
+
 def _validate(blobs: dict[str, bytes], secret: str | None):
     objects = {}
     for name, data in blobs.items():
@@ -159,33 +222,36 @@ def _validate(blobs: dict[str, bytes], secret: str | None):
             objects[name] = _json(text)
         _safety(objects[name], secret)
     run = AnalysisRun.model_validate_json(blobs["analysis_run.json"])
-    report_name, report_schema, report_field = REPORTS["hardware"]
+    role = _run_role(run)
+    report_name, report_schema, report_field = REPORTS[role]
     report = report_schema.model_validate_json(blobs[report_name])
     if run.status != "completed" or getattr(run, report_field) != report or run.processor_behavior_ir is None:
-        raise ReviewedExportError("Completed run and identical embedded hardware report are required")
-    if run.firmware_report is not None or run.cross_layer_report is not None:
-        raise ReviewedExportError("Only hardware snapshots are supported in this exporter version")
-    HardwareAgentOutput(report=report, processor_behavior_ir=run.processor_behavior_ir)
-    context_data = objects["analysis_input.json"]
-    if set(context_data) != {"case", "artifacts", "observations", "unresolved_questions"}:
-        raise ReviewedExportError("Unexpected analysis input fields")
-    if set(context_data["case"]) - {"case_id", "name", "target", "synthetic"}:
-        raise ReviewedExportError("Unexpected case projection fields")
-    if any(set(a) != {"artifact_id", "artifact_type", "path", "format"} for a in context_data["artifacts"]):
-        raise ReviewedExportError("Unexpected artifact projection fields")
-    context = _SideContext.model_validate(context_data)
-    inputs = HardwareAgentInput(case=CaseBundle(case_id=context.case.case_id, name=context.case.name,
-        target=context.case.target, hardware_artifacts=[a.model_dump() for a in context.artifacts]),
-        deterministic_observations=HardwareObservations(case_id=context.case.case_id,
-            observations=context.observations, unresolved_questions=context.unresolved_questions))
-    validate_hardware_evidence(report, inputs)
-    if context.case.case_id != run.case_id or [b for o in context.observations for b in o.behaviors] != run.processor_behavior_ir.behaviors:
-        raise ReviewedExportError("Context and run identities or deterministic behaviors disagree")
-    invocation = _Invocation.model_validate(objects["invocation.json"])
-    models = [m for m in run.provenance.models if m.agent_role == "hardware"]
-    prompts = [p for p in run.provenance.prompts if p.agent_role == "hardware"]
+        raise ReviewedExportError("Completed run and identical embedded report are required")
+    if role == "firmware":
+        context = _firmware_context(run, report, objects["analysis_input.json"])
+        invocation = _FirmwareInvocation.model_validate(objects["invocation.json"])
+    else:
+        HardwareAgentOutput(report=report, processor_behavior_ir=run.processor_behavior_ir)
+        context_data = objects["analysis_input.json"]
+        if set(context_data) != {"case", "artifacts", "observations", "unresolved_questions"}:
+            raise ReviewedExportError("Unexpected analysis input fields")
+        if set(context_data["case"]) - {"case_id", "name", "target", "synthetic"}:
+            raise ReviewedExportError("Unexpected case projection fields")
+        if any(set(a) != {"artifact_id", "artifact_type", "path", "format"} for a in context_data["artifacts"]):
+            raise ReviewedExportError("Unexpected artifact projection fields")
+        context = _SideContext.model_validate(context_data)
+        inputs = HardwareAgentInput(case=CaseBundle(case_id=context.case.case_id, name=context.case.name,
+            target=context.case.target, hardware_artifacts=[a.model_dump() for a in context.artifacts]),
+            deterministic_observations=HardwareObservations(case_id=context.case.case_id,
+                observations=context.observations, unresolved_questions=context.unresolved_questions))
+        validate_hardware_evidence(report, inputs)
+        if context.case.case_id != run.case_id or [b for o in context.observations for b in o.behaviors] != run.processor_behavior_ir.behaviors:
+            raise ReviewedExportError("Context and run identities or deterministic behaviors disagree")
+        invocation = _Invocation.model_validate(objects["invocation.json"])
+    models = [m for m in run.provenance.models if m.agent_role == role]
+    prompts = [p for p in run.provenance.prompts if p.agent_role == role]
     if len(models) != 1 or len(prompts) != 1:
-        raise ReviewedExportError("Explicit hardware model and prompt provenance are required")
+        raise ReviewedExportError("Explicit agent model and prompt provenance are required")
     model, prompt = models[0], prompts[0]
     expected = dict(case_id=run.case_id, run_id=run.run_id, provider=model.provider_identifier,
                     model=model.model_identifier, prompt_id=prompt.prompt_id, prompt_version=prompt.prompt_version)
@@ -203,8 +269,27 @@ def _validate(blobs: dict[str, bytes], secret: str | None):
     if invocation.observation_count != len(context.observations) or invocation.behavior_count != len(run.processor_behavior_ir.behaviors):
         raise ReviewedExportError("Invocation input counts mismatch")
     if invocation.observation_counts_by_kind and invocation.observation_counts_by_kind != dict(Counter(
-            o.kind.value for o in context.observations if hasattr(o, "kind"))):
+            (o.kind if role == "firmware" else o.kind.value) for o in context.observations if hasattr(o, "kind"))):
         raise ReviewedExportError("Invocation observation kind counts mismatch")
+    if role == "firmware":
+        if invocation.claim_counts and invocation.claim_counts != {
+                name: len(getattr(report, name)) for name in
+                ("findings", "external_input_paths", "reachable_behaviors", "issue_anchors")}:
+            raise ReviewedExportError("Firmware invocation claim counts disagree")
+        scopes = dict(Counter(o.scope.value for o in context.observations))
+        if (invocation.evidence_count != len(context.evidence_catalog)
+                or invocation.observation_counts_by_scope != scopes
+                or invocation.runtime_observation_count != scopes.get("runtime", 0)
+                or invocation.projection_version != context.projection_version
+                or not invocation.stub_ir_equal):
+            raise ReviewedExportError("Firmware invocation projection statistics disagree")
+        if (len(run.provenance.prompts) != 1 or any(
+                m.mode != "unknown" or m.model_identifier != "unknown" or m.provider_identifier is not None
+                for m in run.provenance.models if m.agent_role != role)):
+            raise ReviewedExportError("Firmware snapshot has unrelated agent provenance")
+        if (invocation.max_retries != 0 or invocation.thinking != "disabled" or invocation.strict
+                or invocation.structured_output_method != "function_calling"):
+            raise ReviewedExportError("Unsupported firmware invocation settings")
     attempts = [_Attempt.model_validate(item) for item in objects["invocation_attempts.jsonl"]]
     for record in [invocation, *attempts]:
         if any(getattr(record, key) != value for key, value in expected.items()):
@@ -237,7 +322,16 @@ def export_reviewed_output(source: Path, *, phase: str, accepted: bool = False,
             if not secret:
                 raise ReviewedExportError("Explicit environment file has no secret to check")
         blobs = {}
-        for name in FILES:
+        run_path = source / "analysis_run.json"
+        if run_path.is_symlink() or not run_path.is_file() or run_path.stat().st_size > MAX_FILE_BYTES:
+            raise ReviewedExportError("Required run file missing, unsafe or oversized")
+        with run_path.open("rb") as handle:
+            run_bytes = handle.read(MAX_FILE_BYTES + 1)
+        if len(run_bytes) > MAX_FILE_BYTES:
+            raise ReviewedExportError("Run file exceeds size limit")
+        role = _run_role(AnalysisRun.model_validate_json(run_bytes))
+        files = tuple(REPORTS[role][0] if name == "hardware_analysis_report.json" else name for name in FILES)
+        for name in files:
             path = source / name
             if path.is_symlink() or not path.is_file() or path.stat().st_size > MAX_FILE_BYTES:
                 raise ReviewedExportError("Required snapshot file missing, unsafe or oversized")
@@ -251,7 +345,7 @@ def export_reviewed_output(source: Path, *, phase: str, accepted: bool = False,
         slug = safe_slug(run.case_id)
         manifest = {
             "snapshot_schema_version": "1.0", "phase": phase, "case_id": run.case_id,
-            "safe_case_slug": slug, "run_id": str(run.run_id), "agent_role": "hardware",
+            "safe_case_slug": slug, "run_id": str(run.run_id), "agent_role": role,
             "provider": invocation.provider, "model": invocation.model,
             "prompt_id": invocation.prompt_id, "prompt_version": invocation.prompt_version,
             "source_run_status": run.status, "human_accepted": True,
@@ -287,7 +381,7 @@ def export_reviewed_output(source: Path, *, phase: str, accepted: bool = False,
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Export an accepted hardware run as an immutable reviewed snapshot")
+    parser = argparse.ArgumentParser(description="Export an accepted hardware or firmware run as an immutable reviewed snapshot")
     parser.add_argument("source", type=Path)
     parser.add_argument("--phase", required=True)
     parser.add_argument("--accepted", action="store_true", help="Assert the run has been accepted for publication")

@@ -4,6 +4,7 @@ import pytest
 
 from chipchain.agents.contracts import FirmwareAgentInput
 from chipchain.agents.firmware import FirmwareSecurityAgent, validate_firmware_evidence
+from chipchain.agents.model_outputs.firmware import ModelFirmwareAnalysisReport
 from chipchain.agents.runtime import AgentStructuredOutputError
 from chipchain.domain.behavior import ProcessorBehaviorIR
 from chipchain.domain.firmware import (
@@ -12,7 +13,7 @@ from chipchain.domain.firmware import (
 from chipchain.tools.contracts import DeterministicObservation, FirmwareObservations
 from chipchain.tools.firmware.fuzzware import FuzzwareHeatPressScenarioAnalyzer
 from tests.fakes import fake_model
-from tests.firmware_fakes import make_case
+from tests.firmware_fakes import make_case, model_report_fixture
 
 
 @pytest.fixture
@@ -40,7 +41,7 @@ def report_with_all_objects(inputs):
 def test_exact_fake_report_accepted_ir_is_still_deterministic(inputs):
     before = inputs.model_dump_json()
     report = report_with_all_objects(inputs)
-    model = fake_model(FirmwareAnalysisReport, report)
+    model = fake_model(ModelFirmwareAnalysisReport, model_report_fixture(report))
     output = FirmwareSecurityAgent(model=model).invoke(inputs)
     assert output.report == report
     assert output.processor_behavior_ir == ProcessorBehaviorIR(
@@ -54,7 +55,7 @@ def test_exact_fake_report_accepted_ir_is_still_deterministic(inputs):
 
 @pytest.mark.parametrize('collection', ['findings', 'external_input_paths', 'reachable_behaviors', 'issue_anchors'])
 @pytest.mark.parametrize('alteration', ['invented_id', 'location', 'summary', 'artifact', 'epistemic_status'])
-def test_fake_report_cannot_invent_or_rewrite_evidence(inputs, collection, alteration):
+def test_canonical_gate_still_rejects_invented_or_rewritten_evidence(inputs, collection, alteration):
     report = report_with_all_objects(inputs)
     ref = getattr(report, collection)[0].evidence[0].model_copy(deep=True)
     if alteration == 'invented_id':
@@ -68,23 +69,24 @@ def test_fake_report_cannot_invent_or_rewrite_evidence(inputs, collection, alter
     else:
         ref.epistemic_status = 'verified'
     getattr(report, collection)[0].evidence = [ref]
-    model = fake_model(FirmwareAnalysisReport, report)
+    # Canonical exact validation is unchanged after hydration; do not reduce
+    # tampered full references to IDs in this regression test.
     with pytest.raises(AgentStructuredOutputError, match='unknown or altered'):
-        FirmwareSecurityAgent(model=model).invoke(inputs)
+        validate_firmware_evidence(report, inputs)
 
 
 def test_unknown_finding_anchor_rejected(inputs):
     report = report_with_all_objects(inputs)
     report.issue_anchors[0].firmware_finding_ids = ['missing']
     with pytest.raises(AgentStructuredOutputError, match='finding references'):
-        FirmwareSecurityAgent(model=fake_model(FirmwareAnalysisReport, report)).invoke(inputs)
+        FirmwareSecurityAgent(model=fake_model(ModelFirmwareAnalysisReport, model_report_fixture(report))).invoke(inputs)
 
 
 def test_existing_ir_gate_still_rejects_unknown_behavior(inputs):
     report = report_with_all_objects(inputs)
     report.processor_behavior_ids = ['invented-behavior']
     with pytest.raises(AgentStructuredOutputError, match='output contract'):
-        FirmwareSecurityAgent(model=fake_model(FirmwareAnalysisReport, report)).invoke(inputs)
+        FirmwareSecurityAgent(model=fake_model(ModelFirmwareAnalysisReport, model_report_fixture(report))).invoke(inputs)
 
 
 @pytest.mark.parametrize('level', ['observation', 'behavior', 'decoded'])
@@ -100,7 +102,7 @@ def test_generic_observation_grounding_covers_each_evidence_level(inputs, level)
     ref = {'observation': observation_ref, 'behavior': b.evidence[0], 'decoded': b.decoded_instruction.evidence[0]}[level]
     report = FirmwareAnalysisReport(case_id=inputs.case.case_id,
         findings=[FirmwareFinding(finding_id='f', summary='Synthetic finding', evidence=[ref])])
-    output = FirmwareSecurityAgent(model=fake_model(FirmwareAnalysisReport, report)).invoke(inputs)
+    output = FirmwareSecurityAgent(model=fake_model(ModelFirmwareAnalysisReport, model_report_fixture(report))).invoke(inputs)
     assert output.report == report
 
 
@@ -108,7 +110,7 @@ def test_generic_observation_grounding_covers_each_evidence_level(inputs, level)
 def test_conflicting_input_rejected_before_model_or_stub(inputs, model_enabled):
     o = inputs.deterministic_observations.observations[0]
     o.behaviors[0].decoded_instruction.evidence = [o.evidence[0].model_copy(update={'summary': 'Conflicting input'})]
-    model = fake_model(FirmwareAnalysisReport, FirmwareAnalysisReport(case_id=inputs.case.case_id))
+    model = fake_model(ModelFirmwareAnalysisReport, ModelFirmwareAnalysisReport(case_id=inputs.case.case_id))
     with pytest.raises(AgentStructuredOutputError, match='Conflicting'):
         FirmwareSecurityAgent(model=model if model_enabled else None).invoke(inputs)
     assert not model.seen_messages
@@ -118,5 +120,5 @@ def test_exact_verified_finding_not_subject_to_future_provider_policy(inputs):
     report = report_with_all_objects(inputs)
     report.findings[0].epistemic_status = 'verified'
     validate_firmware_evidence(report, inputs)
-    output = FirmwareSecurityAgent(model=fake_model(FirmwareAnalysisReport, report)).invoke(inputs)
+    output = FirmwareSecurityAgent(model=fake_model(ModelFirmwareAnalysisReport, model_report_fixture(report))).invoke(inputs)
     assert output.report.findings[0].epistemic_status == 'verified'

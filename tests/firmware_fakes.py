@@ -75,3 +75,14 @@ def make_case(root, *, code=None, pc=BASE+2, symbol_size=None):
     return CaseBundle(case_id='synthetic-firmware',name='Synthetic firmware',firmware_artifacts=refs,
                       target=TargetDescriptor(processor_id='synthetic-arm',architecture='arm',
                                               word_size_bits=32,endianness='little',isa_variant='Thumb M-profile'))
+
+
+def model_report_fixture(report):
+    """Test-only encoding of a canonical expected result as the ID-only response."""
+    from chipchain.agents.model_outputs.firmware import ModelFirmwareAnalysisReport
+
+    data = report.model_dump(mode="json")
+    for name in ("findings", "external_input_paths", "reachable_behaviors", "issue_anchors"):
+        for claim in data[name]:
+            claim["evidence_ids"] = [ref["evidence_id"] for ref in claim.pop("evidence")]
+    return ModelFirmwareAnalysisReport.model_validate(data)

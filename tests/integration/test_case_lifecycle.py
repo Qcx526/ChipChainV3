@@ -18,6 +18,7 @@ from chipchain.domain.common import AnalysisStatus, Architecture, WorkflowStage
 from chipchain.domain.provenance import AgentRole, ModelDescriptor
 from chipchain.domain.run import AnalysisRun, FailureCategory
 from chipchain.domain.hardware import HardwareAnalysisReport
+from chipchain.agents.model_outputs.firmware import ModelFirmwareAnalysisReport
 from chipchain.domain.firmware import FirmwareAnalysisReport
 from chipchain.domain.cross_layer import CrossLayerAnalysisReport
 from chipchain.execution import analysis_run_from_state, run_case, run_cases
@@ -73,7 +74,7 @@ def test_explicit_state_projection_and_snapshot_isolation(load_case: Callable[[s
 def test_model_provenance_ground_truth_and_runtime_outcome(load_case: Callable[[str], CaseBundle]) -> None:
     case = load_case("paired")
     hw = fake_model(HardwareAnalysisReport, HardwareAnalysisReport(case_id=case.case_id))
-    fw = fake_model(FirmwareAnalysisReport, FirmwareAnalysisReport(case_id=case.case_id))
+    fw = fake_model(ModelFirmwareAnalysisReport, FirmwareAnalysisReport(case_id=case.case_id))
     cross = fake_model(CrossLayerAnalysisReport, CrossLayerAnalysisReport(case_id=case.case_id))
     graph = build_case_workflow(hardware_agent=HardwareSecurityAgent(model=hw),
                                firmware_agent=FirmwareSecurityAgent(model=fw), cross_layer_agent=CrossLayerSecurityAgent(model=cross))

@@ -11,6 +11,7 @@ from chipchain.agents.context import MAX_CONTEXT_CHARS, MAX_CONTEXT_ITEMS
 from chipchain.agents.contracts import CrossLayerAgentInput, FirmwareAgentInput, HardwareAgentInput
 from chipchain.agents.cross_layer import CrossLayerSecurityAgent
 from chipchain.agents.firmware import FirmwareSecurityAgent
+from chipchain.agents.model_outputs.firmware import ModelFirmwareAnalysisReport
 from chipchain.agents.hardware import HardwareSecurityAgent
 from chipchain.agents.runtime import AgentExecutionError, AgentStructuredOutputError, StructuredReportRuntime
 from chipchain.domain.behavior import ProcessorBehaviorIR
@@ -45,7 +46,8 @@ def test_model_report_preserves_deterministic_ir(
     )
     schema = HardwareAnalysisReport if layer == "hardware" else FirmwareAnalysisReport
     report = schema(case_id=case.case_id, processor_behavior_ids=[item.behavior_id])
-    model = fake_model(schema, report)
+    model_schema = schema if layer == "hardware" else ModelFirmwareAnalysisReport
+    model = fake_model(model_schema, report)
     if layer == "hardware":
         inputs = HardwareAgentInput(case=case, deterministic_observations=HardwareObservations(
             case_id=case.case_id, observations=[observation],
@@ -61,7 +63,7 @@ def test_model_report_preserves_deterministic_ir(
     assert output.processor_behavior_ir.behaviors == [item]
     assert output.processor_behavior_ir.behaviors[0].epistemic_status == EpistemicStatus.OBSERVED
     assert_round_trip(output)
-    assert model.bound_schema_names == [schema.__name__]
+    assert model.bound_schema_names == [model_schema.__name__]
     assert len(model.seen_messages) == 1
     system, human = model.seen_messages[0]
     assert isinstance(system, SystemMessage) and isinstance(human, HumanMessage)

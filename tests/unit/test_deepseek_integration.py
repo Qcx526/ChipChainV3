@@ -71,12 +71,12 @@ def script_provider(monkeypatch, report):
 def test_factory_constructs_official_model_without_invocation(config):
     model = deepseek.build_deepseek_chat_model(config)
     assert isinstance(model, ChatDeepSeek)
-    assert model.model_name == "deepseek-v4-pro" and model.temperature == 0
+    assert model.model_name == "deepseek-flash" and model.temperature == 0
     assert model.max_retries == 0 and model.extra_body == {"thinking": {"type": "disabled"}}
     assert model.api_base == "https://api.deepseek.com"
     assert config.api_key.get_secret_value() not in repr(config)
-    descriptor = config.descriptor().model_dump_json()
-    assert "deepseek-v4-pro" in descriptor and "hardware" in descriptor
+    descriptor = config.descriptor(deepseek.AgentRole.HARDWARE).model_dump_json()
+    assert "deepseek-flash" in descriptor and "hardware" in descriptor
     assert config.api_key.get_secret_value() not in descriptor
 
 
@@ -183,7 +183,7 @@ def test_explicit_run_persists_validated_report_provenance_and_no_raw(inputs, co
     run = AnalysisRun.model_validate_json((directory / "analysis_run.json").read_text())
     report = HardwareAnalysisReport.model_validate_json((directory / "hardware_analysis_report.json").read_text())
     assert run.hardware_report == report and run.run_id == identity and run.case_id == directory.parent.name
-    assert run.provenance.models[0] == config.descriptor()
+    assert run.provenance.models[0] == config.descriptor(deepseek.AgentRole.HARDWARE)
     assert run.provenance.prompts == [PROMPT_DESCRIPTOR]
     assert run.provenance.runtime_packages["langchain-deepseek"]
     assert json.loads((directory / "invocation.json").read_text())["stub_ir_equal"] is True
