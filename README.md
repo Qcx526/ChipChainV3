@@ -1,7 +1,8 @@
 # ChipChain V3
 
 大模型协同的芯片固件—硬件跨层漏洞攻击链路检测研究工程。
-当前阶段：**V3-2B-R1 — Evidence-ID Binding（deepseek-flash 真实运行通过校验，待人工审核）**。
+当前阶段：**V3-2A2 — Ghidra Static Structure & Cortex-M IRQ Mapping**。
+Firmware R1 真实基线仍为 **machine-valid / human-rejected / NOT reviewed**。
 已完成 **R0-B.1 dependency reproducibility patch**；版本边界由 `pyproject.toml` 管理。
 保留已冻结的 R0-A/R0-A.1 Case-first、多架构合同与 workflow。
 
@@ -63,6 +64,23 @@ V3-2B-R1 将 DeepSeek 默认统一为 `deepseek-flash`，模型只输出 evidenc
 一次 corrected real run 已通过校验并保存 8 findings、4 paths、6 unknown reachability、3 anchors，**不是漏洞确认**。
 人工审查已发现 SystemInit 读写方向错误、outbound path 分类和 IRQ 关联过强等问题；未重跑或 reviewed-export。
 完整运行身份、文件链接、claim audit 与限制见 [R1 报告](docs/research/v3-2b-r1-evidence-binding.md)。
+
+V3-2A2 增加独立、显式的 Ghidra headless 静态结构提取，使用本机已有安装，
+不下载工具、不读取 `.env`、不调用模型。结果包含函数、经 ELF/Capstone 核对的直接调用边、
+未解决调用点和有界 Cortex-M 向量映射；完整结构不进入 FirmwareObservations 或 Agent context。
+Heat_Press 实测 183 函数、238 条已确认直接调用边；23 个 MMIO PC 中 20 个映射到 10 个函数，
+另 3 个保留为缺失归属。详情、全部 site 表和限制见
+[V3-2A2 静态结构文档](docs/research/v3-2a2-ghidra-static-structure.md)。
+
+```bash
+CHIPCHAIN_GHIDRA_HOME=/explicit/path/to/ghidra \
+  .venv/bin/python -m chipchain.tools.firmware.ghidra \
+  --elf /explicit/path/to/Heat_Press.elf
+```
+
+该命令只接受本阶段冻结 fingerprint 的 ELF，在临时目录分析并清理 Ghidra project；
+成功后显式写入新的 `output/<case_id>/<uuid>/`，不覆盖历史运行。
+Python `extract_heat_press_structure` API 返回独立结果，不自动写持久化文件。
 
 长期计划面向约 5 种处理器架构，当前重点为 **ARM、RISC-V、PowerPC**；其他未来架构尚未冻结。
 PowerPC 使用一等枚举值 `powerpc`。架构专用提取结果统一进入架构中立的
