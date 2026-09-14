@@ -5,6 +5,7 @@ import hashlib
 import json
 import logging
 import os
+from dataclasses import replace
 from collections import Counter, defaultdict
 from importlib.metadata import version
 from pathlib import Path
@@ -21,6 +22,8 @@ from chipchain.agents.projections.firmware import (
     PROJECTION_VERSION, build_firmware_analysis_projection, firmware_projection_sha256,
 )
 from chipchain.agents.model_outputs.firmware import FirmwareBindingError
+from chipchain.agents.relation_support import RelationSupportError
+from chipchain.integrations.firmware_relations import prepare_relation_context
 from chipchain.agents.prompts.firmware import PROMPT_DESCRIPTOR
 from chipchain.agents.runtime import AgentExecutionError, AgentStructuredOutputError
 from chipchain.domain.case import ArtifactRef, CaseBundle, TargetDescriptor
@@ -52,6 +55,8 @@ ARTIFACTS = (
     ("04-crash-analysis/13/crashing_input", "firmware_input", "opaque",
      6009, "0eca471106cf883c5941a03376c4ee3aa4b6cebd26636fc401e50c168644ee22"),
 )
+
+B3_RELATION_MAX_TOKENS = 16384
 
 
 def prepare_firmware_input(corpus_root: Path) -> FirmwareAgentInput:
@@ -175,7 +180,7 @@ def enriched_preflight_summary(context, metadata):
 
 
 def persist_firmware_run(run: AnalysisRun, directory: Path, *, config: DeepSeekConfig,
-                         invocation: dict, context: str, succeeded: dict) -> None:
+                         invocation: dict, context: str, succeeded: dict, support=None) -> None:
     """Validate every allowlisted document before writing any accepted result."""
     from chipchain.execution.reviewed_output import _validate
 
@@ -185,6 +190,8 @@ def persist_firmware_run(run: AnalysisRun, directory: Path, *, config: DeepSeekC
         "analysis_input.json": context,
         "invocation.json": json.dumps(invocation, indent=2),
     }
+    if support is not None:
+        documents["firmware_relation_support.json"] = support.model_dump_json(indent=2)
     if directory.name != str(run.run_id) or directory.parent.name != run.case_id:
         raise ValueError("Output directory must match case_id/run_id")
     attempts = (directory / "invocation_attempts.jsonl").read_text(encoding="utf-8")
@@ -219,18 +226,28 @@ def run_real_firmware(corpus_root: Path, *, config: DeepSeekConfig, enabled: boo
         raise DeepSeekConfigurationError("Corrected Firmware baseline requires deepseek-flash")
     if type(attempt_index) is not int or attempt_index not in (1, 2):
         raise ValueError("Only an initial or explicitly recorded second attempt is supported")
-    if context_mode not in ('v1','enriched_v2'):
+    if context_mode not in ('v1','enriched_v2','relation_v3'):
         raise ValueError('Unknown firmware context mode')
-    if context_mode=='enriched_v2' and (config.temperature, config.max_tokens, config.timeout)!=(0,8192,180):
-        raise DeepSeekConfigurationError('B2 requires unchanged R1 provider settings')
+    if context_mode == 'relation_v3':
+        config = replace(config, max_tokens=B3_RELATION_MAX_TOKENS)
+    expected_budget = B3_RELATION_MAX_TOKENS if context_mode == 'relation_v3' else 8192
+    if context_mode in ('enriched_v2','relation_v3') and (config.temperature, config.max_tokens, config.timeout)!=(0,expected_budget,180):
+        raise DeepSeekConfigurationError('Enriched firmware modes require unchanged baseline provider settings')
     inputs = prepare_firmware_input(corpus_root)
     context = firmware_context(inputs)
     validate_firmware_baseline(inputs, context)
-    relevant = source = None
+    relevant = source = catalog = relation_projection = support = None
+    prompt = PROMPT_DESCRIPTOR
+    if context_mode=='relation_v3':
+        from chipchain.agents.prompts.firmware_v2 import PROMPT_DESCRIPTOR as prompt
     enriched_metadata = {}
     if context_mode=='enriched_v2':
         relevant,source,context,enriched_metadata=prepare_enriched_context(inputs,ghidra_home)
         print(json.dumps({'preflight':enriched_preflight_summary(context,enriched_metadata)},sort_keys=True),flush=True)
+    if context_mode=='relation_v3':
+        relevant,source,catalog,relation_projection,context,enriched_metadata=prepare_relation_context(inputs,ghidra_home)
+        print(json.dumps({'preflight':{**enriched_metadata,'context_characters':len(context),
+            'context_sha256':hashlib.sha256(context.encode()).hexdigest(),'prompt_version':prompt.prompt_version}},sort_keys=True),flush=True)
     _check_secret(context, config)
     before = inputs.model_dump_json()
     stub = FirmwareSecurityAgent().invoke(inputs)
@@ -244,8 +261,10 @@ def run_real_firmware(corpus_root: Path, *, config: DeepSeekConfig, enabled: boo
     agent = None
     attempt = dict(case_id=case_id, run_id=str(identity), attempt_index=attempt_index,
         timestamp=started.isoformat(), provider="deepseek", model=config.model,
-        prompt_id=PROMPT_DESCRIPTOR.prompt_id, prompt_version=PROMPT_DESCRIPTOR.prompt_version,
+        prompt_id=prompt.prompt_id, prompt_version=prompt.prompt_version,
         context_sha256=hashlib.sha256(context.encode("utf-8")).hexdigest(), status="started")
+    if context_mode == 'relation_v3':
+        attempt['max_tokens'] = config.max_tokens
 
     def record_attempt(record):
         text = json.dumps(record)
@@ -266,8 +285,12 @@ def run_real_firmware(corpus_root: Path, *, config: DeepSeekConfig, enabled: boo
             agent = FirmwareSecurityAgent(model=build_deepseek_chat_model(config),
                                           structured_output_method="function_calling")
             phase = "provider_execution"
-            output = (agent.invoke(inputs,relevant_static_structure=relevant,static_source=source)
-                      if relevant is not None else agent.invoke(inputs))
+            if context_mode=='relation_v3':
+                output,support=agent.invoke_supported(inputs,static_relation_catalog=catalog,
+                    relation_projection=relation_projection,relevant_static_structure=relevant)
+            else:
+                output = (agent.invoke(inputs,relevant_static_structure=relevant,static_source=source)
+                          if relevant is not None else agent.invoke(inputs))
         phase = "agent_post_validation"
         validate_real_firmware_report(output, inputs)
         if inputs.model_dump_json() != before or output.processor_behavior_ir != stub.processor_behavior_ir:
@@ -276,7 +299,10 @@ def run_real_firmware(corpus_root: Path, *, config: DeepSeekConfig, enabled: boo
         if relevant is not None:
             from chipchain.agents.projections.firmware_envelope import ENVELOPE_DESCRIPTOR, STRUCTURE_DESCRIPTOR
             extra_tools=[source.tool,STRUCTURE_DESCRIPTOR,ENVELOPE_DESCRIPTOR]
-        provenance = capture_provenance(prompts=[PROMPT_DESCRIPTOR], models=[config.descriptor(AgentRole.FIRMWARE)],
+        if context_mode=='relation_v3':
+            from chipchain.agents.projections.firmware_envelope_v3 import ENVELOPE_DESCRIPTOR, RELATION_DESCRIPTOR, CATALOG_DESCRIPTOR
+            extra_tools=[source.tool,RELATION_DESCRIPTOR,CATALOG_DESCRIPTOR,ENVELOPE_DESCRIPTOR]
+        provenance = capture_provenance(prompts=[prompt], models=[config.descriptor(AgentRole.FIRMWARE)],
             tools=[FuzzwareHeatPressScenarioAnalyzer().descriptor, ArmThumbInstructionDecoder().descriptor, PROJECTION_DESCRIPTOR, *extra_tools])
         for package in ("langchain-deepseek", "langchain-openai", "openai", "python-dotenv", "capstone", "pyelftools", "PyYAML"):
             provenance.runtime_packages[package] = version(package)
@@ -292,13 +318,16 @@ def run_real_firmware(corpus_root: Path, *, config: DeepSeekConfig, enabled: boo
             **firmware_input_counts(inputs), "stub_ir_equal": True,
             "claim_counts": {name: len(getattr(output.report, name)) for name in
                              ("findings", "external_input_paths", "reachable_behaviors", "issue_anchors")},
-            "model_output_schema": "ModelFirmwareAnalysisReport",
+            "model_output_schema": "ModelFirmwareAnalysisReportV2" if context_mode=="relation_v3" else "ModelFirmwareAnalysisReport",
             **enriched_metadata,
         }
+        if support is not None:
+            invocation.update(structured_support_claim_count=len(support.support_claims),
+                supported_support_claim_count=sum(e.result=='supported' for e in support.support_claims))
         succeeded = {**attempt, "timestamp": utc_now().isoformat(), "status": "succeeded",
                      "usage": agent.last_usage, "response_metadata": metadata()}
         phase = "persistence"
-        persist_firmware_run(run, directory, config=config, invocation=invocation, context=context, succeeded=succeeded)
+        persist_firmware_run(run, directory, config=config, invocation=invocation, context=context, succeeded=succeeded, support=support)
     except Exception as exc:
         known = {
             "Model invocation failed": "provider_invocation",
@@ -310,7 +339,7 @@ def run_real_firmware(corpus_root: Path, *, config: DeepSeekConfig, enabled: boo
             "A model cannot independently verify a firmware claim": "verified_model_claim",
             "Runtime reachability requires supplied runtime evidence": "runtime_without_runtime_evidence",
         }
-        reason = exc.reason_code if isinstance(exc, FirmwareBindingError) else known.get(str(exc), "execution_or_persistence")
+        reason = exc.reason_code if isinstance(exc, (FirmwareBindingError,RelationSupportError)) else known.get(str(exc), "execution_or_persistence")
         # Classify the existing IR validator's fixed internal error, without
         # introducing a second behavior registry or persisting Pydantic inputs.
         if isinstance(exc.__cause__, ValidationError) and any(
@@ -323,6 +352,8 @@ def run_real_firmware(corpus_root: Path, *, config: DeepSeekConfig, enabled: boo
         failure = {**attempt, "timestamp": utc_now().isoformat(), "status": "failed", "category": category,
             "failure_category": category, "reason_code": reason,
             "exception_type": type(exc).__name__, "usage": agent.last_usage if agent else {}, "response_metadata": metadata()}
+        if agent is not None and agent.last_parse_stage is not None:
+            failure['structured_output_parse_stage'] = agent.last_parse_stage
         diagnostics = []
         cause = exc
         for _ in range(5):
@@ -354,17 +385,23 @@ def main() -> int:
     parser.add_argument("--corpus-root", required=True, type=Path)
     parser.add_argument("--env-file", type=Path)
     parser.add_argument("--attempt-index", type=int, default=1)
-    parser.add_argument('--context-mode',choices=('v1','enriched_v2'),default='v1')
+    parser.add_argument('--context-mode',choices=('v1','enriched_v2','relation_v3'),default='v1')
     parser.add_argument('--ghidra-home',type=Path)
     parser.add_argument('--preflight-only',action='store_true')
     args = parser.parse_args()
     try:
         if args.preflight_only:
-            if args.context_mode!='enriched_v2':
-                raise ValueError('Preflight-only requires enriched_v2')
+            if args.context_mode not in ('enriched_v2','relation_v3'):
+                raise ValueError('Preflight-only requires enriched_v2 or relation_v3')
             inputs=prepare_firmware_input(args.corpus_root)
-            _,_,context,metadata=prepare_enriched_context(inputs,args.ghidra_home)
-            print(json.dumps(enriched_preflight_summary(context,metadata),sort_keys=True))
+            if args.context_mode=='relation_v3':
+                *_,context,metadata=prepare_relation_context(inputs,args.ghidra_home)
+                summary={**metadata,'context_characters':len(context),'context_sha256':hashlib.sha256(context.encode()).hexdigest(),
+                         'resolved_model':'deepseek-flash','prompt_id':'firmware-security-agent','prompt_version':'v2'}
+            else:
+                _,_,context,metadata=prepare_enriched_context(inputs,args.ghidra_home)
+                summary=enriched_preflight_summary(context,metadata)
+            print(json.dumps(summary,sort_keys=True))
             return 0
         require_real_opt_in(os.environ.get("CHIPCHAIN_ENABLE_REAL_LLM") == "1")
         config = load_deepseek_config(os.environ, agent_role=AgentRole.FIRMWARE, env_file=args.env_file)

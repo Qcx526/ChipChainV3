@@ -1,7 +1,18 @@
 # ChipChain V3
 
 大模型协同的芯片固件—硬件跨层漏洞攻击链路检测研究工程。
-当前阶段：**V3-2A4 — Typed Static Relation Semantics & Claim-Support Contracts**。
+当前阶段：**V3-2B3 — Structured Relation Claims & Support-Gated Firmware Reasoning**。
+新增显式 `relation_v3` context、Firmware prompt v2 和 model-only structured support claims；
+每个非空 Firmware claim 必须引用通过确定性检查的 support。旧 v1/v2 调用路径保留。
+设计、验证和真实实验记录见 [B3 文档](docs/research/v3-2b3-structured-relation-claims.md)。
+structured support 合法仍不保证自由文本语义完整，需要人工审核；与 B2 的比较不是单变量实验。
+本轮唯一一次 deepseek-flash 调用在 schema gate 被拒绝，未进入 support gate；输出达到 8192-token 上限，
+具体解析失败原因尚未确认。未重试，也未接受或 reviewed-export 任何 B3 报告。
+B3-R1 新实验仅将 relation_v3 输出预算提高到 16384：schema 已通过，实际输出 14112 tokens，
+随后因 `unused_support_claim` 被 support gate 拒绝，未重试。详见
+[B3-R1 输出完整性记录](docs/research/v3-2b3-r1-output-completeness.md)。
+
+V3-2A4 — Typed Static Relation Semantics & Claim-Support Contracts 已冻结。
 独立确定性关系层区分 direct call、direct branch、unresolved、MMIO 与静态向量绑定，
 用显式 typed claims 检查证据支持范围；本阶段不调用模型、不接入 Agent。
 实现、真实计数与 12 个站点分类见 [A4 静态关系文档](docs/research/v3-2a4-typed-static-relations.md)。

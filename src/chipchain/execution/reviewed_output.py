@@ -51,6 +51,7 @@ class _Usage(Contract):
 
 
 class _ResponseMetadata(Contract):
+    finish_reason: Literal['stop','length','tool_calls','content_filter','unknown'] | None = None
     request_id: str | None = Field(default=None, pattern=r"^[A-Za-z0-9_-]{1,128}$")
     id: str | None = Field(default=None, pattern=r"^[A-Za-z0-9_-]{1,128}$")
     model: str | None = Field(default=None, pattern=r"^[A-Za-z0-9_-]{1,128}$")
@@ -114,6 +115,27 @@ class _EnrichedFirmwareInvocation(_FirmwareInvocation):
     merged_evidence_count: int
 
 
+class _RelationFirmwareInvocation(_FirmwareInvocation):
+    model_output_schema: Literal['ModelFirmwareAnalysisReportV2']
+    prompt_version: Literal['v2']
+    context_mode: Literal['relation_v3']
+    envelope_version: Literal['firmware-analysis-envelope/v3']
+    base_projection_version: Literal['firmware-analysis-projection/v1']
+    base_projection_sha256: Sha256
+    base_projection_characters: int
+    relation_projection_version: Literal['firmware-relation-projection/v1']
+    relation_projection_sha256: Sha256
+    relation_projection_characters: int
+    a4_catalog_version: Literal['firmware-static-relations/v1']
+    a4_catalog_sha256: Sha256
+    a4_relation_counts: dict[str,int]
+    a4_relation_count: int
+    merged_evidence_count: int
+    relation_evidence_delta_count: int
+    structured_support_claim_count: int
+    supported_support_claim_count: int
+
+
 class _Diagnostic(Contract):
     exception_type: str | None = Field(default=None, pattern=r"^[A-Za-z_][A-Za-z0-9_]{0,127}$")
     http_status: int | None = Field(default=None, ge=100, le=599, strict=True)
@@ -122,6 +144,8 @@ class _Diagnostic(Contract):
 
 
 class _Attempt(_Identity):
+    max_tokens: int | None = Field(default=None, gt=0, strict=True)
+    structured_output_parse_stage: Literal['pydantic_validation','malformed_tool_arguments','missing_structured_result','unknown'] | None = None
     timestamp: AwareDatetime
     status: Literal["started", "succeeded", "failed"]
     usage: _Usage = Field(default_factory=_Usage)
@@ -213,7 +237,21 @@ def _enriched_ir_matches(context, ir):
 
 def _firmware_context(run, report, context_data):
     envelope = relevant = None
-    if 'envelope_version' in context_data:
+    if context_data.get('envelope_version')=='firmware-analysis-envelope/v3':
+        from chipchain.agents.projections.firmware_envelope_v3 import (
+            parse_firmware_envelope_v3, envelope_v3_components, ENVELOPE_DESCRIPTOR, RELATION_DESCRIPTOR, CATALOG_DESCRIPTOR,
+        )
+        from chipchain.agents.projections.firmware_envelope import compact
+        envelope=parse_firmware_envelope_v3(compact(context_data))
+        context,projection,union=envelope_v3_components(envelope)
+        binding=projection.catalog.source_identities
+        artifact=next((a for a in run.artifacts if a.artifact_id==binding.elf_artifact_id),None)
+        if artifact is None or (artifact.sha256,artifact.size_bytes)!=(binding.elf_sha256,binding.elf_size_bytes):
+            raise ReviewedExportError('Envelope v3 ELF binding differs from run')
+        if any(tool not in run.provenance.tools for tool in (ENVELOPE_DESCRIPTOR,RELATION_DESCRIPTOR,CATALOG_DESCRIPTOR)):
+            raise ReviewedExportError('Relation v3 provenance missing')
+        _enriched_ir_matches(context,run.processor_behavior_ir)
+    elif 'envelope_version' in context_data:
         from chipchain.agents.projections.firmware_envelope import (
             parse_firmware_envelope, compact, envelope_components, ENVELOPE_DESCRIPTOR, STRUCTURE_DESCRIPTOR,
         )
@@ -287,8 +325,26 @@ def _validate(blobs: dict[str, bytes], secret: str | None):
     if role == "firmware":
         context = _firmware_context(run, report, objects["analysis_input.json"])
         enriched = 'envelope_version' in objects['analysis_input.json']
-        invocation = (_EnrichedFirmwareInvocation if enriched else _FirmwareInvocation).model_validate(objects["invocation.json"])
-        if enriched:
+        relation_v3=objects['analysis_input.json'].get('envelope_version')=='firmware-analysis-envelope/v3'
+        invocation = (_RelationFirmwareInvocation if relation_v3 else _EnrichedFirmwareInvocation if enriched else _FirmwareInvocation).model_validate(objects["invocation.json"])
+        if relation_v3:
+            from chipchain.agents.projections.firmware_envelope_v3 import FirmwareAnalysisEnvelopeV3, envelope_v3_metadata, envelope_v3_components
+            from chipchain.agents.relation_support import FirmwareRelationSupportReport, validate_support_artifact
+            envelope=FirmwareAnalysisEnvelopeV3.model_validate(objects['analysis_input.json'])
+            expected_metadata=envelope_v3_metadata(envelope)
+            if any(getattr(invocation,k)!=v for k,v in expected_metadata.items()):
+                raise ReviewedExportError('Relation projection metadata mismatch')
+            audit=FirmwareRelationSupportReport.model_validate(objects['firmware_relation_support.json'])
+            catalog=envelope_v3_components(envelope)[1].catalog
+            if run.case_id=='fuzzware:heat-press:scenario-13':
+                from chipchain.integrations.firmware_relations import validate_relation_baseline
+                validate_relation_baseline(catalog)
+            validate_support_artifact(audit,report,catalog)
+            if (invocation.structured_support_claim_count,invocation.supported_support_claim_count)!=(len(audit.support_claims),len(audit.support_claims)):
+                raise ReviewedExportError('Support claim counts mismatch')
+            if (invocation.model,invocation.temperature,invocation.max_tokens)!=('deepseek-flash',0,16384):
+                raise ReviewedExportError('Unsupported B3 model settings')
+        elif enriched:
             from chipchain.agents.projections.firmware_envelope import FirmwareAnalysisEnvelopeV2, envelope_metadata
             expected_metadata=envelope_metadata(FirmwareAnalysisEnvelopeV2.model_validate(objects['analysis_input.json']))
             if any(getattr(invocation,k)!=v for k,v in expected_metadata.items()):
@@ -355,6 +411,8 @@ def _validate(blobs: dict[str, bytes], secret: str | None):
             raise ReviewedExportError("Unsupported firmware invocation settings")
     attempts = [_Attempt.model_validate(item) for item in objects["invocation_attempts.jsonl"]]
     for record in [invocation, *attempts]:
+        if isinstance(record, _Attempt) and record.max_tokens is not None and record.max_tokens != invocation.max_tokens:
+            raise ReviewedExportError('Attempt output budget differs from invocation')
         if any(getattr(record, key) != value for key, value in expected.items()):
             raise ReviewedExportError("Invocation model, prompt or run identity mismatch")
         if record.context_sha256 != invocation.context_sha256:
@@ -402,6 +460,14 @@ def export_reviewed_output(source: Path, *, phase: str, accepted: bool = False,
                 blobs[name] = handle.read(MAX_FILE_BYTES + 1)
             if len(blobs[name]) > MAX_FILE_BYTES:
                 raise ReviewedExportError("Snapshot file exceeds size limit")
+        if role=='firmware' and _json(blobs['analysis_input.json'].decode()).get('envelope_version')=='firmware-analysis-envelope/v3':
+            path=source/'firmware_relation_support.json'
+            if path.is_symlink() or not path.is_file() or path.stat().st_size>MAX_FILE_BYTES:
+                raise ReviewedExportError('Required support artifact missing, unsafe or oversized')
+            with path.open('rb') as handle:
+                blobs[path.name]=handle.read(MAX_FILE_BYTES+1)
+            if len(blobs[path.name])>MAX_FILE_BYTES:
+                raise ReviewedExportError('Support artifact exceeds size limit')
         run, invocation, basis = _validate(blobs, secret)
         if source.name != str(run.run_id) or source.parent.name != run.case_id:
             raise ReviewedExportError("Source directory and run identities disagree")
