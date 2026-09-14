@@ -99,6 +99,21 @@ class _FirmwareInvocation(_InvocationBase):
     model_output_schema: Literal["ModelFirmwareAnalysisReport"] | None = None
 
 
+class _EnrichedFirmwareInvocation(_FirmwareInvocation):
+    context_mode: Literal['enriched_v2']
+    envelope_version: Literal['firmware-analysis-envelope/v2']
+    base_projection_version: Literal['firmware-analysis-projection/v1']
+    base_projection_sha256: Sha256
+    base_projection_characters: int
+    relevant_structure_version: Literal['firmware-relevant-static-structure/v1']
+    relevant_structure_sha256: Sha256
+    relevant_structure_characters: int
+    a1_evidence_count: int
+    a3_evidence_count: int
+    evidence_overlap_count: int
+    merged_evidence_count: int
+
+
 class _Diagnostic(Contract):
     exception_type: str | None = Field(default=None, pattern=r"^[A-Za-z_][A-Za-z0-9_]{0,127}$")
     http_status: int | None = Field(default=None, ge=100, le=599, strict=True)
@@ -169,8 +184,50 @@ def _run_role(run: AnalysisRun) -> str:
     return "firmware" if run.firmware_report is not None else "hardware"
 
 
+def _enriched_ir_matches(context, ir):
+    """Recheck v1's deterministic projection of IR; no prose semantics gate."""
+    from chipchain.agents.projections.firmware import _decoded
+    evidence={e.evidence_id:e for e in context.evidence_catalog}
+    for behavior in ir.behaviors:
+        refs=[*behavior.evidence,*(behavior.decoded_instruction.evidence if behavior.decoded_instruction else [])]
+        if any(evidence.get(ref.evidence_id)!=ref for ref in refs):
+            raise ReviewedExportError('IR evidence differs from base projection')
+    canonical={b.behavior_id:b for b in ir.behaviors}
+    if len(canonical)!=len(ir.behaviors) or set(canonical)!={b.behavior_id for b in context.behaviors}:
+        raise ReviewedExportError('Envelope/IR behavior catalog mismatch')
+    for projected in context.behaviors:
+        b=canonical[projected.behavior_id]
+        attrs=dict(b.attributes)
+        owners=[o for o in context.observations if b.behavior_id in o.behavior_ids]
+        for key in tuple(attrs):
+            if owners and all((key=='evidence_scope' and attrs[key]==o.scope.value) or
+                (o.kind=='mmio_model' and key in ('pc','mmio_address','access_size_bytes') and attrs[key]==o.details.get(key)) for o in owners):
+                del attrs[key]
+        expected=dict(behavior_id=b.behavior_id,kind=b.kind.value,summary=b.summary,epistemic_status=b.epistemic_status,
+            attributes=attrs,architecture=b.architecture.value if b.architecture!=context.case.target.architecture else None,
+            evidence_ids=sorted({e.evidence_id for e in b.evidence}),
+            decoded_instruction=_decoded(b.decoded_instruction) if b.decoded_instruction else None)
+        if projected.model_dump()!=expected:
+            raise ReviewedExportError('Envelope and deterministic IR values disagree')
+
+
 def _firmware_context(run, report, context_data):
-    context = FirmwareAnalysisProjection.model_validate(context_data)
+    envelope = relevant = None
+    if 'envelope_version' in context_data:
+        from chipchain.agents.projections.firmware_envelope import (
+            parse_firmware_envelope, compact, envelope_components, ENVELOPE_DESCRIPTOR, STRUCTURE_DESCRIPTOR,
+        )
+        envelope=parse_firmware_envelope(compact(context_data))
+        context,relevant,union=envelope_components(envelope)
+        binding=envelope.static_source_binding
+        artifact=next((a for a in run.artifacts if a.artifact_id==binding.artifact_id),None)
+        if artifact is None or (artifact.sha256,artifact.size_bytes)!=(binding.sha256,binding.size_bytes):
+            raise ReviewedExportError('Envelope ELF binding differs from run')
+        if any(tool not in run.provenance.tools for tool in (ENVELOPE_DESCRIPTOR,STRUCTURE_DESCRIPTOR,relevant.source_structure.tool)):
+            raise ReviewedExportError('Enriched context provenance missing')
+        _enriched_ir_matches(context,run.processor_behavior_ir)
+    else:
+        context = FirmwareAnalysisProjection.model_validate(context_data)
     serialize_firmware_analysis_projection(context)  # references, neutrality, size, version
     validate_firmware_report_references(report)
     FirmwareAgentOutput(report=report, processor_behavior_ir=run.processor_behavior_ir)
@@ -180,7 +237,7 @@ def _firmware_context(run, report, context_data):
         raise ReviewedExportError("Projection and IR behavior identities disagree")
     if {a.artifact_id for a in context.artifacts} != {a.artifact_id for a in run.artifacts}:
         raise ReviewedExportError("Projection and run artifact identities disagree")
-    evidence = {e.evidence_id: e for e in context.evidence_catalog}
+    evidence = union if envelope is not None else {e.evidence_id: e for e in context.evidence_catalog}
     findings = {f.finding_id for f in report.findings}
     for item in [*report.findings, *report.external_input_paths, *report.reachable_behaviors, *report.issue_anchors]:
         if any(evidence.get(e.evidence_id) != e for e in item.evidence):
@@ -229,7 +286,13 @@ def _validate(blobs: dict[str, bytes], secret: str | None):
         raise ReviewedExportError("Completed run and identical embedded report are required")
     if role == "firmware":
         context = _firmware_context(run, report, objects["analysis_input.json"])
-        invocation = _FirmwareInvocation.model_validate(objects["invocation.json"])
+        enriched = 'envelope_version' in objects['analysis_input.json']
+        invocation = (_EnrichedFirmwareInvocation if enriched else _FirmwareInvocation).model_validate(objects["invocation.json"])
+        if enriched:
+            from chipchain.agents.projections.firmware_envelope import FirmwareAnalysisEnvelopeV2, envelope_metadata
+            expected_metadata=envelope_metadata(FirmwareAnalysisEnvelopeV2.model_validate(objects['analysis_input.json']))
+            if any(getattr(invocation,k)!=v for k,v in expected_metadata.items()):
+                raise ReviewedExportError('Envelope component hashes or counts disagree')
     else:
         HardwareAgentOutput(report=report, processor_behavior_ir=run.processor_behavior_ir)
         context_data = objects["analysis_input.json"]

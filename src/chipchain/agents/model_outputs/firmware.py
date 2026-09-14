@@ -3,7 +3,7 @@
 from pydantic import Field
 
 from chipchain.agents.contracts import FirmwareAgentInput
-from chipchain.agents.firmware_evidence import collect_firmware_evidence
+from chipchain.agents.firmware_evidence import collect_firmware_reasoning_evidence
 from chipchain.agents.runtime import AgentStructuredOutputError
 from chipchain.domain.common import Contract, EpistemicStatus, Identifier
 from chipchain.domain.firmware import FirmwareAnalysisReport, ReachabilityKind
@@ -89,9 +89,9 @@ def validate_firmware_report_references(report: ModelFirmwareAnalysisReport | Fi
 
 
 def hydrate_firmware_report(model_report: ModelFirmwareAnalysisReport,
-                            inputs: FirmwareAgentInput) -> FirmwareAnalysisReport:
+                            inputs: FirmwareAgentInput, *, relevant_static_structure=None) -> FirmwareAnalysisReport:
     """Resolve every ID exactly, in order, with isolated deep copies; never repair/drop."""
-    registry = collect_firmware_evidence(inputs)
+    registry = collect_firmware_reasoning_evidence(inputs, relevant_static_structure)
     # Also protects direct callers from mutated/unvalidated transport instances.
     model_report = ModelFirmwareAnalysisReport.model_validate(model_report.model_dump())
     validate_firmware_report_references(model_report)

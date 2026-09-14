@@ -25,3 +25,36 @@ def collect_firmware_evidence(inputs: FirmwareAgentInput) -> dict[str, EvidenceR
                 raise AgentStructuredOutputError("Conflicting firmware evidence identities")
             result[ref.evidence_id] = ref.model_copy(deep=True)
     return dict(sorted(result.items()))
+
+
+# Model-context safety budget, not a domain cardinality invariant. v1's 128 stays unchanged.
+MAX_REASONING_EVIDENCE = 256
+
+
+def merge_reasoning_evidence(base, relevant_static_structure, *, case_id, artifact_ids):
+    from chipchain.tools.firmware.structure_projection import (
+        FirmwareRelevantStaticStructure, parse_relevant_static_structure, serialize_relevant_static_structure,
+    )
+    if not isinstance(relevant_static_structure, FirmwareRelevantStaticStructure):
+        raise AgentStructuredOutputError('Supplemental evidence requires a typed static structure')
+    relevant=parse_relevant_static_structure(serialize_relevant_static_structure(relevant_static_structure))
+    if relevant.case_id != case_id:
+        raise AgentStructuredOutputError('Reasoning evidence case mismatch')
+    result={key:value.model_copy(deep=True) for key,value in base.items()}
+    for ref in relevant.evidence_catalog:
+        if ref.artifact_id not in artifact_ids:
+            raise AgentStructuredOutputError('Reasoning evidence references undeclared artifact')
+        if ref.evidence_id in result and result[ref.evidence_id] != ref:
+            raise AgentStructuredOutputError('Conflicting reasoning evidence identities')
+        result[ref.evidence_id]=ref.model_copy(deep=True)
+    if len(result)>MAX_REASONING_EVIDENCE:
+        raise AgentStructuredOutputError('Reasoning evidence exceeds model-context safety limit')
+    return dict(sorted(result.items()))
+
+
+def collect_firmware_reasoning_evidence(inputs, relevant_static_structure=None):
+    base=collect_firmware_evidence(inputs)
+    if relevant_static_structure is None:
+        return base
+    return merge_reasoning_evidence(base,relevant_static_structure,case_id=inputs.case.case_id,
+                                   artifact_ids={a.artifact_id for a in inputs.case.firmware_artifacts})

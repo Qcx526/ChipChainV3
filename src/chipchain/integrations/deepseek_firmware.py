@@ -134,6 +134,46 @@ def validate_firmware_baseline(inputs: FirmwareAgentInput, context: str) -> None
         raise AgentExecutionError("Firmware projection and sent context disagree")
 
 
+def prepare_enriched_context(inputs: FirmwareAgentInput, ghidra_home: Path):
+    """Fresh local A2/A3, never reads a saved projection or historical report."""
+    from chipchain.tools.firmware.ghidra.api import extract_heat_press_structure
+    from chipchain.tools.firmware.structure_projection import build_relevant_static_structure
+    from chipchain.agents.projections.firmware_envelope import build_firmware_envelope, serialize_firmware_envelope, envelope_metadata
+    if ghidra_home is None:
+        raise AgentExecutionError("Enriched mode requires explicit Ghidra home")
+    validate_firmware_baseline(inputs, firmware_context(inputs))
+    artifact=next(a for a in inputs.case.firmware_artifacts if a.artifact_id=='elf')
+    source,vectors=extract_heat_press_structure(Path(artifact.path),ghidra_home=ghidra_home,
+        script_path=Path(__file__).resolve().parents[3]/'scripts/ghidra/ExportFirmwareStructure.java')
+    relevant=build_relevant_static_structure(inputs,source,vectors)
+    envelope=build_firmware_envelope(inputs,relevant,source)
+    context=serialize_firmware_envelope(envelope)
+    metadata=envelope_metadata(envelope)
+    validate_enriched_baseline(relevant,metadata)
+    return relevant,source,context,metadata
+
+
+def validate_enriched_baseline(relevant,metadata):
+    expected=dict(base_projection_characters=39438,
+        base_projection_sha256='48bd361548509e25be7ad9b1e3e15519f1bb49f9702fb334846d3f2407a63803',
+        relevant_structure_characters=16631,
+        relevant_structure_sha256='4685e8fbc41fffd90a32bc550fc122955b329c24043dd860abecf55970056304',
+        a1_evidence_count=57,a3_evidence_count=172,evidence_overlap_count=55,merged_evidence_count=174)
+    if any(metadata.get(k)!=v for k,v in expected.items()) or (
+        len(relevant.functions),len(relevant.mmio_sites),len(relevant.direct_call_edges),
+        len(relevant.unresolved_call_sites),len(relevant.vector_handler_groups),
+        sum(len(g.vector_indices) for g in relevant.vector_handler_groups),len(relevant.evidence_catalog)
+    )!=(34,23,22,12,14,51,172):
+        raise AgentExecutionError('Enriched baseline identity/count mismatch; API call refused')
+
+
+def enriched_preflight_summary(context, metadata):
+    return dict(**metadata, context_characters=len(context),
+        context_sha256=hashlib.sha256(context.encode('utf-8')).hexdigest(),
+        resolved_model='deepseek-flash',prompt_id=PROMPT_DESCRIPTOR.prompt_id,
+        prompt_version=PROMPT_DESCRIPTOR.prompt_version,runtime_observation_count=0)
+
+
 def persist_firmware_run(run: AnalysisRun, directory: Path, *, config: DeepSeekConfig,
                          invocation: dict, context: str, succeeded: dict) -> None:
     """Validate every allowlisted document before writing any accepted result."""
@@ -172,15 +212,25 @@ def persist_firmware_run(run: AnalysisRun, directory: Path, *, config: DeepSeekC
 
 
 def run_real_firmware(corpus_root: Path, *, config: DeepSeekConfig, enabled: bool,
-                      output_root: Path, run_id: UUID | None = None, attempt_index: int = 1) -> Path:
+                      output_root: Path, run_id: UUID | None = None, attempt_index: int = 1,
+                      context_mode: str = "v1", ghidra_home: Path | None = None) -> Path:
     require_real_opt_in(enabled)
     if config.model != "deepseek-flash":
         raise DeepSeekConfigurationError("Corrected Firmware baseline requires deepseek-flash")
     if type(attempt_index) is not int or attempt_index not in (1, 2):
         raise ValueError("Only an initial or explicitly recorded second attempt is supported")
+    if context_mode not in ('v1','enriched_v2'):
+        raise ValueError('Unknown firmware context mode')
+    if context_mode=='enriched_v2' and (config.temperature, config.max_tokens, config.timeout)!=(0,8192,180):
+        raise DeepSeekConfigurationError('B2 requires unchanged R1 provider settings')
     inputs = prepare_firmware_input(corpus_root)
     context = firmware_context(inputs)
     validate_firmware_baseline(inputs, context)
+    relevant = source = None
+    enriched_metadata = {}
+    if context_mode=='enriched_v2':
+        relevant,source,context,enriched_metadata=prepare_enriched_context(inputs,ghidra_home)
+        print(json.dumps({'preflight':enriched_preflight_summary(context,enriched_metadata)},sort_keys=True),flush=True)
     _check_secret(context, config)
     before = inputs.model_dump_json()
     stub = FirmwareSecurityAgent().invoke(inputs)
@@ -216,13 +266,18 @@ def run_real_firmware(corpus_root: Path, *, config: DeepSeekConfig, enabled: boo
             agent = FirmwareSecurityAgent(model=build_deepseek_chat_model(config),
                                           structured_output_method="function_calling")
             phase = "provider_execution"
-            output = agent.invoke(inputs)
+            output = (agent.invoke(inputs,relevant_static_structure=relevant,static_source=source)
+                      if relevant is not None else agent.invoke(inputs))
         phase = "agent_post_validation"
         validate_real_firmware_report(output, inputs)
         if inputs.model_dump_json() != before or output.processor_behavior_ir != stub.processor_behavior_ir:
             raise AgentStructuredOutputError("Model run changed deterministic input or IR")
+        extra_tools=[]
+        if relevant is not None:
+            from chipchain.agents.projections.firmware_envelope import ENVELOPE_DESCRIPTOR, STRUCTURE_DESCRIPTOR
+            extra_tools=[source.tool,STRUCTURE_DESCRIPTOR,ENVELOPE_DESCRIPTOR]
         provenance = capture_provenance(prompts=[PROMPT_DESCRIPTOR], models=[config.descriptor(AgentRole.FIRMWARE)],
-            tools=[FuzzwareHeatPressScenarioAnalyzer().descriptor, ArmThumbInstructionDecoder().descriptor, PROJECTION_DESCRIPTOR])
+            tools=[FuzzwareHeatPressScenarioAnalyzer().descriptor, ArmThumbInstructionDecoder().descriptor, PROJECTION_DESCRIPTOR, *extra_tools])
         for package in ("langchain-deepseek", "langchain-openai", "openai", "python-dotenv", "capstone", "pyelftools", "PyYAML"):
             provenance.runtime_packages[package] = version(package)
         state = CaseWorkflowState(case=inputs.case, firmware_status="completed", firmware_report=output.report,
@@ -238,6 +293,7 @@ def run_real_firmware(corpus_root: Path, *, config: DeepSeekConfig, enabled: boo
             "claim_counts": {name: len(getattr(output.report, name)) for name in
                              ("findings", "external_input_paths", "reachable_behaviors", "issue_anchors")},
             "model_output_schema": "ModelFirmwareAnalysisReport",
+            **enriched_metadata,
         }
         succeeded = {**attempt, "timestamp": utc_now().isoformat(), "status": "succeeded",
                      "usage": agent.last_usage, "response_metadata": metadata()}
@@ -298,12 +354,23 @@ def main() -> int:
     parser.add_argument("--corpus-root", required=True, type=Path)
     parser.add_argument("--env-file", type=Path)
     parser.add_argument("--attempt-index", type=int, default=1)
+    parser.add_argument('--context-mode',choices=('v1','enriched_v2'),default='v1')
+    parser.add_argument('--ghidra-home',type=Path)
+    parser.add_argument('--preflight-only',action='store_true')
     args = parser.parse_args()
     try:
+        if args.preflight_only:
+            if args.context_mode!='enriched_v2':
+                raise ValueError('Preflight-only requires enriched_v2')
+            inputs=prepare_firmware_input(args.corpus_root)
+            _,_,context,metadata=prepare_enriched_context(inputs,args.ghidra_home)
+            print(json.dumps(enriched_preflight_summary(context,metadata),sort_keys=True))
+            return 0
         require_real_opt_in(os.environ.get("CHIPCHAIN_ENABLE_REAL_LLM") == "1")
         config = load_deepseek_config(os.environ, agent_role=AgentRole.FIRMWARE, env_file=args.env_file)
         directory = run_real_firmware(args.corpus_root, config=config, enabled=True,
-                                      output_root=Path("output"), attempt_index=args.attempt_index)
+                                      output_root=Path("output"), attempt_index=args.attempt_index,
+                                      context_mode=args.context_mode,ghidra_home=args.ghidra_home)
     except DeepSeekConfigurationError as exc:
         print(str(exc))
         return 2

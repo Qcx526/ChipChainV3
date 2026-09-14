@@ -4,7 +4,7 @@ from langchain_core.language_models import BaseChatModel
 
 from chipchain.agents.contracts import FirmwareAgentInput, FirmwareAgentOutput
 from chipchain.agents.context import firmware_context
-from chipchain.agents.firmware_evidence import collect_firmware_evidence
+from chipchain.agents.firmware_evidence import collect_firmware_reasoning_evidence
 from chipchain.agents.model_outputs.firmware import (
     ModelFirmwareAnalysisReport, hydrate_firmware_report, validate_firmware_report_references,
 )
@@ -33,17 +33,21 @@ class FirmwareSecurityAgent:
     def last_response_metadata(self) -> dict[str, str]:
         return dict(self._runtime.last_response_metadata) if self._runtime is not None else {}
 
-    def invoke(self, inputs: FirmwareAgentInput) -> FirmwareAgentOutput:
-        collect_firmware_evidence(inputs)  # Reject conflicting/undeclared input evidence before any invocation.
+    def invoke(self, inputs: FirmwareAgentInput, *, relevant_static_structure=None, static_source=None) -> FirmwareAgentOutput:
+        collect_firmware_reasoning_evidence(inputs, relevant_static_structure)  # Reject conflicting/undeclared input evidence before any invocation.
+        context = None
+        if relevant_static_structure is not None:
+            from chipchain.agents.projections.firmware_envelope import firmware_enriched_context
+            context = firmware_enriched_context(inputs, relevant_static_structure, static_source=static_source)
         observations = inputs.deterministic_observations
         ir = ProcessorBehaviorIR(
             case_id=inputs.case.case_id,
             behaviors=[b for item in observations.observations for b in item.behaviors],
         )
         if self._runtime is not None:
-            model_report = self._runtime.invoke(firmware_context(inputs))
-            report = hydrate_firmware_report(model_report, inputs)
-            validate_firmware_evidence(report, inputs)
+            model_report = self._runtime.invoke(context if context is not None else firmware_context(inputs))
+            report = hydrate_firmware_report(model_report, inputs, relevant_static_structure=relevant_static_structure)
+            validate_firmware_evidence(report, inputs, relevant_static_structure=relevant_static_structure)
             return validate_agent_output(
                 FirmwareAgentOutput, report=report, processor_behavior_ir=ir,
             )
@@ -60,10 +64,10 @@ class FirmwareSecurityAgent:
         )
 
 
-def validate_firmware_evidence(report: FirmwareAnalysisReport, inputs: FirmwareAgentInput) -> None:
+def validate_firmware_evidence(report: FirmwareAnalysisReport, inputs: FirmwareAgentInput, *, relevant_static_structure=None) -> None:
     """Exact evidence/finding grounding, not proof that report prose is entailed."""
     validate_firmware_report_references(report)
-    evidence = collect_firmware_evidence(inputs)
+    evidence = collect_firmware_reasoning_evidence(inputs, relevant_static_structure)
     for item in [*report.findings, *report.external_input_paths, *report.reachable_behaviors, *report.issue_anchors]:
         if any(evidence.get(ref.evidence_id) != ref for ref in item.evidence):
             raise AgentStructuredOutputError("Model response contains unknown or altered firmware evidence references")
