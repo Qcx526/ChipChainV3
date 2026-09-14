@@ -1,9 +1,13 @@
 # ChipChain V3
 
 大模型协同的芯片固件—硬件跨层漏洞攻击链路检测研究工程。
-当前阶段：**V3-2B2 — Enriched Firmware Context（machine-valid / pending human review）**。
-单次 deepseek-flash 实验完成；语义审计为 mixed results，存在错误的 Reset→SystemInit confirmed-call 推断。
-详见 [B2 实验与逐条 claim 审计](docs/research/v3-2b2-enriched-firmware-agent.md)。
+当前阶段：**V3-2A4 — Typed Static Relation Semantics & Claim-Support Contracts**。
+独立确定性关系层区分 direct call、direct branch、unresolved、MMIO 与静态向量绑定，
+用显式 typed claims 检查证据支持范围；本阶段不调用模型、不接入 Agent。
+实现、真实计数与 12 个站点分类见 [A4 静态关系文档](docs/research/v3-2a4-typed-static-relations.md)。
+B2 单次 deepseek-flash 实验为 machine-valid / human-reviewed / mixed semantic result，
+存在错误的 Reset→SystemInit confirmed-call 推断，未 reviewed-export；
+历史记录见 [B2 实验与逐条 claim 审计](docs/research/v3-2b2-enriched-firmware-agent.md)。
 Firmware R1 真实基线仍为 **machine-valid / human-rejected / NOT reviewed**。
 已完成 **R0-B.1 dependency reproducibility patch**；版本边界由 `pyproject.toml` 管理。
 保留已冻结的 R0-A/R0-A.1 Case-first、多架构合同与 workflow。
