@@ -136,6 +136,17 @@ class _RelationFirmwareInvocation(_FirmwareInvocation):
     supported_support_claim_count: int
 
 
+class _RelationFirmwareInvocationV2(_RelationFirmwareInvocation):
+    # Required for support artifact v2; v1 invocation files retain their schema.
+    generated_support_claim_count: int = Field(ge=0, strict=True)
+    referenced_support_claim_count: int = Field(ge=0, strict=True)
+    orphan_support_claim_count: int = Field(ge=0, strict=True)
+    referenced_supported_count: int = Field(ge=0, strict=True)
+    orphan_supported_count: int = Field(ge=0, strict=True)
+    orphan_unsupported_count: int = Field(ge=0, strict=True)
+    orphan_incompatible_count: int = Field(ge=0, strict=True)
+
+
 class _Diagnostic(Contract):
     exception_type: str | None = Field(default=None, pattern=r"^[A-Za-z_][A-Za-z0-9_]{0,127}$")
     http_status: int | None = Field(default=None, ge=100, le=599, strict=True)
@@ -326,7 +337,8 @@ def _validate(blobs: dict[str, bytes], secret: str | None):
         context = _firmware_context(run, report, objects["analysis_input.json"])
         enriched = 'envelope_version' in objects['analysis_input.json']
         relation_v3=objects['analysis_input.json'].get('envelope_version')=='firmware-analysis-envelope/v3'
-        invocation = (_RelationFirmwareInvocation if relation_v3 else _EnrichedFirmwareInvocation if enriched else _FirmwareInvocation).model_validate(objects["invocation.json"])
+        support_v2 = relation_v3 and objects.get('firmware_relation_support.json', {}).get('schema_version') == 'firmware-relation-support/v2'
+        invocation = (_RelationFirmwareInvocationV2 if support_v2 else _RelationFirmwareInvocation if relation_v3 else _EnrichedFirmwareInvocation if enriched else _FirmwareInvocation).model_validate(objects["invocation.json"])
         if relation_v3:
             from chipchain.agents.projections.firmware_envelope_v3 import FirmwareAnalysisEnvelopeV3, envelope_v3_metadata, envelope_v3_components
             from chipchain.agents.relation_support import FirmwareRelationSupportReport, validate_support_artifact
@@ -334,13 +346,18 @@ def _validate(blobs: dict[str, bytes], secret: str | None):
             expected_metadata=envelope_v3_metadata(envelope)
             if any(getattr(invocation,k)!=v for k,v in expected_metadata.items()):
                 raise ReviewedExportError('Relation projection metadata mismatch')
-            audit=FirmwareRelationSupportReport.model_validate(objects['firmware_relation_support.json'])
+            from chipchain.agents.relation_support_v2 import (
+                FirmwareRelationSupportReportV2, validate_support_artifact_v2, support_audit_counts,
+            )
+            audit=(FirmwareRelationSupportReportV2 if support_v2 else FirmwareRelationSupportReport).model_validate(objects['firmware_relation_support.json'])
             catalog=envelope_v3_components(envelope)[1].catalog
             if run.case_id=='fuzzware:heat-press:scenario-13':
                 from chipchain.integrations.firmware_relations import validate_relation_baseline
                 validate_relation_baseline(catalog)
-            validate_support_artifact(audit,report,catalog)
-            if (invocation.structured_support_claim_count,invocation.supported_support_claim_count)!=(len(audit.support_claims),len(audit.support_claims)):
+            (validate_support_artifact_v2 if support_v2 else validate_support_artifact)(audit,report,catalog)
+            if support_v2 and any(getattr(invocation,k)!=v for k,v in support_audit_counts(audit.support_claims).items()):
+                raise ReviewedExportError('Support audit counts mismatch')
+            if (invocation.structured_support_claim_count,invocation.supported_support_claim_count)!=(len(audit.support_claims),sum(e.result=='supported' for e in audit.support_claims)):
                 raise ReviewedExportError('Support claim counts mismatch')
             if (invocation.model,invocation.temperature,invocation.max_tokens)!=('deepseek-flash',0,16384):
                 raise ReviewedExportError('Unsupported B3 model settings')

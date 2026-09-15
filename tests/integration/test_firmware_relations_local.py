@@ -63,10 +63,21 @@ def test_real_relation_v3_preflight_and_fake_model(tmp_path,monkeypatch):
         payload['support_claims'][0]['expected_direction']='write'
         with pytest.raises(RelationSupportError):invoke(components,payload)
         outcomes['rejected']+=1
+    # R2: the same invalid real relation is diagnostic only when unreferenced.
+    payload=payload_for(components,'call-80afa')
+    orphan=payload_for(components,'call-80f88')['support_claims'][0]
+    orphan.update(support_claim_id='orphan-reset-call',expected_kind='direct_call',
+        expected_status='confirmed_static',expected_target_entity_id='f80eac',expected_transfer_kind='direct_call')
+    payload['support_claims'].append(orphan)
+    output,audit,_=invoke(components,payload)
+    assert len(output.report.findings)==1 and audit.referenced_supported_count==1
+    assert audit.orphan_incompatible_count==1
+    assert audit.support_claims[1].usage_status=='orphaned'
+    assert not audit.support_claims[1].referencing_firmware_claims
     assert inputs.model_dump_json()==before
     assert outcomes=={'supported':6,'rejected':14}
     import hashlib
     metrics={**metadata,'context_characters':len(context),'context_sha256':hashlib.sha256(context.encode()).hexdigest(),
-             'fake_model_regressions':dict(outcomes)}
+             'fake_model_regressions':dict(outcomes),'orphan_incompatible_retained':1}
     (tmp_path/'preflight.json').write_text(json.dumps(metrics,indent=2))
     print(json.dumps(metrics,sort_keys=True))

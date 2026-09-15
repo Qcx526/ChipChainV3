@@ -80,7 +80,8 @@ class FirmwareSecurityAgent:
         from chipchain.agents.projections.firmware_envelope_v3 import (
             build_firmware_envelope_v3, serialize_firmware_envelope_v3, envelope_v3_components,
         )
-        from chipchain.agents.relation_support import validate_relation_support, strip_support_fields
+        from chipchain.agents.relation_support import strip_support_fields
+        from chipchain.agents.relation_support_v2 import validate_relation_support_v2
         from chipchain.tools.firmware.structure_projection import relevant_structure_sha256
         registry = collect_firmware_reasoning_evidence(inputs,relevant_static_structure)
         if relevant_structure_sha256(relevant_static_structure) != static_relation_catalog.source_identities.a3_sha256:
@@ -96,7 +97,7 @@ class FirmwareSecurityAgent:
                 structured_output_method=self._structured_output_method)
         self._active_runtime = self._supported_runtime
         model_report = self._supported_runtime.invoke(context)
-        support = validate_relation_support(model_report,static_relation_catalog)
+        support = validate_relation_support_v2(model_report,static_relation_catalog)
         report = hydrate_firmware_report(strip_support_fields(model_report),inputs,
             relevant_static_structure=relevant_static_structure)
         validate_firmware_evidence(report,inputs,relevant_static_structure=relevant_static_structure)

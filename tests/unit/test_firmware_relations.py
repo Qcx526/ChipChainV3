@@ -18,7 +18,7 @@ from chipchain.agents.projections.firmware_envelope_v3 import (
     build_firmware_envelope_v3, serialize_firmware_envelope_v3, parse_firmware_envelope_v3,
     envelope_v3_metadata,
 )
-from chipchain.agents.relation_support import validate_support_artifact
+from chipchain.agents.relation_support_v2 import validate_support_artifact_v2 as validate_support_artifact
 from chipchain.agents.runtime import AgentExecutionError, AgentStructuredOutputError
 from chipchain.agents.firmware_evidence import collect_firmware_reasoning_evidence
 from chipchain.integrations import deepseek_firmware as real
@@ -137,7 +137,7 @@ def test_valid_explicit_path(components):
 
 @pytest.mark.parametrize('defect',['branch_call','read_write','vector_call','unknown_relation','endpoint','status',
     'direction_missing','transfer_missing','vector_index','trigger_to_handler','physical_input_path','runtime_reachability',
-    'broken_path','unknown_support','unused','duplicate','missing_support','evidence','ir'])
+    'broken_path','unknown_support','duplicate_reference','duplicate','missing_support','evidence','ir'])
 def test_fake_model_rejects_invalid_support(components,defect):
     rid={'branch_call':'call-80004','read_write':'mmio-direction-80002','vector_call':'vector-1',
          'direction_missing':'mmio-direction-80002','vector_index':'vector-1'}.get(defect,'edge-80000')
@@ -157,7 +157,7 @@ def test_fake_model_rejects_invalid_support(components,defect):
         p['support_claims']=[dict(support_claim_id='support-1',claim_type='static_call_path',source_function_id='f80008',
             target_function_id='f80010',edge_relation_ids=['edge-80000','edge-80008'])]
     elif defect=='unknown_support':p['findings'][0]['support_claim_ids']=['invented']
-    elif defect=='unused':p['findings']=[]
+    elif defect=='duplicate_reference':p['findings'][0]['support_claim_ids'] *= 2
     elif defect=='duplicate':p['support_claims'].append(dict(claim))
     elif defect=='missing_support':p['findings'][0]['support_claim_ids']=[]
     elif defect=='evidence':p['findings'][0]['evidence_ids']=['invented']

@@ -322,6 +322,8 @@ def run_real_firmware(corpus_root: Path, *, config: DeepSeekConfig, enabled: boo
             **enriched_metadata,
         }
         if support is not None:
+            from chipchain.agents.relation_support_v2 import support_audit_counts
+            invocation.update(support_audit_counts(support.support_claims))
             invocation.update(structured_support_claim_count=len(support.support_claims),
                 supported_support_claim_count=sum(e.result=='supported' for e in support.support_claims))
         succeeded = {**attempt, "timestamp": utc_now().isoformat(), "status": "succeeded",

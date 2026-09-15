@@ -12,7 +12,7 @@ from pydantic import ValidationError
 from chipchain.agents.runtime import StructuredReportRuntime, AgentStructuredOutputError, AgentExecutionError
 from chipchain.agents.model_outputs.firmware import ModelFirmwareAnalysisReport
 from chipchain.agents.model_outputs.firmware_v2 import ModelFirmwareAnalysisReportV2
-from chipchain.agents.relation_support import validate_support_artifact
+from chipchain.agents.relation_support_v2 import validate_support_artifact_v2 as validate_support_artifact
 from chipchain.integrations import deepseek_firmware as real
 from chipchain.integrations.deepseek import DeepSeekConfig
 from chipchain.integrations.firmware_relations import validate_b3_semantic_pins
@@ -21,7 +21,8 @@ from tests.unit.test_firmware_relations import components, payload_for, invoke, 
 from tests.fakes import fake_model
 
 
-def test_large_valid_response_end_to_end_shared_support(components):
+@pytest.mark.parametrize('orphan', [False, True])
+def test_large_valid_response_end_to_end_shared_support(components, orphan):
     data,catalog,_=components
     payload=payload_for(components)
     original=payload['findings'][0]
@@ -36,14 +37,19 @@ def test_large_valid_response_end_to_end_shared_support(components):
         external_input_path_ids=[f'path-{n}'],reachability_kind='unknown') for n in range(40)]
     payload['issue_anchors']=[dict(**shared,anchor_id=f'anchor-{n}',summary=summary,
         firmware_finding_ids=[f'finding-{n}']) for n in range(40)]
+    if orphan:
+        payload['support_claims'].append(dict(payload['support_claims'][0],support_claim_id='orphan',relation_id='unknown-relation'))
     typed=ModelFirmwareAnalysisReportV2.model_validate(payload)
     text=typed.model_dump_json()
     assert len(text)>100000
+    if not orphan:
+        assert len(text)==102496
     output,audit,model=invoke(components,json.loads(text))
     assert len(model.seen_messages)==1
     assert [len(getattr(output.report,k)) for k in ('findings','external_input_paths','reachable_behaviors','issue_anchors')]==[40]*4
-    assert len(audit.support_claims)==2
-    assert all(len(s.referencing_firmware_claims)==160 for s in audit.support_claims)
+    assert len(audit.support_claims)==2 + orphan
+    assert audit.orphan_incompatible_count == int(orphan)
+    assert all(len(s.referencing_firmware_claims)==160 for s in audit.support_claims[:2])
     assert output.report.findings[-1].summary==summary.strip()
     validate_support_artifact(audit,output.report,catalog)
     print('Large valid model output characters:',len(text))
