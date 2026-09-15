@@ -1,7 +1,12 @@
 # ChipChain V3
 
 大模型协同的芯片固件—硬件跨层漏洞攻击链路检测研究工程。
-当前阶段：**V3-2B3-R3 — Safe Referenced-Support Failure Diagnostics**。
+当前阶段：**V3-2A5 — angr CFGFast Static Reachability Baseline**。
+B3 已冻结为可解释的真实负结果；A5 确定性静态可达性基线已完成实现与本地验证，待人工审核。
+新增 optional `angr==9.3.4`（Python 3.12+），基础 Python 要求仍为 >=3.11。
+真实样本得到 62/1122 个 bounded static function paths；静态路径不证明 feasibility、runtime 或漏洞。
+环境、完整 binding/comparison/site 表及复现命令见 [A5 文档](docs/research/v3-2a5-angr-static-reachability.md)。
+以下保留 B3 的设计和历史结果说明。
 新增显式 `relation_v3` context、Firmware prompt v2 和 model-only structured support claims；
 每个非空 Firmware claim 必须引用通过确定性检查的 support。旧 v1/v2 调用路径保留。
 设计、验证和真实实验记录见 [B3 文档](docs/research/v3-2b3-structured-relation-claims.md)。
