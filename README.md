@@ -6,7 +6,15 @@
 通过真实 Hardware 743 与历史 Firmware Heat_Press 报告，学习逐字段追踪 support、relation、evidence 与结论边界。
 教学快照不代表 reviewed truth；Firmware 例子明确保留已知语义缺陷。
 
-当前阶段：**V3-1B2 — Structured Hardware Relation Claims & Support-Gated Hardware Agent**。
+当前阶段：**V3-XL0 — Cross-Layer Interface & Hardware Trigger Contract Foundation**。
+新增独立的 pair eligibility、typed trigger、Firmware fact references 和逐 atom 静态 matcher；
+同架构仍须明确 platform/session/manifest 绑定，UNKNOWN 不会自动匹配。
+Heat_Press ARM 与 Ibex 743/820 RISC-V 的两组真实配对均为 `ineligible`，没有生成跨层 candidate。
+正向匹配仅使用显式 synthetic fixtures；`full_static_match` 不证明 runtime trigger、路径可行性或漏洞。
+本阶段不调用真实模型、Ghidra、angr 或 formal tools，不接入 Cross-Layer Agent，不改变既有 workflow。
+合同、API 示例、真实负结果与边界见 [XL0 接口文档](docs/research/v3-xl0-cross-layer-interface.md)。
+
+以下为已完成的 **V3-1B2 — Structured Hardware Relation Claims & Support-Gated Hardware Agent** 基线。
 Hardware A3 已冻结；Hardware B2 实现、离线验证及两次预定真实实验已完成，待人工审核。
 743/820 均 machine-valid；820 x10 hypothesis 的 host-side write/update 猜测仍有语义审核问题。
 新增显式 supported 路径、prompt v3、model-only support schema 和安全诊断：每个 referenced support
@@ -255,7 +263,7 @@ Firmware 使用独立 opt-in 入口和 `CHIPCHAIN_FIRMWARE_MODEL`，不回退到
 入口为 `python -m chipchain.integrations.deepseek_firmware --env-file .env --corpus-root /path/to/fuzzware-experiments`，
 仍需命令环境中显式 `CHIPCHAIN_ENABLE_REAL_LLM=1`；corrected Firmware runner 要求最终模型为 `deepseek-flash`。
 真实结果须人工审核，不自动重跑或 reviewed-export。
-R0-C 已完成 Architecture Reset；当前未进入 Cross-Layer 集成。
+R0-C 已完成 Architecture Reset；XL0 已建立独立跨层合同，真实 Cross-Layer Agent 集成仍未进入。
 
 架构边界、准入条件、状态语义和后续扩展点见
 [docs/architecture/v3-r0.md](docs/architecture/v3-r0.md)。
