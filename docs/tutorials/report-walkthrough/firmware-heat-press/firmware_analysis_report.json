@@ -1,0 +1,3477 @@
+{
+  "case_id": "fuzzware:heat-press:scenario-13",
+  "findings": [
+    {
+      "finding_id": "f-uart-irq-mmio",
+      "summary": "UART/USART interrupt handlers (f80abc/f80ad0/f80adc/f80ae8) contain unresolved computed/ambiguous call sites targeting 529828 (IrqHandler f815a4), whose body contains MMIO read sites s815aa (m20, UARTClass::IrqHandler) and s815b0 (m1). This is a candidate external-input-driven MMIO path, but the call targets are unresolved and vector binding does not establish interrupt occurrence.",
+      "evidence": [
+        {
+          "evidence_id": "vector-24",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "pyelftools + Cortex-M vector policy/v1",
+          "location": {
+            "address": 524384,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Bounded ELF vector word; symbolic static dispatch only, not interrupt occurrence.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "vector-33",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "pyelftools + Cortex-M vector policy/v1",
+          "location": {
+            "address": 524420,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Bounded ELF vector word; symbolic static dispatch only, not interrupt occurrence.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "vector-34",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "pyelftools + Cortex-M vector policy/v1",
+          "location": {
+            "address": 524424,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Bounded ELF vector word; symbolic static dispatch only, not interrupt occurrence.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "vector-36",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "pyelftools + Cortex-M vector policy/v1",
+          "location": {
+            "address": 524432,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Bounded ELF vector word; symbolic static dispatch only, not interrupt occurrence.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "call-80abe",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527038,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static callsite from Ghidra, cross-checked against ELF bytes",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "call-80ad2",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527058,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static callsite from Ghidra, cross-checked against ELF bytes",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "call-80ade",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527070,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static callsite from Ghidra, cross-checked against ELF bytes",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "call-80aea",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527082,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static callsite from Ghidra, cross-checked against ELF bytes",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "s815aa",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 529834,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s815b0",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 529840,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m20",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 529834,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_000815aa_mmio_400e0814",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m1",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 529840,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_000815b0_mmio_400e0818",
+          "epistemic_status": "observed"
+        }
+      ],
+      "processor_behavior_ids": [
+        "s815aa",
+        "s815b0",
+        "m20",
+        "m1"
+      ],
+      "epistemic_status": "inferred"
+    },
+    {
+      "finding_id": "f-reset-systeminit-mmio",
+      "summary": "Reset_Handler (f80f34, vector 1) is statically bound; SystemInit (f80eac) is a one-hop confirmed callee of Reset_Handler and contains MMIO read sites s80eba/s80eca/s80ed2/s80eda/s80ee6/s80ef2/s80efe/s80f0a with models m16/m2/m3/m12/m4/m0/m5/m6. Static containment and call edges are established; runtime execution is not.",
+      "evidence": [
+        {
+          "evidence_id": "vector-1",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "pyelftools + Cortex-M vector policy/v1",
+          "location": {
+            "address": 524292,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Bounded ELF vector word; symbolic static dispatch only, not interrupt occurrence.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "call-80f88",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 528264,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static callsite from Ghidra, cross-checked against ELF bytes",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "s80eba",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528058,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s80eca",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528074,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s80ed2",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528082,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s80eda",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528090,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s80ee6",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528102,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s80ef2",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528114,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s80efe",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528126,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s80f0a",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528138,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m16",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528058,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080eba_mmio_400e0620",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m2",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528074,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080eca_mmio_400e0668",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m3",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528082,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080ed2_mmio_400e0668",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m12",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528090,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080eda_mmio_400e0630",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m4",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528102,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080ee6_mmio_400e0668",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m0",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528114,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080ef2_mmio_400e0668",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m5",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528126,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080efe_mmio_400e0668",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m6",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528138,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080f0a_mmio_400e0668",
+          "epistemic_status": "observed"
+        }
+      ],
+      "processor_behavior_ids": [
+        "s80eba",
+        "s80eca",
+        "s80ed2",
+        "s80eda",
+        "s80ee6",
+        "s80ef2",
+        "s80efe",
+        "s80f0a",
+        "m16",
+        "m2",
+        "m3",
+        "m12",
+        "m4",
+        "m0",
+        "m5",
+        "m6"
+      ],
+      "epistemic_status": "derived"
+    },
+    {
+      "finding_id": "f-pio-missing-containment",
+      "summary": "MMIO sites at PCs 527694/527696/527706 (PIO_SetPeripheral, s80d4e/s80d50/s80d5a) lack Ghidra function-body containment (containment_status=missing) and are associated with passthrough models m7/m8/m9/m10/m11. No function is guessed for these sites.",
+      "evidence": [
+        {
+          "evidence_id": "s80d4e",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 527694,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s80d50",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 527696,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s80d5a",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 527706,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m7",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527694,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080d4e_mmio_400e0e70",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m8",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527694,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080d4e_mmio_400e1070",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m9",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527696,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080d50_mmio_400e0e70",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m10",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527696,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080d50_mmio_400e1070",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m11",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527706,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080d5a_mmio_400e1470",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "containment-m7",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527694,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static address containment in Ghidra function body; no execution/reachability assertion.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "containment-m8",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527694,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static address containment in Ghidra function body; no execution/reachability assertion.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "containment-m9",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527696,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static address containment in Ghidra function body; no execution/reachability assertion.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "containment-m10",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527696,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static address containment in Ghidra function body; no execution/reachability assertion.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "containment-m11",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527706,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static address containment in Ghidra function body; no execution/reachability assertion.",
+          "epistemic_status": "derived"
+        }
+      ],
+      "processor_behavior_ids": [
+        "s80d4e",
+        "s80d50",
+        "s80d5a",
+        "m7",
+        "m8",
+        "m9",
+        "m10",
+        "m11"
+      ],
+      "epistemic_status": "derived"
+    },
+    {
+      "finding_id": "f-unmodeled-mmio",
+      "summary": "Several MMIO read sites are associated with unmodeled models (m21-m31) at PCs 527894/527900/527930/527950/527998, spanning PIO_GetOutputDataStatus, pmc_enable_periph_clk and pmc_disable_periph_clk. Unmodeled status means no deterministic value semantics are available for these accesses.",
+      "evidence": [
+        {
+          "evidence_id": "m21",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527894,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080e16_mmio_400e0e08",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m22",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527894,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080e16_mmio_400e1008",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m23",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527894,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080e16_mmio_400e1208",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m24",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527894,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080e16_mmio_400e1408",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m25",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527900,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080e1c_mmio_400e0e18",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m26",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527900,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080e1c_mmio_400e1018",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m27",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527900,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080e1c_mmio_400e1218",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m28",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527900,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080e1c_mmio_400e1418",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m29",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527930,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080e3a_mmio_400e0618",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m30",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527950,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080e4e_mmio_400e0708",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m31",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527998,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080e7e_mmio_400e0618",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s80e16",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 527894,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s80e1c",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 527900,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s80e3a",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 527930,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s80e4e",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 527950,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s80e7e",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 527998,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        }
+      ],
+      "processor_behavior_ids": [
+        "m21",
+        "m22",
+        "m23",
+        "m24",
+        "m25",
+        "m26",
+        "m27",
+        "m28",
+        "m29",
+        "m30",
+        "m31",
+        "s80e16",
+        "s80e1c",
+        "s80e3a",
+        "s80e4e",
+        "s80e7e"
+      ],
+      "epistemic_status": "derived"
+    },
+    {
+      "finding_id": "f-opaque-input-unlinked",
+      "summary": "The opaque environment input (6009 bytes) has no recorded MMIO consumption, runtime state or failure outcome and is not deterministically linked to any function, MMIO site, vector or handler.",
+      "evidence": [
+        {
+          "evidence_id": "input",
+          "source_type": "artifact",
+          "artifact_id": "opaque",
+          "analyzer": null,
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Opaque input identity",
+          "epistemic_status": "observed"
+        }
+      ],
+      "processor_behavior_ids": [],
+      "epistemic_status": "observed"
+    },
+    {
+      "finding_id": "f-trigger-unlinked",
+      "summary": "The Fuzzware interrupt-trigger configuration (round_robin, every 1000 emulator ticks) has no deterministic relation to any Cortex-M vector entry or handler execution.",
+      "evidence": [
+        {
+          "evidence_id": "trigger",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Interrupt trigger configuration",
+          "epistemic_status": "observed"
+        }
+      ],
+      "processor_behavior_ids": [],
+      "epistemic_status": "observed"
+    }
+  ],
+  "external_input_paths": [
+    {
+      "path_id": "eip-uart-irq",
+      "entry_point": "UART_Handler (f80abc, vector 24 / external IRQ 8)",
+      "summary": "UART/USART interrupt vector entries (UART_Handler f80abc, USART0/1/3_Handler f80ad0/f80adc/f80ae8) are statically bound to vector slots. Their bodies contain unresolved computed/ambiguous call sites (call-80abe, call-80ad2, call-80ade, call-80aea) targeting 529828 (IrqHandler f815a4), which contains MMIO sites s815aa (m20) and s815b0 (m1). This is a candidate external-input path, but vector binding does not establish interrupt occurrence and the call targets are unresolved.",
+      "processor_behavior_ids": [
+        "s815aa",
+        "s815b0",
+        "m20",
+        "m1"
+      ],
+      "evidence": [
+        {
+          "evidence_id": "vector-24",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "pyelftools + Cortex-M vector policy/v1",
+          "location": {
+            "address": 524384,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Bounded ELF vector word; symbolic static dispatch only, not interrupt occurrence.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "vector-33",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "pyelftools + Cortex-M vector policy/v1",
+          "location": {
+            "address": 524420,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Bounded ELF vector word; symbolic static dispatch only, not interrupt occurrence.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "vector-34",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "pyelftools + Cortex-M vector policy/v1",
+          "location": {
+            "address": 524424,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Bounded ELF vector word; symbolic static dispatch only, not interrupt occurrence.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "vector-36",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "pyelftools + Cortex-M vector policy/v1",
+          "location": {
+            "address": 524432,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Bounded ELF vector word; symbolic static dispatch only, not interrupt occurrence.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "call-80abe",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527038,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static callsite from Ghidra, cross-checked against ELF bytes",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "call-80ad2",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527058,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static callsite from Ghidra, cross-checked against ELF bytes",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "call-80ade",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527070,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static callsite from Ghidra, cross-checked against ELF bytes",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "call-80aea",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527082,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static callsite from Ghidra, cross-checked against ELF bytes",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "s815aa",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 529834,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s815b0",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 529840,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m20",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 529834,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_000815aa_mmio_400e0814",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m1",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 529840,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_000815b0_mmio_400e0818",
+          "epistemic_status": "observed"
+        }
+      ],
+      "epistemic_status": "inferred"
+    },
+    {
+      "path_id": "eip-opaque-input",
+      "entry_point": "unresolved (opaque environment input, 6009 bytes)",
+      "summary": "An opaque environment input artifact exists but is not deterministically linked to any function, MMIO site, vector or handler. No consumption path is established.",
+      "processor_behavior_ids": [],
+      "evidence": [
+        {
+          "evidence_id": "input",
+          "source_type": "artifact",
+          "artifact_id": "opaque",
+          "analyzer": null,
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Opaque input identity",
+          "epistemic_status": "observed"
+        }
+      ],
+      "epistemic_status": "unknown"
+    },
+    {
+      "path_id": "eip-interrupt-trigger",
+      "entry_point": "unresolved (Fuzzware interrupt-trigger config, round_robin, every 1000 ticks)",
+      "summary": "A Fuzzware interrupt-trigger configuration exists, but no deterministic relation connects it to any Cortex-M vector entry or handler execution.",
+      "processor_behavior_ids": [],
+      "evidence": [
+        {
+          "evidence_id": "trigger",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Interrupt trigger configuration",
+          "epistemic_status": "observed"
+        }
+      ],
+      "epistemic_status": "unknown"
+    }
+  ],
+  "reachable_behaviors": [
+    {
+      "reachability_id": "rb-uart-irq-mmio",
+      "processor_behavior_id": "m20",
+      "external_input_path_ids": [
+        "eip-uart-irq"
+      ],
+      "reachability_kind": "unknown",
+      "evidence": [
+        {
+          "evidence_id": "m20",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 529834,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_000815aa_mmio_400e0814",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s815aa",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 529834,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "call-80abe",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527038,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static callsite from Ghidra, cross-checked against ELF bytes",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "call-80ad2",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527058,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static callsite from Ghidra, cross-checked against ELF bytes",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "call-80ade",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527070,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static callsite from Ghidra, cross-checked against ELF bytes",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "call-80aea",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527082,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static callsite from Ghidra, cross-checked against ELF bytes",
+          "epistemic_status": "derived"
+        }
+      ],
+      "epistemic_status": "hypothesized"
+    },
+    {
+      "reachability_id": "rb-uart-irq-mmio-2",
+      "processor_behavior_id": "m1",
+      "external_input_path_ids": [
+        "eip-uart-irq"
+      ],
+      "reachability_kind": "unknown",
+      "evidence": [
+        {
+          "evidence_id": "m1",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 529840,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_000815b0_mmio_400e0818",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s815b0",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 529840,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "call-80abe",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527038,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static callsite from Ghidra, cross-checked against ELF bytes",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "call-80ad2",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527058,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static callsite from Ghidra, cross-checked against ELF bytes",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "call-80ade",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527070,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static callsite from Ghidra, cross-checked against ELF bytes",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "call-80aea",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527082,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static callsite from Ghidra, cross-checked against ELF bytes",
+          "epistemic_status": "derived"
+        }
+      ],
+      "epistemic_status": "hypothesized"
+    },
+    {
+      "reachability_id": "rb-reset-systeminit",
+      "processor_behavior_id": "m16",
+      "external_input_path_ids": [],
+      "reachability_kind": "static",
+      "evidence": [
+        {
+          "evidence_id": "vector-1",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "pyelftools + Cortex-M vector policy/v1",
+          "location": {
+            "address": 524292,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Bounded ELF vector word; symbolic static dispatch only, not interrupt occurrence.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "s80eba",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528058,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m16",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528058,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080eba_mmio_400e0620",
+          "epistemic_status": "observed"
+        }
+      ],
+      "epistemic_status": "derived"
+    },
+    {
+      "reachability_id": "rb-reset-systeminit-2",
+      "processor_behavior_id": "m2",
+      "external_input_path_ids": [],
+      "reachability_kind": "static",
+      "evidence": [
+        {
+          "evidence_id": "vector-1",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "pyelftools + Cortex-M vector policy/v1",
+          "location": {
+            "address": 524292,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Bounded ELF vector word; symbolic static dispatch only, not interrupt occurrence.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "s80eca",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528074,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m2",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528074,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080eca_mmio_400e0668",
+          "epistemic_status": "observed"
+        }
+      ],
+      "epistemic_status": "derived"
+    },
+    {
+      "reachability_id": "rb-reset-systeminit-3",
+      "processor_behavior_id": "m3",
+      "external_input_path_ids": [],
+      "reachability_kind": "static",
+      "evidence": [
+        {
+          "evidence_id": "vector-1",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "pyelftools + Cortex-M vector policy/v1",
+          "location": {
+            "address": 524292,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Bounded ELF vector word; symbolic static dispatch only, not interrupt occurrence.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "s80ed2",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528082,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m3",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528082,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080ed2_mmio_400e0668",
+          "epistemic_status": "observed"
+        }
+      ],
+      "epistemic_status": "derived"
+    },
+    {
+      "reachability_id": "rb-reset-systeminit-4",
+      "processor_behavior_id": "m4",
+      "external_input_path_ids": [],
+      "reachability_kind": "static",
+      "evidence": [
+        {
+          "evidence_id": "vector-1",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "pyelftools + Cortex-M vector policy/v1",
+          "location": {
+            "address": 524292,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Bounded ELF vector word; symbolic static dispatch only, not interrupt occurrence.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "s80ee6",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528102,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m4",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528102,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080ee6_mmio_400e0668",
+          "epistemic_status": "observed"
+        }
+      ],
+      "epistemic_status": "derived"
+    },
+    {
+      "reachability_id": "rb-reset-systeminit-5",
+      "processor_behavior_id": "m5",
+      "external_input_path_ids": [],
+      "reachability_kind": "static",
+      "evidence": [
+        {
+          "evidence_id": "vector-1",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "pyelftools + Cortex-M vector policy/v1",
+          "location": {
+            "address": 524292,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Bounded ELF vector word; symbolic static dispatch only, not interrupt occurrence.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "s80efe",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528126,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m5",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528126,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080efe_mmio_400e0668",
+          "epistemic_status": "observed"
+        }
+      ],
+      "epistemic_status": "derived"
+    },
+    {
+      "reachability_id": "rb-reset-systeminit-6",
+      "processor_behavior_id": "m6",
+      "external_input_path_ids": [],
+      "reachability_kind": "static",
+      "evidence": [
+        {
+          "evidence_id": "vector-1",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "pyelftools + Cortex-M vector policy/v1",
+          "location": {
+            "address": 524292,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Bounded ELF vector word; symbolic static dispatch only, not interrupt occurrence.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "s80f0a",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528138,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m6",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528138,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080f0a_mmio_400e0668",
+          "epistemic_status": "observed"
+        }
+      ],
+      "epistemic_status": "derived"
+    },
+    {
+      "reachability_id": "rb-reset-systeminit-7",
+      "processor_behavior_id": "m0",
+      "external_input_path_ids": [],
+      "reachability_kind": "static",
+      "evidence": [
+        {
+          "evidence_id": "vector-1",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "pyelftools + Cortex-M vector policy/v1",
+          "location": {
+            "address": 524292,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Bounded ELF vector word; symbolic static dispatch only, not interrupt occurrence.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "s80ef2",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528114,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m0",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528114,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080ef2_mmio_400e0668",
+          "epistemic_status": "observed"
+        }
+      ],
+      "epistemic_status": "derived"
+    },
+    {
+      "reachability_id": "rb-reset-systeminit-8",
+      "processor_behavior_id": "m12",
+      "external_input_path_ids": [],
+      "reachability_kind": "static",
+      "evidence": [
+        {
+          "evidence_id": "vector-1",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "pyelftools + Cortex-M vector policy/v1",
+          "location": {
+            "address": 524292,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Bounded ELF vector word; symbolic static dispatch only, not interrupt occurrence.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "s80eda",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528090,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m12",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528090,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080eda_mmio_400e0630",
+          "epistemic_status": "observed"
+        }
+      ],
+      "epistemic_status": "derived"
+    }
+  ],
+  "processor_behavior_ids": [
+    "m0",
+    "m1",
+    "m2",
+    "m3",
+    "m4",
+    "m5",
+    "m6",
+    "m7",
+    "m8",
+    "m9",
+    "m10",
+    "m11",
+    "m12",
+    "m13",
+    "m14",
+    "m15",
+    "m16",
+    "m17",
+    "m18",
+    "m19",
+    "m20",
+    "m21",
+    "m22",
+    "m23",
+    "m24",
+    "m25",
+    "m26",
+    "m27",
+    "m28",
+    "m29",
+    "m30",
+    "m31",
+    "s80d4e",
+    "s80d50",
+    "s80d5a",
+    "s80e16",
+    "s80e1c",
+    "s80e3a",
+    "s80e4e",
+    "s80e7e",
+    "s80eba",
+    "s80eca",
+    "s80ed2",
+    "s80eda",
+    "s80ee6",
+    "s80ef2",
+    "s80efe",
+    "s80f0a",
+    "s81022",
+    "s81044",
+    "s81054",
+    "s8131c",
+    "s8147c",
+    "s815aa",
+    "s815b0"
+  ],
+  "issue_anchors": [
+    {
+      "anchor_id": "a-uart-irq-input",
+      "firmware_finding_ids": [
+        "f-uart-irq-mmio"
+      ],
+      "processor_behavior_ids": [
+        "s815aa",
+        "s815b0",
+        "m20",
+        "m1"
+      ],
+      "summary": "Candidate external-input anchor: UART/USART interrupt handlers with unresolved computed call sites into IrqHandler (f815a4) containing MMIO read sites m20/m1. Interrupt occurrence and call resolution are not established.",
+      "evidence": [
+        {
+          "evidence_id": "vector-24",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "pyelftools + Cortex-M vector policy/v1",
+          "location": {
+            "address": 524384,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Bounded ELF vector word; symbolic static dispatch only, not interrupt occurrence.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "vector-33",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "pyelftools + Cortex-M vector policy/v1",
+          "location": {
+            "address": 524420,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Bounded ELF vector word; symbolic static dispatch only, not interrupt occurrence.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "vector-34",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "pyelftools + Cortex-M vector policy/v1",
+          "location": {
+            "address": 524424,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Bounded ELF vector word; symbolic static dispatch only, not interrupt occurrence.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "vector-36",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "pyelftools + Cortex-M vector policy/v1",
+          "location": {
+            "address": 524432,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Bounded ELF vector word; symbolic static dispatch only, not interrupt occurrence.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "call-80abe",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527038,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static callsite from Ghidra, cross-checked against ELF bytes",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "call-80ad2",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527058,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static callsite from Ghidra, cross-checked against ELF bytes",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "call-80ade",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527070,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static callsite from Ghidra, cross-checked against ELF bytes",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "call-80aea",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 527082,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static callsite from Ghidra, cross-checked against ELF bytes",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "s815aa",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 529834,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s815b0",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 529840,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m20",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 529834,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_000815aa_mmio_400e0814",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m1",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 529840,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_000815b0_mmio_400e0818",
+          "epistemic_status": "observed"
+        }
+      ],
+      "epistemic_status": "inferred"
+    },
+    {
+      "anchor_id": "a-reset-systeminit",
+      "firmware_finding_ids": [
+        "f-reset-systeminit-mmio"
+      ],
+      "processor_behavior_ids": [
+        "s80eba",
+        "s80eca",
+        "s80ed2",
+        "s80eda",
+        "s80ee6",
+        "s80ef2",
+        "s80efe",
+        "s80f0a",
+        "m16",
+        "m2",
+        "m3",
+        "m12",
+        "m4",
+        "m0",
+        "m5",
+        "m6"
+      ],
+      "summary": "Reset-path anchor: Reset_Handler -> SystemInit with MMIO read sites and constant/set models. Static containment and call edges established; runtime execution not established.",
+      "evidence": [
+        {
+          "evidence_id": "vector-1",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "pyelftools + Cortex-M vector policy/v1",
+          "location": {
+            "address": 524292,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Bounded ELF vector word; symbolic static dispatch only, not interrupt occurrence.",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "call-80f88",
+          "source_type": "deterministic_analyzer",
+          "artifact_id": "elf",
+          "analyzer": "ghidra-headless + pyelftools + capstone",
+          "location": {
+            "address": 528264,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Static callsite from Ghidra, cross-checked against ELF bytes",
+          "epistemic_status": "derived"
+        },
+        {
+          "evidence_id": "s80eba",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528058,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s80eca",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528074,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s80ed2",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528082,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s80eda",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528090,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s80ee6",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528102,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s80ef2",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528114,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s80efe",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528126,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s80f0a",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 528138,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m16",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528058,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080eba_mmio_400e0620",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m2",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528074,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080eca_mmio_400e0668",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m3",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528082,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080ed2_mmio_400e0668",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m12",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528090,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080eda_mmio_400e0630",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m4",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528102,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080ee6_mmio_400e0668",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m0",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528114,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080ef2_mmio_400e0668",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m5",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528126,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080efe_mmio_400e0668",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m6",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 528138,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080f0a_mmio_400e0668",
+          "epistemic_status": "observed"
+        }
+      ],
+      "epistemic_status": "derived"
+    },
+    {
+      "anchor_id": "a-pio-containment-gap",
+      "firmware_finding_ids": [
+        "f-pio-missing-containment"
+      ],
+      "processor_behavior_ids": [
+        "s80d4e",
+        "s80d50",
+        "s80d5a",
+        "m7",
+        "m8",
+        "m9",
+        "m10",
+        "m11"
+      ],
+      "summary": "Containment gap anchor: PIO_SetPeripheral MMIO sites (527694/527696/527706) lack function-body containment; no function is guessed.",
+      "evidence": [
+        {
+          "evidence_id": "s80d4e",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 527694,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s80d50",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 527696,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "s80d5a",
+          "source_type": "artifact",
+          "artifact_id": "elf",
+          "analyzer": null,
+          "location": {
+            "address": 527706,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "ELF code bytes",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m7",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527694,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080d4e_mmio_400e0e70",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m8",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527694,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080d4e_mmio_400e1070",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m9",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527696,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080d50_mmio_400e0e70",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m10",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527696,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080d50_mmio_400e1070",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m11",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527706,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080d5a_mmio_400e1470",
+          "epistemic_status": "observed"
+        }
+      ],
+      "epistemic_status": "derived"
+    },
+    {
+      "anchor_id": "a-unmodeled-mmio",
+      "firmware_finding_ids": [
+        "f-unmodeled-mmio"
+      ],
+      "processor_behavior_ids": [
+        "m21",
+        "m22",
+        "m23",
+        "m24",
+        "m25",
+        "m26",
+        "m27",
+        "m28",
+        "m29",
+        "m30",
+        "m31"
+      ],
+      "summary": "Unmodeled MMIO anchor: read sites with unmodeled models (m21-m31) provide no deterministic value semantics.",
+      "evidence": [
+        {
+          "evidence_id": "m21",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527894,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080e16_mmio_400e0e08",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m22",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527894,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080e16_mmio_400e1008",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m23",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527894,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080e16_mmio_400e1208",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m24",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527894,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080e16_mmio_400e1408",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m25",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527900,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080e1c_mmio_400e0e18",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m26",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527900,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080e1c_mmio_400e1018",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m27",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527900,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080e1c_mmio_400e1218",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m28",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527900,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080e1c_mmio_400e1418",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m29",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527930,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080e3a_mmio_400e0618",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m30",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527950,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080e4e_mmio_400e0708",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "m31",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": 527998,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Model pc_00080e7e_mmio_400e0618",
+          "epistemic_status": "observed"
+        }
+      ],
+      "epistemic_status": "derived"
+    },
+    {
+      "anchor_id": "a-input-trigger-unlinked",
+      "firmware_finding_ids": [
+        "f-opaque-input-unlinked",
+        "f-trigger-unlinked"
+      ],
+      "processor_behavior_ids": [],
+      "summary": "Unlinked-input anchor: opaque input and interrupt-trigger configuration have no deterministic relation to any function, MMIO site, vector or handler.",
+      "evidence": [
+        {
+          "evidence_id": "input",
+          "source_type": "artifact",
+          "artifact_id": "opaque",
+          "analyzer": null,
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Opaque input identity",
+          "epistemic_status": "observed"
+        },
+        {
+          "evidence_id": "trigger",
+          "source_type": "artifact",
+          "artifact_id": "yaml",
+          "analyzer": null,
+          "location": {
+            "address": null,
+            "function": null,
+            "basic_block": null,
+            "line": null,
+            "instruction_index": null,
+            "register_name": null,
+            "signal": null,
+            "time": null,
+            "bit_range": null
+          },
+          "summary": "Interrupt trigger configuration",
+          "epistemic_status": "observed"
+        }
+      ],
+      "epistemic_status": "observed"
+    }
+  ],
+  "unresolved_questions": [
+    "Static sites and configuration associations do not establish execution or input reachability; runtime reachability of all MMIO behaviors remains unestablished.",
+    "The opaque environment input (6009 bytes) has no recorded MMIO consumption, runtime state or failure outcome and is not deterministically linked to any function, MMIO site, vector or handler.",
+    "No deterministic relation connects the Fuzzware interrupt-trigger configuration (round_robin, every 1000 ticks) to any Cortex-M vector entry or handler execution.",
+    "The unresolved computed/ambiguous call sites in UART/USART handlers (call-80abe, call-80ad2, call-80ade, call-80aea) targeting 529828 (IrqHandler f815a4) are not resolved; whether these handlers actually invoke IrqHandler is unknown.",
+    "MMIO sites at PCs 527694/527696/527706 lack Ghidra function-body containment; the containing function is unknown and not guessed.",
+    "Function/symbol names (e.g., PIO_SetPeripheral, SystemInit, UARTClass::IrqHandler) are static labels, not verified physical-interface semantics.",
+    "Whether the UART/USART interrupt vectors are ever taken at runtime (interrupt occurrence) is not established by vector bindings.",
+    "The physical meaning and effect of the unmodeled MMIO models (m21-m31) are unknown."
+  ]
+}

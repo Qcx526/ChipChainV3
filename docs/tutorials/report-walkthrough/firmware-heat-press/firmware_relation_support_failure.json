@@ -1,0 +1,1904 @@
+{
+  "failed_referenced_supports": [
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "call_semantics": true,
+              "detail_type": "control_transfer",
+              "mnemonic": null,
+              "original_reason": null,
+              "transfer_kind": "direct_call"
+            },
+            "kind": "direct_call",
+            "relation_id": "call-80bd2",
+            "source": {
+              "entity_id": "f80af4",
+              "entity_type": "function"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f81052",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "call-80bd2"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "direct_call",
+        "expected_source_entity_id": "f80af4",
+        "expected_status": "confirmed_static",
+        "expected_target_entity_id": "f8106c",
+        "expected_transfer_kind": "direct_call",
+        "expected_vector_index": null,
+        "relation_id": "call-80bd2"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-direct-calls",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "call-80bd2"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-call-80bd2",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "call_semantics": true,
+              "detail_type": "control_transfer",
+              "mnemonic": null,
+              "original_reason": null,
+              "transfer_kind": "direct_call"
+            },
+            "kind": "direct_call",
+            "relation_id": "call-80bdc",
+            "source": {
+              "entity_id": "f80af4",
+              "entity_type": "function"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f81044",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "call-80bdc"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "direct_call",
+        "expected_source_entity_id": "f80af4",
+        "expected_status": "confirmed_static",
+        "expected_target_entity_id": "f81052",
+        "expected_transfer_kind": "direct_call",
+        "expected_vector_index": null,
+        "relation_id": "call-80bdc"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-direct-calls",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "call-80bdc"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-call-80bdc",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "call_semantics": true,
+              "detail_type": "control_transfer",
+              "mnemonic": null,
+              "original_reason": null,
+              "transfer_kind": "direct_call"
+            },
+            "kind": "direct_call",
+            "relation_id": "call-8125a",
+            "source": {
+              "entity_id": "f81234",
+              "entity_type": "function"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f8106c",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "call-8125a"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "direct_call",
+        "expected_source_entity_id": "f81234",
+        "expected_status": "confirmed_static",
+        "expected_target_entity_id": "f80db0",
+        "expected_transfer_kind": "direct_call",
+        "expected_vector_index": null,
+        "relation_id": "call-8125a"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-direct-calls",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "call-8125a"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-call-8125a",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "detail_type": "mmio_containment"
+            },
+            "kind": "mmio_function_containment",
+            "relation_id": "mmio-containment-80d4e",
+            "source": {
+              "entity_id": "mmio-80d4e",
+              "entity_type": "mmio_site"
+            },
+            "status": "missing",
+            "target": null
+          },
+          "relation_id": "mmio-containment-80d4e"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "mmio_function_containment",
+        "expected_source_entity_id": "mmio-80d4e",
+        "expected_status": "confirmed_static",
+        "expected_target_entity_id": "f815a4",
+        "expected_transfer_kind": null,
+        "expected_vector_index": null,
+        "relation_id": "mmio-containment-80d4e"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-mmio-containment",
+          "collection": "findings"
+        },
+        {
+          "claim_id": "A-mmio-irqhandler",
+          "collection": "issue_anchors"
+        }
+      ],
+      "relation_ids": [
+        "mmio-containment-80d4e"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-mmio-cont-80d4e",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "detail_type": "mmio_containment"
+            },
+            "kind": "mmio_function_containment",
+            "relation_id": "mmio-containment-80d50",
+            "source": {
+              "entity_id": "mmio-80d50",
+              "entity_type": "mmio_site"
+            },
+            "status": "missing",
+            "target": null
+          },
+          "relation_id": "mmio-containment-80d50"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "mmio_function_containment",
+        "expected_source_entity_id": "mmio-80d50",
+        "expected_status": "confirmed_static",
+        "expected_target_entity_id": "f815a4",
+        "expected_transfer_kind": null,
+        "expected_vector_index": null,
+        "relation_id": "mmio-containment-80d50"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-mmio-containment",
+          "collection": "findings"
+        },
+        {
+          "claim_id": "A-mmio-irqhandler",
+          "collection": "issue_anchors"
+        }
+      ],
+      "relation_ids": [
+        "mmio-containment-80d50"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-mmio-cont-80d50",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "detail_type": "mmio_containment"
+            },
+            "kind": "mmio_function_containment",
+            "relation_id": "mmio-containment-80d5a",
+            "source": {
+              "entity_id": "mmio-80d5a",
+              "entity_type": "mmio_site"
+            },
+            "status": "missing",
+            "target": null
+          },
+          "relation_id": "mmio-containment-80d5a"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "mmio_function_containment",
+        "expected_source_entity_id": "mmio-80d5a",
+        "expected_status": "confirmed_static",
+        "expected_target_entity_id": "f815a4",
+        "expected_transfer_kind": null,
+        "expected_vector_index": null,
+        "relation_id": "mmio-containment-80d5a"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-mmio-containment",
+          "collection": "findings"
+        },
+        {
+          "claim_id": "A-mmio-irqhandler",
+          "collection": "issue_anchors"
+        }
+      ],
+      "relation_ids": [
+        "mmio-containment-80d5a"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-mmio-cont-80d5a",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "detail_type": "mmio_containment"
+            },
+            "kind": "mmio_function_containment",
+            "relation_id": "mmio-containment-80e16",
+            "source": {
+              "entity_id": "mmio-80e16",
+              "entity_type": "mmio_site"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f80e14",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "mmio-containment-80e16"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "mmio_function_containment",
+        "expected_source_entity_id": "mmio-80e16",
+        "expected_status": "missing",
+        "expected_target_entity_id": null,
+        "expected_transfer_kind": null,
+        "expected_vector_index": null,
+        "relation_id": "mmio-containment-80e16"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-mmio-containment",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "mmio-containment-80e16"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-mmio-cont-80e16",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "detail_type": "mmio_containment"
+            },
+            "kind": "mmio_function_containment",
+            "relation_id": "mmio-containment-80e1c",
+            "source": {
+              "entity_id": "mmio-80e1c",
+              "entity_type": "mmio_site"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f80e14",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "mmio-containment-80e1c"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "mmio_function_containment",
+        "expected_source_entity_id": "mmio-80e1c",
+        "expected_status": "missing",
+        "expected_target_entity_id": null,
+        "expected_transfer_kind": null,
+        "expected_vector_index": null,
+        "relation_id": "mmio-containment-80e1c"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-mmio-containment",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "mmio-containment-80e1c"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-mmio-cont-80e1c",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "detail_type": "mmio_containment"
+            },
+            "kind": "mmio_function_containment",
+            "relation_id": "mmio-containment-80e3a",
+            "source": {
+              "entity_id": "mmio-80e3a",
+              "entity_type": "mmio_site"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f80e28",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "mmio-containment-80e3a"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "mmio_function_containment",
+        "expected_source_entity_id": "mmio-80e3a",
+        "expected_status": "missing",
+        "expected_target_entity_id": null,
+        "expected_transfer_kind": null,
+        "expected_vector_index": null,
+        "relation_id": "mmio-containment-80e3a"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-mmio-containment",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "mmio-containment-80e3a"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-mmio-cont-80e3a",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "detail_type": "mmio_containment"
+            },
+            "kind": "mmio_function_containment",
+            "relation_id": "mmio-containment-80e4e",
+            "source": {
+              "entity_id": "mmio-80e4e",
+              "entity_type": "mmio_site"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f80e28",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "mmio-containment-80e4e"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "mmio_function_containment",
+        "expected_source_entity_id": "mmio-80e4e",
+        "expected_status": "missing",
+        "expected_target_entity_id": null,
+        "expected_transfer_kind": null,
+        "expected_vector_index": null,
+        "relation_id": "mmio-containment-80e4e"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-mmio-containment",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "mmio-containment-80e4e"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-mmio-cont-80e4e",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "detail_type": "mmio_containment"
+            },
+            "kind": "mmio_function_containment",
+            "relation_id": "mmio-containment-80e7e",
+            "source": {
+              "entity_id": "mmio-80e7e",
+              "entity_type": "mmio_site"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f80e6c",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "mmio-containment-80e7e"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "mmio_function_containment",
+        "expected_source_entity_id": "mmio-80e7e",
+        "expected_status": "missing",
+        "expected_target_entity_id": null,
+        "expected_transfer_kind": null,
+        "expected_vector_index": null,
+        "relation_id": "mmio-containment-80e7e"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-mmio-containment",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "mmio-containment-80e7e"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-mmio-cont-80e7e",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "detail_type": "mmio_containment"
+            },
+            "kind": "mmio_function_containment",
+            "relation_id": "mmio-containment-80eba",
+            "source": {
+              "entity_id": "mmio-80eba",
+              "entity_type": "mmio_site"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f80eac",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "mmio-containment-80eba"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "mmio_function_containment",
+        "expected_source_entity_id": "mmio-80eba",
+        "expected_status": "missing",
+        "expected_target_entity_id": null,
+        "expected_transfer_kind": null,
+        "expected_vector_index": null,
+        "relation_id": "mmio-containment-80eba"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-mmio-containment",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "mmio-containment-80eba"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-mmio-cont-80eba",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "detail_type": "mmio_containment"
+            },
+            "kind": "mmio_function_containment",
+            "relation_id": "mmio-containment-80eca",
+            "source": {
+              "entity_id": "mmio-80eca",
+              "entity_type": "mmio_site"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f80eac",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "mmio-containment-80eca"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "mmio_function_containment",
+        "expected_source_entity_id": "mmio-80eca",
+        "expected_status": "missing",
+        "expected_target_entity_id": null,
+        "expected_transfer_kind": null,
+        "expected_vector_index": null,
+        "relation_id": "mmio-containment-80eca"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-mmio-containment",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "mmio-containment-80eca"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-mmio-cont-80eca",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "detail_type": "mmio_containment"
+            },
+            "kind": "mmio_function_containment",
+            "relation_id": "mmio-containment-80ed2",
+            "source": {
+              "entity_id": "mmio-80ed2",
+              "entity_type": "mmio_site"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f80eac",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "mmio-containment-80ed2"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "mmio_function_containment",
+        "expected_source_entity_id": "mmio-80ed2",
+        "expected_status": "missing",
+        "expected_target_entity_id": null,
+        "expected_transfer_kind": null,
+        "expected_vector_index": null,
+        "relation_id": "mmio-containment-80ed2"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-mmio-containment",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "mmio-containment-80ed2"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-mmio-cont-80ed2",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "detail_type": "mmio_containment"
+            },
+            "kind": "mmio_function_containment",
+            "relation_id": "mmio-containment-80eda",
+            "source": {
+              "entity_id": "mmio-80eda",
+              "entity_type": "mmio_site"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f80eac",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "mmio-containment-80eda"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "mmio_function_containment",
+        "expected_source_entity_id": "mmio-80eda",
+        "expected_status": "missing",
+        "expected_target_entity_id": null,
+        "expected_transfer_kind": null,
+        "expected_vector_index": null,
+        "relation_id": "mmio-containment-80eda"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-mmio-containment",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "mmio-containment-80eda"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-mmio-cont-80eda",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "detail_type": "mmio_containment"
+            },
+            "kind": "mmio_function_containment",
+            "relation_id": "mmio-containment-80ee6",
+            "source": {
+              "entity_id": "mmio-80ee6",
+              "entity_type": "mmio_site"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f80eac",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "mmio-containment-80ee6"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "mmio_function_containment",
+        "expected_source_entity_id": "mmio-80ee6",
+        "expected_status": "missing",
+        "expected_target_entity_id": null,
+        "expected_transfer_kind": null,
+        "expected_vector_index": null,
+        "relation_id": "mmio-containment-80ee6"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-mmio-containment",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "mmio-containment-80ee6"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-mmio-cont-80ee6",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "detail_type": "mmio_containment"
+            },
+            "kind": "mmio_function_containment",
+            "relation_id": "mmio-containment-80ef2",
+            "source": {
+              "entity_id": "mmio-80ef2",
+              "entity_type": "mmio_site"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f80eac",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "mmio-containment-80ef2"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "mmio_function_containment",
+        "expected_source_entity_id": "mmio-80ef2",
+        "expected_status": "missing",
+        "expected_target_entity_id": null,
+        "expected_transfer_kind": null,
+        "expected_vector_index": null,
+        "relation_id": "mmio-containment-80ef2"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-mmio-containment",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "mmio-containment-80ef2"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-mmio-cont-80ef2",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "detail_type": "mmio_containment"
+            },
+            "kind": "mmio_function_containment",
+            "relation_id": "mmio-containment-80efe",
+            "source": {
+              "entity_id": "mmio-80efe",
+              "entity_type": "mmio_site"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f80eac",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "mmio-containment-80efe"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "mmio_function_containment",
+        "expected_source_entity_id": "mmio-80efe",
+        "expected_status": "missing",
+        "expected_target_entity_id": null,
+        "expected_transfer_kind": null,
+        "expected_vector_index": null,
+        "relation_id": "mmio-containment-80efe"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-mmio-containment",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "mmio-containment-80efe"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-mmio-cont-80efe",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "detail_type": "mmio_containment"
+            },
+            "kind": "mmio_function_containment",
+            "relation_id": "mmio-containment-80f0a",
+            "source": {
+              "entity_id": "mmio-80f0a",
+              "entity_type": "mmio_site"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f80eac",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "mmio-containment-80f0a"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "mmio_function_containment",
+        "expected_source_entity_id": "mmio-80f0a",
+        "expected_status": "missing",
+        "expected_target_entity_id": null,
+        "expected_transfer_kind": null,
+        "expected_vector_index": null,
+        "relation_id": "mmio-containment-80f0a"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-mmio-containment",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "mmio-containment-80f0a"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-mmio-cont-80f0a",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "detail_type": "mmio_containment"
+            },
+            "kind": "mmio_function_containment",
+            "relation_id": "mmio-containment-81022",
+            "source": {
+              "entity_id": "mmio-81022",
+              "entity_type": "mmio_site"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f80fac",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "mmio-containment-81022"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "mmio_function_containment",
+        "expected_source_entity_id": "mmio-81022",
+        "expected_status": "missing",
+        "expected_target_entity_id": null,
+        "expected_transfer_kind": null,
+        "expected_vector_index": null,
+        "relation_id": "mmio-containment-81022"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-mmio-containment",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "mmio-containment-81022"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-mmio-cont-81022",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "detail_type": "mmio_containment"
+            },
+            "kind": "mmio_function_containment",
+            "relation_id": "mmio-containment-81044",
+            "source": {
+              "entity_id": "mmio-81044",
+              "entity_type": "mmio_site"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f81044",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "mmio-containment-81044"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "mmio_function_containment",
+        "expected_source_entity_id": "mmio-81044",
+        "expected_status": "missing",
+        "expected_target_entity_id": null,
+        "expected_transfer_kind": null,
+        "expected_vector_index": null,
+        "relation_id": "mmio-containment-81044"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-mmio-containment",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "mmio-containment-81044"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-mmio-cont-81044",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "detail_type": "mmio_containment"
+            },
+            "kind": "mmio_function_containment",
+            "relation_id": "mmio-containment-81054",
+            "source": {
+              "entity_id": "mmio-81054",
+              "entity_type": "mmio_site"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f81052",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "mmio-containment-81054"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "mmio_function_containment",
+        "expected_source_entity_id": "mmio-81054",
+        "expected_status": "missing",
+        "expected_target_entity_id": null,
+        "expected_transfer_kind": null,
+        "expected_vector_index": null,
+        "relation_id": "mmio-containment-81054"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-mmio-containment",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "mmio-containment-81054"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-mmio-cont-81054",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "detail_type": "mmio_containment"
+            },
+            "kind": "mmio_function_containment",
+            "relation_id": "mmio-containment-8131c",
+            "source": {
+              "entity_id": "mmio-8131c",
+              "entity_type": "mmio_site"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f81234",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "mmio-containment-8131c"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "mmio_function_containment",
+        "expected_source_entity_id": "mmio-8131c",
+        "expected_status": "missing",
+        "expected_target_entity_id": null,
+        "expected_transfer_kind": null,
+        "expected_vector_index": null,
+        "relation_id": "mmio-containment-8131c"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-mmio-containment",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "mmio-containment-8131c"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-mmio-cont-8131c",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "detail_type": "mmio_containment"
+            },
+            "kind": "mmio_function_containment",
+            "relation_id": "mmio-containment-8147c",
+            "source": {
+              "entity_id": "mmio-8147c",
+              "entity_type": "mmio_site"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f81478",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "mmio-containment-8147c"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "mmio_function_containment",
+        "expected_source_entity_id": "mmio-8147c",
+        "expected_status": "missing",
+        "expected_target_entity_id": null,
+        "expected_transfer_kind": null,
+        "expected_vector_index": null,
+        "relation_id": "mmio-containment-8147c"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-mmio-containment",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "mmio-containment-8147c"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-mmio-cont-8147c",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "detail_type": "mmio_containment"
+            },
+            "kind": "mmio_function_containment",
+            "relation_id": "mmio-containment-815aa",
+            "source": {
+              "entity_id": "mmio-815aa",
+              "entity_type": "mmio_site"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f815a4",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "mmio-containment-815aa"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "mmio_function_containment",
+        "expected_source_entity_id": "mmio-815aa",
+        "expected_status": "missing",
+        "expected_target_entity_id": null,
+        "expected_transfer_kind": null,
+        "expected_vector_index": null,
+        "relation_id": "mmio-containment-815aa"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-mmio-containment",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "mmio-containment-815aa"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-mmio-cont-815aa",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "detail_type": "mmio_containment"
+            },
+            "kind": "mmio_function_containment",
+            "relation_id": "mmio-containment-815b0",
+            "source": {
+              "entity_id": "mmio-815b0",
+              "entity_type": "mmio_site"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f815a4",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "mmio-containment-815b0"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": null,
+        "expected_direction": null,
+        "expected_kind": "mmio_function_containment",
+        "expected_source_entity_id": "mmio-815b0",
+        "expected_status": "missing",
+        "expected_target_entity_id": null,
+        "expected_transfer_kind": null,
+        "expected_vector_index": null,
+        "relation_id": "mmio-containment-815b0"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-mmio-containment",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "mmio-containment-815b0"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-mmio-cont-815b0",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "call_semantics": true,
+              "detail_type": "control_transfer",
+              "mnemonic": null,
+              "original_reason": null,
+              "transfer_kind": "direct_call"
+            },
+            "kind": "direct_call",
+            "relation_id": "call-80bd2",
+            "source": {
+              "entity_id": "f80af4",
+              "entity_type": "function"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f81052",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "call-80bd2"
+        }
+      ],
+      "claim_type": "static_call_path",
+      "expected": {
+        "claim_type": "static_call_path",
+        "edge_relation_ids": [
+          "call-80bd2"
+        ],
+        "source_function_id": "f80af4",
+        "target_function_id": "f8106c"
+      },
+      "mismatch_detail": null,
+      "reason_code": "broken_explicit_path",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-static-paths",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "call-80bd2"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-path-init-adcdisable",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "call_semantics": true,
+              "detail_type": "control_transfer",
+              "mnemonic": null,
+              "original_reason": null,
+              "transfer_kind": "direct_call"
+            },
+            "kind": "direct_call",
+            "relation_id": "call-80bdc",
+            "source": {
+              "entity_id": "f80af4",
+              "entity_type": "function"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f81044",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "call-80bdc"
+        }
+      ],
+      "claim_type": "static_call_path",
+      "expected": {
+        "claim_type": "static_call_path",
+        "edge_relation_ids": [
+          "call-80bdc"
+        ],
+        "source_function_id": "f80af4",
+        "target_function_id": "f81052"
+      },
+      "mismatch_detail": null,
+      "reason_code": "broken_explicit_path",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-static-paths",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "call-80bdc"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-path-init-adctiming",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "call_semantics": true,
+              "detail_type": "control_transfer",
+              "mnemonic": null,
+              "original_reason": null,
+              "transfer_kind": "direct_call"
+            },
+            "kind": "direct_call",
+            "relation_id": "call-8125a",
+            "source": {
+              "entity_id": "f81234",
+              "entity_type": "function"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f8106c",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "call-8125a"
+        }
+      ],
+      "claim_type": "static_call_path",
+      "expected": {
+        "claim_type": "static_call_path",
+        "edge_relation_ids": [
+          "call-8125a"
+        ],
+        "source_function_id": "f81234",
+        "target_function_id": "f80db0"
+      },
+      "mismatch_detail": null,
+      "reason_code": "broken_explicit_path",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-static-paths",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "call-8125a"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-path-pinmode-pioconf",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "binding_status": "function_entry",
+              "detail_type": "vector_dispatch",
+              "vector_index": 11
+            },
+            "kind": "vector_dispatch",
+            "relation_id": "vector-11",
+            "source": {
+              "entity_id": "vector-11",
+              "entity_type": "vector_entry"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f81176",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "vector-11"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": "function_entry",
+        "expected_direction": null,
+        "expected_kind": "vector_dispatch",
+        "expected_source_entity_id": "vector-11",
+        "expected_status": "confirmed_static",
+        "expected_target_entity_id": "f81174",
+        "expected_transfer_kind": null,
+        "expected_vector_index": 11,
+        "relation_id": "vector-11"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-vec-table",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "vector-11"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-vec-11",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "binding_status": "function_entry",
+              "detail_type": "vector_dispatch",
+              "vector_index": 27
+            },
+            "kind": "vector_dispatch",
+            "relation_id": "vector-27",
+            "source": {
+              "entity_id": "vector-27",
+              "entity_type": "vector_entry"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f81094",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "vector-27"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": "function_entry",
+        "expected_direction": null,
+        "expected_kind": "vector_dispatch",
+        "expected_source_entity_id": "vector-27",
+        "expected_status": "confirmed_static",
+        "expected_target_entity_id": "f81084",
+        "expected_transfer_kind": null,
+        "expected_vector_index": 27,
+        "relation_id": "vector-27"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-vec-table",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "vector-27"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-vec-27",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "binding_status": "function_entry",
+              "detail_type": "vector_dispatch",
+              "vector_index": 28
+            },
+            "kind": "vector_dispatch",
+            "relation_id": "vector-28",
+            "source": {
+              "entity_id": "vector-28",
+              "entity_type": "vector_entry"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f810cc",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "vector-28"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": "function_entry",
+        "expected_direction": null,
+        "expected_kind": "vector_dispatch",
+        "expected_source_entity_id": "vector-28",
+        "expected_status": "confirmed_static",
+        "expected_target_entity_id": "f81094",
+        "expected_transfer_kind": null,
+        "expected_vector_index": 28,
+        "relation_id": "vector-28"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-vec-table",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "vector-28"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-vec-28",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "binding_status": "function_entry",
+              "detail_type": "vector_dispatch",
+              "vector_index": 29
+            },
+            "kind": "vector_dispatch",
+            "relation_id": "vector-29",
+            "source": {
+              "entity_id": "vector-29",
+              "entity_type": "vector_entry"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f81104",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "vector-29"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": "function_entry",
+        "expected_direction": null,
+        "expected_kind": "vector_dispatch",
+        "expected_source_entity_id": "vector-29",
+        "expected_status": "confirmed_static",
+        "expected_target_entity_id": "f810cc",
+        "expected_transfer_kind": null,
+        "expected_vector_index": 29,
+        "relation_id": "vector-29"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-vec-table",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "vector-29"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-vec-29",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "binding_status": "function_entry",
+              "detail_type": "vector_dispatch",
+              "vector_index": 30
+            },
+            "kind": "vector_dispatch",
+            "relation_id": "vector-30",
+            "source": {
+              "entity_id": "vector-30",
+              "entity_type": "vector_entry"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f8113c",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "vector-30"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": "function_entry",
+        "expected_direction": null,
+        "expected_kind": "vector_dispatch",
+        "expected_source_entity_id": "vector-30",
+        "expected_status": "confirmed_static",
+        "expected_target_entity_id": "f81104",
+        "expected_transfer_kind": null,
+        "expected_vector_index": 30,
+        "relation_id": "vector-30"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-vec-table",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "vector-30"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-vec-30",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "binding_status": "function_entry",
+              "detail_type": "vector_dispatch",
+              "vector_index": 33
+            },
+            "kind": "vector_dispatch",
+            "relation_id": "vector-33",
+            "source": {
+              "entity_id": "vector-33",
+              "entity_type": "vector_entry"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f80ad0",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "vector-33"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": "function_entry",
+        "expected_direction": null,
+        "expected_kind": "vector_dispatch",
+        "expected_source_entity_id": "vector-33",
+        "expected_status": "confirmed_static",
+        "expected_target_entity_id": "f80abc",
+        "expected_transfer_kind": null,
+        "expected_vector_index": 33,
+        "relation_id": "vector-33"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-vec-table",
+          "collection": "findings"
+        },
+        {
+          "claim_id": "A-vec-uart",
+          "collection": "issue_anchors"
+        }
+      ],
+      "relation_ids": [
+        "vector-33"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-vec-33",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "binding_status": "function_entry",
+              "detail_type": "vector_dispatch",
+              "vector_index": 34
+            },
+            "kind": "vector_dispatch",
+            "relation_id": "vector-34",
+            "source": {
+              "entity_id": "vector-34",
+              "entity_type": "vector_entry"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f80adc",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "vector-34"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": "function_entry",
+        "expected_direction": null,
+        "expected_kind": "vector_dispatch",
+        "expected_source_entity_id": "vector-34",
+        "expected_status": "confirmed_static",
+        "expected_target_entity_id": "f80ad0",
+        "expected_transfer_kind": null,
+        "expected_vector_index": 34,
+        "relation_id": "vector-34"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-vec-table",
+          "collection": "findings"
+        },
+        {
+          "claim_id": "A-vec-uart",
+          "collection": "issue_anchors"
+        }
+      ],
+      "relation_ids": [
+        "vector-34"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-vec-34",
+      "usage_status": "referenced"
+    },
+    {
+      "actual_relations": [
+        {
+          "actual": {
+            "attributes": {
+              "binding_status": "function_entry",
+              "detail_type": "vector_dispatch",
+              "vector_index": 56
+            },
+            "kind": "vector_dispatch",
+            "relation_id": "vector-56",
+            "source": {
+              "entity_id": "vector-56",
+              "entity_type": "vector_entry"
+            },
+            "status": "confirmed_static",
+            "target": {
+              "entity_id": "f81084",
+              "entity_type": "function"
+            }
+          },
+          "relation_id": "vector-56"
+        }
+      ],
+      "claim_type": "relation_fact",
+      "expected": {
+        "claim_type": "relation_fact",
+        "expected_binding_status": "function_entry",
+        "expected_direction": null,
+        "expected_kind": "vector_dispatch",
+        "expected_source_entity_id": "vector-56",
+        "expected_status": "confirmed_static",
+        "expected_target_entity_id": "f80f34",
+        "expected_transfer_kind": null,
+        "expected_vector_index": 56,
+        "relation_id": "vector-56"
+      },
+      "mismatch_detail": null,
+      "reason_code": "relation_fact_mismatch",
+      "referencing_firmware_claims": [
+        {
+          "claim_id": "F-vec-table",
+          "collection": "findings"
+        }
+      ],
+      "relation_ids": [
+        "vector-56"
+      ],
+      "result": "incompatible",
+      "support_claim_id": "sc-vec-56",
+      "usage_status": "referenced"
+    }
+  ],
+  "failure_reason_code": "incompatible_relation_claim",
+  "generated_support_claim_count": 106,
+  "orphan_incompatible_count": 2,
+  "orphan_support_claim_count": 3,
+  "orphan_supported_count": 1,
+  "orphan_unsupported_count": 0,
+  "referenced_incompatible_count": 37,
+  "referenced_support_claim_count": 103,
+  "referenced_supported_count": 66,
+  "referenced_unsupported_count": 0,
+  "schema_version": "firmware-relation-support-failure/v1"
+}

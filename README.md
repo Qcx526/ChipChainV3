@@ -1,6 +1,11 @@
 # ChipChain V3
 
 大模型协同的芯片固件—硬件跨层漏洞攻击链路检测研究工程。
+
+中文入门：[如何阅读 Hardware / Firmware 分析报告](docs/tutorials/report-walkthrough/README.md)。
+通过真实 Hardware 743 与历史 Firmware Heat_Press 报告，学习逐字段追踪 support、relation、evidence 与结论边界。
+教学快照不代表 reviewed truth；Firmware 例子明确保留已知语义缺陷。
+
 当前阶段：**V3-1B2 — Structured Hardware Relation Claims & Support-Gated Hardware Agent**。
 Hardware A3 已冻结；Hardware B2 实现、离线验证及两次预定真实实验已完成，待人工审核。
 743/820 均 machine-valid；820 x10 hypothesis 的 host-side write/update 猜测仍有语义审核问题。
