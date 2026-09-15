@@ -247,7 +247,9 @@ def test_failed_run_is_safe_and_single_call(components,config,monkeypatch,tmp_pa
         output_root=root,context_mode='relation_v3',ghidra_home=tmp_path/'explicit')
     assert len(seen)==1
     directory=next(root.glob('*/*'))
-    assert {p.name for p in directory.iterdir()}=={'failure.json','invocation_attempts.jsonl'}
+    expected={'failure.json','invocation_attempts.jsonl'}
+    if failure=='support':expected.add('firmware_relation_support_failure.json')
+    assert {p.name for p in directory.iterdir()}==expected
     detail=json.loads((directory/'failure.json').read_text())
     if failure=='support':assert detail['failure_category']=='relation_support_validation'
     assert 'RAW PROVIDER BODY' not in (directory/'failure.json').read_text()

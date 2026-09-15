@@ -56,12 +56,28 @@ def test_real_relation_v3_preflight_and_fake_model(tmp_path,monkeypatch):
         payload=payload_for(components,rid)
         payload['support_claims'][0].update(expected_kind='direct_call',expected_status='confirmed_static',
             expected_source_entity_id='f80f34',expected_target_entity_id='f80eac',expected_transfer_kind='direct_call')
-        with pytest.raises(RelationSupportError):invoke(components,payload)
+        with pytest.raises(RelationSupportError) as caught:invoke(components,payload)
+        diagnostic=caught.value.failure_diagnostic
+        assert diagnostic.referenced_incompatible_count==1
+        failed=diagnostic.failed_referenced_supports[0]
+        actual=failed.actual_relations[0].actual
+        assert actual.relation_id==rid and failed.expected.expected_kind=='direct_call'
+        if rid=='call-80f88':
+            assert (actual.kind,actual.status,actual.attributes.transfer_kind,actual.attributes.mnemonic)==(
+                'control_transfer_unresolved','unresolved','indirect_call','blx')
+        elif rid=='vector-1':
+            assert actual.kind=='vector_dispatch' and actual.target.entity_id=='f80f34'
+        else:
+            assert actual.kind=='direct_branch' and actual.attributes.mnemonic=='b.w'
         outcomes['rejected']+=1
     for pc in (0x80eba,0x80eca,0x80ed2,0x80eda,0x80ee6,0x80ef2,0x80efe,0x80f0a):
         payload=payload_for(components,f'mmio-direction-{pc:x}')
         payload['support_claims'][0]['expected_direction']='write'
-        with pytest.raises(RelationSupportError):invoke(components,payload)
+        with pytest.raises(RelationSupportError) as caught:invoke(components,payload)
+        failed=caught.value.failure_diagnostic.failed_referenced_supports[0]
+        assert failed.reason_code=='relation_fact_mismatch' and failed.mismatch_detail=='direction_mismatch'
+        assert failed.actual_relations[0].actual.attributes.direction=='read'
+        assert failed.actual_relations[0].actual.attributes.mnemonic=='ldr'
         outcomes['rejected']+=1
     # R2: the same invalid real relation is diagnostic only when unreferenced.
     payload=payload_for(components,'call-80afa')
@@ -78,6 +94,6 @@ def test_real_relation_v3_preflight_and_fake_model(tmp_path,monkeypatch):
     assert outcomes=={'supported':6,'rejected':14}
     import hashlib
     metrics={**metadata,'context_characters':len(context),'context_sha256':hashlib.sha256(context.encode()).hexdigest(),
-             'fake_model_regressions':dict(outcomes),'orphan_incompatible_retained':1}
+             'fake_model_regressions':dict(outcomes),'orphan_incompatible_retained':1,'safe_failure_diagnostics_checked':14}
     (tmp_path/'preflight.json').write_text(json.dumps(metrics,indent=2))
     print(json.dumps(metrics,sort_keys=True))

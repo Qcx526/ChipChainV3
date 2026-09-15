@@ -66,7 +66,23 @@ class FirmwareRelationSupportReportV2(SupportAuditCounts):
         return self
 
 
-def validate_relation_support_v2(model_report, catalog):
+class SupportEvaluationEntry(SupportAuditEntry):
+    """Internal evaluation, explicitly NOT an accepted SupportAuditEntryV2."""
+    usage_status: Literal['referenced', 'orphaned']
+    referencing_firmware_claims: list[FirmwareClaimReference] = Field(default_factory=list)
+
+    @model_validator(mode='after')
+    def validate_usage(self):
+        if bool(self.referencing_firmware_claims) != (self.usage_status == 'referenced'):
+            raise ValueError('Evaluation usage and references disagree')
+        return self
+
+
+class CompleteSupportEvaluation(Contract):
+    support_claims: list[SupportEvaluationEntry]
+
+
+def evaluate_relation_support_v2(model_report, catalog):
     model_report = ModelFirmwareAnalysisReportV2.model_validate(model_report.model_dump())
     catalog = FirmwareStaticRelationCatalog.model_validate(catalog.model_dump())
     validate_firmware_report_references(model_report)
@@ -86,13 +102,34 @@ def validate_relation_support_v2(model_report, catalog):
     evaluated = [(sid, claim, evaluate_support(claim, catalog)) for sid, claim in claims.items()]
     entries = []
     for sid, claim, (status, reason, ids) in evaluated:
-        if refs[sid] and status != 'supported':
-            raise RelationSupportError('unsupported_relation_claim' if status == 'unsupported' else 'incompatible_relation_claim')
-        entries.append(SupportAuditEntryV2(
+        entries.append(SupportEvaluationEntry(
             support_claim=claim, usage_status='referenced' if refs[sid] else 'orphaned',
             result=status, reason_code=reason, relation_ids=ids, referencing_firmware_claims=refs[sid],
         ))
+    return CompleteSupportEvaluation(support_claims=entries)
+
+
+def enforce_referenced_support(evaluation, catalog):
+    from chipchain.agents.relation_support_diagnostics import (
+        RelationSupportValidationErrorV2, build_failure_diagnostic, validate_failure_diagnostic,
+    )
+    from pydantic import ValidationError
+    failed = [e for e in evaluation.support_claims if e.usage_status == 'referenced' and e.result != 'supported']
+    if failed:
+        diagnostic = None
+        try:
+            diagnostic = build_failure_diagnostic(evaluation, catalog)
+            diagnostic = validate_failure_diagnostic(diagnostic, evaluation, catalog)
+        except (ValueError, ValidationError):
+            # Unsafe/unrepresentable diagnostics never change rejection semantics.
+            diagnostic = None
+        raise RelationSupportValidationErrorV2(failed[0].result + '_relation_claim', diagnostic)
+    entries = [SupportAuditEntryV2.model_validate(e.model_dump()) for e in evaluation.support_claims]
     return FirmwareRelationSupportReportV2(support_claims=entries, **support_audit_counts(entries))
+
+
+def validate_relation_support_v2(model_report, catalog):
+    return enforce_referenced_support(evaluate_relation_support_v2(model_report, catalog), catalog)
 
 
 def validate_support_artifact_v2(audit, report, catalog):

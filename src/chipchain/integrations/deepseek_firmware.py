@@ -218,6 +218,37 @@ def persist_firmware_run(run: AnalysisRun, directory: Path, *, config: DeepSeekC
         raise
 
 
+def persist_relation_support_failure(diagnostic, directory, config):
+    """Best-effort bounded diagnostic; failure never permits an accepted report."""
+    from chipchain.agents.relation_support_diagnostics import (
+        FirmwareRelationSupportFailureReportV1, MAX_RELATION_SUPPORT_FAILURE_BYTES,
+    )
+    from chipchain.execution.reviewed_output import _safety
+    if diagnostic is None:
+        return {'diagnostic_persisted': False}
+    destination = directory / 'firmware_relation_support_failure.json'
+    created = False
+    try:
+        checked = FirmwareRelationSupportFailureReportV1.model_validate(diagnostic.model_dump())
+        _safety(checked.model_dump(mode='json'), config.api_key.get_secret_value())
+        text = json.dumps(checked.model_dump(mode='json'), sort_keys=True, indent=2) + '\n'
+        _check_secret(text, config)
+        blob = text.encode('utf-8')
+        if len(blob) > MAX_RELATION_SUPPORT_FAILURE_BYTES:
+            return {'diagnostic_persisted': False}
+        with destination.open('xb') as handle:
+            created = True
+            handle.write(blob)
+        return dict(diagnostic_persisted=True,
+            relation_support_failure_schema=checked.schema_version,
+            relation_support_failure_sha256=hashlib.sha256(blob).hexdigest(),
+            failed_referenced_support_count=len(checked.failed_referenced_supports))
+    except (ValueError, OSError, AgentExecutionError):
+        if created:
+            destination.unlink(missing_ok=True)
+        return {'diagnostic_persisted': False}
+
+
 def run_real_firmware(corpus_root: Path, *, config: DeepSeekConfig, enabled: bool,
                       output_root: Path, run_id: UUID | None = None, attempt_index: int = 1,
                       context_mode: str = "v1", ghidra_home: Path | None = None) -> Path:
@@ -371,6 +402,9 @@ def run_real_firmware(corpus_root: Path, *, config: DeepSeekConfig, enabled: boo
                         include_url=False, include_context=False, include_input=False)})})
             cause = cause.__cause__ or cause.__context__
         failure["diagnostics"] = diagnostics
+        from chipchain.agents.relation_support_diagnostics import RelationSupportValidationErrorV2
+        if isinstance(exc, RelationSupportValidationErrorV2):
+            failure.update(persist_relation_support_failure(exc.failure_diagnostic, directory, config))
         text = json.dumps(failure, indent=2)
         _check_secret(text, config)
         record_attempt(failure)

@@ -1,7 +1,7 @@
 # ChipChain V3
 
 大模型协同的芯片固件—硬件跨层漏洞攻击链路检测研究工程。
-当前阶段：**V3-2B3-R2 — Orphan Support Claim Policy & Referenced-Support Enforcement**。
+当前阶段：**V3-2B3-R3 — Safe Referenced-Support Failure Diagnostics**。
 新增显式 `relation_v3` context、Firmware prompt v2 和 model-only structured support claims；
 每个非空 Firmware claim 必须引用通过确定性检查的 support。旧 v1/v2 调用路径保留。
 设计、验证和真实实验记录见 [B3 文档](docs/research/v3-2b3-structured-relation-claims.md)。
@@ -15,6 +15,10 @@ B3-R2 评估并保留孤立 support 为诊断，仅被引用的 support 必须 s
 v1 校验兼容保留。输入/prompt/schema/provider 设置不变。本轮唯一一次真实调用通过 schema，
 随后因 referenced `incompatible_relation_claim` 被拒绝，未生成 accepted canonical report，未重试。
 详见 [B3-R2 孤立 support 政策与实验记录](docs/research/v3-2b3-r2-orphan-support-policy.md)。
+B3-R3 保持接受政策和模型输入不变，新增 bounded typed failure diagnostic。
+本轮唯一一次真实调用 schema 通过，但 37 个 referenced supports incompatible，报告拒绝；
+已保存完整安全错误索引，没有 accepted canonical report、重试或 reviewed export。
+详见 [B3-R3 安全诊断与逐项错误记录](docs/research/v3-2b3-r3-referenced-support-diagnostics.md)。
 
 V3-2A4 — Typed Static Relation Semantics & Claim-Support Contracts 已冻结。
 独立确定性关系层区分 direct call、direct branch、unresolved、MMIO 与静态向量绑定，
