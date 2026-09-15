@@ -1,11 +1,14 @@
 # ChipChain V3
 
 大模型协同的芯片固件—硬件跨层漏洞攻击链路检测研究工程。
-当前阶段：**V3-1A3 — Typed Hardware Observation Semantics & Claim-Support Contracts**。
-Firmware A5 static reachability 已冻结；Hardware A3 已完成实现与本地验证，待人工审核。
-新增独立硬件 typed facts 与 deterministic claim checker，743/820 分别产生 10/9 条 relation，
-区分 sampled point、instruction encoding/decode 与缺失的执行/连续区间/因果证明。
-本阶段没有模型调用，不修改 Hardware Agent、prompt 或历史报告；详见
+当前阶段：**V3-1B2 — Structured Hardware Relation Claims & Support-Gated Hardware Agent**。
+Hardware A3 已冻结；Hardware B2 实现、离线验证及两次预定真实实验已完成，待人工审核。
+743/820 均 machine-valid；820 x10 hypothesis 的 host-side write/update 猜测仍有语义审核问题。
+新增显式 supported 路径、prompt v3、model-only support schema 和安全诊断：每个 referenced support
+必须通过冻结 A3 checker；orphan 全部求值但不支撑报告 item。支持事实不证明 trigger hypothesis 正确。
+旧 Hardware invoke、prompt v2、domain report 和历史运行保留；本轮不自动 reviewed-export。
+设计、冻结身份与真实结果见 [Hardware B2 文档](docs/research/v3-1b2-structured-hardware-support.md)。
+A3 合同与 743/820 的 10/9 条 deterministic relations 见
 [Hardware A3 文档](docs/research/v3-1a3-hardware-typed-relations.md)。
 以下为已冻结 Firmware A5 的实现说明；B3 保留为可解释的真实负结果。
 新增 optional `angr==9.3.4`（Python 3.12+），基础 Python 要求仍为 >=3.11。

@@ -25,7 +25,8 @@ class AgentStructuredOutputError(AgentExecutionError):
 
 class StructuredReportRuntime(Generic[Report]):
     def __init__(self, model: BaseChatModel, schema: type[Report], system_prompt: str,
-                 *, structured_output_method: str | None = None) -> None:
+                 *, structured_output_method: str | None = None,
+                 structured_output_strict: bool | None = None) -> None:
         self.schema = schema
         self.system_prompt = system_prompt
         self.last_usage: dict[str, int] = {}
@@ -33,6 +34,8 @@ class StructuredReportRuntime(Generic[Report]):
         self.last_parse_stage: str | None = None
         try:
             options = {"method": structured_output_method} if structured_output_method is not None else {}
+            if structured_output_strict is not None:
+                options["strict"] = structured_output_strict
             self.runnable = model.with_structured_output(schema, include_raw=True, **options)
         except Exception as exc:
             raise AgentExecutionError("Model does not support the structured invocation setup") from exc

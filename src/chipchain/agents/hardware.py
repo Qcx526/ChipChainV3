@@ -21,15 +21,24 @@ class HardwareSecurityAgent:
             if model is not None else None
         )
 
+        self._model = model
+        self._supported_runtime = None
+        self._active_runtime = self._runtime
+
+    @property
+    def last_parse_stage(self) -> str | None:
+        return self._active_runtime.last_parse_stage if self._active_runtime is not None else None
+
     @property
     def last_usage(self) -> dict[str, int]:
-        return dict(self._runtime.last_usage) if self._runtime is not None else {}
+        return dict(self._active_runtime.last_usage) if self._active_runtime is not None else {}
 
     @property
     def last_response_metadata(self) -> dict[str, str]:
-        return dict(self._runtime.last_response_metadata) if self._runtime is not None else {}
+        return dict(self._active_runtime.last_response_metadata) if self._active_runtime is not None else {}
 
     def invoke(self, inputs: HardwareAgentInput) -> HardwareAgentOutput:
+        self._active_runtime = self._runtime
         observations = inputs.deterministic_observations
         ir = ProcessorBehaviorIR(
             case_id=inputs.case.case_id,
@@ -52,6 +61,27 @@ class HardwareSecurityAgent:
             ),
             processor_behavior_ir=ir,
         )
+
+    def invoke_supported(self, inputs: HardwareAgentInput, *, relation_catalog, relation_projection):
+        """Explicit B2 path. Factual support does not verify a trigger hypothesis."""
+        from chipchain.agents.model_outputs.hardware_v2 import ModelHardwareAnalysisReportV2
+        from chipchain.agents.prompts.hardware_v3 import SYSTEM_PROMPT as SUPPORTED_PROMPT
+        from chipchain.agents.projections.hardware_envelope import build_hardware_envelope, serialize_hardware_envelope
+        from chipchain.agents.hardware_support import collect_hardware_evidence, validate_supported_hardware_report
+        collect_hardware_evidence(inputs)
+        before = inputs.model_dump_json()
+        envelope = build_hardware_envelope(inputs, relation_catalog, relation_projection)
+        if self._model is None:
+            raise ValueError('Supported Hardware invocation requires an explicit model')
+        if self._supported_runtime is None:
+            self._supported_runtime = StructuredReportRuntime(self._model, ModelHardwareAnalysisReportV2,
+                SUPPORTED_PROMPT, structured_output_method='function_calling', structured_output_strict=False)
+        self._active_runtime = self._supported_runtime
+        model_report = self._supported_runtime.invoke(serialize_hardware_envelope(envelope))
+        output, audit = validate_supported_hardware_report(model_report, inputs, relation_catalog)
+        if inputs.model_dump_json() != before:
+            raise AgentStructuredOutputError('Supported Hardware invocation changed deterministic input')
+        return output, audit
 
 
 def validate_hardware_evidence(report: HardwareAnalysisReport, inputs: HardwareAgentInput) -> None:
