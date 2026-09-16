@@ -2,6 +2,10 @@
 
 大模型协同的芯片固件—硬件跨层漏洞攻击链路检测研究工程。
 
+当前研究阶段：**V3-DATA0 — Paired Dataset Reconnaissance & Acquisition Planning**。
+数据瓶颈是同一 revision/configuration 下可绑定的 firmware–RTL 配对与执行证据。
+平台候选、获取规划与未决问题见 [DATA0 调研文档](docs/research/v3-data0-paired-dataset-reconnaissance.md)；候选尚未接入。
+
 中文入门：[如何阅读 Hardware / Firmware 分析报告](docs/tutorials/report-walkthrough/README.md)。
 通过真实 Hardware 743 与历史 Firmware Heat_Press 报告，学习逐字段追踪 support、relation、evidence 与结论边界。
 教学快照不代表 reviewed truth；Firmware 例子明确保留已知语义缺陷。
