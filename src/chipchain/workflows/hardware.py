@@ -1,5 +1,9 @@
 """Two-node hardware lifecycle: empty observation stub -> independent agent."""
 
+from collections.abc import Callable
+
+from chipchain.domain.case import CaseBundle
+
 from langgraph.graph import END, START, StateGraph
 from langgraph.graph.state import CompiledStateGraph
 
@@ -13,18 +17,30 @@ from chipchain.workflows.state import (
 
 def build_hardware_workflow(
     agent: HardwareSecurityAgent | None = None,
+    *, observer: Callable[[CaseBundle], HardwareObservations] | None = None,
 ) -> CompiledStateGraph:
     security_agent = agent if agent is not None else HardwareSecurityAgent()
 
     def observe(state: CaseWorkflowState) -> dict[str, object]:
         if not state.case.has_hardware_inputs:
             raise ValueError("Hardware workflow requires hardware artifacts")
+        if observer is not None:
+            try:
+                observations = HardwareObservations.model_validate(observer(state.case).model_dump())
+                HardwareAgentInput(case=state.case, deterministic_observations=observations)
+                return {"hardware_observations": observations}
+            except Exception:
+                return {"hardware_observations": None, "hardware_status": AnalysisStatus.FAILED,
+                        "errors": [*state.errors, workflow_error(WorkflowStage.HARDWARE,
+                            ValueError("Deterministic hardware observation failed"))]}
         return {"hardware_observations": HardwareObservations(
             case_id=state.case.case_id,
             unresolved_questions=["R0 observation stub: no hardware artifacts were analyzed."],
         )}
 
     def analyze(state: CaseWorkflowState) -> dict[str, object]:
+        if state.hardware_status == AnalysisStatus.FAILED:
+            return {}
         try:
             if state.hardware_observations is None:
                 raise ValueError("Hardware observations are missing")

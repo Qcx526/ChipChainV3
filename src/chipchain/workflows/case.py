@@ -1,5 +1,10 @@
 """Case-first routing composed from independently compiled LangGraph workflows."""
 
+from collections.abc import Callable
+
+from chipchain.domain.case import CaseBundle
+from chipchain.tools.contracts import HardwareObservations, FirmwareObservations
+
 from langgraph.graph import END, START, StateGraph
 from langgraph.graph.state import CompiledStateGraph
 
@@ -20,9 +25,11 @@ def build_case_workflow(
     hardware_agent: HardwareSecurityAgent | None = None,
     firmware_agent: FirmwareSecurityAgent | None = None,
     cross_layer_agent: CrossLayerSecurityAgent | None = None,
+    hardware_observer: Callable[[CaseBundle], HardwareObservations] | None = None,
+    firmware_observer: Callable[[CaseBundle], FirmwareObservations] | None = None,
 ) -> CompiledStateGraph:
-    hardware = build_hardware_workflow(hardware_agent)
-    firmware = build_firmware_workflow(firmware_agent)
+    hardware = build_hardware_workflow(hardware_agent, observer=hardware_observer)
+    firmware = build_firmware_workflow(firmware_agent, observer=firmware_observer)
     cross_layer = build_cross_layer_workflow(cross_layer_agent)
 
     def initialize(state: CaseWorkflowState) -> dict[str, object]:

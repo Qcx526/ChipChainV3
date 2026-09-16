@@ -281,3 +281,16 @@ R0-C 已完成 Architecture Reset；XL0 已建立独立跨层合同，真实 Cro
 
 架构边界、准入条件、状态语义和后续扩展点见
 [docs/architecture/v3-r0.md](docs/architecture/v3-r0.md)。
+
+### Ibex 配对样本的完整 LLM 试运行
+
+已新增显式入口，将 `samples/` 中的 Ibex 模拟器与 `hello_test.elf` 重新仿真，
+读取 trace/ELF 的确定性事实，再依次调用硬件、固件和跨层 Agent：
+
+```bash
+CHIPCHAIN_ENABLE_REAL_LLM=1 .venv/bin/python -m chipchain.integrations.paired_baseline --env-file .env
+```
+
+这是配对基线的实验接入；使用 generic evidence ID binding，尚未接入 typed relation-support、
+完整 RTL 审计或漏洞验证。各阶段独立保存输入、prompt、用量、报告及失败状态，不自动重试。
+输入范围、输出位置与限制见 [配对 LLM 试运行说明](docs/research/ibex-paired-llm-pilot.md)。
