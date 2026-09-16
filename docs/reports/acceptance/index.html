@@ -1,0 +1,714 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ChipChain｜硬件与固件中文验收报告</title><style>
+:root{color-scheme:light;--ink:#1c2d3f;--muted:#526577;--line:#dce4ea;--blue:#155b87}*{box-sizing:border-box}body{margin:0;background:#f3f6f8;color:var(--ink);font:17px/1.85 system-ui,"Noto Sans CJK SC","Microsoft YaHei",sans-serif}header{background:#173b55;color:white;padding:38px max(24px,calc((100% - 1080px)/2))}header p{color:#dae9f2;max-width:800px}h1{font-size:28px;line-height:1.5}h2{font-size:23px;margin-top:36px;border-bottom:1px solid var(--line);padding-bottom:10px}h3{font-size:19px}nav{display:flex;gap:12px;flex-wrap:wrap}nav a{color:white;border:1px solid #82a6bf;padding:8px 16px;border-radius:6px;text-decoration:none}main{max-width:1140px;margin:auto;padding:28px}article{background:white;padding:30px 36px;margin:0 0 30px;border:1px solid var(--line);border-radius:10px;scroll-margin-top:20px}a{color:var(--blue);overflow-wrap:anywhere}table{border-collapse:collapse;width:100%;font-size:15px;margin:20px 0;table-layout:auto}th,td{border:1px solid var(--line);text-align:left;padding:11px 13px;vertical-align:top;overflow-wrap:anywhere}th{background:#edf3f7}code{font:13px/1.7 ui-monospace,monospace;overflow-wrap:anywhere;white-space:normal;background:#f0f4f7;padding:2px 4px}strong{color:#123b58}details{border:1px solid var(--line);border-radius:6px;padding:14px;margin:20px 0}summary{cursor:pointer;font-weight:600}li{margin-bottom:7px}footer{color:var(--muted);padding:20px 0 40px} @media(max-width:720px){main{padding:12px}article{padding:18px}body{font-size:16px}table{font-size:13px}th,td{padding:7px}}@media print{body{background:white;font-size:11pt}header{background:white;color:black;padding:0 0 12px}header p{color:black}nav{display:none}main{padding:0;max-width:none}article{border:0;padding:0;page-break-before:always}article:first-child{page-break-before:auto}h2,h3{break-after:avoid}tr{break-inside:avoid}a{color:black}details{display:none}footer{font-size:10pt}}
+</style></head><body><header><p>CHIPCHAIN · 人工验收阅读版</p><h1>先看结论，再查证据</h1><p>这里解释现有模型报告发现了什么、哪些说法还不能接受，以及下一步该验证什么。三份具名历史报告，含已知错误提示；不代替人工签字。</p><nav><a href="#hardware-743">硬件 743</a><a href="#hardware-820">硬件 820</a><a href="#firmware-heat-press">固件 Heat_Press</a></nav></header><main><article id="hardware-743"><h1>硬件 743：看到了寄存器与访存状态差异，触发原因尚未确认</h1>
+<p><a href="README.md">返回验收入口</a> · <a href="index.html#hardware-743">浏览器阅读/打印</a></p>
+<h2>一分钟结论</h2>
+<p><strong>已有记录显示：被分析的硬件版本与参考版本，在两个寄存器和访存控制状态上存在差异。但现有报告还不能说明是哪条实际执行的指令触发了差异。</strong></p>
+<p>可以把本结果作为“有明确位置和值的硬件差异线索”交付。不能把它作为已经复现的漏洞或已验证触发条件交付。
+这里的被分析版本对应原文 host，参考版本对应 reference；名称本身不决定哪侧在真实场景下一定正确。</p>
+<table>
+<thead>
+<tr>
+<th>验收问题</th>
+<th>本次答案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分析了什么？</td>
+<td>EnCorpus Ibex driver 743 的历史波形与工具日志，不是 DATA1A 的 hello_test 执行</td>
+</tr>
+<tr>
+<td>是否确实找到差异？</td>
+<td>是，寄存器值和内部控制状态的采样记录不同</td>
+</tr>
+<tr>
+<td>是否知道触发原因？</td>
+<td>尚不知道；模型提出了访存相关猜测</td>
+</tr>
+<tr>
+<td>程序检查通过了吗？</td>
+<td>13 个被引用的结构化支持条目通过一致性检查；不等于全文结论被证明</td>
+</tr>
+<tr>
+<td>人工是否已签字验收？</td>
+<td>本版仅供验收，未改变原报告的 reviewed 状态</td>
+</tr>
+</tbody>
+</table>
+<h2>发现了什么</h2>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>用普通话说明观察结果</th>
+<th>原始条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30 ns</td>
+<td>译码阶段出现“把 x6 加 1，结果目标为 x28”的指令编码。这里只看到指令经过某阶段，不能证明它最终完成。</td>
+<td>F1</td>
+</tr>
+<tr>
+<td>40 ns</td>
+<td>出现把常量 0x1000 放到 x10 的指令编码，同样没有最终执行完成的证据。</td>
+<td>F2</td>
+</tr>
+<tr>
+<td>50 ns</td>
+<td>出现“从 x28+7 指向的地址读取一个字到 x10”的指令编码；同时 x28 的采样值是被分析版 0、参考版 1。</td>
+<td>F3、F5</td>
+</tr>
+<tr>
+<td>50、60、70 ns</td>
+<td>负责内存读写的控制单元，在所列采样点状态编码不同：被分析版 010，参考版 000。50/70 ns 是下一状态信号，60 ns 是当前状态信号，不能当作同一信号持续变化的证明。</td>
+<td>F4、F6、F7</td>
+</tr>
+<tr>
+<td>70 ns</td>
+<td>x10 的采样值是被分析版 0x1000、参考版 0。寄存器里的数值不同，但还不知道具体是哪次写入造成。</td>
+<td>F8</td>
+</tr>
+</tbody>
+</table>
+<p>x10、x28 是处理器存放计算数据的寄存器；ns 是这份波形的纳秒时间单位。
+这些观察描述的是历史材料中的采样点，本次中文整理没有重新仿真。</p>
+<h2>模型提出了什么解释</h2>
+<p>模型猜测：访存指令、访存控制状态差异以及 x28/x10 的差异可能有关联（H1）。
+这条解释有相关观察作背景，但缺少把它们连起来的执行证据，因此<strong>只能保留为待验证猜测</strong>。
+不能把“几个现象在相近时间出现”写成“这条指令导致了寄存器错误”。
+原报告的 S1/S2 是对上表状态差异的归纳，不是新增的独立证据。</p>
+<h2>历史工具日志怎么理解</h2>
+<p>F9 表示旧日志记录某个 cover 目标在 8 个周期内到达。F10 表示旧日志还记录了 EVS053 轨迹生成错误。
+目前没有完整配置来确定两者之间的关系，也没有在本次重跑验证。
+因此不能据此宣称“形式化已经证明漏洞”，也不能仅凭错误日志否定波形中确实存在的采样差异。</p>
+<h2>建议验收意见与下一步</h2>
+<p><strong>建议验收为：差异提取结果可追溯；触发解释仍待验证。</strong> 这是一项建议，不是替验收者批准。
+下一步需要能观察指令最终完成、寄存器写回及访存行为的运行证据，并在相同输入条件下比较两个硬件版本。
+还需核对完整 formal/reset 配置，才适合讨论历史 cover 与错误记录的含义。
+内部仿真信号可见不代表真实芯片外部同样能读取；本报告未建立物理可观测性或安全影响。</p>
+<h2>报告身份与证据附录</h2>
+<p>此处用于复核；首次阅读可以先跳过。本版是助手编写的中文解读与验收建议，不是原模型新增输出，不赋予 reviewed 状态。</p>
+<ul>
+<li>Case：<code>encorpus:ibex:driver:743</code></li>
+<li>Source run：<code>e4636d59-ef13-42d3-ab19-acedb3b60143</code></li>
+<li><a href="../../../output/encorpus:ibex:driver:743/e4636d59-ef13-42d3-ab19-acedb3b60143/hardware_analysis_report.json">原始报告 JSON</a>，SHA256：<code>fb0493edec0dfc883e75508f4de69f2b0f6cc0a25cf71a93572f80fb44425883</code></li>
+<li>
+<p><a href="../../../docs/research/v3-1b2-structured-hardware-support.md">既有技术审查</a></p>
+</li>
+<li>
+<p><a href="../../../output/encorpus:ibex:driver:743/e4636d59-ef13-42d3-ab19-acedb3b60143/hardware_relation_support.json">同一次运行的支持检查</a>：13/13 个引用支持通过。</p>
+</li>
+</ul>
+<details>
+<summary>展开全部条目对应关系（技术复核用）</summary>
+<h3>发现</h3>
+<table>
+<thead>
+<tr>
+<th>原始 ID</th>
+<th>中文含义及审查提示</th>
+<th>证据编号 / 支持条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>F1</code></td>
+<td>30 ns 出现 addi 编码；无最终执行完成证据。</td>
+<td><code>SC1</code>、<code>SC4</code></td>
+</tr>
+<tr>
+<td><code>F2</code></td>
+<td>40 ns 出现 lui 编码；无最终执行完成证据。</td>
+<td><code>SC2</code>、<code>SC5</code></td>
+</tr>
+<tr>
+<td><code>F3</code></td>
+<td>50 ns 出现 lw 编码；无最终执行完成证据。</td>
+<td><code>SC3</code>、<code>SC6</code></td>
+</tr>
+<tr>
+<td><code>F4</code></td>
+<td>50 ns 访存控制下一状态不同。</td>
+<td><code>SC7</code></td>
+</tr>
+<tr>
+<td><code>F5</code></td>
+<td>50 ns x28 采样值不同，读写方向未知。</td>
+<td><code>SC8</code></td>
+</tr>
+<tr>
+<td><code>F6</code></td>
+<td>60 ns 访存控制当前状态不同。</td>
+<td><code>SC9</code></td>
+</tr>
+<tr>
+<td><code>F7</code></td>
+<td>70 ns 访存控制下一状态不同。</td>
+<td><code>SC10</code></td>
+</tr>
+<tr>
+<td><code>F8</code></td>
+<td>70 ns x10 采样值不同，读写方向未知。</td>
+<td><code>SC11</code></td>
+</tr>
+<tr>
+<td><code>F9</code></td>
+<td>旧日志记录 8 周期 cover 命中。</td>
+<td><code>SC12</code></td>
+</tr>
+<tr>
+<td><code>F10</code></td>
+<td>旧日志记录 EVS053 轨迹错误。</td>
+<td><code>SC13</code></td>
+</tr>
+</tbody>
+</table>
+<h3>触发猜测</h3>
+<table>
+<thead>
+<tr>
+<th>原始 ID</th>
+<th>中文含义及审查提示</th>
+<th>证据编号 / 支持条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>H1</code></td>
+<td>访存编码与状态差异可能有关：待验证猜测。</td>
+<td><code>SC3</code>、<code>SC6</code>、<code>SC7</code>、<code>SC8</code>、<code>SC9</code>、<code>SC10</code>、<code>SC11</code></td>
+</tr>
+</tbody>
+</table>
+<h3>状态归纳</h3>
+<table>
+<thead>
+<tr>
+<th>原始 ID</th>
+<th>中文含义及审查提示</th>
+<th>证据编号 / 支持条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>S1</code></td>
+<td>汇总三个内部控制状态采样差异。</td>
+<td><code>SC7</code>、<code>SC9</code>、<code>SC10</code></td>
+</tr>
+<tr>
+<td><code>S2</code></td>
+<td>汇总 x28/x10 寄存器内容差异。</td>
+<td><code>SC8</code>、<code>SC11</code></td>
+</tr>
+</tbody>
+</table>
+</details>
+<p>原报告的未决问题已归入正文“缺项/下一步”；行为 ID 列表是索引，不额外翻译成独立发现。</p></article><article id="hardware-820"><h1>硬件 820：看到了调试状态差异，模型的写寄存器解释证据不足</h1>
+<p><a href="README.md">返回验收入口</a> · <a href="index.html#hardware-820">浏览器阅读/打印</a></p>
+<h2>一分钟结论</h2>
+<p><strong>已有波形显示：被分析版本与参考版本的调试状态在六个采样点不同，之后 x10 的值也不同。尚无证据证明两者存在触发关系。</strong></p>
+<p>特别需要注意：模型猜测“被分析版可能执行了参考版没有执行的 x10 写入”。这个方向不能从现有数值差异推出，不能作为验收结论。</p>
+<table>
+<thead>
+<tr>
+<th>验收问题</th>
+<th>本次答案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分析了什么？</td>
+<td>EnCorpus Ibex driver 820 的历史波形与日志</td>
+</tr>
+<tr>
+<td>确认了哪些现象？</td>
+<td>六个调试状态采样差异、一个 x10 采样差异</td>
+</tr>
+<tr>
+<td>能定位触发指令吗？</td>
+<td>不能；本次没有提取到符合条件的指令编码，不代表程序没有执行指令</td>
+</tr>
+<tr>
+<td>程序检查通过了吗？</td>
+<td>9 个被引用支持条目通过；检查的是结构化事实，未证明模型解释</td>
+</tr>
+<tr>
+<td>建议如何验收？</td>
+<td>保留观察结果；不接受“哪侧多写了 x10”的方向性解释</td>
+</tr>
+</tbody>
+</table>
+<h2>发现了什么</h2>
+<table>
+<thead>
+<tr>
+<th>观察位置</th>
+<th>被分析版本</th>
+<th>参考版本</th>
+<th>能说明什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100、230、330、410、490、540 ns 的 debug_mode_q</td>
+<td>0</td>
+<td>1</td>
+<td>在这六个时刻，调试模式状态位不同；不能说两个时刻之间一直如此</td>
+</tr>
+<tr>
+<td>580 ns 的 x10</td>
+<td>0</td>
+<td>0x378（十进制 888）</td>
+<td>寄存器内容不同；不知道各自经历了什么读写操作</td>
+</tr>
+</tbody>
+</table>
+<p>调试模式可以理解为处理器供调试使用的一种运行状态。这里的状态位不同，并不自动证明存在调试绕过或权限问题。
+原报告的两条 abnormal_states 只是汇总这些观察，不是另一轮实验结果。</p>
+<h2>两个猜测分别如何看待</h2>
+<table>
+<thead>
+<tr>
+<th>模型猜测</th>
+<th>中文解释</th>
+<th>验收处理建议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>debug_mode_divergence</td>
+<td>差异可能和进入或退出调试模式的条件有关</td>
+<td>可保留为调查方向；没有具体指令、连续状态和因果证据</td>
+</tr>
+<tr>
+<td>x10_divergence</td>
+<td>被分析版本可能做了参考版本没有做的写入或更新</td>
+<td>证据不足，不能接受这个方向性说法；也可能是参考版更新、被分析版未更新，或其他过程，当前不能选择其中一种</td>
+</tr>
+</tbody>
+</table>
+<p>第二行列举其他可能性只是解释为什么原猜测不能成立，不是新增确定结论。
+对本例最稳妥的表述是：“x10 在指定时间的值不同，具体写回过程未知。”</p>
+<h2>历史日志与缺项</h2>
+<p>历史 verify.log 记录 cover 在 59 个周期内到达，也记录了 EVS053 轨迹错误。
+完整验证环境不足，不能将这两项直接解释成漏洞被证明或某一条指令触发了差异。</p>
+<p>还缺三类关键材料：指令最终完成的记录、x10 的写回事件、调试进入/退出的完整控制过程。
+此外，调试状态和 x10 是不同信号，不能把两者拼成一条连续因果链。</p>
+<h2>建议验收意见与下一步</h2>
+<p><strong>建议验收为：观察可追溯，模型对写入方向的解释暂不采纳，触发条件未确认。</strong> 本版没有执行人工签字或 reviewed 导出。
+后续应先补足可定位的执行/写回证据，再比较触发过程；不建议围绕已有方向性猜测直接写最终论文结论。
+本结果也不能直接与 ARM Heat_Press 的线索拼成跨层攻击链。</p>
+<h2>报告身份与证据附录</h2>
+<p>此处用于复核；首次阅读可以先跳过。本版是助手编写的中文解读与验收建议，不是原模型新增输出，不赋予 reviewed 状态。</p>
+<ul>
+<li>Case：<code>encorpus:ibex:driver:820</code></li>
+<li>Source run：<code>05660d2d-c2e7-480d-9758-6d75f0b9ff9b</code></li>
+<li><a href="../../../output/encorpus:ibex:driver:820/05660d2d-c2e7-480d-9758-6d75f0b9ff9b/hardware_analysis_report.json">原始报告 JSON</a>，SHA256：<code>74ba7a5b60771b1cff625f3df38f8b3f8ddc2bf135e3206c7fa43eb6e9c87cc5</code></li>
+<li>
+<p><a href="../../../docs/research/v3-1b2-structured-hardware-support.md">既有技术审查</a></p>
+</li>
+<li>
+<p><a href="../../../output/encorpus:ibex:driver:820/05660d2d-c2e7-480d-9758-6d75f0b9ff9b/hardware_relation_support.json">同一次运行的支持检查</a>：9/9 个引用支持通过。</p>
+</li>
+</ul>
+<details>
+<summary>展开全部条目对应关系（技术复核用）</summary>
+<h3>发现</h3>
+<table>
+<thead>
+<tr>
+<th>原始 ID</th>
+<th>中文含义及审查提示</th>
+<th>证据编号 / 支持条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hwfind:local:debug_mode_q:100</code></td>
+<td>100 ns 调试状态位不同；不是连续区间证明。</td>
+<td><code>sc:rel:local:100</code></td>
+</tr>
+<tr>
+<td><code>hwfind:local:debug_mode_q:230</code></td>
+<td>230 ns 调试状态位不同；不是连续区间证明。</td>
+<td><code>sc:rel:local:230</code></td>
+</tr>
+<tr>
+<td><code>hwfind:local:debug_mode_q:330</code></td>
+<td>330 ns 调试状态位不同；不是连续区间证明。</td>
+<td><code>sc:rel:local:330</code></td>
+</tr>
+<tr>
+<td><code>hwfind:local:debug_mode_q:410</code></td>
+<td>410 ns 调试状态位不同；不是连续区间证明。</td>
+<td><code>sc:rel:local:410</code></td>
+</tr>
+<tr>
+<td><code>hwfind:local:debug_mode_q:490</code></td>
+<td>490 ns 调试状态位不同；不是连续区间证明。</td>
+<td><code>sc:rel:local:490</code></td>
+</tr>
+<tr>
+<td><code>hwfind:local:debug_mode_q:540</code></td>
+<td>540 ns 调试状态位不同；不是连续区间证明。</td>
+<td><code>sc:rel:local:540</code></td>
+</tr>
+<tr>
+<td><code>hwfind:reg:x10:580</code></td>
+<td>580 ns x10 值不同；写回方向未知。</td>
+<td><code>sc:rel:reg:x10:580</code></td>
+</tr>
+<tr>
+<td><code>hwfind:formal:cover:c_propagated</code></td>
+<td>旧日志记录 59 周期 cover 命中。</td>
+<td><code>sc:rel:formal:cover</code></td>
+</tr>
+<tr>
+<td><code>hwfind:formal:trace_error:evs053</code></td>
+<td>旧日志记录 EVS053 轨迹错误。</td>
+<td><code>sc:rel:formal:error</code></td>
+</tr>
+</tbody>
+</table>
+<h3>触发猜测</h3>
+<table>
+<thead>
+<tr>
+<th>原始 ID</th>
+<th>中文含义及审查提示</th>
+<th>证据编号 / 支持条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hwtrig:debug_mode_divergence</code></td>
+<td>调试状态差异可能与进入/退出调试有关：待验证。</td>
+<td><code>sc:rel:local:100</code>、<code>sc:rel:local:230</code>、<code>sc:rel:local:330</code>、<code>sc:rel:local:410</code>、<code>sc:rel:local:490</code>、<code>sc:rel:local:540</code></td>
+</tr>
+<tr>
+<td><code>hwtrig:x10_divergence</code></td>
+<td>猜测被分析版额外写 x10：方向无证据，不采纳。</td>
+<td><code>sc:rel:reg:x10:580</code></td>
+</tr>
+</tbody>
+</table>
+<h3>状态归纳</h3>
+<table>
+<thead>
+<tr>
+<th>原始 ID</th>
+<th>中文含义及审查提示</th>
+<th>证据编号 / 支持条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hwstate:debug_mode_q_host_ref_divergence</code></td>
+<td>汇总六个调试状态采样点。</td>
+<td><code>sc:rel:local:100</code>、<code>sc:rel:local:230</code>、<code>sc:rel:local:330</code>、<code>sc:rel:local:410</code>、<code>sc:rel:local:490</code>、<code>sc:rel:local:540</code></td>
+</tr>
+<tr>
+<td><code>hwstate:x10_host_ref_divergence</code></td>
+<td>汇总一个 x10 寄存器采样差异。</td>
+<td><code>sc:rel:reg:x10:580</code></td>
+</tr>
+</tbody>
+</table>
+</details>
+<p>原报告的未决问题已归入正文“缺项/下一步”；行为 ID 列表是索引，不额外翻译成独立发现。</p></article><article id="firmware-heat-press"><h1>固件 Heat_Press：发现静态分析线索，但部分调用路径解释有误</h1>
+<p><a href="README.md">返回验收入口</a> · <a href="index.html#firmware-heat-press">浏览器阅读/打印</a></p>
+<h2>一分钟结论</h2>
+<p><strong>这份固件报告找到了串口中断和外设访问的静态线索，也暴露了分析缺口；但它把一条尚未确认的调用关系写成了确定路径，因此整份报告不能按“路径已证实”验收。</strong></p>
+<p>本文主要解释历史 B2 运行。后来的 R3 是另一轮运行，报告被支持检查拒绝；两轮不能混成一份通过验收的报告。</p>
+<table>
+<thead>
+<tr>
+<th>验收问题</th>
+<th>本次答案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分析对象是什么？</td>
+<td>ARM Heat_Press 固件与 Fuzzware scenario 13 的输入配置</td>
+</tr>
+<tr>
+<td>做了真实固件执行吗？</td>
+<td>这里所解释的报告基于静态结构与配置，没有证明输入被固件实际消费</td>
+</tr>
+<tr>
+<td>找到了什么？</td>
+<td>候选串口相关入口、外设访问位置、缺失的函数归属和未建立的输入连接</td>
+</tr>
+<tr>
+<td>原模型报告通过了吗？</td>
+<td>历史 B2 通过机器检查，但后续语义审查发现错误；不是 reviewed 成果</td>
+</tr>
+<tr>
+<td>建议验收结论？</td>
+<td>接受可核对的局部结构事实和缺项清单；退回错误路径解释</td>
+</tr>
+</tbody>
+</table>
+<h2>六项主要发现，分别意味着什么</h2>
+<table>
+<thead>
+<tr>
+<th>原始发现</th>
+<th>给验收者的解释</th>
+<th>应如何处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>串口中断线索</td>
+<td>静态向量表中有 UART/USART 处理函数，也找到了相关外设读取位置。这些可作为继续调查的入口。</td>
+<td>保留为候选。函数之间是否属于确定调用、实际是否进入中断，都尚未证明</td>
+</tr>
+<tr>
+<td>Reset → SystemInit</td>
+<td>模型称复位处理函数直接调用初始化函数，并据此串起外设访问路径。已有静态证据不支持这条确定调用边。</td>
+<td><strong>退回这项路径结论</strong>，不能当成已经证实的初始化链路</td>
+</tr>
+<tr>
+<td>三个 PIO 位置缺少归属</td>
+<td>三个外设访问位置存在，但 Ghidra 没有确认它们属于哪个函数体。</td>
+<td>可以验收为分析缺口；符号名称不能代替函数归属证据</td>
+</tr>
+<tr>
+<td>11 项外设模型未定义行为</td>
+<td>配置里的 m21–m31 没有提供确定的外设返回值规则。</td>
+<td>保留为环境建模缺口，不等于真实硬件异常</td>
+</tr>
+<tr>
+<td>6009 字节输入未建立联系</td>
+<td>有输入文件，但没有证据说明哪个函数或外设读取了它、引发了什么结果。</td>
+<td>不把文件名或文件存在当作 crash/可达性证明</td>
+</tr>
+<tr>
+<td>中断配置未建立联系</td>
+<td>有“每 1000 个模拟器 tick 轮转触发”的配置，但未连接到具体处理函数的真实执行。</td>
+<td>不把配置等同于中断实际发生；tick 也不能直接换成物理时间</td>
+</tr>
+</tbody>
+</table>
+<p>外设访问（MMIO）指固件通过读写特定地址与外围设备交互。
+静态向量表说明“如果相应事件发生，将使用哪个处理入口”，不是事件确实发生的运行记录。</p>
+<h2>必须纠正的三处表述</h2>
+<p><strong>1. 不能把 Reset → SystemInit 写成已确认的直接调用。</strong>
+原报告使用 call-80f88 支持这句话，但该位置属于未解决的调用，记录的目标是 0x816cc。
+已确认指向 SystemInit 的边是 init → SystemInit（call-80afa），不能拿它替代 Reset 的调用证据。
+“局部外设访问位置存在”与“从复位入口能沿确定路径到达那里”是两个不同结论。
+原报告依赖这条路径的八条 reachable_behaviors 和对应 issue anchor，也不能直接接受。</p>
+<p><strong>2. 串口相关的未确定关系，不应一概说成目标地址不知道。</strong>
+四个 UART/USART 转移位置的记录原因是解码器意见不一致（decoder_disagreement），
+已记录静态目标 0x815a4，但其“直接调用”分类没有被确认。
+原文写成 computed/ambiguous 会掩盖实际问题；应明确到底缺的是哪一种证明。</p>
+<p><strong>3. SystemInit 外设模型不是只有 constant/set。</strong>
+原报告的概括漏掉 m0 的 bitextract 和 m12 的 passthrough。
+这属于摘要不完整；本历史 B2 报告已把八个位置描述为读取，不应再误说它在此处把读写方向写反。</p>
+<p>以上纠正来自既有 B2 逐条语义审查。原始 JSON 没有被改写，避免把新解释冒充历史模型输出。</p>
+<h2>“输入路径”“可达行为”“问题线索”如何验收</h2>
+<ul>
+<li>三条输入路径：串口路径是待验证候选；opaque input 与中断配置两条均未建立实际消费路径。</li>
+<li>十条可达行为：两条串口行为原本就标记为 unknown；其余八条与 Reset/SystemInit 相关的路径依据不足，不能因写了 static 就视为证实。</li>
+<li>五个问题线索：它们是对已有发现的归组，不是五个漏洞。串口线索和三个缺项分组可以指导后续研究；Reset 路径分组需修正。</li>
+<li>55 个 processor_behavior_ids 是被引用的行为条目集合，不代表已执行 55 个动作，也不是 55 个漏洞。</li>
+</ul>
+<h2>后来被拒绝的 R3 报告，意味着什么</h2>
+<p>R3 run 为 <code>db343655-ddd8-4b69-8dec-4d0149e38abf</code>，与上面的 B2 run 不同。
+它引用的 103 个支持条目中，66 个通过、37 个与确定性事实冲突，因而没有 accepted canonical report。
+这 37 个失败包含 34 个事实字段不一致和 3 个断裂的显式路径。</p>
+<p>通俗地说，程序发现“模型用于支撑结论的话，与已有事实对不上”，所以没有接受报告。
+这是报告质量与证据支持问题，不是检测到了 37 个漏洞，也不是证明固件没有漏洞。
+R3 诊断没有保存完整被拒绝正文，本版不据此重建模型没有留下的故事。
+R3 的错误也不能当作 B2 的同一次支持审计来使用。</p>
+<h2>建议验收意见与下一步</h2>
+<p><strong>建议：局部静态事实和分析缺项可作为阶段材料，确定路径结论需退回修正；当前没有可验收的跨层漏洞结论。</strong>
+下一步优先核对调用/分支分类，再取得实际输入消费与中断执行证据。
+若只是撰写阶段报告，可明确交付“识别到候选入口及证据缺口”，不要交付“已证实外部输入到达目标函数”。
+此 Heat_Press 是 ARM 固件，不能因为项目里另有 Ibex 硬件报告，就自动形成同目标跨层配对。</p>
+<h2>报告身份与证据附录</h2>
+<p>此处用于复核；首次阅读可以先跳过。本版是助手编写的中文解读与验收建议，不是原模型新增输出，不赋予 reviewed 状态。</p>
+<ul>
+<li>Case：<code>fuzzware:heat-press:scenario-13</code></li>
+<li>Source run：<code>104a5332-3cf3-4263-b988-8b5b0b82f14e</code></li>
+<li><a href="../../../output/fuzzware:heat-press:scenario-13/104a5332-3cf3-4263-b988-8b5b0b82f14e/firmware_analysis_report.json">原始报告 JSON</a>，SHA256：<code>1e593db5a363ef9c4b956788d43f5898ac471052bce3fa295fe6fdefae04b316</code></li>
+<li><a href="../../../docs/research/v3-2b2-enriched-firmware-agent.md">既有技术审查</a></li>
+</ul>
+<details>
+<summary>展开全部条目对应关系（技术复核用）</summary>
+<h3>发现</h3>
+<table>
+<thead>
+<tr>
+<th>原始 ID</th>
+<th>中文含义及审查提示</th>
+<th>证据编号 / 支持条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>f-uart-irq-mmio</code></td>
+<td>串口相关候选入口；原文对 unresolved 原因描述有误。</td>
+<td><code>vector-24</code>、<code>vector-33</code>、<code>vector-34</code>、<code>vector-36</code>、<code>call-80abe</code>、<code>call-80ad2</code>、<code>call-80ade</code>、<code>call-80aea</code>、<code>s815aa</code>、<code>s815b0</code>、<code>m20</code>、<code>m1</code></td>
+</tr>
+<tr>
+<td><code>f-reset-systeminit-mmio</code></td>
+<td>Reset→SystemInit 确定路径缺少支持，需纠正。</td>
+<td><code>vector-1</code>、<code>call-80f88</code>、<code>s80eba</code>、<code>s80eca</code>、<code>s80ed2</code>、<code>s80eda</code>、<code>s80ee6</code>、<code>s80ef2</code>、<code>s80efe</code>、<code>s80f0a</code>、<code>m16</code>、<code>m2</code>、<code>m3</code>、<code>m12</code>、<code>m4</code>、<code>m0</code>、<code>m5</code>、<code>m6</code></td>
+</tr>
+<tr>
+<td><code>f-pio-missing-containment</code></td>
+<td>三个 PIO 位置没有确认函数归属。</td>
+<td><code>s80d4e</code>、<code>s80d50</code>、<code>s80d5a</code>、<code>m7</code>、<code>m8</code>、<code>m9</code>、<code>m10</code>、<code>m11</code>、<code>containment-m7</code>、<code>containment-m8</code>、<code>containment-m9</code>、<code>containment-m10</code>、<code>containment-m11</code></td>
+</tr>
+<tr>
+<td><code>f-unmodeled-mmio</code></td>
+<td>11 项外设模型缺少确定值规则。</td>
+<td><code>m21</code>、<code>m22</code>、<code>m23</code>、<code>m24</code>、<code>m25</code>、<code>m26</code>、<code>m27</code>、<code>m28</code>、<code>m29</code>、<code>m30</code>、<code>m31</code>、<code>s80e16</code>、<code>s80e1c</code>、<code>s80e3a</code>、<code>s80e4e</code>、<code>s80e7e</code></td>
+</tr>
+<tr>
+<td><code>f-opaque-input-unlinked</code></td>
+<td>6009 字节输入未连接到具体消费行为。</td>
+<td><code>input</code></td>
+</tr>
+<tr>
+<td><code>f-trigger-unlinked</code></td>
+<td>中断配置未连接到实际 handler 执行。</td>
+<td><code>trigger</code></td>
+</tr>
+</tbody>
+</table>
+<h3>输入路径</h3>
+<table>
+<thead>
+<tr>
+<th>原始 ID</th>
+<th>中文含义及审查提示</th>
+<th>证据编号 / 支持条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>eip-uart-irq</code></td>
+<td>串口路径是候选，未证明实际输入可达。</td>
+<td><code>vector-24</code>、<code>vector-33</code>、<code>vector-34</code>、<code>vector-36</code>、<code>call-80abe</code>、<code>call-80ad2</code>、<code>call-80ade</code>、<code>call-80aea</code>、<code>s815aa</code>、<code>s815b0</code>、<code>m20</code>、<code>m1</code></td>
+</tr>
+<tr>
+<td><code>eip-opaque-input</code></td>
+<td>opaque input 消费路径未知。</td>
+<td><code>input</code></td>
+</tr>
+<tr>
+<td><code>eip-interrupt-trigger</code></td>
+<td>中断配置与执行路径关系未知。</td>
+<td><code>trigger</code></td>
+</tr>
+</tbody>
+</table>
+<h3>可达行为</h3>
+<table>
+<thead>
+<tr>
+<th>原始 ID</th>
+<th>中文含义及审查提示</th>
+<th>证据编号 / 支持条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rb-uart-irq-mmio</code></td>
+<td>串口 m20 可达性未知。</td>
+<td><code>m20</code>、<code>s815aa</code>、<code>call-80abe</code>、<code>call-80ad2</code>、<code>call-80ade</code>、<code>call-80aea</code></td>
+</tr>
+<tr>
+<td><code>rb-uart-irq-mmio-2</code></td>
+<td>串口 m1 可达性未知。</td>
+<td><code>m1</code>、<code>s815b0</code>、<code>call-80abe</code>、<code>call-80ad2</code>、<code>call-80ade</code>、<code>call-80aea</code></td>
+</tr>
+<tr>
+<td><code>rb-reset-systeminit</code></td>
+<td>SystemInit 局部位置存在，但所宣称 Reset 路径依据不足。</td>
+<td><code>vector-1</code>、<code>s80eba</code>、<code>m16</code></td>
+</tr>
+<tr>
+<td><code>rb-reset-systeminit-2</code></td>
+<td>SystemInit 局部位置存在，但所宣称 Reset 路径依据不足。</td>
+<td><code>vector-1</code>、<code>s80eca</code>、<code>m2</code></td>
+</tr>
+<tr>
+<td><code>rb-reset-systeminit-3</code></td>
+<td>SystemInit 局部位置存在，但所宣称 Reset 路径依据不足。</td>
+<td><code>vector-1</code>、<code>s80ed2</code>、<code>m3</code></td>
+</tr>
+<tr>
+<td><code>rb-reset-systeminit-4</code></td>
+<td>SystemInit 局部位置存在，但所宣称 Reset 路径依据不足。</td>
+<td><code>vector-1</code>、<code>s80ee6</code>、<code>m4</code></td>
+</tr>
+<tr>
+<td><code>rb-reset-systeminit-5</code></td>
+<td>SystemInit 局部位置存在，但所宣称 Reset 路径依据不足。</td>
+<td><code>vector-1</code>、<code>s80efe</code>、<code>m5</code></td>
+</tr>
+<tr>
+<td><code>rb-reset-systeminit-6</code></td>
+<td>SystemInit 局部位置存在，但所宣称 Reset 路径依据不足。</td>
+<td><code>vector-1</code>、<code>s80f0a</code>、<code>m6</code></td>
+</tr>
+<tr>
+<td><code>rb-reset-systeminit-7</code></td>
+<td>SystemInit 局部位置存在，但所宣称 Reset 路径依据不足。</td>
+<td><code>vector-1</code>、<code>s80ef2</code>、<code>m0</code></td>
+</tr>
+<tr>
+<td><code>rb-reset-systeminit-8</code></td>
+<td>SystemInit 局部位置存在，但所宣称 Reset 路径依据不足。</td>
+<td><code>vector-1</code>、<code>s80eda</code>、<code>m12</code></td>
+</tr>
+</tbody>
+</table>
+<h3>研究线索</h3>
+<table>
+<thead>
+<tr>
+<th>原始 ID</th>
+<th>中文含义及审查提示</th>
+<th>证据编号 / 支持条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a-uart-irq-input</code></td>
+<td>串口调查线索，非确认入口。</td>
+<td><code>vector-24</code>、<code>vector-33</code>、<code>vector-34</code>、<code>vector-36</code>、<code>call-80abe</code>、<code>call-80ad2</code>、<code>call-80ade</code>、<code>call-80aea</code>、<code>s815aa</code>、<code>s815b0</code>、<code>m20</code>、<code>m1</code></td>
+</tr>
+<tr>
+<td><code>a-reset-systeminit</code></td>
+<td>Reset 路径线索需纠正，模型还漏述两类配置模型。</td>
+<td><code>vector-1</code>、<code>call-80f88</code>、<code>s80eba</code>、<code>s80eca</code>、<code>s80ed2</code>、<code>s80eda</code>、<code>s80ee6</code>、<code>s80ef2</code>、<code>s80efe</code>、<code>s80f0a</code>、<code>m16</code>、<code>m2</code>、<code>m3</code>、<code>m12</code>、<code>m4</code>、<code>m0</code>、<code>m5</code>、<code>m6</code></td>
+</tr>
+<tr>
+<td><code>a-pio-containment-gap</code></td>
+<td>函数归属缺口，非漏洞。</td>
+<td><code>s80d4e</code>、<code>s80d50</code>、<code>s80d5a</code>、<code>m7</code>、<code>m8</code>、<code>m9</code>、<code>m10</code>、<code>m11</code></td>
+</tr>
+<tr>
+<td><code>a-unmodeled-mmio</code></td>
+<td>外设建模缺口，非漏洞。</td>
+<td><code>m21</code>、<code>m22</code>、<code>m23</code>、<code>m24</code>、<code>m25</code>、<code>m26</code>、<code>m27</code>、<code>m28</code>、<code>m29</code>、<code>m30</code>、<code>m31</code></td>
+</tr>
+<tr>
+<td><code>a-input-trigger-unlinked</code></td>
+<td>输入与中断配置没有建立执行连接。</td>
+<td><code>input</code>、<code>trigger</code></td>
+</tr>
+</tbody>
+</table>
+</details>
+<p>原报告的未决问题已归入正文“缺项/下一步”；行为 ID 列表是索引，不额外翻译成独立发现。</p>
+<p>R3 独立来源：<a href="../../../output/fuzzware:heat-press:scenario-13/db343655-ddd8-4b69-8dec-4d0149e38abf/firmware_relation_support_failure.json">失败诊断</a>、<a href="../../research/v3-2b3-r3-referenced-support-diagnostics.md">逐项诊断说明</a>。</p></article><footer>原始 JSON 与审核状态保持不变。本版由助手整理，尚待用户审阅；没有新模型调用。可通过浏览器打印保存 PDF，技术附录默认不进入打印版。<br><a href="README.md">报告说明</a> · <a href="manifest.json">来源与条目映射</a> · <a href="report-template.md">后续报告模板</a></footer></main></body></html>

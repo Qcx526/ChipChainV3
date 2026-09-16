@@ -9,6 +9,9 @@
 完整构建、执行、配对身份与 Attempt 1 历史见 [DATA1A 实验文档](docs/research/v3-data1a-ibex-simple-system-baseline.md)；
 平台候选与获取规划见 [DATA0 调研文档](docs/research/v3-data0-paired-dataset-reconnaissance.md)。
 
+人工验收优先阅读：[硬件 / 固件中文验收报告](docs/reports/acceptance/README.md) · [浏览器阅读与打印版](docs/reports/acceptance/index.html)。
+现有 743、820 和 Heat_Press 报告已整理为中文结论、证据、已知错误与验收建议，原始 JSON 保留用于复核。
+
 中文入门：[如何阅读 Hardware / Firmware 分析报告](docs/tutorials/report-walkthrough/README.md)。
 通过真实 Hardware 743 与历史 Firmware Heat_Press 报告，学习逐字段追踪 support、relation、evidence 与结论边界。
 教学快照不代表 reviewed truth；Firmware 例子明确保留已知语义缺陷。
@@ -196,6 +199,10 @@ runs = run_cases([case, case])  # 顺序执行；每次生成不同 UUID。
 自定义模型/tool/prompt descriptor 由调用方显式提供；未提供时记录 unknown，不读取模型配置或密钥。
 `fingerprint_artifact(path)` 位于 `chipchain.tools.artifacts`，仅显式调用时流式读取本地文件。
 ArtifactRef 的可选 `sha256`/`size_bytes` 不会在构造时自动计算；Case schema version 默认 `1.0`。
+
+真实样本已在本机填充到 `samples/`：Ibex DATA1A 配对基线、EnCorpus Ibex 743/820 和 Heat_Press scenario 13。
+项目内路径、CaseBundle 视图和只读验证命令见 [样本工作区清单](samples/README.md)。
+`examples/cases/` 保持 synthetic schema 示例，其中的示意 artifact 路径不代表真实文件，见 [examples 说明](examples/README.md)。
 
 工作区约定：
 

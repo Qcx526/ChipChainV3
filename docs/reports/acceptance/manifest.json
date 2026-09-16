@@ -1,0 +1,915 @@
+{
+  "schema_version": "human-readable-analysis-report/v1",
+  "purpose": "Chinese acceptance reading edition of selected existing reports",
+  "generation": "editorially written from frozen reports and existing audit; no new model call; not an automatic translator",
+  "review_status": "pending_user_review",
+  "changes_original_review_status": false,
+  "reports": [
+    {
+      "report_id": "hardware-743",
+      "title": "硬件 743：看到了寄存器与访存状态差异，触发原因尚未确认",
+      "markdown": "hardware-743.md",
+      "source_case_id": "encorpus:ibex:driver:743",
+      "source_run_id": "e4636d59-ef13-42d3-ab19-acedb3b60143",
+      "inputs": [
+        {
+          "path": "output/encorpus:ibex:driver:743/e4636d59-ef13-42d3-ab19-acedb3b60143/hardware_analysis_report.json",
+          "sha256": "fb0493edec0dfc883e75508f4de69f2b0f6cc0a25cf71a93572f80fb44425883",
+          "run_id": "e4636d59-ef13-42d3-ab19-acedb3b60143"
+        },
+        {
+          "path": "docs/research/v3-1b2-structured-hardware-support.md",
+          "sha256": "4afc7d65a7babbbf59e628389205594f24b708b6cc679ad6a67adc302659fcca",
+          "role": "existing_semantic_review"
+        },
+        {
+          "path": "output/encorpus:ibex:driver:743/e4636d59-ef13-42d3-ab19-acedb3b60143/hardware_relation_support.json",
+          "sha256": "af151899031d557c21c1c83284721c1c476d29628d5e59360fc7a56c20ad47f2",
+          "run_id": "e4636d59-ef13-42d3-ab19-acedb3b60143"
+        }
+      ],
+      "item_coverage": [
+        {
+          "collection": "findings",
+          "source_item_id": "F1",
+          "json_pointer": "/findings/0",
+          "chinese_explanation": "30 ns 出现 addi 编码；无最终执行完成证据。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:743:proof.vcd:e:393223ad51c2f08c34c5",
+            "encorpus:ibex:driver:743:proof.vcd:e:d2ce3400b7a9e0beff76",
+            "encorpus:ibex:driver:743:proof.vcd:e:b78c6ec69a291ec648ec",
+            "encorpus:ibex:driver:743:proof.vcd:e:931ef11e2f1a5479220d"
+          ],
+          "support_claim_ids": [
+            "SC1",
+            "SC4"
+          ]
+        },
+        {
+          "collection": "findings",
+          "source_item_id": "F2",
+          "json_pointer": "/findings/1",
+          "chinese_explanation": "40 ns 出现 lui 编码；无最终执行完成证据。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:743:proof.vcd:e:517913821aa2738905bc",
+            "encorpus:ibex:driver:743:proof.vcd:e:ecf8c4145465d0000055",
+            "encorpus:ibex:driver:743:proof.vcd:e:91911e7cc77e021484d8",
+            "encorpus:ibex:driver:743:proof.vcd:e:1b687ca645de20ffb2f7"
+          ],
+          "support_claim_ids": [
+            "SC2",
+            "SC5"
+          ]
+        },
+        {
+          "collection": "findings",
+          "source_item_id": "F3",
+          "json_pointer": "/findings/2",
+          "chinese_explanation": "50 ns 出现 lw 编码；无最终执行完成证据。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:743:proof.vcd:e:73de2b2c636d91cda059",
+            "encorpus:ibex:driver:743:proof.vcd:e:ce89d98c9a6bfcf95a2c",
+            "encorpus:ibex:driver:743:proof.vcd:e:59e6d84cb4b7389f4b10",
+            "encorpus:ibex:driver:743:proof.vcd:e:ff2000de1a069cbb0111"
+          ],
+          "support_claim_ids": [
+            "SC3",
+            "SC6"
+          ]
+        },
+        {
+          "collection": "findings",
+          "source_item_id": "F4",
+          "json_pointer": "/findings/3",
+          "chinese_explanation": "50 ns 访存控制下一状态不同。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:743:proof.vcd:e:10ed0b58a3e33c874ba0",
+            "encorpus:ibex:driver:743:proof.vcd:e:a0a5483e63ce6ef601dd"
+          ],
+          "support_claim_ids": [
+            "SC7"
+          ]
+        },
+        {
+          "collection": "findings",
+          "source_item_id": "F5",
+          "json_pointer": "/findings/4",
+          "chinese_explanation": "50 ns x28 采样值不同，读写方向未知。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:743:proof.vcd:e:ffa2157cabe3e075f7cd",
+            "encorpus:ibex:driver:743:proof.vcd:e:58a85d92588f7178b4af"
+          ],
+          "support_claim_ids": [
+            "SC8"
+          ]
+        },
+        {
+          "collection": "findings",
+          "source_item_id": "F6",
+          "json_pointer": "/findings/5",
+          "chinese_explanation": "60 ns 访存控制当前状态不同。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:743:proof.vcd:e:6e12af461737cdbdbe4d",
+            "encorpus:ibex:driver:743:proof.vcd:e:698356dd10673f36c839"
+          ],
+          "support_claim_ids": [
+            "SC9"
+          ]
+        },
+        {
+          "collection": "findings",
+          "source_item_id": "F7",
+          "json_pointer": "/findings/6",
+          "chinese_explanation": "70 ns 访存控制下一状态不同。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:743:proof.vcd:e:4b6e934660eface20f8f",
+            "encorpus:ibex:driver:743:proof.vcd:e:0295323b28a6949e593f"
+          ],
+          "support_claim_ids": [
+            "SC10"
+          ]
+        },
+        {
+          "collection": "findings",
+          "source_item_id": "F8",
+          "json_pointer": "/findings/7",
+          "chinese_explanation": "70 ns x10 采样值不同，读写方向未知。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:743:proof.vcd:e:c7a34ab5ba2be0840468",
+            "encorpus:ibex:driver:743:proof.vcd:e:ce47f3b8d64408638a67"
+          ],
+          "support_claim_ids": [
+            "SC11"
+          ]
+        },
+        {
+          "collection": "findings",
+          "source_item_id": "F9",
+          "json_pointer": "/findings/8",
+          "chinese_explanation": "旧日志记录 8 周期 cover 命中。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:743:verify.log:e:17c2859a6158ac39aea4"
+          ],
+          "support_claim_ids": [
+            "SC12"
+          ]
+        },
+        {
+          "collection": "findings",
+          "source_item_id": "F10",
+          "json_pointer": "/findings/9",
+          "chinese_explanation": "旧日志记录 EVS053 轨迹错误。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:743:verify.log:e:96d008706271fd5077e8"
+          ],
+          "support_claim_ids": [
+            "SC13"
+          ]
+        },
+        {
+          "collection": "trigger_hypotheses",
+          "source_item_id": "H1",
+          "json_pointer": "/trigger_hypotheses/0",
+          "chinese_explanation": "访存编码与状态差异可能有关：待验证猜测。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:743:proof.vcd:e:73de2b2c636d91cda059",
+            "encorpus:ibex:driver:743:proof.vcd:e:10ed0b58a3e33c874ba0",
+            "encorpus:ibex:driver:743:proof.vcd:e:a0a5483e63ce6ef601dd",
+            "encorpus:ibex:driver:743:proof.vcd:e:6e12af461737cdbdbe4d",
+            "encorpus:ibex:driver:743:proof.vcd:e:698356dd10673f36c839",
+            "encorpus:ibex:driver:743:proof.vcd:e:4b6e934660eface20f8f",
+            "encorpus:ibex:driver:743:proof.vcd:e:0295323b28a6949e593f",
+            "encorpus:ibex:driver:743:proof.vcd:e:ffa2157cabe3e075f7cd",
+            "encorpus:ibex:driver:743:proof.vcd:e:58a85d92588f7178b4af",
+            "encorpus:ibex:driver:743:proof.vcd:e:c7a34ab5ba2be0840468",
+            "encorpus:ibex:driver:743:proof.vcd:e:ce47f3b8d64408638a67"
+          ],
+          "support_claim_ids": [
+            "SC3",
+            "SC6",
+            "SC7",
+            "SC8",
+            "SC9",
+            "SC10",
+            "SC11"
+          ]
+        },
+        {
+          "collection": "abnormal_states",
+          "source_item_id": "S1",
+          "json_pointer": "/abnormal_states/0",
+          "chinese_explanation": "汇总三个内部控制状态采样差异。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:743:proof.vcd:e:10ed0b58a3e33c874ba0",
+            "encorpus:ibex:driver:743:proof.vcd:e:a0a5483e63ce6ef601dd",
+            "encorpus:ibex:driver:743:proof.vcd:e:6e12af461737cdbdbe4d",
+            "encorpus:ibex:driver:743:proof.vcd:e:698356dd10673f36c839",
+            "encorpus:ibex:driver:743:proof.vcd:e:4b6e934660eface20f8f",
+            "encorpus:ibex:driver:743:proof.vcd:e:0295323b28a6949e593f"
+          ],
+          "support_claim_ids": [
+            "SC7",
+            "SC9",
+            "SC10"
+          ]
+        },
+        {
+          "collection": "abnormal_states",
+          "source_item_id": "S2",
+          "json_pointer": "/abnormal_states/1",
+          "chinese_explanation": "汇总 x28/x10 寄存器内容差异。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:743:proof.vcd:e:ffa2157cabe3e075f7cd",
+            "encorpus:ibex:driver:743:proof.vcd:e:58a85d92588f7178b4af",
+            "encorpus:ibex:driver:743:proof.vcd:e:c7a34ab5ba2be0840468",
+            "encorpus:ibex:driver:743:proof.vcd:e:ce47f3b8d64408638a67"
+          ],
+          "support_claim_ids": [
+            "SC8",
+            "SC11"
+          ]
+        }
+      ]
+    },
+    {
+      "report_id": "hardware-820",
+      "title": "硬件 820：看到了调试状态差异，模型的写寄存器解释证据不足",
+      "markdown": "hardware-820.md",
+      "source_case_id": "encorpus:ibex:driver:820",
+      "source_run_id": "05660d2d-c2e7-480d-9758-6d75f0b9ff9b",
+      "inputs": [
+        {
+          "path": "output/encorpus:ibex:driver:820/05660d2d-c2e7-480d-9758-6d75f0b9ff9b/hardware_analysis_report.json",
+          "sha256": "74ba7a5b60771b1cff625f3df38f8b3f8ddc2bf135e3206c7fa43eb6e9c87cc5",
+          "run_id": "05660d2d-c2e7-480d-9758-6d75f0b9ff9b"
+        },
+        {
+          "path": "docs/research/v3-1b2-structured-hardware-support.md",
+          "sha256": "4afc7d65a7babbbf59e628389205594f24b708b6cc679ad6a67adc302659fcca",
+          "role": "existing_semantic_review"
+        },
+        {
+          "path": "output/encorpus:ibex:driver:820/05660d2d-c2e7-480d-9758-6d75f0b9ff9b/hardware_relation_support.json",
+          "sha256": "c918e6cefa7c6ce56f07e6a3fa0a99b77d25d3562fa4d7af6f29abba72f3ab85",
+          "run_id": "05660d2d-c2e7-480d-9758-6d75f0b9ff9b"
+        }
+      ],
+      "item_coverage": [
+        {
+          "collection": "findings",
+          "source_item_id": "hwfind:local:debug_mode_q:100",
+          "json_pointer": "/findings/0",
+          "chinese_explanation": "100 ns 调试状态位不同；不是连续区间证明。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:820:proof.vcd:e:5863a8d7eff3da238439",
+            "encorpus:ibex:driver:820:proof.vcd:e:feeacffcd930f5f13810"
+          ],
+          "support_claim_ids": [
+            "sc:rel:local:100"
+          ]
+        },
+        {
+          "collection": "findings",
+          "source_item_id": "hwfind:local:debug_mode_q:230",
+          "json_pointer": "/findings/1",
+          "chinese_explanation": "230 ns 调试状态位不同；不是连续区间证明。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:820:proof.vcd:e:b2669b642a3636eca7e3",
+            "encorpus:ibex:driver:820:proof.vcd:e:82e0b370fa1dbe8f8516"
+          ],
+          "support_claim_ids": [
+            "sc:rel:local:230"
+          ]
+        },
+        {
+          "collection": "findings",
+          "source_item_id": "hwfind:local:debug_mode_q:330",
+          "json_pointer": "/findings/2",
+          "chinese_explanation": "330 ns 调试状态位不同；不是连续区间证明。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:820:proof.vcd:e:36c362b2e829e6f0b6f7",
+            "encorpus:ibex:driver:820:proof.vcd:e:3e9b913ee2d7287a3f50"
+          ],
+          "support_claim_ids": [
+            "sc:rel:local:330"
+          ]
+        },
+        {
+          "collection": "findings",
+          "source_item_id": "hwfind:local:debug_mode_q:410",
+          "json_pointer": "/findings/3",
+          "chinese_explanation": "410 ns 调试状态位不同；不是连续区间证明。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:820:proof.vcd:e:d1fca4bee719ebbd2b73",
+            "encorpus:ibex:driver:820:proof.vcd:e:e5f72b7fff84bcc383a1"
+          ],
+          "support_claim_ids": [
+            "sc:rel:local:410"
+          ]
+        },
+        {
+          "collection": "findings",
+          "source_item_id": "hwfind:local:debug_mode_q:490",
+          "json_pointer": "/findings/4",
+          "chinese_explanation": "490 ns 调试状态位不同；不是连续区间证明。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:820:proof.vcd:e:657f3a0a7668ab1083fc",
+            "encorpus:ibex:driver:820:proof.vcd:e:fc4772333bab09f400e4"
+          ],
+          "support_claim_ids": [
+            "sc:rel:local:490"
+          ]
+        },
+        {
+          "collection": "findings",
+          "source_item_id": "hwfind:local:debug_mode_q:540",
+          "json_pointer": "/findings/5",
+          "chinese_explanation": "540 ns 调试状态位不同；不是连续区间证明。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:820:proof.vcd:e:33cf907b7de18f09d1e3",
+            "encorpus:ibex:driver:820:proof.vcd:e:3c9fb4546669f9cdee92"
+          ],
+          "support_claim_ids": [
+            "sc:rel:local:540"
+          ]
+        },
+        {
+          "collection": "findings",
+          "source_item_id": "hwfind:reg:x10:580",
+          "json_pointer": "/findings/6",
+          "chinese_explanation": "580 ns x10 值不同；写回方向未知。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:820:proof.vcd:e:62e1de41ad8113751693",
+            "encorpus:ibex:driver:820:proof.vcd:e:e328518d5eac0afd5647"
+          ],
+          "support_claim_ids": [
+            "sc:rel:reg:x10:580"
+          ]
+        },
+        {
+          "collection": "findings",
+          "source_item_id": "hwfind:formal:cover:c_propagated",
+          "json_pointer": "/findings/7",
+          "chinese_explanation": "旧日志记录 59 周期 cover 命中。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:820:verify.log:e:c5b1c1f116ba4180f47b"
+          ],
+          "support_claim_ids": [
+            "sc:rel:formal:cover"
+          ]
+        },
+        {
+          "collection": "findings",
+          "source_item_id": "hwfind:formal:trace_error:evs053",
+          "json_pointer": "/findings/8",
+          "chinese_explanation": "旧日志记录 EVS053 轨迹错误。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:820:verify.log:e:9f30d4dd2269b85c0db9"
+          ],
+          "support_claim_ids": [
+            "sc:rel:formal:error"
+          ]
+        },
+        {
+          "collection": "trigger_hypotheses",
+          "source_item_id": "hwtrig:debug_mode_divergence",
+          "json_pointer": "/trigger_hypotheses/0",
+          "chinese_explanation": "调试状态差异可能与进入/退出调试有关：待验证。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:820:proof.vcd:e:5863a8d7eff3da238439",
+            "encorpus:ibex:driver:820:proof.vcd:e:feeacffcd930f5f13810",
+            "encorpus:ibex:driver:820:proof.vcd:e:b2669b642a3636eca7e3",
+            "encorpus:ibex:driver:820:proof.vcd:e:82e0b370fa1dbe8f8516",
+            "encorpus:ibex:driver:820:proof.vcd:e:36c362b2e829e6f0b6f7",
+            "encorpus:ibex:driver:820:proof.vcd:e:3e9b913ee2d7287a3f50",
+            "encorpus:ibex:driver:820:proof.vcd:e:d1fca4bee719ebbd2b73",
+            "encorpus:ibex:driver:820:proof.vcd:e:e5f72b7fff84bcc383a1",
+            "encorpus:ibex:driver:820:proof.vcd:e:657f3a0a7668ab1083fc",
+            "encorpus:ibex:driver:820:proof.vcd:e:fc4772333bab09f400e4",
+            "encorpus:ibex:driver:820:proof.vcd:e:33cf907b7de18f09d1e3",
+            "encorpus:ibex:driver:820:proof.vcd:e:3c9fb4546669f9cdee92"
+          ],
+          "support_claim_ids": [
+            "sc:rel:local:100",
+            "sc:rel:local:230",
+            "sc:rel:local:330",
+            "sc:rel:local:410",
+            "sc:rel:local:490",
+            "sc:rel:local:540"
+          ]
+        },
+        {
+          "collection": "trigger_hypotheses",
+          "source_item_id": "hwtrig:x10_divergence",
+          "json_pointer": "/trigger_hypotheses/1",
+          "chinese_explanation": "猜测被分析版额外写 x10：方向无证据，不采纳。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:820:proof.vcd:e:62e1de41ad8113751693",
+            "encorpus:ibex:driver:820:proof.vcd:e:e328518d5eac0afd5647"
+          ],
+          "support_claim_ids": [
+            "sc:rel:reg:x10:580"
+          ]
+        },
+        {
+          "collection": "abnormal_states",
+          "source_item_id": "hwstate:debug_mode_q_host_ref_divergence",
+          "json_pointer": "/abnormal_states/0",
+          "chinese_explanation": "汇总六个调试状态采样点。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:820:proof.vcd:e:5863a8d7eff3da238439",
+            "encorpus:ibex:driver:820:proof.vcd:e:feeacffcd930f5f13810",
+            "encorpus:ibex:driver:820:proof.vcd:e:b2669b642a3636eca7e3",
+            "encorpus:ibex:driver:820:proof.vcd:e:82e0b370fa1dbe8f8516",
+            "encorpus:ibex:driver:820:proof.vcd:e:36c362b2e829e6f0b6f7",
+            "encorpus:ibex:driver:820:proof.vcd:e:3e9b913ee2d7287a3f50",
+            "encorpus:ibex:driver:820:proof.vcd:e:d1fca4bee719ebbd2b73",
+            "encorpus:ibex:driver:820:proof.vcd:e:e5f72b7fff84bcc383a1",
+            "encorpus:ibex:driver:820:proof.vcd:e:657f3a0a7668ab1083fc",
+            "encorpus:ibex:driver:820:proof.vcd:e:fc4772333bab09f400e4",
+            "encorpus:ibex:driver:820:proof.vcd:e:33cf907b7de18f09d1e3",
+            "encorpus:ibex:driver:820:proof.vcd:e:3c9fb4546669f9cdee92"
+          ],
+          "support_claim_ids": [
+            "sc:rel:local:100",
+            "sc:rel:local:230",
+            "sc:rel:local:330",
+            "sc:rel:local:410",
+            "sc:rel:local:490",
+            "sc:rel:local:540"
+          ]
+        },
+        {
+          "collection": "abnormal_states",
+          "source_item_id": "hwstate:x10_host_ref_divergence",
+          "json_pointer": "/abnormal_states/1",
+          "chinese_explanation": "汇总一个 x10 寄存器采样差异。",
+          "evidence_ids": [
+            "encorpus:ibex:driver:820:proof.vcd:e:62e1de41ad8113751693",
+            "encorpus:ibex:driver:820:proof.vcd:e:e328518d5eac0afd5647"
+          ],
+          "support_claim_ids": [
+            "sc:rel:reg:x10:580"
+          ]
+        }
+      ]
+    },
+    {
+      "report_id": "firmware-heat-press",
+      "title": "固件 Heat_Press：发现静态分析线索，但部分调用路径解释有误",
+      "markdown": "firmware-heat-press.md",
+      "source_case_id": "fuzzware:heat-press:scenario-13",
+      "source_run_id": "104a5332-3cf3-4263-b988-8b5b0b82f14e",
+      "inputs": [
+        {
+          "path": "output/fuzzware:heat-press:scenario-13/104a5332-3cf3-4263-b988-8b5b0b82f14e/firmware_analysis_report.json",
+          "sha256": "1e593db5a363ef9c4b956788d43f5898ac471052bce3fa295fe6fdefae04b316",
+          "run_id": "104a5332-3cf3-4263-b988-8b5b0b82f14e"
+        },
+        {
+          "path": "docs/research/v3-2b2-enriched-firmware-agent.md",
+          "sha256": "63dce86a7090378b8406ee0912dfb6ed8e8ee05e40e166c4a0b384aa1c368811",
+          "role": "existing_semantic_review"
+        },
+        {
+          "path": "output/fuzzware:heat-press:scenario-13/db343655-ddd8-4b69-8dec-4d0149e38abf/firmware_relation_support_failure.json",
+          "sha256": "2760b484c98900558ac4b07760826ec1796f61118d6f1b7a377ec1d4656be8db",
+          "run_id": "db343655-ddd8-4b69-8dec-4d0149e38abf",
+          "role": "separate_run_rejection_diagnostic"
+        },
+        {
+          "path": "docs/research/v3-2b3-r3-referenced-support-diagnostics.md",
+          "sha256": "ff12e4ac03d0ce02c0f8351b88249b7e672734a8a5e19693d44aab4b5aa1d541",
+          "role": "separate_run_diagnostic_explanation"
+        }
+      ],
+      "item_coverage": [
+        {
+          "collection": "findings",
+          "source_item_id": "f-uart-irq-mmio",
+          "json_pointer": "/findings/0",
+          "chinese_explanation": "串口相关候选入口；原文对 unresolved 原因描述有误。",
+          "evidence_ids": [
+            "vector-24",
+            "vector-33",
+            "vector-34",
+            "vector-36",
+            "call-80abe",
+            "call-80ad2",
+            "call-80ade",
+            "call-80aea",
+            "s815aa",
+            "s815b0",
+            "m20",
+            "m1"
+          ],
+          "support_claim_ids": []
+        },
+        {
+          "collection": "findings",
+          "source_item_id": "f-reset-systeminit-mmio",
+          "json_pointer": "/findings/1",
+          "chinese_explanation": "Reset→SystemInit 确定路径缺少支持，需纠正。",
+          "evidence_ids": [
+            "vector-1",
+            "call-80f88",
+            "s80eba",
+            "s80eca",
+            "s80ed2",
+            "s80eda",
+            "s80ee6",
+            "s80ef2",
+            "s80efe",
+            "s80f0a",
+            "m16",
+            "m2",
+            "m3",
+            "m12",
+            "m4",
+            "m0",
+            "m5",
+            "m6"
+          ],
+          "support_claim_ids": []
+        },
+        {
+          "collection": "findings",
+          "source_item_id": "f-pio-missing-containment",
+          "json_pointer": "/findings/2",
+          "chinese_explanation": "三个 PIO 位置没有确认函数归属。",
+          "evidence_ids": [
+            "s80d4e",
+            "s80d50",
+            "s80d5a",
+            "m7",
+            "m8",
+            "m9",
+            "m10",
+            "m11",
+            "containment-m7",
+            "containment-m8",
+            "containment-m9",
+            "containment-m10",
+            "containment-m11"
+          ],
+          "support_claim_ids": []
+        },
+        {
+          "collection": "findings",
+          "source_item_id": "f-unmodeled-mmio",
+          "json_pointer": "/findings/3",
+          "chinese_explanation": "11 项外设模型缺少确定值规则。",
+          "evidence_ids": [
+            "m21",
+            "m22",
+            "m23",
+            "m24",
+            "m25",
+            "m26",
+            "m27",
+            "m28",
+            "m29",
+            "m30",
+            "m31",
+            "s80e16",
+            "s80e1c",
+            "s80e3a",
+            "s80e4e",
+            "s80e7e"
+          ],
+          "support_claim_ids": []
+        },
+        {
+          "collection": "findings",
+          "source_item_id": "f-opaque-input-unlinked",
+          "json_pointer": "/findings/4",
+          "chinese_explanation": "6009 字节输入未连接到具体消费行为。",
+          "evidence_ids": [
+            "input"
+          ],
+          "support_claim_ids": []
+        },
+        {
+          "collection": "findings",
+          "source_item_id": "f-trigger-unlinked",
+          "json_pointer": "/findings/5",
+          "chinese_explanation": "中断配置未连接到实际 handler 执行。",
+          "evidence_ids": [
+            "trigger"
+          ],
+          "support_claim_ids": []
+        },
+        {
+          "collection": "external_input_paths",
+          "source_item_id": "eip-uart-irq",
+          "json_pointer": "/external_input_paths/0",
+          "chinese_explanation": "串口路径是候选，未证明实际输入可达。",
+          "evidence_ids": [
+            "vector-24",
+            "vector-33",
+            "vector-34",
+            "vector-36",
+            "call-80abe",
+            "call-80ad2",
+            "call-80ade",
+            "call-80aea",
+            "s815aa",
+            "s815b0",
+            "m20",
+            "m1"
+          ],
+          "support_claim_ids": []
+        },
+        {
+          "collection": "external_input_paths",
+          "source_item_id": "eip-opaque-input",
+          "json_pointer": "/external_input_paths/1",
+          "chinese_explanation": "opaque input 消费路径未知。",
+          "evidence_ids": [
+            "input"
+          ],
+          "support_claim_ids": []
+        },
+        {
+          "collection": "external_input_paths",
+          "source_item_id": "eip-interrupt-trigger",
+          "json_pointer": "/external_input_paths/2",
+          "chinese_explanation": "中断配置与执行路径关系未知。",
+          "evidence_ids": [
+            "trigger"
+          ],
+          "support_claim_ids": []
+        },
+        {
+          "collection": "reachable_behaviors",
+          "source_item_id": "rb-uart-irq-mmio",
+          "json_pointer": "/reachable_behaviors/0",
+          "chinese_explanation": "串口 m20 可达性未知。",
+          "evidence_ids": [
+            "m20",
+            "s815aa",
+            "call-80abe",
+            "call-80ad2",
+            "call-80ade",
+            "call-80aea"
+          ],
+          "support_claim_ids": []
+        },
+        {
+          "collection": "reachable_behaviors",
+          "source_item_id": "rb-uart-irq-mmio-2",
+          "json_pointer": "/reachable_behaviors/1",
+          "chinese_explanation": "串口 m1 可达性未知。",
+          "evidence_ids": [
+            "m1",
+            "s815b0",
+            "call-80abe",
+            "call-80ad2",
+            "call-80ade",
+            "call-80aea"
+          ],
+          "support_claim_ids": []
+        },
+        {
+          "collection": "reachable_behaviors",
+          "source_item_id": "rb-reset-systeminit",
+          "json_pointer": "/reachable_behaviors/2",
+          "chinese_explanation": "SystemInit 局部位置存在，但所宣称 Reset 路径依据不足。",
+          "evidence_ids": [
+            "vector-1",
+            "s80eba",
+            "m16"
+          ],
+          "support_claim_ids": []
+        },
+        {
+          "collection": "reachable_behaviors",
+          "source_item_id": "rb-reset-systeminit-2",
+          "json_pointer": "/reachable_behaviors/3",
+          "chinese_explanation": "SystemInit 局部位置存在，但所宣称 Reset 路径依据不足。",
+          "evidence_ids": [
+            "vector-1",
+            "s80eca",
+            "m2"
+          ],
+          "support_claim_ids": []
+        },
+        {
+          "collection": "reachable_behaviors",
+          "source_item_id": "rb-reset-systeminit-3",
+          "json_pointer": "/reachable_behaviors/4",
+          "chinese_explanation": "SystemInit 局部位置存在，但所宣称 Reset 路径依据不足。",
+          "evidence_ids": [
+            "vector-1",
+            "s80ed2",
+            "m3"
+          ],
+          "support_claim_ids": []
+        },
+        {
+          "collection": "reachable_behaviors",
+          "source_item_id": "rb-reset-systeminit-4",
+          "json_pointer": "/reachable_behaviors/5",
+          "chinese_explanation": "SystemInit 局部位置存在，但所宣称 Reset 路径依据不足。",
+          "evidence_ids": [
+            "vector-1",
+            "s80ee6",
+            "m4"
+          ],
+          "support_claim_ids": []
+        },
+        {
+          "collection": "reachable_behaviors",
+          "source_item_id": "rb-reset-systeminit-5",
+          "json_pointer": "/reachable_behaviors/6",
+          "chinese_explanation": "SystemInit 局部位置存在，但所宣称 Reset 路径依据不足。",
+          "evidence_ids": [
+            "vector-1",
+            "s80efe",
+            "m5"
+          ],
+          "support_claim_ids": []
+        },
+        {
+          "collection": "reachable_behaviors",
+          "source_item_id": "rb-reset-systeminit-6",
+          "json_pointer": "/reachable_behaviors/7",
+          "chinese_explanation": "SystemInit 局部位置存在，但所宣称 Reset 路径依据不足。",
+          "evidence_ids": [
+            "vector-1",
+            "s80f0a",
+            "m6"
+          ],
+          "support_claim_ids": []
+        },
+        {
+          "collection": "reachable_behaviors",
+          "source_item_id": "rb-reset-systeminit-7",
+          "json_pointer": "/reachable_behaviors/8",
+          "chinese_explanation": "SystemInit 局部位置存在，但所宣称 Reset 路径依据不足。",
+          "evidence_ids": [
+            "vector-1",
+            "s80ef2",
+            "m0"
+          ],
+          "support_claim_ids": []
+        },
+        {
+          "collection": "reachable_behaviors",
+          "source_item_id": "rb-reset-systeminit-8",
+          "json_pointer": "/reachable_behaviors/9",
+          "chinese_explanation": "SystemInit 局部位置存在，但所宣称 Reset 路径依据不足。",
+          "evidence_ids": [
+            "vector-1",
+            "s80eda",
+            "m12"
+          ],
+          "support_claim_ids": []
+        },
+        {
+          "collection": "issue_anchors",
+          "source_item_id": "a-uart-irq-input",
+          "json_pointer": "/issue_anchors/0",
+          "chinese_explanation": "串口调查线索，非确认入口。",
+          "evidence_ids": [
+            "vector-24",
+            "vector-33",
+            "vector-34",
+            "vector-36",
+            "call-80abe",
+            "call-80ad2",
+            "call-80ade",
+            "call-80aea",
+            "s815aa",
+            "s815b0",
+            "m20",
+            "m1"
+          ],
+          "support_claim_ids": []
+        },
+        {
+          "collection": "issue_anchors",
+          "source_item_id": "a-reset-systeminit",
+          "json_pointer": "/issue_anchors/1",
+          "chinese_explanation": "Reset 路径线索需纠正，模型还漏述两类配置模型。",
+          "evidence_ids": [
+            "vector-1",
+            "call-80f88",
+            "s80eba",
+            "s80eca",
+            "s80ed2",
+            "s80eda",
+            "s80ee6",
+            "s80ef2",
+            "s80efe",
+            "s80f0a",
+            "m16",
+            "m2",
+            "m3",
+            "m12",
+            "m4",
+            "m0",
+            "m5",
+            "m6"
+          ],
+          "support_claim_ids": []
+        },
+        {
+          "collection": "issue_anchors",
+          "source_item_id": "a-pio-containment-gap",
+          "json_pointer": "/issue_anchors/2",
+          "chinese_explanation": "函数归属缺口，非漏洞。",
+          "evidence_ids": [
+            "s80d4e",
+            "s80d50",
+            "s80d5a",
+            "m7",
+            "m8",
+            "m9",
+            "m10",
+            "m11"
+          ],
+          "support_claim_ids": []
+        },
+        {
+          "collection": "issue_anchors",
+          "source_item_id": "a-unmodeled-mmio",
+          "json_pointer": "/issue_anchors/3",
+          "chinese_explanation": "外设建模缺口，非漏洞。",
+          "evidence_ids": [
+            "m21",
+            "m22",
+            "m23",
+            "m24",
+            "m25",
+            "m26",
+            "m27",
+            "m28",
+            "m29",
+            "m30",
+            "m31"
+          ],
+          "support_claim_ids": []
+        },
+        {
+          "collection": "issue_anchors",
+          "source_item_id": "a-input-trigger-unlinked",
+          "json_pointer": "/issue_anchors/4",
+          "chinese_explanation": "输入与中断配置没有建立执行连接。",
+          "evidence_ids": [
+            "input",
+            "trigger"
+          ],
+          "support_claim_ids": []
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "item_coverage": 50,
+    "source_sha256": "all_match",
+    "frozen_files_checked": 4096,
+    "frozen_files_changed": 0,
+    "html_local_links": "passed",
+    "html_tables_rendered": 17,
+    "html_external_dependencies": false,
+    "html_visual_browser_inspection": "not_performed",
+    "original_reports_modified": false,
+    "pytest": "1064 passed, 27 skipped in 26.89s",
+    "pip_check": "No broken requirements found.",
+    "compileall": "passed",
+    "git_diff_check": "passed"
+  },
+  "outputs": [
+    {
+      "path": "README.md",
+      "sha256": "91ba0aae7ba79bfd135dbc3094535c83ac6512f1610750756eddb30c3a1e1ffe",
+      "size_bytes": 2708
+    },
+    {
+      "path": "firmware-heat-press.md",
+      "sha256": "95ba1b85e6f6ce3a3476028f944e4245cd500d2079d1753d29b6748613050c76",
+      "size_bytes": 11370
+    },
+    {
+      "path": "hardware-743.md",
+      "sha256": "86f6481fd60fb9e40f81502a2a57b105b011d84873861323bf34d3c1b39bda87",
+      "size_bytes": 6045
+    },
+    {
+      "path": "hardware-820.md",
+      "sha256": "83ac8989e1750e22246d01e46d77612598dc9bd7df2cba02588cd74724fcc030",
+      "size_bytes": 6335
+    },
+    {
+      "path": "index.html",
+      "sha256": "18866af69e5360378716027804bdf8b2e49ff4a8ee7d569e1bcee80ae531a496",
+      "size_bytes": 33955
+    },
+    {
+      "path": "report-template.md",
+      "sha256": "96c9b7044bdf682ea99c54440f312d10fd1947cca4f061668e95c522db8720e3",
+      "size_bytes": 2152
+    }
+  ]
+}

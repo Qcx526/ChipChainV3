@@ -9,3 +9,7 @@ synthetic examples/tests 位于 repository 的 `examples/` 与 `tests/`。
 
 paired CaseBundle 同时引用硬件与固件 artifact，不必复制样本到 cross_layer 目录。
 此目录只是工作区约定，ArtifactRef 也可引用仓库外的只读材料。
+
+当前本地已填充 `ibex-simple-system/`（源码、shim、simulator）和
+`encorpus/ibex/driver/743/`、`820/`；这些数据被 Git 忽略。
+目录清单、case views 与验证命令见 [workspace 清单](../README.md)。
