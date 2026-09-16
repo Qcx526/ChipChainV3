@@ -2,9 +2,12 @@
 
 大模型协同的芯片固件—硬件跨层漏洞攻击链路检测研究工程。
 
-当前研究阶段：**V3-DATA0 — Paired Dataset Reconnaissance & Acquisition Planning**。
-数据瓶颈是同一 revision/configuration 下可绑定的 firmware–RTL 配对与执行证据。
-平台候选、获取规划与未决问题见 [DATA0 调研文档](docs/research/v3-data0-paired-dataset-reconnaissance.md)；候选尚未接入。
+当前研究阶段：**V3-DATA1A — Ibex Simple System paired baseline（R1 已恢复，待审核/冻结）**。
+通过仅作用于一次性 worktree `.core` 的 `build_metadata_compatibility_shim`，19 项 small 参数均经 elaboration 核验；
+原始 hello firmware 两次 RTL 仿真输出、trace 与 counters 一致，冻结 XL0 返回 `eligible`。
+平台身份包含 shim SHA；无 HDL/firmware 修改、mutation 或漏洞结论，尚未进入 DATA1B。
+完整构建、执行、配对身份与 Attempt 1 历史见 [DATA1A 实验文档](docs/research/v3-data1a-ibex-simple-system-baseline.md)；
+平台候选与获取规划见 [DATA0 调研文档](docs/research/v3-data0-paired-dataset-reconnaissance.md)。
 
 中文入门：[如何阅读 Hardware / Firmware 分析报告](docs/tutorials/report-walkthrough/README.md)。
 通过真实 Hardware 743 与历史 Firmware Heat_Press 报告，学习逐字段追踪 support、relation、evidence 与结论边界。

@@ -1,0 +1,1221 @@
+{
+  "schema_version": "data1a-ibex-simple-system-baseline/v1",
+  "status": "PASS",
+  "platform_identity": "ibex-simple-system:6e7ba1a16803af4942efe44ebcd65d853efd3c45d5bccf086a22bab6a20bdec2",
+  "identity_inputs": {
+    "schema_version": "ibex-simple-system-platform-identity/v1",
+    "upstream_url": "https://github.com/lowRISC/ibex.git",
+    "base_commit": "405c6d1d8220a18b2f9196141167a5875422dee4",
+    "base_tree": "3e54f2a830939234932ec153cdde6c1a5b7d13b9",
+    "compatibility_shim_sha256": "2e69217b12c796389c2962ecf83973a08d69bf0fb11c0b78348ee2d81cd03dd7",
+    "small_configuration_sha256": "db8a13294c8c468a40e402893b6ecfbc80cc641027c420a6fc17983cc8e9289c",
+    "top": "ibex_simple_system",
+    "firmware_build": {
+      "target": "hello_test.elf",
+      "source_sha256": {
+        "examples/sw/simple_system/common/common.mk": "30d263fd5f96fcafd58b94603e85db5fac55e547736db4f265287aa9714679cd",
+        "examples/sw/simple_system/common/crt0.S": "b0117f2e94ab0f65eb54806c67c727cd54142713a15422d5bc81e8431d853b9f",
+        "examples/sw/simple_system/common/link.ld": "318b9ed40edb2cd0e329e5617f58cacad59d8137f12e550260be29c33f824068",
+        "examples/sw/simple_system/common/simple_system_common.c": "f8824f1224fa4d0b308403eadc4fa7aed6462346e81b4e7f9d93daeed80aabcc",
+        "examples/sw/simple_system/common/simple_system_common.h": "c8ddc64a84549759e6890630e5b8e043f3bce4ddf9f188d7566eb78880a636b1",
+        "examples/sw/simple_system/common/simple_system_regs.h": "f4e77e4a26518219584b51161c9780da918f3998acf366494f1418962bd219d8",
+        "examples/sw/simple_system/hello_test/Makefile": "149963538f4bfb41770e9b53cdf6af838393125d8cd89df59d3524e7b27e7ff8",
+        "examples/sw/simple_system/hello_test/hello_test.c": "fbea61084e54dc66eb2c7d6a05d3d46a37fc8af5bff69e902089943bd3b464df"
+      },
+      "elf_sha256": "44ac617845e3a99e36b419c028349f86c7bb64d2b33cc6d9711623281a61625c",
+      "arch": "rv32imc",
+      "abi": "ilp32",
+      "cflags": "-march=rv32imc -mabi=ilp32 -static -mcmodel=medany -Wall -g -Os -fvisibility=hidden -nostdlib -nostartfiles -ffreestanding"
+    },
+    "toolchain": {
+      "release": "20220210-1",
+      "variant": "lowrisc-toolchain-gcc-rv32imcb",
+      "gcc_version": "10.2.0",
+      "archive_sha256": "442a7d141d9148cdce0a44c31d452f43b41acc29f2015d8b91e079e9fe7fff67"
+    }
+  },
+  "repository": {
+    "repository_url": "https://github.com/lowRISC/ibex.git",
+    "commit": "405c6d1d8220a18b2f9196141167a5875422dee4",
+    "tree": "3e54f2a830939234932ec153cdde6c1a5b7d13b9",
+    "branch": "master",
+    "status": "",
+    "shallow": "false",
+    "source_sha256": {
+      "ibex_configs.yaml": "75b4e848face7fa31e1bc227aaa7a83cb2a8f45aa1fc0bd4fe2e2800f6caac28",
+      "examples/simple_system/README.md": "1bc428e57c4480d5f8c750d63484dc7ce24079ee0df160c952310f5537b32ab6",
+      "examples/simple_system/ibex_simple_system.core": "f7c8aeacb12587354f38391f27f92785f18863963c4ec9fb08000dda63f9e501",
+      "examples/simple_system/ibex_simple_system_core.core": "f4313230a1a4107ffec641d3b9d5f3259c808045a87b55d81c954fa807cda755",
+      "examples/simple_system/rtl/ibex_simple_system.sv": "684ef6b8bc3acab88ed9abbe6a003fd0b82ddd537ed72461bb19079582c76d66",
+      "examples/sw/simple_system/hello_test/hello_test.c": "fbea61084e54dc66eb2c7d6a05d3d46a37fc8af5bff69e902089943bd3b464df",
+      "examples/sw/simple_system/hello_test/Makefile": "149963538f4bfb41770e9b53cdf6af838393125d8cd89df59d3524e7b27e7ff8",
+      "examples/sw/simple_system/common/common.mk": "30d263fd5f96fcafd58b94603e85db5fac55e547736db4f265287aa9714679cd",
+      "examples/sw/simple_system/common/link.ld": "318b9ed40edb2cd0e329e5617f58cacad59d8137f12e550260be29c33f824068",
+      "examples/sw/simple_system/common/crt0.S": "b0117f2e94ab0f65eb54806c67c727cd54142713a15422d5bc81e8431d853b9f",
+      "rtl/ibex_tracer.sv": "6241602443ec15517914fc3231e9c860229aea52dc571b5a94769a0510963925",
+      "util/ibex_config.py": "640bb21187d84f48eed8ae8e2f7709e607b873e492ac5176176708b7312f09cd",
+      "python-requirements.txt": "51097dd014d9a8e3804e392fe868c962802776908bdd22959eeca849517d301d",
+      "ci/vars.env": "db5863954c71b591ef31e6897a5f9f6582ef90c6638fe8592709bc570105baa6",
+      "ibex_top_tracing.core": "796927d172b4a5a0e2c6db80b7b95ad76540311faaaa900c885249167ce37dfc"
+    },
+    "configuration_name": "small",
+    "configuration": {
+      "BaseIsa": "ibex_pkg::BaseIsaRV32I",
+      "RV32E": 0,
+      "RV32M": "ibex_pkg::RV32MFast",
+      "RV32B": "ibex_pkg::RV32BNone",
+      "RV32ZC": "ibex_pkg::RV32Zca",
+      "RegFile": "ibex_pkg::RegFileFF",
+      "BranchTargetALU": 0,
+      "WritebackStage": 0,
+      "ICache": 0,
+      "ICacheECC": 0,
+      "ICacheScramble": 0,
+      "BranchPredictor": 0,
+      "DbgTriggerEn": 0,
+      "SecureIbex": 0,
+      "PMPEnable": 0,
+      "PMPGranularity": 0,
+      "PMPNumRegions": 4,
+      "MHPMCounterNum": 0,
+      "MHPMCounterWidth": 40
+    },
+    "configuration_canonical_json": "{\"BaseIsa\":\"ibex_pkg::BaseIsaRV32I\",\"BranchPredictor\":0,\"BranchTargetALU\":0,\"DbgTriggerEn\":0,\"ICache\":0,\"ICacheECC\":0,\"ICacheScramble\":0,\"MHPMCounterNum\":0,\"MHPMCounterWidth\":40,\"PMPEnable\":0,\"PMPGranularity\":0,\"PMPNumRegions\":4,\"RV32B\":\"ibex_pkg::RV32BNone\",\"RV32E\":0,\"RV32M\":\"ibex_pkg::RV32MFast\",\"RV32ZC\":\"ibex_pkg::RV32Zca\",\"RegFile\":\"ibex_pkg::RegFileFF\",\"SecureIbex\":0,\"WritebackStage\":0}",
+    "configuration_sha256": "db8a13294c8c468a40e402893b6ecfbc80cc641027c420a6fc17983cc8e9289c"
+  },
+  "effective_platform_source_identity": {
+    "base_commit": "405c6d1d8220a18b2f9196141167a5875422dee4",
+    "shim_sha256": "2e69217b12c796389c2962ecf83973a08d69bf0fb11c0b78348ee2d81cd03dd7"
+  },
+  "compatibility_shim": {
+    "scope": "build_metadata_compatibility_shim",
+    "file": "examples/simple_system/ibex_simple_system.core",
+    "sha256": "2e69217b12c796389c2962ecf83973a08d69bf0fb11c0b78348ee2d81cd03dd7",
+    "diff": "diff --git a/examples/simple_system/ibex_simple_system.core b/examples/simple_system/ibex_simple_system.core\nindex ad773acd..76dbb084 100644\n--- a/examples/simple_system/ibex_simple_system.core\n+++ b/examples/simple_system/ibex_simple_system.core\n@@ -13,6 +13,12 @@ filesets:\n     file_type: cppSource\n \n parameters:\n+  BaseIsa:\n+    datatype: str\n+    default: ibex_pkg::BaseIsaRV32I\n+    paramtype: vlogdefine\n+    description: \"Base ISA parameter enum. See the ibex_pkg::base_isa_e enum in ibex_pkg.sv for permitted values.\"\n+\n   RV32E:\n     datatype: int\n     paramtype: vlogparam\n@@ -138,6 +144,7 @@ targets:\n       - files_simple_system\n     toplevel: ibex_simple_system\n     parameters:\n+      - BaseIsa\n       - RV32E\n       - RV32M\n       - RV32B\n@@ -182,6 +189,9 @@ targets:\n       verilator:\n         mode: cc\n         verilator_options:\n+          # DATA1A-R1: fixed small configuration, Verilator metadata only.\n+          # The wrapper consumes BASE_ISA, not the PR's BaseIsa macro.\n+          - '-DBASE_ISA=ibex_pkg::BaseIsaRV32I'\n           # Disabling tracing reduces compile times but doesn't have a\n           # huge influence on runtime performance.\n           - '--trace'\n",
+    "pr": {
+      "html_url": "https://github.com/lowRISC/ibex/pull/2492",
+      "state": "open",
+      "merged": false,
+      "merged_at": null,
+      "title": "[simple_system] Add BaseIsa parameter",
+      "head_sha": "f51bc6c2c92a1cde5e5237786200c3239ce13f42",
+      "base_sha": "34b0705760ef3dfa00e99637432473d2be8f22f3",
+      "patch_url": "https://github.com/lowRISC/ibex/commit/f51bc6c2c92a1cde5e5237786200c3239ce13f42.patch",
+      "patch_sha256": "dafb0b3afd98e9707afa7dfc52339018f1c9c5d9231d6a49d900b9314038a7de"
+    },
+    "pr_semantic_result": [
+      "parser_fix_only",
+      "semantic_config_not_proven"
+    ],
+    "no_hdl_modification": true,
+    "no_firmware_modification": true,
+    "no_mutation": true
+  },
+  "configuration_equivalence": {
+    "small_config_equivalence": "PASS",
+    "fields": [
+      {
+        "field": "BaseIsa",
+        "expected": "ibex_pkg::BaseIsaRV32I",
+        "expected_numeric": 0,
+        "transport": "Verilator-only vlogdefine BASE_ISA (BaseIsa PR macro unused)",
+        "token": "-DBASE_ISA=ibex_pkg::BaseIsaRV32I",
+        "effective_xml_literal": "32'sh0",
+        "effective_numeric": 0,
+        "xml_location": "gw,63,34,63,41",
+        "status": "PASS"
+      },
+      {
+        "field": "RV32E",
+        "expected": 0,
+        "expected_numeric": 0,
+        "transport": "vlogparam",
+        "token": "-GRV32E=0",
+        "effective_xml_literal": "1'h0",
+        "effective_numeric": 0,
+        "xml_location": "gw,58,33,58,38",
+        "status": "PASS"
+      },
+      {
+        "field": "RV32M",
+        "expected": "ibex_pkg::RV32MFast",
+        "expected_numeric": 2,
+        "transport": "vlogdefine",
+        "token": "-DRV32M=ibex_pkg::RV32MFast",
+        "effective_xml_literal": "32'sh2",
+        "effective_numeric": 2,
+        "xml_location": "gw,59,33,59,38",
+        "status": "PASS"
+      },
+      {
+        "field": "RV32B",
+        "expected": "ibex_pkg::RV32BNone",
+        "expected_numeric": 0,
+        "transport": "vlogdefine",
+        "token": "-DRV32B=ibex_pkg::RV32BNone",
+        "effective_xml_literal": "32'sh0",
+        "effective_numeric": 0,
+        "xml_location": "gw,60,33,60,38",
+        "status": "PASS"
+      },
+      {
+        "field": "RV32ZC",
+        "expected": "ibex_pkg::RV32Zca",
+        "expected_numeric": 0,
+        "transport": "vlogdefine",
+        "token": "-DRV32ZC=ibex_pkg::RV32Zca",
+        "effective_xml_literal": "32'sh0",
+        "effective_numeric": 0,
+        "xml_location": "gw,61,33,61,39",
+        "status": "PASS"
+      },
+      {
+        "field": "RegFile",
+        "expected": "ibex_pkg::RegFileFF",
+        "expected_numeric": 0,
+        "transport": "vlogdefine",
+        "token": "-DRegFile=ibex_pkg::RegFileFF",
+        "effective_xml_literal": "32'sh0",
+        "effective_numeric": 0,
+        "xml_location": "gw,62,33,62,40",
+        "status": "PASS"
+      },
+      {
+        "field": "BranchTargetALU",
+        "expected": 0,
+        "expected_numeric": 0,
+        "transport": "vlogparam",
+        "token": "-GBranchTargetALU=0",
+        "effective_xml_literal": "1'h0",
+        "effective_numeric": 0,
+        "xml_location": "gw,64,33,64,48",
+        "status": "PASS"
+      },
+      {
+        "field": "WritebackStage",
+        "expected": 0,
+        "expected_numeric": 0,
+        "transport": "vlogparam",
+        "token": "-GWritebackStage=0",
+        "effective_xml_literal": "1'h0",
+        "effective_numeric": 0,
+        "xml_location": "gw,65,33,65,47",
+        "status": "PASS"
+      },
+      {
+        "field": "ICache",
+        "expected": 0,
+        "expected_numeric": 0,
+        "transport": "vlogparam",
+        "token": "-GICache=0",
+        "effective_xml_literal": "1'h0",
+        "effective_numeric": 0,
+        "xml_location": "gw,66,33,66,39",
+        "status": "PASS"
+      },
+      {
+        "field": "ICacheECC",
+        "expected": 0,
+        "expected_numeric": 0,
+        "transport": "vlogparam",
+        "token": "-GICacheECC=0",
+        "effective_xml_literal": "1'h0",
+        "effective_numeric": 0,
+        "xml_location": "gw,68,33,68,42",
+        "status": "PASS"
+      },
+      {
+        "field": "ICacheScramble",
+        "expected": 0,
+        "expected_numeric": 0,
+        "transport": "vlogparam",
+        "token": "-GICacheScramble=0",
+        "effective_xml_literal": "1'h0",
+        "effective_numeric": 0,
+        "xml_location": "gw,52,33,52,47",
+        "status": "PASS"
+      },
+      {
+        "field": "BranchPredictor",
+        "expected": 0,
+        "expected_numeric": 0,
+        "transport": "vlogparam",
+        "token": "-GBranchPredictor=0",
+        "effective_xml_literal": "1'h0",
+        "effective_numeric": 0,
+        "xml_location": "gw,70,33,70,48",
+        "status": "PASS"
+      },
+      {
+        "field": "DbgTriggerEn",
+        "expected": 0,
+        "expected_numeric": 0,
+        "transport": "vlogparam",
+        "token": "-GDbgTriggerEn=0",
+        "effective_xml_literal": "1'h0",
+        "effective_numeric": 0,
+        "xml_location": "gw,67,33,67,45",
+        "status": "PASS"
+      },
+      {
+        "field": "SecureIbex",
+        "expected": 0,
+        "expected_numeric": 0,
+        "transport": "vlogparam",
+        "token": "-GSecureIbex=0",
+        "effective_xml_literal": "1'h0",
+        "effective_numeric": 0,
+        "xml_location": "gw,50,33,50,43",
+        "status": "PASS"
+      },
+      {
+        "field": "PMPEnable",
+        "expected": 0,
+        "expected_numeric": 0,
+        "transport": "vlogparam",
+        "token": "-GPMPEnable=0",
+        "effective_xml_literal": "1'h0",
+        "effective_numeric": 0,
+        "xml_location": "gw,53,33,53,42",
+        "status": "PASS"
+      },
+      {
+        "field": "PMPGranularity",
+        "expected": 0,
+        "expected_numeric": 0,
+        "transport": "vlogparam",
+        "token": "-GPMPGranularity=0",
+        "effective_xml_literal": "32'sh0",
+        "effective_numeric": 0,
+        "xml_location": "gw,54,33,54,47",
+        "status": "PASS"
+      },
+      {
+        "field": "PMPNumRegions",
+        "expected": 4,
+        "expected_numeric": 4,
+        "transport": "vlogparam",
+        "token": "-GPMPNumRegions=4",
+        "effective_xml_literal": "32'h4",
+        "effective_numeric": 4,
+        "xml_location": "gw,55,33,55,46",
+        "status": "PASS"
+      },
+      {
+        "field": "MHPMCounterNum",
+        "expected": 0,
+        "expected_numeric": 0,
+        "transport": "vlogparam",
+        "token": "-GMHPMCounterNum=0",
+        "effective_xml_literal": "32'sh0",
+        "effective_numeric": 0,
+        "xml_location": "gw,56,33,56,47",
+        "status": "PASS"
+      },
+      {
+        "field": "MHPMCounterWidth",
+        "expected": 40,
+        "expected_numeric": 40,
+        "transport": "vlogparam",
+        "token": "-GMHPMCounterWidth=40",
+        "effective_xml_literal": "32'h28",
+        "effective_numeric": 40,
+        "xml_location": "gw,57,33,57,49",
+        "status": "PASS"
+      }
+    ],
+    "xml_sha256": "7112f4377ef02a207bbdce6791b44b83b81ee70e10f86502d86985e4c5254ce6",
+    "shim_sha256": "2e69217b12c796389c2962ecf83973a08d69bf0fb11c0b78348ee2d81cd03dd7",
+    "base_commit": "405c6d1d8220a18b2f9196141167a5875422dee4",
+    "scope": "build_metadata_compatibility_shim",
+    "supported_configuration": "small only; fixed Verilator BASE_ISA define; other configurations not validated"
+  },
+  "source_sha256": {
+    "ci/vars.env": "db5863954c71b591ef31e6897a5f9f6582ef90c6638fe8592709bc570105baa6",
+    "examples/simple_system/README.md": "1bc428e57c4480d5f8c750d63484dc7ce24079ee0df160c952310f5537b32ab6",
+    "examples/simple_system/ibex_simple_system.cc": "f13d6099675efd23316550a4de9cd151aab865f2d880f3aa931e8b5601126025",
+    "examples/simple_system/ibex_simple_system.core": "30bdeae59709fb25d75c1caee2b7b94bea20022f39f7a3e3cbde322d51455bac",
+    "examples/simple_system/ibex_simple_system_core.core": "f4313230a1a4107ffec641d3b9d5f3259c808045a87b55d81c954fa807cda755",
+    "examples/simple_system/ibex_simple_system_main.cc": "bac326028404dda0cb64f05107cb2142434d9e578199f9977c1096723d897b56",
+    "examples/simple_system/lint/verilator_waiver.vlt": "ee92961418ad5f83f34624e02906002786eaf1e71bbaa00b352b1f7d009cbaa0",
+    "examples/simple_system/rtl/ibex_simple_system.sv": "684ef6b8bc3acab88ed9abbe6a003fd0b82ddd537ed72461bb19079582c76d66",
+    "examples/sw/simple_system/common/common.mk": "30d263fd5f96fcafd58b94603e85db5fac55e547736db4f265287aa9714679cd",
+    "examples/sw/simple_system/common/crt0.S": "b0117f2e94ab0f65eb54806c67c727cd54142713a15422d5bc81e8431d853b9f",
+    "examples/sw/simple_system/common/link.ld": "318b9ed40edb2cd0e329e5617f58cacad59d8137f12e550260be29c33f824068",
+    "examples/sw/simple_system/common/simple_system_common.c": "f8824f1224fa4d0b308403eadc4fa7aed6462346e81b4e7f9d93daeed80aabcc",
+    "examples/sw/simple_system/common/simple_system_common.h": "c8ddc64a84549759e6890630e5b8e043f3bce4ddf9f188d7566eb78880a636b1",
+    "examples/sw/simple_system/common/simple_system_regs.h": "f4e77e4a26518219584b51161c9780da918f3998acf366494f1418962bd219d8",
+    "examples/sw/simple_system/hello_test/Makefile": "149963538f4bfb41770e9b53cdf6af838393125d8cd89df59d3524e7b27e7ff8",
+    "examples/sw/simple_system/hello_test/hello_test.c": "fbea61084e54dc66eb2c7d6a05d3d46a37fc8af5bff69e902089943bd3b464df",
+    "ibex_configs.yaml": "75b4e848face7fa31e1bc227aaa7a83cb2a8f45aa1fc0bd4fe2e2800f6caac28",
+    "ibex_top_tracing.core": "796927d172b4a5a0e2c6db80b7b95ad76540311faaaa900c885249167ce37dfc",
+    "python-requirements.txt": "51097dd014d9a8e3804e392fe868c962802776908bdd22959eeca849517d301d",
+    "rtl/ibex_core.sv": "88b8bf3907472f1d413380f62234a7fbf53cb1de392a6660e6ef2d684a2416fd",
+    "rtl/ibex_pkg.sv": "d9bfed30b16dd77981f1850a8daf56fec5ce14043789b4a0a4506c833e9a7d5a",
+    "rtl/ibex_tracer.sv": "6241602443ec15517914fc3231e9c860229aea52dc571b5a94769a0510963925",
+    "util/ibex_config.py": "640bb21187d84f48eed8ae8e2f7709e607b873e492ac5176176708b7312f09cd"
+  },
+  "firmware_case_id": "ibex-simple-system:hello-test:firmware",
+  "hardware_case_id": "ibex-simple-system:small:hardware",
+  "firmware_target": {
+    "architecture": "riscv",
+    "processor_id": "ibex-simple-system:small",
+    "firmware_id": "hello_test",
+    "isa_variant": "rv32imc",
+    "word_size_bits": 32,
+    "endianness": "little"
+  },
+  "hardware_target": {
+    "architecture": "riscv",
+    "processor_id": "ibex-simple-system:small",
+    "firmware_id": null,
+    "isa_variant": "rv32imc",
+    "word_size_bits": 32,
+    "endianness": "little"
+  },
+  "elf_identity": {
+    "path": "/home/qcx/ChipChainV3_res/worktrees/ibex-simple-system-data1a-r1/examples/sw/simple_system/hello_test/hello_test.elf",
+    "sha256": "44ac617845e3a99e36b419c028349f86c7bb64d2b33cc6d9711623281a61625c",
+    "size_bytes": 15856,
+    "elf_class": "ELF32",
+    "machine": "RISC-V",
+    "endianness": "little",
+    "entry_point": "0x100080",
+    "attributes": "rv32i2p0_m2p0_c2p0",
+    "arch": "rv32imc",
+    "abi": "ilp32"
+  },
+  "simulator": {
+    "path": "/home/qcx/ChipChainV3_res/worktrees/ibex-simple-system-data1a-r1/build/lowrisc_ibex_ibex_simple_system_0/sim-verilator/Vibex_simple_system",
+    "sha256": "d30710114df80a253d57e95f70bf8a3c9772a6293d0cea8b91a82cc7fe0fdeb7",
+    "size_bytes": 8003040
+  },
+  "tools": {
+    "gcc": "10.2.0",
+    "verilator": "4.210",
+    "fusesoc": "2.4.3",
+    "python": "3.12.13",
+    "pip_freeze": [
+      "argcomplete==3.7.2",
+      "attrs==26.1.0",
+      "babel==2.18.0",
+      "edalize==0.6.8",
+      "fastjsonschema==2.22.2",
+      "fusesoc==2.4.3",
+      "Jinja2==3.1.6",
+      "jsonschema2md==1.7.0",
+      "Markdown==3.10.3",
+      "MarkupSafe==3.0.3",
+      "okonomiyaki==3.0.0",
+      "packaging==26.3",
+      "pyparsing==3.3.2",
+      "PyYAML==6.0.3",
+      "simplesat==0.9.2",
+      "six==1.17.0"
+    ]
+  },
+  "archives": {
+    "verilator-v4.210.tar.gz": {
+      "size_bytes": 77017449,
+      "sha256": "fd823e0087d505c6d461e2303774c97c8134623ad3398b4fa05832e40729332c"
+    },
+    "libelf-dev_0.186-1ubuntu0.1_amd64.deb": {
+      "size_bytes": 64406,
+      "sha256": "c4aeee4339737e2177426dba4b548a55d16e54a3a63bc34e783b92bba3aa49b1"
+    },
+    "lowrisc-toolchain-gcc-rv32imcb-20220210-1.tar.xz": {
+      "size_bytes": 43859232,
+      "sha256": "442a7d141d9148cdce0a44c31d452f43b41acc29f2015d8b91e079e9fe7fff67"
+    },
+    "libelf1_0.186-1ubuntu0.1_amd64.deb": {
+      "size_bytes": 51140,
+      "sha256": "2cc781614b045b450a1e073ee3b0902f393ee58ede1d2ea4526ad805fcccf538"
+    }
+  },
+  "firmware_build": {
+    "command": [
+      "make",
+      "-C",
+      "examples/sw/simple_system/hello_test",
+      "hello_test.elf",
+      "hello_test.bin",
+      "hello_test.dis"
+    ],
+    "cwd": "/home/qcx/ChipChainV3_res/worktrees/ibex-simple-system-data1a-r1",
+    "exit_code": 0,
+    "path": "/home/qcx/ChipChainV3_res/toolchains/lowrisc-20220210-1/bin:/bin:/usr/bin",
+    "removed_environment_keys": []
+  },
+  "simulator_build": {
+    "command": [
+      "/home/qcx/ChipChainV3_res/envs/ibex-simple-system/bin/fusesoc",
+      "--config",
+      "/home/qcx/ChipChainV3_res/cache/data1a-r1/fusesoc.conf",
+      "--monochrome",
+      "--cores-root=.",
+      "run",
+      "--target=sim",
+      "--build",
+      "lowrisc:ibex:ibex_simple_system",
+      "--BaseIsa=ibex_pkg::BaseIsaRV32I",
+      "--RV32E=0",
+      "--RV32M=ibex_pkg::RV32MFast",
+      "--RV32B=ibex_pkg::RV32BNone",
+      "--RV32ZC=ibex_pkg::RV32Zca",
+      "--RegFile=ibex_pkg::RegFileFF",
+      "--BranchTargetALU=0",
+      "--WritebackStage=0",
+      "--ICache=0",
+      "--ICacheECC=0",
+      "--ICacheScramble=0",
+      "--BranchPredictor=0",
+      "--DbgTriggerEn=0",
+      "--SecureIbex=0",
+      "--PMPEnable=0",
+      "--PMPGranularity=0",
+      "--PMPNumRegions=4",
+      "--MHPMCounterNum=0",
+      "--MHPMCounterWidth=40"
+    ],
+    "cwd": "/home/qcx/ChipChainV3_res/worktrees/ibex-simple-system-data1a-r1",
+    "environment_overrides": {
+      "PATH": "/home/qcx/ChipChainV3_res/envs/ibex-simple-system/bin:/home/qcx/ChipChainV3_res/toolchains/verilator-ci/v4.210/bin:/bin:/usr/bin",
+      "VERILATOR_ROOT": "/home/qcx/ChipChainV3_res/toolchains/verilator-ci/v4.210/share/verilator",
+      "CPLUS_INCLUDE_PATH": "/home/qcx/ChipChainV3_res/toolchains/libelf-0.186/usr/include",
+      "LIBRARY_PATH": "/home/qcx/ChipChainV3_res/toolchains/libelf-0.186/usr/lib/x86_64-linux-gnu",
+      "LD_LIBRARY_PATH": "/home/qcx/ChipChainV3_res/toolchains/libelf-0.186/usr/lib/x86_64-linux-gnu",
+      "MAKEFLAGS": "-j2"
+    },
+    "status": "completed",
+    "exit_code": 0
+  },
+  "run_command": [
+    "/home/qcx/ChipChainV3_res/worktrees/ibex-simple-system-data1a-r1/build/lowrisc_ibex_ibex_simple_system_0/sim-verilator/Vibex_simple_system",
+    "-t",
+    "--meminit=ram,/home/qcx/ChipChainV3_res/worktrees/ibex-simple-system-data1a-r1/examples/sw/simple_system/hello_test/hello_test.elf"
+  ],
+  "run1": {
+    "exit_code": 0,
+    "software_halt": true
+  },
+  "run2": {
+    "exit_code": 0,
+    "software_halt": true
+  },
+  "reproducibility": {
+    "comparison": [
+      {
+        "artifact": "ibex_simple_system.log",
+        "run1_sha256": "9aca3202732ed354316824b3122b91b60f0ea8c3c5be019fe576b1c7b54eb207",
+        "run2_sha256": "9aca3202732ed354316824b3122b91b60f0ea8c3c5be019fe576b1c7b54eb207",
+        "classification": "deterministic_equal",
+        "note": null
+      },
+      {
+        "artifact": "trace_core_00000000.log",
+        "run1_sha256": "21748f4370611590e76926ed47a659dbf94ad78d208b1c3ed8db70c09f4ec4b9",
+        "run2_sha256": "21748f4370611590e76926ed47a659dbf94ad78d208b1c3ed8db70c09f4ec4b9",
+        "classification": "deterministic_equal",
+        "note": null
+      },
+      {
+        "artifact": "ibex_simple_system_pcount.csv",
+        "run1_sha256": "c0c5af60abba29c3269e109372f8c33c85b520eac67b550b1f40f6a713d43c10",
+        "run2_sha256": "c0c5af60abba29c3269e109372f8c33c85b520eac67b550b1f40f6a713d43c10",
+        "classification": "deterministic_equal",
+        "note": null
+      },
+      {
+        "artifact": "stderr.log",
+        "run1_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "run2_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "classification": "deterministic_equal",
+        "note": null
+      },
+      {
+        "artifact": "sim.fst",
+        "run1_sha256": "27e2ee69c3bada80f2ff9cc3073dc53562f43e918d3d1ebfe0910649a98def42",
+        "run2_sha256": "27e2ee69c3bada80f2ff9cc3073dc53562f43e918d3d1ebfe0910649a98def42",
+        "classification": "deterministic_equal",
+        "note": "FST byte equality is observed only, not a required portability guarantee"
+      },
+      {
+        "artifact": "stdout.log",
+        "classification": "expected_nondeterministic",
+        "normalized_equal": true,
+        "excluded_fields": [
+          "PID in SIGUSR1 hint",
+          "wallclock time",
+          "simulation speed"
+        ],
+        "run1_sha256": "905d7dcd4d5d6813a9976aea0293cac6e23ad674ad4e75a03d1522e147b31623",
+        "run2_sha256": "6bc2898dec7db7856155442f4fae1dd346627d8cfa0685bc99c09fea65fde44b"
+      }
+    ],
+    "executed_cycles": 13268,
+    "performance_counters": {
+      "Cycles": 477,
+      "Instructions Retired": 261
+    },
+    "unexpected_differences": []
+  },
+  "trace_audit": {
+    "record_count": 1183,
+    "retirement_semantics": "RVFI-valid architectural retirement/event stream; not merely an encoding observation. Trap-marked records require separate interpretation.",
+    "trap_marked_records": 0,
+    "interrupt_marked_records": 6,
+    "fields": [
+      "simulation time",
+      "cycle",
+      "PC",
+      "instruction encoding (16 or 32 bits)",
+      "decoded instruction",
+      "conditional source register read values",
+      "conditional destination/writeback",
+      "conditional memory address/data"
+    ],
+    "explicit_valid_column": false,
+    "valid_gate": "rtl/ibex_tracer.sv:1149-1167 rvfi_valid && trace_log_enable",
+    "producer": "rtl/ibex_core.sv:1890-1902 no-writeback output stage follows ID/EX completion (retirement); trap tracking also present",
+    "full_gpr_snapshot": false,
+    "register_limit": "Printed x0=0 does not represent a mutable x0 write; per-event operands/writeback do not constitute full GPR state.",
+    "mmio": [
+      {
+        "address": "0x00020000",
+        "label": "ascii_out",
+        "trace_artifact": "run1/trace_core_00000000.log",
+        "read_count": 0,
+        "write_count": 68,
+        "first_line": 142,
+        "last_line": 1088,
+        "example": "624\t       308\t001000a0\t    c31c\tc.sw\tx15,0(x14)\t x14:0x00020000 x15:0x00000048 PA:0x00020000 store:0x00000048"
+      },
+      {
+        "address": "0x00020008",
+        "label": "halt",
+        "trace_artifact": "run1/trace_core_00000000.log",
+        "read_count": 0,
+        "write_count": 1,
+        "first_line": 1184,
+        "last_line": 1184,
+        "example": "26536\t     13264\t001003bc\t0062a023\tsw\tx6,0(x5)\t  x5:0x00020008  x6:0x00000001 PA:0x00020008 store:0x00000001"
+      },
+      {
+        "address": "0x00030000",
+        "label": "mtime",
+        "trace_artifact": "run1/trace_core_00000000.log",
+        "read_count": 7,
+        "write_count": 0,
+        "first_line": 418,
+        "last_line": 1123,
+        "example": "1622\t       807\t00100244\t    4388\tc.lw\tx10,0(x15)\t x15:0x00030000 x10=0x00000325 PA:0x00030000 load:0x00000325"
+      },
+      {
+        "address": "0x00030004",
+        "label": "mtimeh",
+        "trace_artifact": "run1/trace_core_00000000.log",
+        "read_count": 14,
+        "write_count": 0,
+        "first_line": 417,
+        "last_line": 1124,
+        "example": "1618\t       805\t00100242\t    43d8\tc.lw\tx14,4(x15)\t x15:0x00030000 x14=0x00000000 PA:0x00030004 load:0x00000000"
+      },
+      {
+        "address": "0x00030008",
+        "label": "mtimecmp",
+        "trace_artifact": "run1/trace_core_00000000.log",
+        "read_count": 0,
+        "write_count": 14,
+        "first_line": 429,
+        "last_line": 1136,
+        "example": "1654\t       823\t00100254\t    c798\tc.sw\tx14,8(x15)\t x15:0x00030000 x14:0xffffffff PA:0x00030008 store:0xffffffff"
+      },
+      {
+        "address": "0x0003000c",
+        "label": "mtimecmph",
+        "trace_artifact": "run1/trace_core_00000000.log",
+        "read_count": 0,
+        "write_count": 7,
+        "first_line": 430,
+        "last_line": 1135,
+        "example": "1658\t       825\t00100256\t    c7cc\tc.sw\tx11,12(x15)\t x15:0x00030000 x11:0x00000000 PA:0x0003000c store:0x00000000"
+      }
+    ],
+    "pcount_window": "477 cycles / 261 retired apply to hello output measurement window; firmware disables pcount before timer loop; not total trace count"
+  },
+  "pairing_evidence": [
+    {
+      "evidence_id": "pair-evidence:45b36cb55b06ac89effe29c3d026cba32b00ed3c9282ee0e44ccf76c1f6be8fc",
+      "content_sha256": "45b36cb55b06ac89effe29c3d026cba32b00ed3c9282ee0e44ccf76c1f6be8fc",
+      "kind": "same_source_revision",
+      "content": {
+        "base_commit": "405c6d1d8220a18b2f9196141167a5875422dee4",
+        "base_tree": "3e54f2a830939234932ec153cdde6c1a5b7d13b9",
+        "shim_sha256": "2e69217b12c796389c2962ecf83973a08d69bf0fb11c0b78348ee2d81cd03dd7"
+      }
+    },
+    {
+      "evidence_id": "pair-evidence:cce320e803c9bf3d94c215017b3d28435758eba506c1122be943ea242a85b5a3",
+      "content_sha256": "cce320e803c9bf3d94c215017b3d28435758eba506c1122be943ea242a85b5a3",
+      "kind": "same_simple_system_top",
+      "content": {
+        "top": "ibex_simple_system",
+        "wrapper_sha256": "684ef6b8bc3acab88ed9abbe6a003fd0b82ddd537ed72461bb19079582c76d66"
+      }
+    },
+    {
+      "evidence_id": "pair-evidence:f7510c21392f472105fe787f30940e9e9356b310ccedaed2b9c6c005c4a65caa",
+      "content_sha256": "f7510c21392f472105fe787f30940e9e9356b310ccedaed2b9c6c005c4a65caa",
+      "kind": "same_small_configuration",
+      "content": {
+        "configuration_sha256": "db8a13294c8c468a40e402893b6ecfbc80cc641027c420a6fc17983cc8e9289c",
+        "equivalence_sha256": "d9ddcedd148bc2e8a4f98b6848a44b667876c1d12593894c546c7da94103f8eb"
+      }
+    },
+    {
+      "evidence_id": "pair-evidence:ebc2f897fa7ac0bef2b7f20fe0263e034823c406d3a8d94068c19866d326816b",
+      "content_sha256": "ebc2f897fa7ac0bef2b7f20fe0263e034823c406d3a8d94068c19866d326816b",
+      "kind": "same_firmware_build",
+      "content": {
+        "target": "hello_test.elf",
+        "source_sha256": {
+          "examples/sw/simple_system/common/common.mk": "30d263fd5f96fcafd58b94603e85db5fac55e547736db4f265287aa9714679cd",
+          "examples/sw/simple_system/common/crt0.S": "b0117f2e94ab0f65eb54806c67c727cd54142713a15422d5bc81e8431d853b9f",
+          "examples/sw/simple_system/common/link.ld": "318b9ed40edb2cd0e329e5617f58cacad59d8137f12e550260be29c33f824068",
+          "examples/sw/simple_system/common/simple_system_common.c": "f8824f1224fa4d0b308403eadc4fa7aed6462346e81b4e7f9d93daeed80aabcc",
+          "examples/sw/simple_system/common/simple_system_common.h": "c8ddc64a84549759e6890630e5b8e043f3bce4ddf9f188d7566eb78880a636b1",
+          "examples/sw/simple_system/common/simple_system_regs.h": "f4e77e4a26518219584b51161c9780da918f3998acf366494f1418962bd219d8",
+          "examples/sw/simple_system/hello_test/Makefile": "149963538f4bfb41770e9b53cdf6af838393125d8cd89df59d3524e7b27e7ff8",
+          "examples/sw/simple_system/hello_test/hello_test.c": "fbea61084e54dc66eb2c7d6a05d3d46a37fc8af5bff69e902089943bd3b464df"
+        },
+        "elf_sha256": "44ac617845e3a99e36b419c028349f86c7bb64d2b33cc6d9711623281a61625c",
+        "arch": "rv32imc",
+        "abi": "ilp32",
+        "cflags": "-march=rv32imc -mabi=ilp32 -static -mcmodel=medany -Wall -g -Os -fvisibility=hidden -nostdlib -nostartfiles -ffreestanding"
+      }
+    },
+    {
+      "evidence_id": "pair-evidence:570a1990e37cc4e35799b676863010f81059287b66f05e433093227ed3dae5ef",
+      "content_sha256": "570a1990e37cc4e35799b676863010f81059287b66f05e433093227ed3dae5ef",
+      "kind": "same_elf_loaded_into_simulator",
+      "content": {
+        "elf_sha256": "44ac617845e3a99e36b419c028349f86c7bb64d2b33cc6d9711623281a61625c",
+        "simulator_sha256": "d30710114df80a253d57e95f70bf8a3c9772a6293d0cea8b91a82cc7fe0fdeb7",
+        "loader": "--meminit=ram,ELF",
+        "run1_exit": 0,
+        "run2_exit": 0,
+        "software_halt_observed": true
+      }
+    },
+    {
+      "evidence_id": "pair-evidence:9e953bb990e17cd99c303583c4fd3f07e3c576744e1c550bcb6ee1850bb4a8aa",
+      "content_sha256": "9e953bb990e17cd99c303583c4fd3f07e3c576744e1c550bcb6ee1850bb4a8aa",
+      "kind": "same_execution_session_family",
+      "content": {
+        "platform_identity": "ibex-simple-system:6e7ba1a16803af4942efe44ebcd65d853efd3c45d5bccf086a22bab6a20bdec2",
+        "shim_sha256": "2e69217b12c796389c2962ecf83973a08d69bf0fb11c0b78348ee2d81cd03dd7",
+        "experiment_freeze_sha256": "403bcf2158964bd358428c72fc0d5f257ff9d091364750306e38a4a8e90ea5f8",
+        "reproducibility_sha256": "b28f6e91a58892a4b2b2856dce85ed2fd18b11274e8936387d2d855c860082ff"
+      }
+    }
+  ],
+  "pair_manifest_sha256": "dbc7c3d0e50dc4d5c1d9aa51c8e9eddbe21cb4eb25a428403534517a84460a36",
+  "pair_descriptor_sha256": "df274238ae167a9c1483f64a108a28d9b1b7cf9e8e3f98d6e65d55a87088d953",
+  "pair_id": "xlpair:f89747c44536a4359a672e28904cad4cb86034cf8c791a2d81f65d75dc7508f2",
+  "eligibility": "eligible",
+  "reasons": [],
+  "limitations": [
+    "no_hardware_mutation",
+    "no_hardware_vulnerability",
+    "no_hardware_trigger",
+    "no_cross_layer_candidate",
+    "no_attack_chain",
+    "no_attacker_control_claim",
+    "no_path_feasibility_claim",
+    "baseline_execution_only",
+    "build_metadata_compatibility_shim",
+    "small_only_metadata_shim",
+    "execution_reproducibility_not_binary_rebuild_reproducibility"
+  ],
+  "validation": {
+    "pytest": "1064 passed, 27 skipped in 27.54s",
+    "pip_check": "No broken requirements found.",
+    "platform_environment_pip_check": "No broken requirements found.",
+    "compileall": "PASS",
+    "git_diff_check": "PASS",
+    "new_tests": 0
+  },
+  "runtime_artifacts": [
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/cross_layer_pair_descriptor.json",
+      "size_bytes": 1753,
+      "sha256": "df274238ae167a9c1483f64a108a28d9b1b7cf9e8e3f98d6e65d55a87088d953"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/cross_layer_pair_manifest.json",
+      "size_bytes": 963,
+      "sha256": "dbc7c3d0e50dc4d5c1d9aa51c8e9eddbe21cb4eb25a428403534517a84460a36"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/experiment-freeze.json",
+      "size_bytes": 1876,
+      "sha256": "403bcf2158964bd358428c72fc0d5f257ff9d091364750306e38a4a8e90ea5f8"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/firmware_case.json",
+      "size_bytes": 1144,
+      "sha256": "63253c6bada369eaae1429b47ab8659661ed683243f1084041171fc8310b7961"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/hardware_case.json",
+      "size_bytes": 1575,
+      "sha256": "28aec477667439722bf8c9082cdf45ea2e12f7f3b55437d7eb23c2710830d2d0"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/pairing-evidence.json",
+      "size_bytes": 4181,
+      "sha256": "513550d7d948dc42975254203f5e0bcb53aa38a42dc2b4f9c222f5b49d29b167"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/platform-identity.json",
+      "size_bytes": 2228,
+      "sha256": "9a539877fb863d9043913eb06ec6f5b24274a09def690b7b6ba107324edd92ff"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/Vibex_simple_system__Trace__Slow.cpp",
+      "size_bytes": 1227207,
+      "sha256": "4625616c277f92468314b83f96273beaea07993017385960967ad2145bd6efcb"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/Vibex_simple_system__verFiles.dat",
+      "size_bytes": 25744,
+      "sha256": "ffe6946118482643b79f1797d1e3c5a803ca7e9f23c5dd7588262dc318d8a9bf"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/attempt1-README.md",
+      "size_bytes": 19618,
+      "sha256": "79b5a0084f8c9495c250dbe306cf3323b6b56c8b682bf3165adf91948725cfcc"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/attempt1-ibex-simple-system-blocked.json",
+      "size_bytes": 12631,
+      "sha256": "49989e8cd13369b615c22979220966bd5112827c9cf5b7f7e80271ef5c21d1bd"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/attempt1-v3-data1a-ibex-simple-system-baseline.md",
+      "size_bytes": 22591,
+      "sha256": "2cad70fd67ccaaaf8d1bcf21b34ccb8858d158c3754ea1ecd9c463df85a34a19"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/compatibility-shim.patch",
+      "size_bytes": 1193,
+      "sha256": "2e69217b12c796389c2962ecf83973a08d69bf0fb11c0b78348ee2d81cd03dd7"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/compiler-version.txt",
+      "size_bytes": 267,
+      "sha256": "4803308f511d47f5b99a96e34e6057db9bcf3ad28e6db7fc097115759b837873"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/elf-inspection-commands.json",
+      "size_bytes": 1559,
+      "sha256": "37f35288b28367831e3dea7a1e9e12cc838472635db33d6bf096849e626e0333"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/file.txt",
+      "size_bytes": 245,
+      "sha256": "b0fa38aec8d4c61b8ed1947a756821768a8f89d24e0b4c3a4657e5bb9a35294b"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/firmware-build.json",
+      "size_bytes": 370,
+      "sha256": "e87ef0de257c86d5866652f0200d327b2bfaa71559e6f99b6162119f31b94385"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/firmware-build.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/firmware-build.stdout.log",
+      "size_bytes": 2157,
+      "sha256": "b1d885003058be22275ca38f952cfc44477b893bb24c7e70a85ac3fa1c2e6f03"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/fusesoc.conf",
+      "size_bytes": 76,
+      "sha256": "d846ce403a0b254cb82bcdeec07580e2e01e3ce73197fe256aa492de3ed4f31d"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/libelf-download-urls.txt",
+      "size_bytes": 548,
+      "sha256": "5f993f3084d724afdab043438cc87ae4a140d5d2ee6cbf62fc3a7006fedc0144"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/libelf-download.log",
+      "size_bytes": 268,
+      "sha256": "0da7eb963aa73317f0ddeff632d9adca997ba69791b5b29980c1e25216f3f637"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/objdump-version.txt",
+      "size_bytes": 296,
+      "sha256": "590b627f5f7d368b77e1f380820ec4751161ee8970b487baaa03474b783cab2a"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/packaging-install.log",
+      "size_bytes": 394,
+      "sha256": "27971a2a0e1ad451ff733feb076cf211122f92281f4fa5164121155b487e5a22"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/pip-freeze.txt",
+      "size_bytes": 265,
+      "sha256": "5d853d87fb08b048f6b79c089a8b28ffef775c6661473d183c19243d23312756"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/pr-preprocess-retry.json",
+      "size_bytes": 791,
+      "sha256": "6f46f1d83cffe2df84b0f1729fcb093a97e021c40b6c345ced0f31b5c58ec197"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/pr-preprocess-retry.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/pr-preprocess.json",
+      "size_bytes": 654,
+      "sha256": "8aad11cd7d2885a7e7b259a4564cc5b45a2e5f4d1d95992132a42649d613e55a"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/pr-preprocess.stderr.log",
+      "size_bytes": 527,
+      "sha256": "c5672382fb602f8ce9870c2b18f068e9891fc5b5b93be465bda1a66d057b930e"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/pr-preprocessed.sv",
+      "size_bytes": 1745787,
+      "sha256": "95316e6219580b6d72aaba0779bbab428a1a2fe457c94a8b190d1f0034d0adb2"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/pr-setup.json",
+      "size_bytes": 907,
+      "sha256": "23b802dac99fa451d361e47268e8ab698dac867335d72d75eb050d00023f6886"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/pr-setup.stderr.log",
+      "size_bytes": 3177,
+      "sha256": "33f1be6708d213ca0b419f49774b7643e377390906120b2a0053a7467ff6e65e"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/pr-setup.stdout.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/pr.eda.yml",
+      "size_bytes": 51909,
+      "sha256": "da087d018ff974c029ec7f889f39e432c44bab0097e44c669c13ae3f3a5a7ebf"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/pr.vc",
+      "size_bytes": 11717,
+      "sha256": "d7becb62901815f54cb733d787596b28e3247639b432feae414aae0a4e95f42d"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/pr2492.json",
+      "size_bytes": 479,
+      "sha256": "9983c3956eb8004f76f1dc947b4685eb4928e54411718872a35edb761cff2c8c"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/pr2492.patch",
+      "size_bytes": 1780,
+      "sha256": "dafb0b3afd98e9707afa7dfc52339018f1c9c5d9231d6a49d900b9314038a7de"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/preservation-r1.json",
+      "size_bytes": 378,
+      "sha256": "0dfa56518cd9e2ba852bc5d0b3c90d8f1827f8437dbbcf0d855d1fdedb5752c2"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/pytest.log",
+      "size_bytes": 1314,
+      "sha256": "78839d66ff1e17cd9ac6e3506fc5eb7302c03f7ffaed0d5ebe37e565c67198b1"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/readelf-attributes.txt",
+      "size_bytes": 171,
+      "sha256": "b57e26f86366b72f81fe21a81ccc4ee779a4e991d9cf25d99c070defa476cae0"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/readelf-header.txt",
+      "size_bytes": 958,
+      "sha256": "05f92048a22906ae30f9347db52eacd542cff0725f13bde81f50df26cde75fb6"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/readelf-programs.txt",
+      "size_bytes": 459,
+      "sha256": "db7fd1aad9ed8269ca23ef0385f97880ebb02f3acb74f2bec1f0eddc24f1283c"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/readelf-sections.txt",
+      "size_bytes": 2023,
+      "sha256": "558ee329a90a494514da4fe7aba32f164ff268862e91ad04a2c479c384dbce69"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/shim-config.mk",
+      "size_bytes": 448,
+      "sha256": "6b915f18264ee5bd8cf478f2a59e520e5f89a23f9c4a49047372959461971ad1"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/shim-elaborated.xml",
+      "size_bytes": 5292314,
+      "sha256": "7112f4377ef02a207bbdce6791b44b83b81ee70e10f86502d86985e4c5254ce6"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/shim-lowrisc_ibex_ibex_simple_system_0.eda.yml",
+      "size_bytes": 51949,
+      "sha256": "7bec397b25bad0f513062ac93eab797e398b67697570199aeec29a06e4c26727"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/shim-lowrisc_ibex_ibex_simple_system_0.vc",
+      "size_bytes": 11717,
+      "sha256": "d7becb62901815f54cb733d787596b28e3247639b432feae414aae0a4e95f42d"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/shim-preprocess.json",
+      "size_bytes": 789,
+      "sha256": "3cf10518054b9da841d404faffbebcfdc8c64ff044169c994ec51f884c6107b3"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/shim-preprocess.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/shim-preprocess.stdout.log",
+      "size_bytes": 1745778,
+      "sha256": "1f00faf4c070f379a45e51c101721cb4cef23d3afb5f4dc19f2ee1867bfdebb2"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/shim-setup.json",
+      "size_bytes": 907,
+      "sha256": "23b802dac99fa451d361e47268e8ab698dac867335d72d75eb050d00023f6886"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/shim-setup.stderr.log",
+      "size_bytes": 3177,
+      "sha256": "33f1be6708d213ca0b419f49774b7643e377390906120b2a0053a7467ff6e65e"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/shim-xml.json",
+      "size_bytes": 886,
+      "sha256": "420f3413c3b632cdeb8c814f0f259ac918d16a42cef88e5cb9bdebbd4ad8c4f4"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/shim-xml.stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/shim-xml.stdout.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/simulator-build.json",
+      "size_bytes": 1521,
+      "sha256": "e6429a2fc817c152d4b294b5f6801af662468169aae59cafb45b3be4198507ed"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/simulator-build.stderr.log",
+      "size_bytes": 3434,
+      "sha256": "a09146917e73cc58cc7877a117b587a0bc0ae21204a75cd23709745cdff7c60b"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/simulator-build.stdout.log",
+      "size_bytes": 279,
+      "sha256": "9517f38fdde5851ef9d495e626736603f3284085ee2acfc9d06447a69cdace38"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/small-equivalence.json",
+      "size_bytes": 6221,
+      "sha256": "d9ddcedd148bc2e8a4f98b6848a44b667876c1d12593894c546c7da94103f8eb"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/tool-artifact-identities.json",
+      "size_bytes": 1123,
+      "sha256": "70f409f1f6f1012c5dfef678ad0230b1e21b35984b8ba3237cb67155799fde04"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/provenance/tool-installation.json",
+      "size_bytes": 2772,
+      "sha256": "27cb7442a40b3e5d9a5d4a5021e7622b5fed899edb4a3232c43555127f3ae5df"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/reproducibility.json",
+      "size_bytes": 2152,
+      "sha256": "b28f6e91a58892a4b2b2856dce85ed2fd18b11274e8936387d2d855c860082ff"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/run1/ibex_simple_system.log",
+      "size_bytes": 68,
+      "sha256": "9aca3202732ed354316824b3122b91b60f0ea8c3c5be019fe576b1c7b54eb207"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/run1/ibex_simple_system_pcount.csv",
+      "size_bytes": 36,
+      "sha256": "c0c5af60abba29c3269e109372f8c33c85b520eac67b550b1f40f6a713d43c10"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/run1/invocation.json",
+      "size_bytes": 503,
+      "sha256": "8a83885c0597c93ff4eb6cef812f06f466a8f0b35f00ab04836d46f1ecc5c6e4"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/run1/sim.fst",
+      "size_bytes": 546032,
+      "sha256": "27e2ee69c3bada80f2ff9cc3073dc53562f43e918d3d1ebfe0910649a98def42"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/run1/stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/run1/stdout.log",
+      "size_bytes": 847,
+      "sha256": "905d7dcd4d5d6813a9976aea0293cac6e23ad674ad4e75a03d1522e147b31623"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/run1/trace_core_00000000.log",
+      "size_bytes": 118205,
+      "sha256": "21748f4370611590e76926ed47a659dbf94ad78d208b1c3ed8db70c09f4ec4b9"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/run2/ibex_simple_system.log",
+      "size_bytes": 68,
+      "sha256": "9aca3202732ed354316824b3122b91b60f0ea8c3c5be019fe576b1c7b54eb207"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/run2/ibex_simple_system_pcount.csv",
+      "size_bytes": 36,
+      "sha256": "c0c5af60abba29c3269e109372f8c33c85b520eac67b550b1f40f6a713d43c10"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/run2/invocation.json",
+      "size_bytes": 503,
+      "sha256": "3229214f7d6237a95cdfd84f108e520ac7f1bef1a9b3023616484c2acc00316c"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/run2/sim.fst",
+      "size_bytes": 546032,
+      "sha256": "27e2ee69c3bada80f2ff9cc3073dc53562f43e918d3d1ebfe0910649a98def42"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/run2/stderr.log",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/run2/stdout.log",
+      "size_bytes": 847,
+      "sha256": "6bc2898dec7db7856155442f4fae1dd346627d8cfa0685bc99c09fea65fde44b"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/run2/trace_core_00000000.log",
+      "size_bytes": 118205,
+      "sha256": "21748f4370611590e76926ed47a659dbf94ad78d208b1c3ed8db70c09f4ec4b9"
+    },
+    {
+      "path": "output/paired/ibex-simple-system/data1a-r1/trace-audit.json",
+      "size_bytes": 3264,
+      "sha256": "0447b047f2da316880e4b38ea1ddc712ef60a710bf5de2342b89329fcaae4705"
+    }
+  ],
+  "historical_preservation": {
+    "historical_files_checked": 256,
+    "historical_files_changed": 0,
+    "attempt1_artifacts_checked": 12,
+    "attempt1_artifacts_changed": 0,
+    "original_ibex_status": "clean",
+    "original_ibex_head": "405c6d1d8220a18b2f9196141167a5875422dee4",
+    "worktree_changed_files": [
+      "examples/simple_system/ibex_simple_system.core"
+    ],
+    "hdl_firmware_config_utility_changes": []
+  },
+  "tool_installation": {
+    "verilator": {
+      "url": "https://storage.googleapis.com/verilator-builds/verilator-v4.210.tar.gz",
+      "path": "/home/qcx/ChipChainV3_res/toolchains/verilator-ci/v4.210",
+      "version": "4.210",
+      "relative_symlinks": {
+        "share/verilator/bin/verilator": "../../../bin/verilator",
+        "share/verilator/bin/verilator_bin": "../../../bin/verilator_bin"
+      },
+      "reason": "Relocate upstream installed prefix without /tools or system modification"
+    },
+    "riscv": {
+      "url": "https://github.com/lowRISC/lowrisc-toolchains/releases/download/20220210-1/lowrisc-toolchain-gcc-rv32imcb-20220210-1.tar.xz",
+      "path": "/home/qcx/ChipChainV3_res/toolchains/lowrisc-20220210-1",
+      "version": "20220210-1 / GCC 10.2.0 / crosstool-NG 1.24.0.498_5075e1f"
+    },
+    "libelf": {
+      "urls": [
+        "'http://cn.archive.ubuntu.com/ubuntu/pool/main/e/elfutils/libelf-dev_0.186-1ubuntu0.1_amd64.deb' libelf-dev_0.186-1ubuntu0.1_amd64.deb 64406 SHA512:aec9aca7fdd0e0ce6f98a6a244e2747f42b4dc49fc0de9fe4a7b17f38a39675b3d1ccb42529bdf4c39818358fe85d30e29c2f8c3e9849726193a2b3c01972d4f",
+        "'http://cn.archive.ubuntu.com/ubuntu/pool/main/e/elfutils/libelf1_0.186-1ubuntu0.1_amd64.deb' libelf1_0.186-1ubuntu0.1_amd64.deb 51140 SHA512:c6560096dff6bae305ecc32fda1011918055dc2e832a9d7104a43fabf3cf1c1c56269280f83ecc2215be2bd552d82620f219a258c61f923b22a313c623a1a0d6"
+      ],
+      "path": "/home/qcx/ChipChainV3_res/toolchains/libelf-0.186",
+      "method": "apt-get download (no installation) and dpkg-deb -x into dedicated external directory"
+    },
+    "python": {
+      "environment": "/home/qcx/ChipChainV3_res/envs/ibex-simple-system",
+      "added_in_r1": [
+        "packaging==26.3"
+      ],
+      "pip_freeze": [
+        "argcomplete==3.7.2",
+        "attrs==26.1.0",
+        "babel==2.18.0",
+        "edalize==0.6.8",
+        "fastjsonschema==2.22.2",
+        "fusesoc==2.4.3",
+        "Jinja2==3.1.6",
+        "jsonschema2md==1.7.0",
+        "Markdown==3.10.3",
+        "MarkupSafe==3.0.3",
+        "okonomiyaki==3.0.0",
+        "packaging==26.3",
+        "pyparsing==3.3.2",
+        "PyYAML==6.0.3",
+        "simplesat==0.9.2",
+        "six==1.17.0"
+      ]
+    },
+    "privileged_installation": false,
+    "system_path_changed": false,
+    "setup_interventions": [
+      {
+        "step": "first PR preprocessing",
+        "exit_code": 127,
+        "reason": "relocated Verilator root lacked launcher/bin relative link",
+        "resolution": "two relative symlinks under extracted tool prefix; retry exit 0"
+      },
+      {
+        "step": "manual manifest construction",
+        "reason": "identical trace content hashes initially produced duplicate artifact IDs; CaseBundle correctly rejected them before pair creation",
+        "resolution": "use distinct run reference IDs, retain identical content hashes; no experiment rerun"
+      }
+    ]
+  },
+  "simulator_parameter_evidence": {
+    "path": "provenance/Vibex_simple_system__Trace__Slow.cpp",
+    "declaration_line": 72,
+    "value_line": 9059,
+    "trace_slot": 1736,
+    "effective_value": 0,
+    "sha256": "4625616c277f92468314b83f96273beaea07993017385960967ad2145bd6efcb"
+  },
+  "runtime_manifest_ref": "output/paired/ibex-simple-system/data1a-r1/paired-baseline.json",
+  "runtime_manifest_sha256": "afaf8334e06822bf10aa2055143fca805801e4f81d7ae41ed24242a4869b5891"
+}
