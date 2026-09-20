@@ -2,10 +2,12 @@
 
 大模型协同的芯片固件—硬件跨层漏洞攻击链路检测研究工程。
 
-当前研究阶段：**V3-DATA1A — Ibex Simple System paired baseline（R1 已恢复，待审核/冻结）**。
+**当前项目状态见 [CURRENT_STATE.md](CURRENT_STATE.md)**。以下阶段说明保留各自的研究背景与历史结果。
+
+历史阶段：**V3-DATA1A — Ibex Simple System paired baseline**。该阶段 R1 恢复记录形成时处于待审核/冻结状态。
 通过仅作用于一次性 worktree `.core` 的 `build_metadata_compatibility_shim`，19 项 small 参数均经 elaboration 核验；
 原始 hello firmware 两次 RTL 仿真输出、trace 与 counters 一致，冻结 XL0 返回 `eligible`。
-平台身份包含 shim SHA；无 HDL/firmware 修改、mutation 或漏洞结论，尚未进入 DATA1B。
+该阶段平台身份包含 shim SHA；无 HDL/firmware 修改、mutation 或漏洞结论，当时尚未进入 DATA1B。
 完整构建、执行、配对身份与 Attempt 1 历史见 [DATA1A 实验文档](docs/research/v3-data1a-ibex-simple-system-baseline.md)；
 平台候选与获取规划见 [DATA0 调研文档](docs/research/v3-data0-paired-dataset-reconnaissance.md)。
 
@@ -16,20 +18,20 @@
 通过真实 Hardware 743 与历史 Firmware Heat_Press 报告，学习逐字段追踪 support、relation、evidence 与结论边界。
 教学快照不代表 reviewed truth；Firmware 例子明确保留已知语义缺陷。
 
-当前阶段：**V3-XL0 — Cross-Layer Interface & Hardware Trigger Contract Foundation**。
+历史阶段：**V3-XL0 — Cross-Layer Interface & Hardware Trigger Contract Foundation**。
 新增独立的 pair eligibility、typed trigger、Firmware fact references 和逐 atom 静态 matcher；
 同架构仍须明确 platform/session/manifest 绑定，UNKNOWN 不会自动匹配。
 Heat_Press ARM 与 Ibex 743/820 RISC-V 的两组真实配对均为 `ineligible`，没有生成跨层 candidate。
 正向匹配仅使用显式 synthetic fixtures；`full_static_match` 不证明 runtime trigger、路径可行性或漏洞。
-本阶段不调用真实模型、Ghidra、angr 或 formal tools，不接入 Cross-Layer Agent，不改变既有 workflow。
+在 XL0 阶段，当时未调用真实模型、Ghidra、angr 或 formal tools，未接入 Cross-Layer Agent，也未改变既有 workflow。
 合同、API 示例、真实负结果与边界见 [XL0 接口文档](docs/research/v3-xl0-cross-layer-interface.md)。
 
 以下为已完成的 **V3-1B2 — Structured Hardware Relation Claims & Support-Gated Hardware Agent** 基线。
-Hardware A3 已冻结；Hardware B2 实现、离线验证及两次预定真实实验已完成，待人工审核。
+Hardware A3 已冻结；Hardware B2 阶段记录中的实现、离线验证及两次预定真实实验已完成，当时待人工审核。
 743/820 均 machine-valid；820 x10 hypothesis 的 host-side write/update 猜测仍有语义审核问题。
 新增显式 supported 路径、prompt v3、model-only support schema 和安全诊断：每个 referenced support
 必须通过冻结 A3 checker；orphan 全部求值但不支撑报告 item。支持事实不证明 trigger hypothesis 正确。
-旧 Hardware invoke、prompt v2、domain report 和历史运行保留；本轮不自动 reviewed-export。
+旧 Hardware invoke、prompt v2、domain report 和历史运行保留；该阶段未自动 reviewed-export。
 设计、冻结身份与真实结果见 [Hardware B2 文档](docs/research/v3-1b2-structured-hardware-support.md)。
 A3 合同与 743/820 的 10/9 条 deterministic relations 见
 [Hardware A3 文档](docs/research/v3-1a3-hardware-typed-relations.md)。
@@ -42,23 +44,23 @@ A3 合同与 743/820 的 10/9 条 deterministic relations 见
 每个非空 Firmware claim 必须引用通过确定性检查的 support。旧 v1/v2 调用路径保留。
 设计、验证和真实实验记录见 [B3 文档](docs/research/v3-2b3-structured-relation-claims.md)。
 structured support 合法仍不保证自由文本语义完整，需要人工审核；与 B2 的比较不是单变量实验。
-本轮唯一一次 deepseek-flash 调用在 schema gate 被拒绝，未进入 support gate；输出达到 8192-token 上限，
+B3 阶段唯一一次 deepseek-flash 调用在 schema gate 被拒绝，未进入 support gate；输出达到 8192-token 上限，
 具体解析失败原因尚未确认。未重试，也未接受或 reviewed-export 任何 B3 报告。
 B3-R1 新实验仅将 relation_v3 输出预算提高到 16384：schema 已通过，实际输出 14112 tokens，
 随后因 `unused_support_claim` 被 support gate 拒绝，未重试。详见
 [B3-R1 输出完整性记录](docs/research/v3-2b3-r1-output-completeness.md)。
 B3-R2 评估并保留孤立 support 为诊断，仅被引用的 support 必须 supported；新增 support artifact v2，
-v1 校验兼容保留。输入/prompt/schema/provider 设置不变。本轮唯一一次真实调用通过 schema，
+v1 校验兼容保留。输入/prompt/schema/provider 设置不变。B3-R2 唯一一次真实调用通过 schema，
 随后因 referenced `incompatible_relation_claim` 被拒绝，未生成 accepted canonical report，未重试。
 详见 [B3-R2 孤立 support 政策与实验记录](docs/research/v3-2b3-r2-orphan-support-policy.md)。
 B3-R3 保持接受政策和模型输入不变，新增 bounded typed failure diagnostic。
-本轮唯一一次真实调用 schema 通过，但 37 个 referenced supports incompatible，报告拒绝；
+B3-R3 唯一一次真实调用 schema 通过，但 37 个 referenced supports incompatible，报告拒绝；
 已保存完整安全错误索引，没有 accepted canonical report、重试或 reviewed export。
 详见 [B3-R3 安全诊断与逐项错误记录](docs/research/v3-2b3-r3-referenced-support-diagnostics.md)。
 
 V3-2A4 — Typed Static Relation Semantics & Claim-Support Contracts 已冻结。
 独立确定性关系层区分 direct call、direct branch、unresolved、MMIO 与静态向量绑定，
-用显式 typed claims 检查证据支持范围；本阶段不调用模型、不接入 Agent。
+用显式 typed claims 检查证据支持范围；在 A4 阶段，当时未调用模型、未接入 Agent。
 实现、真实计数与 12 个站点分类见 [A4 静态关系文档](docs/research/v3-2a4-typed-static-relations.md)。
 B2 单次 deepseek-flash 实验为 machine-valid / human-reviewed / mixed semantic result，
 存在错误的 Reset→SystemInit confirmed-call 推断，未 reviewed-export；
@@ -277,7 +279,8 @@ Firmware 使用独立 opt-in 入口和 `CHIPCHAIN_FIRMWARE_MODEL`，不回退到
 入口为 `python -m chipchain.integrations.deepseek_firmware --env-file .env --corpus-root /path/to/fuzzware-experiments`，
 仍需命令环境中显式 `CHIPCHAIN_ENABLE_REAL_LLM=1`；corrected Firmware runner 要求最终模型为 `deepseek-flash`。
 真实结果须人工审核，不自动重跑或 reviewed-export。
-R0-C 已完成 Architecture Reset；XL0 已建立独立跨层合同，真实 Cross-Layer Agent 集成仍未进入。
+R0-C 完成 Architecture Reset；在 XL0 阶段，当时已建立独立跨层合同，尚未接入真实 Cross-Layer Agent。
+后续 paired 入口已接入真实三 Agent；其使用范围和 A6 opt-in 边界统一见 [CURRENT_STATE.md](CURRENT_STATE.md)。
 
 架构边界、准入条件、状态语义和后续扩展点见
 [docs/architecture/v3-r0.md](docs/architecture/v3-r0.md)。
@@ -291,7 +294,7 @@ R0-C 已完成 Architecture Reset；XL0 已建立独立跨层合同，真实 Cro
 CHIPCHAIN_ENABLE_REAL_LLM=1 .venv/bin/python -m chipchain.integrations.paired_baseline --env-file .env
 ```
 
-这是配对基线的实验接入；使用 generic evidence ID binding，尚未接入 typed relation-support、
+以上不带 `--firmware-grounding` 的入口仍保留 generic evidence ID binding，尚未接入 typed relation-support、
 完整 RTL 审计或漏洞验证。各阶段独立保存输入、prompt、用量、报告及失败状态，不自动重试。
 输入范围、输出位置与限制见 [配对 LLM 试运行说明](docs/research/ibex-paired-llm-pilot.md)。
 
@@ -309,6 +312,6 @@ CHIPCHAIN_ENABLE_REAL_LLM=1 .venv/bin/python -m chipchain.integrations.paired_ba
 
 新版证据校验补充显式架构、目标身份、catalog 内容哈希，以及独立 RVFI 退休事件。
 A4/A5 重叠事实按 agree / not_comparable / conflict 分类；冲突阻止模型调用。
-projection 限制为 48 条事实、28,000 字符；当前只选择与报告相关的 15 条事实，
+projection 限制为 48 条事实、28,000 字符；A6 冻结样本回归选择了与报告相关的 15 条事实，
 不把完整函数目录或全部运行事件传给模型。完整 envelope 仍受原有 64,000 字符限制。
 详见 [A6 证据校验补充](docs/research/v3-fw-a6-evidence-validation.md)。

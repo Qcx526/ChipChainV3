@@ -240,7 +240,7 @@ def run_paired_baseline(*, root: Path, env_file: Path, output_root: Path, enable
     if run.processor_behavior_ir is not None:
         write('processor_behavior_ir.json', run.processor_behavior_ir.model_dump_json(indent=2))
     if firmware_grounding:
-        from chipchain.firmware.grounding_report import render_report
+        from chipchain.reporting.firmware_grounding import render_report
         write('report-zh.md', render_report(out))
     write('artifact_manifest.json', [{'path':str(p.relative_to(out)), 'sha256':digest(p), 'size_bytes':p.stat().st_size}
                                    for p in sorted(out.rglob('*')) if p.is_file()])
