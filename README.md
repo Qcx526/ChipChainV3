@@ -294,3 +294,21 @@ CHIPCHAIN_ENABLE_REAL_LLM=1 .venv/bin/python -m chipchain.integrations.paired_ba
 这是配对基线的实验接入；使用 generic evidence ID binding，尚未接入 typed relation-support、
 完整 RTL 审计或漏洞验证。各阶段独立保存输入、prompt、用量、报告及失败状态，不自动重试。
 输入范围、输出位置与限制见 [配对 LLM 试运行说明](docs/research/ibex-paired-llm-pilot.md)。
+
+### A6：确定性固件控制流 grounding
+
+配对工作流可启用跳转目标与函数区间归属的事实校验：
+
+```bash
+CHIPCHAIN_ENABLE_REAL_LLM=1 .venv/bin/python -m chipchain.integrations.paired_baseline --env-file .env --firmware-grounding
+```
+
+模型必须引用具体 A6 fact ID。错误目标/owner 不进入规范固件报告；模型原始叙述单独保留，
+中文报告分别显示模型声明、确定性事实与校验状态。该阶段不引入 RTL 变体。
+合同、覆盖范围和回归结果见 [V3-FW-A6](docs/research/v3-fw-a6-control-flow-grounding.md)。
+
+新版证据校验补充显式架构、目标身份、catalog 内容哈希，以及独立 RVFI 退休事件。
+A4/A5 重叠事实按 agree / not_comparable / conflict 分类；冲突阻止模型调用。
+projection 限制为 48 条事实、28,000 字符；当前只选择与报告相关的 15 条事实，
+不把完整函数目录或全部运行事件传给模型。完整 envelope 仍受原有 64,000 字符限制。
+详见 [A6 证据校验补充](docs/research/v3-fw-a6-evidence-validation.md)。

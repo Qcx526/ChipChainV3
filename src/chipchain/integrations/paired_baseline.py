@@ -83,8 +83,9 @@ class RecordedAgent:
         self.role, self.agent, self.config, self.directory, self.write = role, agent, config, directory, write
 
     def invoke(self, inputs):
-        context = {'hardware': hardware_context, 'firmware': firmware_context,
-                   'cross_layer': cross_layer_context}[self.role](inputs)
+        context = (self.agent.context(inputs) if hasattr(self.agent, 'context') else
+                   {'hardware': hardware_context, 'firmware': firmware_context,
+                    'cross_layer': cross_layer_context}[self.role](inputs))
         self.write(f'{self.role}_analysis_input.json', context)
         record = dict(role=self.role, model=self.config.model, provider='deepseek',
                       started_at=utc_now().isoformat(), status='started', max_retries=0,
@@ -129,7 +130,7 @@ class RecordedAgent:
             self.write(f'{self.role}_invocation.json', record)
 
 
-def run_paired_baseline(*, root: Path, env_file: Path, output_root: Path, enabled: bool) -> Path:
+def run_paired_baseline(*, root: Path, env_file: Path, output_root: Path, enabled: bool, firmware_grounding: bool = False, a4_catalog=None, a5_cfg=None) -> Path:
     require_real_opt_in(enabled)
     root = root.resolve()
     hw_config = replace(load_deepseek_config(os.environ, env_file=env_file), max_tokens=16384)
@@ -162,7 +163,8 @@ def run_paired_baseline(*, root: Path, env_file: Path, output_root: Path, enable
     write('execution_plan.json', dict(run_id=str(run_id), command=command, elf_sha256=digest(elf),
         simulator_sha256=digest(sim), freeze_sha256=digest(freeze_path),
         models={role: cfg.model for role, cfg in configs.items()}, retries=0,
-        cross_layer_model_configuration='same as hardware', relation_support='generic evidence binding only',
+        cross_layer_model_configuration='same as hardware',
+        relation_support='A6 firmware target and ownership gate' if firmware_grounding else 'generic evidence binding only',
         environment_overrides=freeze['environment_overrides']))
     simulation = out / 'simulation'; simulation.mkdir()
     env = dict(os.environ); env.update(freeze['environment_overrides'])
@@ -180,6 +182,20 @@ def run_paired_baseline(*, root: Path, env_file: Path, output_root: Path, enable
     write('input_audit.json', audit)
     write('implementation_manifest.json', [{'path': str(p.relative_to(root)), 'sha256': digest(p)}
         for p in sorted((root / 'src/chipchain').rglob('*.py'))])
+    a6_catalog = None
+    if firmware_grounding:
+        from chipchain.firmware.grounding_catalog import build_catalog
+        from chipchain.firmware.control_flow_grounding import serialize_catalog
+        a6_catalog = build_catalog(case_id=case.case_id, elf_path=elf,
+            trace_path=simulation / 'trace_core_00000000.log', target=case.target,
+            trace_semantics='ibex_rvfi_retirement')
+        write('firmware_control_flow_grounding.json', serialize_catalog(a6_catalog))
+        from chipchain.firmware.grounding_compatibility import compatibility_preflight
+        compatibility_preflight(a6_catalog, write=write, a4=a4_catalog, a5=a5_cfg)
+        write('research_validation.json', dict(validation_context='paired_rtl_runtime_regression',
+            fact_epistemic_status='deterministically_derived_static_facts_with_separate_observed_retirement',
+            validation_level_policy='research-only; no global E0-E4 schema or automatic claim-level upgrade',
+            analysis_access_is_not_target_input_controllability=True))
     original_inputs = (case.model_dump_json(), hw.model_dump_json(), fw.model_dump_json())
     old_logging = logging.root.manager.disable
     try:
@@ -188,16 +204,27 @@ def run_paired_baseline(*, root: Path, env_file: Path, output_root: Path, enable
             agents = {}
             for role, cls in [('hardware', BoundHardwareAgent), ('firmware', FirmwareSecurityAgent),
                               ('cross_layer', BoundCrossLayerAgent)]:
-                agent = cls(model=build_deepseek_chat_model(configs[role]), structured_output_method='function_calling')
+                if role == 'firmware' and firmware_grounding:
+                    from chipchain.firmware.grounded_agent import GroundedFirmwareAgent
+                    sites = {e.location.address for o in fw.observations for b in o.behaviors for e in b.evidence
+                             if e.location.address is not None}
+                    agent = GroundedFirmwareAgent(model=build_deepseek_chat_model(configs[role]),
+                        catalog=a6_catalog, selected_sites=sites, write=write)
+                    write('firmware_control_flow_grounding_projection.json', agent.projection)
+                else:
+                    agent = cls(model=build_deepseek_chat_model(configs[role]), structured_output_method='function_calling')
                 write(f'{role}_prompt.txt', agent._runtime.system_prompt)
                 write(f'{role}_output_schema.json', agent._runtime.schema.model_json_schema())
                 agents[role] = RecordedAgent(role, agent, configs[role], out, write)
             provenance = capture_provenance(
                 prompts=[hardware.PROMPT_DESCRIPTOR.model_copy(update={'prompt_version': 'paired-binding-v1'}),
-                         firmware.PROMPT_DESCRIPTOR,
+                         firmware.PROMPT_DESCRIPTOR.model_copy(update={'prompt_version': 'a6-grounded-v1'})
+                         if firmware_grounding else firmware.PROMPT_DESCRIPTOR,
                          cross_layer.PROMPT_DESCRIPTOR.model_copy(update={'prompt_version': 'paired-binding-v1'})],
                 models=[configs[role.value].descriptor(role) for role in AgentRole],
-                tools=[ToolDescriptor(tool_name=VERSION, tool_role='paired_baseline_observer', tool_version='1')])
+                tools=[ToolDescriptor(tool_name=VERSION, tool_role='paired_baseline_observer', tool_version='1'),
+                       *([ToolDescriptor(tool_name='firmware-control-flow-grounding', tool_version='v1',
+                            tool_role='firmware_deterministic_grounding')] if firmware_grounding else [])])
             workflow = build_case_workflow(hardware_agent=agents['hardware'], firmware_agent=agents['firmware'],
                 cross_layer_agent=agents['cross_layer'], hardware_observer=lambda _: hw.model_copy(deep=True),
                 firmware_observer=lambda _: fw.model_copy(deep=True))
@@ -212,6 +239,9 @@ def run_paired_baseline(*, root: Path, env_file: Path, output_root: Path, enable
     write('analysis_run.json', run.model_dump_json(indent=2))
     if run.processor_behavior_ir is not None:
         write('processor_behavior_ir.json', run.processor_behavior_ir.model_dump_json(indent=2))
+    if firmware_grounding:
+        from chipchain.firmware.grounding_report import render_report
+        write('report-zh.md', render_report(out))
     write('artifact_manifest.json', [{'path':str(p.relative_to(out)), 'sha256':digest(p), 'size_bytes':p.stat().st_size}
                                    for p in sorted(out.rglob('*')) if p.is_file()])
     print(json.dumps({'directory':str(out), 'status':run.status,
@@ -224,10 +254,11 @@ def main():
     parser.add_argument('--root', type=Path, default=Path('.'))
     parser.add_argument('--env-file', type=Path, default=Path('.env'))
     parser.add_argument('--output-root', type=Path, default=Path('output'))
+    parser.add_argument('--firmware-grounding', action='store_true', help='Enable deterministic A6 firmware fact gate')
     args = parser.parse_args()
     try:
         directory = run_paired_baseline(root=args.root, env_file=args.env_file, output_root=args.output_root,
-                                       enabled=os.environ.get('CHIPCHAIN_ENABLE_REAL_LLM') == '1')
+                                       enabled=os.environ.get('CHIPCHAIN_ENABLE_REAL_LLM') == '1', firmware_grounding=args.firmware_grounding)
         return 0 if json.loads((directory / 'analysis_run.json').read_text())['status'] == 'completed' else 1
     except Exception as error:
         print(json.dumps({'status':'failed', 'error_type':type(error).__name__,
