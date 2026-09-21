@@ -1,0 +1,301 @@
+{
+  "baseline_head": "6278fb7bf550d08b4976a5eeb444c70130a80c13",
+  "baseline_tag": "v3-xl2-stable",
+  "experiment_scope": [
+    "synthetic",
+    "controlled",
+    "test-only",
+    "methodology-validation"
+  ],
+  "frozen_schemas_unchanged": [
+    "A6",
+    "XL0",
+    "XL1",
+    "FW-CAP0",
+    "XL2"
+  ],
+  "gaps": [
+    {
+      "current_contract": "CAP0 Primitive MMIO_READ/WRITE + ResourceConstraint(mmio); XL1 MMIO_access",
+      "current_matcher": "SUPPORTED exact enum/resource/direction; MEMORY is not MMIO",
+      "current_producer": "Heat_Press configuration facts exist; no Ibex ELF-to-MMIO CAP producer",
+      "evidence": [
+        "src/chipchain/firmware/capability_materialization.py:16",
+        "src/chipchain/cross_layer/capability_compatibility.py:375"
+      ],
+      "id": "G01",
+      "needed_work": "Bounded RV32 ELF MMIO producer + independent bus events; no mnemonic-string inference",
+      "requirement": "MMIO resource / direction",
+      "runtime_verifier": "ABSENT",
+      "status": "PRODUCER_MISSING"
+    },
+    {
+      "current_contract": "CAP0 NumericConstraint(address/value/access_width), XL1 MMIOTriggerAtom(address,value_constraint,width_bits)",
+      "current_matcher": "SUPPORTED exact and FW range contains HW point; width exact; missing UNKNOWN",
+      "current_producer": "No automatic supported Ibex MMIO capability materializer",
+      "evidence": [
+        "src/chipchain/cross_layer/capability_compatibility.py:430",
+        "src/chipchain/firmware/capability.py:176"
+      ],
+      "id": "G02",
+      "needed_work": "Byte-validated constant address/value/width derivation and typed cap materialization; unresolved values UNKNOWN",
+      "requirement": "Address / value / width",
+      "runtime_verifier": "ABSENT",
+      "status": "PRODUCER_MISSING"
+    },
+    {
+      "current_contract": "XL1 in_range lacks exists-vs-all quantifier",
+      "current_matcher": "UNKNOWN for unspecified quantifier; no intersection shortcut",
+      "current_producer": "Only explicit declarations / synthetic matcher tests",
+      "evidence": [
+        "src/chipchain/cross_layer/capability_compatibility.py:compare_numeric_domains"
+      ],
+      "id": "G03",
+      "needed_work": "Golden values use actual exact singleton semantics; arbitrary ranges remain unsupported",
+      "requirement": "Numeric range semantics",
+      "runtime_verifier": "Not applicable",
+      "status": "SUPPORTED_SUBSET"
+    },
+    {
+      "current_contract": "CAP0 scope.platform_id + XL1 platform/scope",
+      "current_matcher": "SUPPORTED exact identities; equal ISA not platform proof",
+      "current_producer": "DATA1A freeze and XL0 pair exist; new synthetic system not built",
+      "evidence": [
+        "src/chipchain/cross_layer/capability_compatibility.py:338",
+        "src/chipchain/integrations/paired_baseline.py:137"
+      ],
+      "id": "G04",
+      "needed_work": "New content-bound target/run binding; do not reuse DATA1A platform identity for augmented RTL",
+      "requirement": "Platform identity",
+      "runtime_verifier": "Existing runner pins original ELF/simulator only",
+      "status": "NEW_BINDING_REQUIRED"
+    },
+    {
+      "current_contract": "XL1 platform.rtl_identity/rtl_revision + scope.rtl_revisions; no CAP0 equivalent",
+      "current_matcher": "UNKNOWN FW_REVISION_FIELD_UNAVAILABLE / ISA_VARIANT_SEMANTICS_UNSUPPORTED",
+      "current_producer": "Recorded in DATA1A manifest, absent from CAP0 comparison fields",
+      "evidence": [
+        "src/chipchain/cross_layer/capability_compatibility.py:363",
+        "src/chipchain/firmware/capability.py:308"
+      ],
+      "id": "G05",
+      "needed_work": "Review a separately versioned platform applicability/binding verifier and matcher interface; do not remove requirements or edit frozen XL2",
+      "requirement": "RTL identity/revision and ISA variant",
+      "runtime_verifier": "ABSENT for new chain",
+      "status": "P1_BLOCKER"
+    },
+    {
+      "current_contract": "XL1 microarchitectural_state eq; ENABLE write also distinct MMIO event",
+      "current_matcher": "UNKNOWN unsupported state/context; >1 mapped primitive rejected by precondition context rule",
+      "current_producer": "No peripheral state producer",
+      "evidence": [
+        "src/chipchain/cross_layer/capability_compatibility.py:478",
+        "src/chipchain/hardware/behavior_contract.py:99"
+      ],
+      "id": "G06",
+      "needed_work": "Maintain typed state transition requirement; new explicit peripheral state verifier; separately reviewed compatibility semantics",
+      "requirement": "ENABLE state before COMMAND; reset state",
+      "runtime_verifier": "ABSENT",
+      "status": "P1_BLOCKER"
+    },
+    {
+      "current_contract": "CAP0 OrderingConstraint + XL1 OrderingTriggerAtom",
+      "current_matcher": "SUPPORTED only uniquely compatible distinct endpoints; no runtime order inferred",
+      "current_producer": "No automatic MMIO ordering producer",
+      "evidence": [
+        "src/chipchain/firmware/capability.py:201",
+        "src/chipchain/cross_layer/capability_compatibility.py:_ordering"
+      ],
+      "id": "G07",
+      "needed_work": "Extract bounded straight-line ordering; verify request/response cycle sequence and no intervening reset/ENABLE overwrite",
+      "requirement": "ENABLE write -> COMMAND write ordering",
+      "runtime_verifier": "ABSENT",
+      "status": "PRODUCER_AND_VERIFIER_MISSING"
+    },
+    {
+      "current_contract": "CAP0 synthetic_only scope requires origin synthetic_fixture; origin normal_behavior is possible with specified_firmware_sites",
+      "current_matcher": "HW synthetic_only vs FW specified_firmware_sites -> UNKNOWN",
+      "current_producer": "A6 materialize_a6 returns normal_behavior, not MMIO",
+      "evidence": [
+        "src/chipchain/firmware/capability.py:308",
+        "src/chipchain/cross_layer/capability_compatibility.py:355"
+      ],
+      "id": "G08",
+      "needed_work": "Use normal_behavior + specified_firmware_sites and HW specified_targets; mark experiment synthetic in manifest/provenance and exact artifacts, not false enum values",
+      "requirement": "normal_behavior origin and synthetic scope",
+      "runtime_verifier": "Not applicable",
+      "status": "SCHEMA_DESIGN_CONSTRAINT"
+    },
+    {
+      "current_contract": "CAP0 conditions + ControlAuthority; XL1 explicit preconditions",
+      "current_matcher": "Missing/unmodeled condition UNKNOWN; not_established/input_influenced not external control",
+      "current_producer": "A6 transfer path condition UNKNOWN; no general path/control producer",
+      "evidence": [
+        "src/chipchain/firmware/capability_materialization.py:99",
+        "src/chipchain/cross_layer/capability_compatibility.py:_precondition"
+      ],
+      "id": "G09",
+      "needed_work": "Bounded routine entry and executed bus sequence for this run; no attacker control required or asserted; retained unknowns block final chain",
+      "requirement": "Path/entry conditions and external control",
+      "runtime_verifier": "No path solver; observed run only",
+      "status": "P1_BLOCKER_UNTIL_EVIDENCED"
+    },
+    {
+      "current_contract": "No canonical bus-event or TriggerSatisfactionResult",
+      "current_matcher": "XL2 deliberately not a runtime verifier",
+      "current_producer": "RVFI text includes some PA/store/load display; parse_trace keeps raw text only",
+      "evidence": [
+        "samples/hardware/ibex-simple-system/source/rtl/ibex_tracer.sv:170",
+        "samples/hardware/ibex-simple-system/source/shared/rtl/bus.sv:9",
+        "src/chipchain/tools/paired/ibex.py:29"
+      ],
+      "id": "G10",
+      "needed_work": "Versioned full byte-enable/request/response/reset/epoch bus-event trace + parser + trigger verifier",
+      "requirement": "Trigger runtime MMIO transaction",
+      "runtime_verifier": "ABSENT",
+      "status": "VERIFIER_MISSING"
+    },
+    {
+      "current_contract": "XL1 Deviation + ObservationRequirement only",
+      "current_matcher": "NOT_ASSESSED downstream",
+      "current_producer": "No synthetic status monitor",
+      "evidence": [
+        "src/chipchain/hardware/behavior_contract.py:146",
+        "samples/hardware/ibex-simple-system/source/examples/simple_system/rtl/ibex_simple_system.sv:89"
+      ],
+      "id": "G11",
+      "needed_work": "HardwareDeviationObservation binds value, phase/cycle, signal, run/RTL/config/trace hashes; status read corroboration",
+      "requirement": "Actual deviation observation",
+      "runtime_verifier": "ABSENT",
+      "status": "VERIFIER_MISSING"
+    },
+    {
+      "current_contract": "No controlled differential canonical record",
+      "current_matcher": "Not matcher responsibility",
+      "current_producer": "DATA1A identical baseline repetitions only",
+      "evidence": [
+        "docs/research/data1/ibex-simple-system-baseline.json"
+      ],
+      "id": "G12",
+      "needed_work": "ControlledHardwareDifferential checks fixed firmware/input/config/harness/reset and allowed RTL patch; first divergence within declared monitored set",
+      "requirement": "Controlled reference/variant differential",
+      "runtime_verifier": "ABSENT",
+      "status": "VERIFIER_MISSING"
+    },
+    {
+      "current_contract": "New evaluation-only manifest proposed, not created",
+      "current_matcher": "Matcher accepts CAP0/XL1, never GT outcome",
+      "current_producer": "Existing EnCorpus oracle/projection separation provides precedent",
+      "evidence": [
+        "src/chipchain/tools/hardware/encorpus/models.py",
+        "src/chipchain/tools/hardware/encorpus/projection.py",
+        "tests/unit/test_encorpus_projection.py"
+      ],
+      "id": "G13",
+      "needed_work": "Disjoint allowlisted analysis inputs and evaluator-only expected labels; changing GT after frozen analysis must not change analyzer artifacts",
+      "requirement": "Ground Truth isolation",
+      "runtime_verifier": "ABSENT",
+      "status": "FIREWALL_REQUIRED"
+    },
+    {
+      "current_contract": "Future chain verification record required",
+      "current_matcher": "COMPATIBLE insufficient for runtime/deviation",
+      "current_producer": "Current layered objects/reporters exist independently",
+      "evidence": [
+        "src/chipchain/cross_layer/capability_compatibility_report.py",
+        "src/chipchain/hardware/behavior_contract_report.py"
+      ],
+      "id": "G14",
+      "needed_work": "All stages with hashes and unknown propagation; P1/N1/N2/U1 same human template; no LLM pass/fail",
+      "requirement": "Eight-stage controlled chain/report",
+      "runtime_verifier": "ABSENT",
+      "status": "VERIFIER_MISSING"
+    }
+  ],
+  "implementation_authorized_this_phase": false,
+  "p1_on_current_frozen_pipeline": "BLOCKED / UNKNOWN; no golden chain exists yet",
+  "proposed_mmio": {
+    "address_conflict_check": "disjoint from pinned SimCtrl 0x20000/1KiB, Timer 0x30000/1KiB, RAM 0x100000/1MiB; not a universal SoC map",
+    "base": "0x00040000",
+    "deviation_value": "0x0000dead",
+    "end_inclusive": "0x000403ff",
+    "mask": "0xfffffc00",
+    "nontrigger_value": "0x000000a4",
+    "normal_value": "0x00000000",
+    "registers": {
+      "COMMAND": "0x00040004",
+      "ENABLE": "0x00040000",
+      "STATUS": "0x00040008"
+    },
+    "trigger_value": "0x000000a5",
+    "width_bits": 32
+  },
+  "schema_version": "syn-e2e1-gap-design/v1",
+  "source_evidence": [
+    {
+      "path": "docs/research/data1/ibex-simple-system-baseline.json",
+      "sha256": "e494ce9c62be1e91737fce414c3e4da46b3a2bed95737da42bd0e90177533c18"
+    },
+    {
+      "path": "samples/hardware/ibex-simple-system/source/examples/simple_system/ibex_simple_system.cc",
+      "sha256": "f13d6099675efd23316550a4de9cd151aab865f2d880f3aa931e8b5601126025"
+    },
+    {
+      "path": "samples/hardware/ibex-simple-system/source/examples/simple_system/ibex_simple_system.core",
+      "sha256": "30bdeae59709fb25d75c1caee2b7b94bea20022f39f7a3e3cbde322d51455bac"
+    },
+    {
+      "path": "samples/hardware/ibex-simple-system/source/examples/simple_system/ibex_simple_system_core.core",
+      "sha256": "f4313230a1a4107ffec641d3b9d5f3259c808045a87b55d81c954fa807cda755"
+    },
+    {
+      "path": "samples/hardware/ibex-simple-system/source/examples/simple_system/rtl/ibex_simple_system.sv",
+      "sha256": "684ef6b8bc3acab88ed9abbe6a003fd0b82ddd537ed72461bb19079582c76d66"
+    },
+    {
+      "path": "samples/hardware/ibex-simple-system/source/examples/sw/simple_system/common/common.mk",
+      "sha256": "30d263fd5f96fcafd58b94603e85db5fac55e547736db4f265287aa9714679cd"
+    },
+    {
+      "path": "samples/hardware/ibex-simple-system/source/examples/sw/simple_system/common/link.ld",
+      "sha256": "318b9ed40edb2cd0e329e5617f58cacad59d8137f12e550260be29c33f824068"
+    },
+    {
+      "path": "samples/hardware/ibex-simple-system/source/examples/sw/simple_system/common/simple_system_regs.h",
+      "sha256": "f4e77e4a26518219584b51161c9780da918f3998acf366494f1418962bd219d8"
+    },
+    {
+      "path": "samples/hardware/ibex-simple-system/source/rtl/ibex_tracer.sv",
+      "sha256": "6241602443ec15517914fc3231e9c860229aea52dc571b5a94769a0510963925"
+    },
+    {
+      "path": "samples/hardware/ibex-simple-system/source/shared/rtl/bus.sv",
+      "sha256": "b24c2cbe36cee25230c61d533258a66707ee03c7c3857cc97494c8d95a2a2953"
+    },
+    {
+      "path": "samples/hardware/ibex-simple-system/source/vendor/lowrisc_ip/dv/verilator/simutil_verilator/cpp/verilator_sim_ctrl.cc",
+      "sha256": "9ff6a49a4960c6f144962874549f3435b687f604e7a90e10691f2adbcfa8e4b4"
+    },
+    {
+      "path": "src/chipchain/cross_layer/capability_compatibility.py",
+      "sha256": "9fd5aa010a5d310a28bc7dd1fd1d0833323d2dcc9893e5d8519b0055d438fd5f"
+    },
+    {
+      "path": "src/chipchain/firmware/capability.py",
+      "sha256": "6dfc8fa59c7bba2387c746ea9089f87f0d4bf33af2bf18744acddea03daa5d3d"
+    },
+    {
+      "path": "src/chipchain/firmware/capability_materialization.py",
+      "sha256": "61e4c359556daf053cd6c977462059b240b9107f14314ebb77fac0e950094890"
+    },
+    {
+      "path": "src/chipchain/hardware/behavior_contract.py",
+      "sha256": "1038f67d10c4eeb97e88fba46cce5e0cc1f698e003342606464d360bdf6918c2"
+    },
+    {
+      "path": "src/chipchain/tools/paired/ibex.py",
+      "sha256": "1dfa521df51fb337de36d279d6c8c7ab7a6f71258ba2e556be942c44b8766faf"
+    }
+  ],
+  "status": "DESIGN_ONLY_NOT_IMPLEMENTED"
+}
