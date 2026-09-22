@@ -1,0 +1,69 @@
+--- a/examples/simple_system/ibex_simple_system_core.core
++++ b/examples/simple_system/ibex_simple_system_core.core
+@@ -11,6 +11,7 @@
+       - lowrisc:ibex:sim_shared
+     files:
+       - rtl/ibex_simple_system.sv
++      - rtl/synthetic_mmio.sv
+     file_type: systemVerilogSource
+ 
+   files_verilator:
+--- a/examples/simple_system/rtl/ibex_simple_system.sv
++++ b/examples/simple_system/rtl/ibex_simple_system.sv
+@@ -70,7 +70,11 @@
+   parameter bit                 BranchPredictor          = 1'b0;
+   parameter                     SRAMInitFile             = "";
+ 
+-  logic clk_sys, rst_sys_n;
++  logic clk_sys;
++  // Observation-only monitor samples the common asynchronous reset.
++  /* verilator lint_off SYNCASYNCNET */
++  logic rst_sys_n;
++  /* verilator lint_on SYNCASYNCNET */
+ 
+   typedef enum logic {
+     CoreD
+@@ -79,10 +83,11 @@
+   typedef enum logic[1:0] {
+     Ram,
+     SimCtrl,
+-    Timer
++    Timer,
++    SyntheticPeripheral
+   } bus_device_e;
+ 
+-  localparam int NrDevices = 3;
++  localparam int NrDevices = 4;
+   localparam int NrHosts = 1;
+ 
+   // interrupts
+@@ -121,6 +126,9 @@
+   assign cfg_device_addr_mask[SimCtrl] = ~32'h3FF; // 1 kB
+   assign cfg_device_addr_base[Timer] = 32'h30000;
+   assign cfg_device_addr_mask[Timer] = ~32'h3FF; // 1 kB
++
++  assign cfg_device_addr_base[SyntheticPeripheral] = 32'h00040000;
++  assign cfg_device_addr_mask[SyntheticPeripheral] = 32'hfffffc00;
+ 
+   // Instruction fetch signals
+   logic instr_req;
+@@ -185,6 +193,19 @@
+ 
+     .cfg_device_addr_base,
+     .cfg_device_addr_mask
++  );
++
++  synthetic_mmio u_synthetic_mmio (
++    .clk_i(clk_sys), .rst_ni(rst_sys_n),
++    .req_i(device_req[SyntheticPeripheral]), .we_i(device_we[SyntheticPeripheral]),
++    .be_i(device_be[SyntheticPeripheral]), .addr_i(device_addr[SyntheticPeripheral]),
++    .wdata_i(device_wdata[SyntheticPeripheral]), .rvalid_o(device_rvalid[SyntheticPeripheral]),
++    .rdata_o(device_rdata[SyntheticPeripheral]), .err_o(device_err[SyntheticPeripheral]),
++    .stop_i(device_req[SimCtrl] && device_we[SimCtrl] && device_be[SimCtrl][0] &&
++            (device_addr[SimCtrl] == 32'h00020008) && device_wdata[SimCtrl][0]),
++    .result_valid_i(device_req[Ram] && device_we[Ram] && (device_be[Ram] == 4'hf) &&
++                    (device_addr[Ram] == 32'h00101000)),
++    .result_data_i(device_wdata[Ram])
+   );
+ 
+   if (SecureIbex) begin : g_mem_rdata_ecc
