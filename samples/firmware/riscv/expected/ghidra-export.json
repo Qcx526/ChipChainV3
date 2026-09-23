@@ -1,0 +1,376 @@
+{
+  "blocks": [
+    {
+      "end": 65539,
+      "id": "block:0x10000",
+      "ranges": [
+        {
+          "end": 65539,
+          "start": 65536
+        }
+      ],
+      "start": 65536
+    },
+    {
+      "end": 65543,
+      "id": "block:0x10004",
+      "ranges": [
+        {
+          "end": 65543,
+          "start": 65540
+        }
+      ],
+      "start": 65540
+    },
+    {
+      "end": 65567,
+      "id": "block:0x10008",
+      "ranges": [
+        {
+          "end": 65567,
+          "start": 65544
+        }
+      ],
+      "start": 65544
+    },
+    {
+      "end": 65571,
+      "id": "block:0x10020",
+      "ranges": [
+        {
+          "end": 65571,
+          "start": 65568
+        }
+      ],
+      "start": 65568
+    },
+    {
+      "end": 65575,
+      "id": "block:0x10024",
+      "ranges": [
+        {
+          "end": 65575,
+          "start": 65572
+        }
+      ],
+      "start": 65572
+    },
+    {
+      "end": 65583,
+      "id": "block:0x10028",
+      "ranges": [
+        {
+          "end": 65583,
+          "start": 65576
+        }
+      ],
+      "start": 65576
+    }
+  ],
+  "calls": [
+    {
+      "caller": 65536,
+      "direct": true,
+      "pc": 65536,
+      "target": 65544
+    },
+    {
+      "caller": 65544,
+      "direct": true,
+      "pc": 65560,
+      "target": 65576
+    }
+  ],
+  "compiler": "gcc",
+  "edges": [
+    {
+      "source": 65536,
+      "target": 65540,
+      "type": "FALL_THROUGH"
+    },
+    {
+      "source": 65536,
+      "target": 65544,
+      "type": "UNCONDITIONAL_CALL"
+    },
+    {
+      "source": 65540,
+      "target": 65540,
+      "type": "UNCONDITIONAL_JUMP"
+    },
+    {
+      "source": 65544,
+      "target": 65568,
+      "type": "FALL_THROUGH"
+    },
+    {
+      "source": 65544,
+      "target": 65572,
+      "type": "CONDITIONAL_JUMP"
+    },
+    {
+      "source": 65544,
+      "target": 65576,
+      "type": "UNCONDITIONAL_CALL"
+    },
+    {
+      "source": 65568,
+      "target": 65572,
+      "type": "FALL_THROUGH"
+    }
+  ],
+  "functions": [
+    {
+      "entry": 65536,
+      "external": false,
+      "id": "function:0x10000",
+      "name": "_start",
+      "ranges": [
+        {
+          "end": 65543,
+          "start": 65536
+        }
+      ],
+      "thunk": false
+    },
+    {
+      "entry": 65544,
+      "external": false,
+      "id": "function:0x10008",
+      "name": "main",
+      "ranges": [
+        {
+          "end": 65575,
+          "start": 65544
+        }
+      ],
+      "thunk": false
+    },
+    {
+      "entry": 65576,
+      "external": false,
+      "id": "function:0x10028",
+      "name": "helper",
+      "ranges": [
+        {
+          "end": 65583,
+          "start": 65576
+        }
+      ],
+      "thunk": false
+    }
+  ],
+  "image_base": 61440,
+  "instructions": [
+    {
+      "block_id": "block:0x10000",
+      "block_start": 65536,
+      "bytes": "ef008000",
+      "function_entry": 65536,
+      "function_id": "function:0x10000",
+      "mnemonic": "jal",
+      "operands": [
+        "ra",
+        "0x00010008"
+      ],
+      "pc": 65536,
+      "text": "jal ra,0x00010008"
+    },
+    {
+      "block_id": "block:0x10004",
+      "block_start": 65540,
+      "bytes": "6f000000",
+      "function_entry": 65536,
+      "function_id": "function:0x10000",
+      "mnemonic": "j",
+      "operands": [
+        "0x00010004"
+      ],
+      "pc": 65540,
+      "text": "j 0x00010004"
+    },
+    {
+      "block_id": "block:0x10008",
+      "block_start": 65544,
+      "bytes": "b7020040",
+      "function_entry": 65544,
+      "function_id": "function:0x10008",
+      "mnemonic": "lui",
+      "operands": [
+        "t0",
+        "0x40000"
+      ],
+      "pc": 65544,
+      "text": "lui t0,0x40000"
+    },
+    {
+      "block_id": "block:0x10008",
+      "block_start": 65544,
+      "bytes": "13031000",
+      "function_entry": 65544,
+      "function_id": "function:0x10008",
+      "mnemonic": "li",
+      "operands": [
+        "t1",
+        "0x1"
+      ],
+      "pc": 65548,
+      "text": "li t1,0x1"
+    },
+    {
+      "block_id": "block:0x10008",
+      "block_start": 65544,
+      "bytes": "23a06200",
+      "function_entry": 65544,
+      "function_id": "function:0x10008",
+      "mnemonic": "sw",
+      "operands": [
+        "t1",
+        "0x0",
+        "t0"
+      ],
+      "pc": 65552,
+      "text": "sw t1,0x0(t0)"
+    },
+    {
+      "block_id": "block:0x10008",
+      "block_start": 65544,
+      "bytes": "83a30200",
+      "function_entry": 65544,
+      "function_id": "function:0x10008",
+      "mnemonic": "lw",
+      "operands": [
+        "t2",
+        "0x0",
+        "t0"
+      ],
+      "pc": 65556,
+      "text": "lw t2,0x0(t0)"
+    },
+    {
+      "block_id": "block:0x10008",
+      "block_start": 65544,
+      "bytes": "ef000001",
+      "function_entry": 65544,
+      "function_id": "function:0x10008",
+      "mnemonic": "jal",
+      "operands": [
+        "ra",
+        "0x00010028"
+      ],
+      "pc": 65560,
+      "text": "jal ra,0x00010028"
+    },
+    {
+      "block_id": "block:0x10008",
+      "block_start": 65544,
+      "bytes": "63840300",
+      "function_entry": 65544,
+      "function_id": "function:0x10008",
+      "mnemonic": "beq",
+      "operands": [
+        "t2",
+        "zero",
+        "0x00010024"
+      ],
+      "pc": 65564,
+      "text": "beq t2,zero,0x00010024"
+    },
+    {
+      "block_id": "block:0x10020",
+      "block_start": 65568,
+      "bytes": "0f00f00f",
+      "function_entry": 65544,
+      "function_id": "function:0x10008",
+      "mnemonic": "fence",
+      "operands": [
+        "0xf",
+        "0xf"
+      ],
+      "pc": 65568,
+      "text": "fence 0xf,0xf"
+    },
+    {
+      "block_id": "block:0x10024",
+      "block_start": 65572,
+      "bytes": "67800000",
+      "function_entry": 65544,
+      "function_id": "function:0x10008",
+      "mnemonic": "ret",
+      "operands": [],
+      "pc": 65572,
+      "text": "ret"
+    },
+    {
+      "block_id": "block:0x10028",
+      "block_start": 65576,
+      "bytes": "732e0030",
+      "function_entry": 65576,
+      "function_id": "function:0x10028",
+      "mnemonic": "csrr",
+      "operands": [
+        "t3",
+        "0x0300"
+      ],
+      "pc": 65576,
+      "text": "csrr t3,0x0300"
+    },
+    {
+      "block_id": "block:0x10028",
+      "block_start": 65576,
+      "bytes": "67800000",
+      "function_entry": 65576,
+      "function_id": "function:0x10028",
+      "mnemonic": "ret",
+      "operands": [],
+      "pc": 65580,
+      "text": "ret"
+    }
+  ],
+  "language": "RISCV:LE:32:default",
+  "references": [
+    {
+      "operand": 1,
+      "source": 65536,
+      "target": 65544,
+      "type": "UNCONDITIONAL_CALL"
+    },
+    {
+      "operand": 0,
+      "source": 65540,
+      "target": 65540,
+      "type": "UNCONDITIONAL_JUMP"
+    },
+    {
+      "operand": 2,
+      "source": 65552,
+      "target": 1073741824,
+      "type": "WRITE"
+    },
+    {
+      "operand": 2,
+      "source": 65556,
+      "target": 1073741824,
+      "type": "READ"
+    },
+    {
+      "operand": 1,
+      "source": 65560,
+      "target": 65576,
+      "type": "UNCONDITIONAL_CALL"
+    },
+    {
+      "operand": 2,
+      "source": 65564,
+      "target": 65572,
+      "type": "CONDITIONAL_JUMP"
+    },
+    {
+      "operand": 1,
+      "source": 65576,
+      "target": 3072,
+      "type": "READ"
+    }
+  ],
+  "schema": "ghidra-firmware-facts/v1"
+}

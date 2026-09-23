@@ -1,8 +1,23 @@
 # ChipChain
 
-ChipChain is an **evidence-driven Type-II firmware–hardware cross-layer analysis framework**. It asks whether normal firmware execution satisfies a hardware trigger, whether the hardware then deviates from a stated specification, and whether a controlled Reference/Variant comparison objectively supports that conclusion.
+ChipChain is an **evidence-driven, multi-architecture firmware–hardware cross-layer analysis framework**. The general firmware frontend supports ARM, RISC-V and PowerPC ELF static analysis. The current verified end-to-end security path focuses on controlled synthetic Ibex/RISC-V Type-II chains.
 
-The current runnable backend is a **controlled synthetic Ibex MMIO experiment**. It replays existing ELF, trace, source, contract, and capability artifacts without invoking an LLM, building RTL, or running a simulator. External SI/log adapters and other processors are future work. This repository does not claim an end-to-end vulnerability in a physical chip.
+The current runtime backend is a **controlled synthetic Ibex MMIO experiment**. It replays existing ELF, trace, source, contract, and capability artifacts without invoking an LLM, building RTL, or running a simulator. ARM and PowerPC do not yet have Type-II runtime verification results. This repository does not claim a physical-chip vulnerability.
+
+```mermaid
+flowchart TD
+    ELF[Firmware ELF] --> G[Ghidra + ELF byte validation]
+    G --> IR[Multi-architecture Firmware Static IR]
+    IR --> FR[Firmware report]
+    IR --> CAP[FirmwareCapability mapping where CAP0 can express it]
+    CAP --> RB[Hardware resource binding]
+    RB --> M[HardwareBehaviorContract matching]
+    M --> C[Cross-layer candidate]
+    C --> RE[Runtime evidence]
+    RE --> V[Existing Type-II verifier]
+```
+
+The controlled Type-II demo uses its reviewed frozen CAP0 MMIO capabilities for static matching. The new general frontend independently analyzes the same ELF and binds resolved generic memory facts to the synthetic resource catalog. These are distinct evidence streams. See the [capability mapping audit](docs/firmware-capability-mapping.md).
 
 ## What is verified
 
@@ -20,11 +35,14 @@ The verifier returns `supported`, `contradicted`, or `unknown` for the component
 
 ## Install and quick start
 
-Python 3.11+ is required. The public examples need only the package and its deterministic dependencies; no API key or external simulator is needed.
+Python 3.11+ is required. The Type-II replay needs only the package and deterministic dependencies. `firmware analyze` uses Ghidra 12.3 DEV and Java 25. The working installation is in `tools/ghidra/install/` locally; [pinned metadata](tools/ghidra/README.md) is tracked while the large distribution is ignored. A fresh clone must provide this distribution there or use `--ghidra-home /explicit/path`.
 
 ```bash
 python3 -m venv .venv
 .venv/bin/python -m pip install -e '.[test]'
+.venv/bin/python -m chipchain.cli firmware analyze --elf samples/firmware/arm/sample.elf --output output/arm
+.venv/bin/python -m chipchain.cli firmware analyze --elf samples/firmware/riscv/sample.elf --output output/riscv
+.venv/bin/python -m chipchain.cli firmware analyze --elf samples/firmware/powerpc/sample.elf --output output/powerpc
 .venv/bin/python -m chipchain.cli analyze \
   --manifest examples/type2_positive/manifest.json \
   --output output/type2-positive
@@ -40,14 +58,18 @@ chipchain analyze --manifest examples/type2_unknown/manifest.json --output outpu
 `--verbose-artifacts` additionally writes selected validated contract, static, and bridge objects. Normal output contains only three files. The analysis API is read-only; CLI output is written only when the command explicitly calls the writer.
 An existing nonempty output directory is rejected to protect earlier results.
 
+`firmware analyze` actually runs project-managed Ghidra Headless, verifies every exported instruction byte against an executable ELF `PT_LOAD` mapping, and writes `firmware-analysis.json`, `firmware-summary.json`, `firmware-report.md`, and `ghidra-export.json`. An unsupported architecture/language is an explicit error; an unsupported individual instruction remains a path-independent `UNKNOWN` fact with PC, bytes and mnemonic. The three [synthetic sample ELFs](samples/firmware/README.md) and their normalized expected exports are tracked. Their exact project-local [build toolchains](tools/toolchains/README.md) and recipe are documented.
+
+The complete reviewable results live under [artifacts/demo](artifacts/demo). Regenerate them offline from tracked exports and bytes with `PYTHONPATH=src .venv/bin/python scripts/build_demo_artifacts.py`; add `--refresh-ghidra` to rerun project Ghidra on every tracked ELF.
+
 ## Inputs
 
 `--manifest` names a JSON **artifact index**. It points to an existing `HardwareBehaviorContract`, optional state/source proof, and target and Reference run indexes. Each run index points to the canonical static catalog, runtime observations, execution bridge, platform proof, firmware capabilities, input identity, ELF bytes, raw bus/processor traces, stdout/stderr, and an optional explicit observation binding. Paths are relative to their containing index; external read-only files may also be referenced. The index is an I/O envelope, not a scientific schema or new ID recipe.
 
-The examples include small synthetic artifacts under `examples/type2_positive/fixtures/`; the negative and unknown manifests reuse these files. Their frozen scientific identities are replayed from the included bytes. `samples/` is a local, Git-ignored workspace for real research inputs; `output/` is a local, Git-ignored result workspace. The packaged examples are synthetic and are not real processor findings. See [examples](examples/README.md) and [samples](samples/README.md).
+The examples include small synthetic artifacts under `examples/type2_positive/fixtures/`; the negative and unknown manifests reuse these files. Their frozen scientific identities are replayed from the included bytes. `samples/firmware/{arm,riscv,powerpc}` now contain tracked synthetic instruction-coverage samples; other real research inputs in `samples/` remain ignored. `output/` is an ignored result workspace. See [examples](examples/README.md) and [samples](samples/README.md).
 The portable fixtures contain pinned source manifests and changed peripheral bytes, not the full RTL source tree or a simulator executable. They replay the frozen evidence chain; independent regeneration of source/platform attestations requires the separately retained local research workspace.
 
-The current CLI accepts **existing canonical artifacts**. It does not accept raw `.si`, arbitrary hardware logs, or an arbitrary `--firmware firmware.elf --hardware-spec hardware.json --hardware-log hardware.log` pipeline. Such adapters require separate validated ingestion before this workflow can consume their outputs.
+The Type-II `analyze` subcommand accepts **existing canonical runtime artifacts**; the `firmware analyze` subcommand accepts a raw ELF for static analysis. Neither command accepts raw `.si`, arbitrary hardware logs, or an arbitrary `--firmware firmware.elf --hardware-spec hardware.json --hardware-log hardware.log` verification pipeline. Such adapters require separate validated ingestion before Type-II verification can consume their outputs.
 
 ## Outputs and how to read them
 
@@ -56,6 +78,8 @@ The current CLI accepts **existing canonical artifacts**. It does not accept raw
 | `summary.json` | Compact final outcome, stage statuses, contract/result IDs, and Reference control. |
 | `verification.json` | Complete canonical `Type2VerificationResult`, including per-condition evidence IDs, reason codes, and missing requirements. |
 | `report.md` | Short, human-readable Chinese explanation and scope warning. |
+
+The static frontend writes its own detailed twelve-section `firmware-report.md`. Each sample has a [tracked ARM](artifacts/demo/firmware/arm/firmware-report.md), [RISC-V](artifacts/demo/firmware/riscv/firmware-report.md), and [PowerPC](artifacts/demo/firmware/powerpc/firmware-report.md) report. Ordinary `MEMORY_LOAD`/`MEMORY_STORE` facts are retained as memory operations; MMIO counts remain zero until a typed hardware resource catalog is supplied. The [P1 cross-layer report](artifacts/demo/type2/positive/cross-layer-report.md) and [P1 verification report](artifacts/demo/type2/positive/verification-report.md) show the static candidate and runtime judgement separately.
 
 For the positive example, `report.md` begins:
 
@@ -79,13 +103,16 @@ These outcomes and their content-addressed IDs are asserted by portable tests an
 | Path | Purpose |
 | --- | --- |
 | `src/chipchain/firmware/` | Deterministic MMIO static grounding, execution binding, and firmware capabilities. |
-| `src/chipchain/hardware/` | Hardware behavior contract. |
-| `src/chipchain/cross_layer/` | Controlled Type-II verifier and retained public contract/compatibility primitives. |
+| `src/chipchain/hardware/` | Typed hardware resource catalog and hardware behavior contract. |
+| `src/chipchain/cross_layer/` | Exact resource binding, static candidate matching and controlled Type-II verifier. |
 | `src/chipchain/workflow/`, `src/chipchain/cli.py` | Thin artifact loading, orchestration, and command-line output. |
 | `examples/` | Three portable synthetic outcomes sharing small fixtures. |
 | `tests/` | Identity, provenance, fail-closed, component and golden regressions. |
 | `experiments/` | Frozen synthetic-source and collector material used by local historical replay. |
-| `samples/`, `output/` | Local input and result workspaces; real data and runtime outputs are ignored by Git. |
+| `samples/firmware/{arm,riscv,powerpc}/` | Tracked synthetic source, ELF, manifest and expected static analysis. |
+| `artifacts/demo/` | Reviewable canonical firmware, candidate and Type-II reports. |
+| `tools/ghidra/`, `tools/toolchains/`, `scripts/` | Pinned local tools, architecture-neutral exporter and build recipes. |
+| `output/` | Ignored local run results. |
 
 ## Test
 
@@ -100,6 +127,6 @@ The portable example tests run in a fresh clone. Additional read-only regression
 
 ## Current scope and future work
 
-The verifier is bound to the reviewed synthetic Ibex source delta, platform identities, 32-bit MMIO mapping, complete local evidence window, and controlled Reference/Variant comparison. It does not infer arbitrary path feasibility, external control, exploitability, physical-board behavior, or safety from a negative/unknown result. Type I and Type III, validated external SI/log adapters, broader platforms, and real-hardware verification remain future work.
+The three-architecture frontend is bounded static analysis, not a complete ISA emulator or path solver. Ghidra structure is not runtime execution; CFG reachability is not a feasible run; static ordering is not runtime ordering. The Type-II verifier is bound to the reviewed synthetic Ibex source delta, platform identities, 32-bit MMIO mapping, complete local evidence window, and controlled Reference/Variant comparison. A resource binding is not a trigger; a candidate is not a vulnerability; observed values are not automatically deviations. Normal firmware behavior is not attacker control. Type I, Type III, broad real-hardware verification and multi-ISA runtime verification remain future work.
 
 Historical research phases and their exact implementations remain available from the repository's stable Git tags. The current mainline presents the Type-II method and runnable evidence path without requiring readers to reconstruct the development chronology.

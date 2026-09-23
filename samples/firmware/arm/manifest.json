@@ -1,0 +1,28 @@
+{
+  "architecture": "arm",
+  "commands": [
+    [
+      "tools/toolchains/install/arm-binutils/usr/bin/arm-none-eabi-as",
+      "-mcpu=cortex-m3",
+      "-mthumb",
+      "-o",
+      "output/firmware-build/arm.o",
+      "samples/firmware/arm/source.S"
+    ],
+    [
+      "tools/toolchains/install/arm-binutils/usr/bin/arm-none-eabi-ld",
+      "--build-id=none",
+      "-Ttext=0x10000",
+      "-e",
+      "_start",
+      "-o",
+      "samples/firmware/arm/sample.elf",
+      "output/firmware-build/arm.o"
+    ]
+  ],
+  "elf_sha256": "f518c3ef4088c16e992b50b59d3624aed5325829364919b57ae08cbaa92d03f9",
+  "link_working_directory": ".",
+  "sample_kind": "synthetic_fixture",
+  "source_sha256": "49f25452e6aaee6d335f9e0c35d77b0236a4f77de24e7f8fd14e4b8671b3843f",
+  "toolchain_manifest": "tools/toolchains/MANIFEST.json"
+}

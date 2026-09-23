@@ -1,0 +1,103 @@
+{
+  "binding_set_id": "hwbindings:6a643b63f91c880db4c8341c5d6bf1276c49d604a3f8d6fd7f06d2f03f4879dc",
+  "candidate_id": "xlcandidate:5600cf8da53629d9c17d2fe71230da3d0cbef0374233549bc833683ce44808c0",
+  "capability_ids": [
+    "fwcap:02371d93bab08f10140ae6b681c87726c0d4e9b9f193144e2946b523227a4e22",
+    "fwcap:5fca088b8349c12d1f60bd2e1f2cb7d8d226178374afb55d3e380cb164479db0",
+    "fwcap:7e756deb16930bc7ace19c8ebaacab4f0ba435ebf9b96c317b3816b351e2684c"
+  ],
+  "contract_id": "hwbehavior:d16acb6603bdff18aed64b4a19e549db0fdc5fd3f8359ba571d0e36d651955b7",
+  "missing_requirements": [
+    "deviation_requires_runtime_evidence",
+    "observation_requires_runtime_evidence",
+    "prestate_requires_runtime_evidence",
+    "runtime_order_or_state_evidence",
+    "runtime_platform_and_source_binding"
+  ],
+  "requirements": [
+    {
+      "match_id": "xlrequirement:26d34477480d2372777880d51f6d717ef4681860d5aa9e6712c99f71f03f0557",
+      "matched_capability_ids": [],
+      "missing_requirements": [
+        "runtime_platform_and_source_binding"
+      ],
+      "reason": "Catalog identity and architecture match do not establish pinned platform, firmware or RTL scope",
+      "requirement_id": "hbc:platform-and-scope",
+      "resource_binding_ids": [],
+      "static_compatibility_status": "UNKNOWN"
+    },
+    {
+      "match_id": "xlrequirement:b7bc9ebb47c5f8cb54d155ed0e1e041f932a1b5170409e86106a8c1ab888b6c4",
+      "matched_capability_ids": [
+        "fwcap:02371d93bab08f10140ae6b681c87726c0d4e9b9f193144e2946b523227a4e22"
+      ],
+      "missing_requirements": [],
+      "reason": "Exact address access conflicts with required value, width or resource permission",
+      "requirement_id": "type2:command-write",
+      "resource_binding_ids": [
+        "hwbind:15a8612c79f2beb8b1a6395a60dc9b9ddeab6fee48ca7d48f3246752040f6ab5"
+      ],
+      "static_compatibility_status": "CONTRADICTED"
+    },
+    {
+      "match_id": "xlrequirement:b0b6f537d181f7750cf9214f590a1102bfc6494292229d5990fc2690ee664814",
+      "matched_capability_ids": [],
+      "missing_requirements": [
+        "prestate_requires_runtime_evidence"
+      ],
+      "reason": "This contract condition requires authoritative runtime verification",
+      "requirement_id": "type2:enable-prestate",
+      "resource_binding_ids": [],
+      "static_compatibility_status": "UNKNOWN"
+    },
+    {
+      "match_id": "xlrequirement:0bfa1108b9e1e459fe4fbe12f650567f48d708c162f133446b20a67be81cda1c",
+      "matched_capability_ids": [
+        "fwcap:7e756deb16930bc7ace19c8ebaacab4f0ba435ebf9b96c317b3816b351e2684c"
+      ],
+      "missing_requirements": [],
+      "reason": "Exact typed resource, access, width and known value compatible",
+      "requirement_id": "type2:enable-write",
+      "resource_binding_ids": [
+        "hwbind:ac1294786f30dcc6a1c05a56d39f9e48694004eaf1542c7029ddbca49a2a834a"
+      ],
+      "static_compatibility_status": "SUPPORTED"
+    },
+    {
+      "match_id": "xlrequirement:cdb2d22a10ded0d3ea7af08e2bc103f7b57dc64516f4638b40abaa0447a3b9fd",
+      "matched_capability_ids": [],
+      "missing_requirements": [
+        "deviation_requires_runtime_evidence"
+      ],
+      "reason": "This contract condition requires authoritative runtime verification",
+      "requirement_id": "type2:status-deviation",
+      "resource_binding_ids": [],
+      "static_compatibility_status": "UNKNOWN"
+    },
+    {
+      "match_id": "xlrequirement:850ab92f3da39e0d7b3144155648f25c4ab3743a8463b41f9752f7ae8162fd05",
+      "matched_capability_ids": [],
+      "missing_requirements": [
+        "observation_requires_runtime_evidence"
+      ],
+      "reason": "This contract condition requires authoritative runtime verification",
+      "requirement_id": "type2:status-observation",
+      "resource_binding_ids": [],
+      "static_compatibility_status": "UNKNOWN"
+    },
+    {
+      "match_id": "xlrequirement:cf48549f48050c39ba4e29468d99b222a77fbbae3127e64e4e3b347d2619424f",
+      "matched_capability_ids": [],
+      "missing_requirements": [
+        "runtime_order_or_state_evidence"
+      ],
+      "reason": "Ordering/state requires runtime evidence; static sequence is insufficient",
+      "requirement_id": "type2:write-order",
+      "resource_binding_ids": [],
+      "static_compatibility_status": "UNKNOWN"
+    }
+  ],
+  "schema_version": "cross-layer-candidate/v1",
+  "static_compatibility_status": "CONTRADICTED",
+  "verification_required": true
+}

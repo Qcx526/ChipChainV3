@@ -1,0 +1,750 @@
+{
+  "analysis_id": "firmware-static:9a68978d7e218636dda69df18c80879fd50397b0955d54f5d48f237ac29c6e97",
+  "artifact": {
+    "architecture": "arm",
+    "arm_cpu_name": "Cortex-M3",
+    "arm_profile": "M",
+    "bit_width": 32,
+    "endianness": "little",
+    "entry": 65537,
+    "sections": [
+      {
+        "address": 0,
+        "flags": 0,
+        "name": "",
+        "section_type": "SHT_NULL",
+        "size": 0
+      },
+      {
+        "address": 65536,
+        "flags": 6,
+        "name": ".text",
+        "section_type": "SHT_PROGBITS",
+        "size": 42
+      },
+      {
+        "address": 131114,
+        "flags": 3,
+        "name": ".persistent",
+        "section_type": "SHT_NOBITS",
+        "size": 2
+      },
+      {
+        "address": 131116,
+        "flags": 3,
+        "name": ".noinit",
+        "section_type": "SHT_NOBITS",
+        "size": 0
+      },
+      {
+        "address": 0,
+        "flags": 0,
+        "name": ".ARM.attributes",
+        "section_type": "SHT_ARM_ATTRIBUTES",
+        "size": 33
+      },
+      {
+        "address": 0,
+        "flags": 0,
+        "name": ".symtab",
+        "section_type": "SHT_SYMTAB",
+        "size": 336
+      },
+      {
+        "address": 0,
+        "flags": 0,
+        "name": ".strtab",
+        "section_type": "SHT_STRTAB",
+        "size": 114
+      },
+      {
+        "address": 0,
+        "flags": 0,
+        "name": ".shstrtab",
+        "section_type": "SHT_STRTAB",
+        "size": 69
+      }
+    ],
+    "segments": [
+      {
+        "file_offset": 65536,
+        "file_size": 42,
+        "flags": 5,
+        "memory_size": 42,
+        "virtual_address": 65536
+      },
+      {
+        "file_offset": 42,
+        "file_size": 0,
+        "flags": 6,
+        "memory_size": 2,
+        "virtual_address": 131114
+      }
+    ],
+    "sha256": "f518c3ef4088c16e992b50b59d3624aed5325829364919b57ae08cbaa92d03f9"
+  },
+  "behaviors": [
+    {
+      "access_width_bits": null,
+      "address": null,
+      "address_status": "not_applicable",
+      "detail": null,
+      "fact_id": "fwbehavior:ece5348a80e80f2dc49cb33d4c32abcda5ff148377ae2aadda97f1a8b07442d6",
+      "instruction_id": "fwinstruction:4287da48a8c30e216485c611057d39fbd0b918696a6e942fb61cf6c8c33737cc",
+      "kind": "DIRECT_CALL",
+      "known_value": null,
+      "pc": 65536,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": 65542
+    },
+    {
+      "access_width_bits": null,
+      "address": null,
+      "address_status": "not_applicable",
+      "detail": null,
+      "fact_id": "fwbehavior:c4a91a2cc5c44547429b23a5332fc9ff4c333e0e2445d2eddee09e5ec9a78c36",
+      "instruction_id": "fwinstruction:48960ca8c71fc686fdd5bf2d0f73a91254eda668009c82baf66d9d0a750ee7f0",
+      "kind": "DIRECT_BRANCH",
+      "known_value": null,
+      "pc": 65540,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": 65540
+    },
+    {
+      "access_width_bits": null,
+      "address": null,
+      "address_status": "not_applicable",
+      "detail": null,
+      "fact_id": "fwbehavior:3ddf5d28849125eea23f46919ca4b11e08a16574cdeea212b06d936f87dc2c6a",
+      "instruction_id": "fwinstruction:612b4e774ae9076e97ceac679cd1104ae85a692fa1854cad46b00cd138840696",
+      "kind": "INSTRUCTION",
+      "known_value": null,
+      "pc": 65542,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": null
+    },
+    {
+      "access_width_bits": null,
+      "address": null,
+      "address_status": "not_applicable",
+      "detail": null,
+      "fact_id": "fwbehavior:e54bbd3fbbca44fd173f84f23b59f7ec8acd7b4e42cb39f23113c5492f0c6851",
+      "instruction_id": "fwinstruction:466c41f457dbff7926aac5129b3443e539ffcdaf0a385913bf2b1085ac5617da",
+      "kind": "INSTRUCTION",
+      "known_value": null,
+      "pc": 65544,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": null
+    },
+    {
+      "access_width_bits": null,
+      "address": null,
+      "address_status": "not_applicable",
+      "detail": null,
+      "fact_id": "fwbehavior:d207d8bc7f5bd685e3b367ce98cb481cbb3bc5e17e09d490de28fa3d50301934",
+      "instruction_id": "fwinstruction:ff3775bb8ba97440e36f88a497d0bdd8580f584244a7e73d0dbd0bfa6fffe57d",
+      "kind": "INSTRUCTION",
+      "known_value": null,
+      "pc": 65548,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": null
+    },
+    {
+      "access_width_bits": null,
+      "address": null,
+      "address_status": "not_applicable",
+      "detail": null,
+      "fact_id": "fwbehavior:a8465fe8bee2f6f1308a9d7e081efb57ef60a231baa542cfb8c5a555bce9cb83",
+      "instruction_id": "fwinstruction:fcd7658d9b3caf75ede2a0fb5f7775d14552043e5449e85307a51f7fb76d9a75",
+      "kind": "INSTRUCTION",
+      "known_value": null,
+      "pc": 65552,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": null
+    },
+    {
+      "access_width_bits": 32,
+      "address": 1073741824,
+      "address_status": "exact",
+      "detail": null,
+      "fact_id": "fwbehavior:f2f497512261a950e0cadefdb712d04aa9ba629a8a354707f8454aa60b2e9ca4",
+      "instruction_id": "fwinstruction:eac5f685f31521fee1c3730d6f3a7b57dc4ba64476259c4fcd24e74b58c735e2",
+      "kind": "MEMORY_STORE",
+      "known_value": 1,
+      "pc": 65554,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": null
+    },
+    {
+      "access_width_bits": 32,
+      "address": 1073741824,
+      "address_status": "exact",
+      "detail": null,
+      "fact_id": "fwbehavior:ab2dada59d70f8e5e0fee1d001a06201322a5ab356a1b2e94dc1ca37d8776a72",
+      "instruction_id": "fwinstruction:62dc3b80bf3808621e640add587ade9915c6fceaed7162ab0bdb4ae7f59716a3",
+      "kind": "MEMORY_LOAD",
+      "known_value": null,
+      "pc": 65556,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": null
+    },
+    {
+      "access_width_bits": null,
+      "address": null,
+      "address_status": "not_applicable",
+      "detail": null,
+      "fact_id": "fwbehavior:39471f20848f33964921bce75f1c5b2b806354a641b78a613546ebb7c9154e70",
+      "instruction_id": "fwinstruction:432625a8186a69c31443b1ae82175ac09a93afc0d2d95e1e5ede1fa6310af9bb",
+      "kind": "DIRECT_CALL",
+      "known_value": null,
+      "pc": 65558,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": 65572
+    },
+    {
+      "access_width_bits": null,
+      "address": null,
+      "address_status": "not_applicable",
+      "detail": null,
+      "fact_id": "fwbehavior:f5cf9dae49b2feb561bcda904cad73bd817cbc52c1af3232818b46b8535f5d16",
+      "instruction_id": "fwinstruction:06e755891eb9b65ce83d5befe46c2051884c22e282be2eba8ff808e0c2734648",
+      "kind": "INSTRUCTION",
+      "known_value": null,
+      "pc": 65562,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": null
+    },
+    {
+      "access_width_bits": null,
+      "address": null,
+      "address_status": "not_applicable",
+      "detail": null,
+      "fact_id": "fwbehavior:8ad89d9ba78f810f77c4d7b095c1d3ea44caa7521b17714d9c16a56ce9b04188",
+      "instruction_id": "fwinstruction:4f7ec7e30d20e2947be38c72c4ca3a1caac3cd2b29e724fc3fd4926ccdf6a952",
+      "kind": "CONDITIONAL_BRANCH",
+      "known_value": null,
+      "pc": 65564,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": 65570
+    },
+    {
+      "access_width_bits": null,
+      "address": null,
+      "address_status": "not_applicable",
+      "detail": null,
+      "fact_id": "fwbehavior:279c73ee906daf1724f0d610bf651c3a16dca38e0b5104883d8e7f5af0310297",
+      "instruction_id": "fwinstruction:b1b79a25fa9d8e9bb35f125f3cba428c4e35a29a7371e69e6cf9938505379dc8",
+      "kind": "MEMORY_BARRIER",
+      "known_value": null,
+      "pc": 65566,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": null
+    },
+    {
+      "access_width_bits": null,
+      "address": null,
+      "address_status": "not_applicable",
+      "detail": null,
+      "fact_id": "fwbehavior:9826fbb303218c76ec2f054411249d76766658da10177aaacba96243989d9afa",
+      "instruction_id": "fwinstruction:4899fdb2df5cce094d7e1a6f3ccddd618ea9eece1633707d3fb345ce6134a6f1",
+      "kind": "RETURN",
+      "known_value": null,
+      "pc": 65570,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": null
+    },
+    {
+      "access_width_bits": null,
+      "address": null,
+      "address_status": "not_applicable",
+      "detail": null,
+      "fact_id": "fwbehavior:bc941601e9f84aa4b0baf29f0365bd3e17f5e5dd034762ffc126ab7eaf2203c1",
+      "instruction_id": "fwinstruction:d097c6bc28c8dfa537eca037b81e9115436d28e21e986dc4d43245e585fe6bda",
+      "kind": "SYSTEM_REGISTER_READ",
+      "known_value": null,
+      "pc": 65572,
+      "semantic_status": "supported",
+      "system_register": "primask",
+      "target": null
+    },
+    {
+      "access_width_bits": null,
+      "address": null,
+      "address_status": "not_applicable",
+      "detail": null,
+      "fact_id": "fwbehavior:106d4a51b5da37b365149f4f8cd06e9296053a832c0816a3da67b64ecda2727d",
+      "instruction_id": "fwinstruction:3491376e18613f900bbb8e79e50d4f5f63407a2ead0c745c6c3bdfcb2f39b06e",
+      "kind": "RETURN",
+      "known_value": null,
+      "pc": 65576,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": null
+    }
+  ],
+  "blocks": [
+    {
+      "end": 65539,
+      "fact_id": "fwblock:b4b2188b95e205197a7bec18aa93b78c006a66359b523ff9bb11bd60af9bebb6",
+      "function_ids": [
+        "fwfunction:cff5f321a96f5c9134f9d74d2d0c173494344151427972b6d9570c9610e004d0"
+      ],
+      "ranges": [
+        {
+          "end": 65539,
+          "start": 65536
+        }
+      ],
+      "start": 65536
+    },
+    {
+      "end": 65541,
+      "fact_id": "fwblock:c157f38fcc5361a5b69bc75e3b8c277cb89bb17ef4849998efa9a2547eaba79e",
+      "function_ids": [
+        "fwfunction:cff5f321a96f5c9134f9d74d2d0c173494344151427972b6d9570c9610e004d0"
+      ],
+      "ranges": [
+        {
+          "end": 65541,
+          "start": 65540
+        }
+      ],
+      "start": 65540
+    },
+    {
+      "end": 65565,
+      "fact_id": "fwblock:10c28a5c3b837f91314ade28591dadfee367329893bf584068614af4d86287c1",
+      "function_ids": [
+        "fwfunction:c97a6955510286de59177a902d6c98b0308fab6e14b030b0ebdc0933314b01a5"
+      ],
+      "ranges": [
+        {
+          "end": 65565,
+          "start": 65542
+        }
+      ],
+      "start": 65542
+    },
+    {
+      "end": 65569,
+      "fact_id": "fwblock:e0fbff920ae8faafc2df95378a0bb399b87baea96f1a6c88854582431c9476c5",
+      "function_ids": [
+        "fwfunction:c97a6955510286de59177a902d6c98b0308fab6e14b030b0ebdc0933314b01a5"
+      ],
+      "ranges": [
+        {
+          "end": 65569,
+          "start": 65566
+        }
+      ],
+      "start": 65566
+    },
+    {
+      "end": 65571,
+      "fact_id": "fwblock:1ad3074cbd3a381c9f07972c37c16f94daa1ef4d10e837881f0e6a5899a865f5",
+      "function_ids": [
+        "fwfunction:c97a6955510286de59177a902d6c98b0308fab6e14b030b0ebdc0933314b01a5"
+      ],
+      "ranges": [
+        {
+          "end": 65571,
+          "start": 65570
+        }
+      ],
+      "start": 65570
+    },
+    {
+      "end": 65577,
+      "fact_id": "fwblock:ecc3f74baa66046c99a84952711073ae9ca653335bc6b67f0e492eefa62a35ab",
+      "function_ids": [
+        "fwfunction:790d426cd7ac2169ffcecf22f5a31b23ba0bc57481429b48c07fc619ed4e269e"
+      ],
+      "ranges": [
+        {
+          "end": 65577,
+          "start": 65572
+        }
+      ],
+      "start": 65572
+    }
+  ],
+  "calls": [
+    {
+      "caller_function_ids": [
+        "fwfunction:cff5f321a96f5c9134f9d74d2d0c173494344151427972b6d9570c9610e004d0"
+      ],
+      "direct": true,
+      "fact_id": "fwcall:8d54bedbbe3c30f136251c493eaaf94d69c869babb212f7be0a07fb626ec23a4",
+      "pc": 65536,
+      "target": 65542,
+      "target_function_id": "fwfunction:c97a6955510286de59177a902d6c98b0308fab6e14b030b0ebdc0933314b01a5"
+    },
+    {
+      "caller_function_ids": [
+        "fwfunction:c97a6955510286de59177a902d6c98b0308fab6e14b030b0ebdc0933314b01a5"
+      ],
+      "direct": true,
+      "fact_id": "fwcall:935aebd816487defbf2e74a9191b1fa01825aa941be2009946b5c4755d5c267f",
+      "pc": 65558,
+      "target": 65572,
+      "target_function_id": "fwfunction:790d426cd7ac2169ffcecf22f5a31b23ba0bc57481429b48c07fc619ed4e269e"
+    }
+  ],
+  "edges": [
+    {
+      "edge_type": "FALL_THROUGH",
+      "fact_id": "fwedge:cc90eb7f89c8ad6c7200ef27745b0dc8e04e3d1d11a9e66a0b91671a8a295f00",
+      "source_block_id": "fwblock:10c28a5c3b837f91314ade28591dadfee367329893bf584068614af4d86287c1",
+      "target_address": 65566,
+      "target_block_id": "fwblock:e0fbff920ae8faafc2df95378a0bb399b87baea96f1a6c88854582431c9476c5"
+    },
+    {
+      "edge_type": "CONDITIONAL_JUMP",
+      "fact_id": "fwedge:62107049da693eff989ae8261fb624fc30cdb749edd7765f05c774088b697919",
+      "source_block_id": "fwblock:10c28a5c3b837f91314ade28591dadfee367329893bf584068614af4d86287c1",
+      "target_address": 65570,
+      "target_block_id": "fwblock:1ad3074cbd3a381c9f07972c37c16f94daa1ef4d10e837881f0e6a5899a865f5"
+    },
+    {
+      "edge_type": "UNCONDITIONAL_CALL",
+      "fact_id": "fwedge:1139133baf6ec47862c98bd04bb6d7e54a884a68606b7fac81bbc59e3f992032",
+      "source_block_id": "fwblock:10c28a5c3b837f91314ade28591dadfee367329893bf584068614af4d86287c1",
+      "target_address": 65572,
+      "target_block_id": "fwblock:ecc3f74baa66046c99a84952711073ae9ca653335bc6b67f0e492eefa62a35ab"
+    },
+    {
+      "edge_type": "FALL_THROUGH",
+      "fact_id": "fwedge:133e14fca622ed02fcdc7a1c2802ef891361500e5b448cd3439a6f032bf11bbc",
+      "source_block_id": "fwblock:b4b2188b95e205197a7bec18aa93b78c006a66359b523ff9bb11bd60af9bebb6",
+      "target_address": 65540,
+      "target_block_id": "fwblock:c157f38fcc5361a5b69bc75e3b8c277cb89bb17ef4849998efa9a2547eaba79e"
+    },
+    {
+      "edge_type": "UNCONDITIONAL_CALL",
+      "fact_id": "fwedge:97ae853ce7c2e7c5938acdac3b52f09bd0d5328589ac65662fbf8d69d583dd47",
+      "source_block_id": "fwblock:b4b2188b95e205197a7bec18aa93b78c006a66359b523ff9bb11bd60af9bebb6",
+      "target_address": 65542,
+      "target_block_id": "fwblock:10c28a5c3b837f91314ade28591dadfee367329893bf584068614af4d86287c1"
+    },
+    {
+      "edge_type": "UNCONDITIONAL_JUMP",
+      "fact_id": "fwedge:31bf7c3b7a96381b4f2bf8a23b15bc616b664050fd8e5075cafe2c133a0fd9c6",
+      "source_block_id": "fwblock:c157f38fcc5361a5b69bc75e3b8c277cb89bb17ef4849998efa9a2547eaba79e",
+      "target_address": 65540,
+      "target_block_id": "fwblock:c157f38fcc5361a5b69bc75e3b8c277cb89bb17ef4849998efa9a2547eaba79e"
+    },
+    {
+      "edge_type": "FALL_THROUGH",
+      "fact_id": "fwedge:8a9fdc8a474845c84e2d34c0c3b765a388f23a366bf2363051e6621d4172d54a",
+      "source_block_id": "fwblock:e0fbff920ae8faafc2df95378a0bb399b87baea96f1a6c88854582431c9476c5",
+      "target_address": 65570,
+      "target_block_id": "fwblock:1ad3074cbd3a381c9f07972c37c16f94daa1ef4d10e837881f0e6a5899a865f5"
+    }
+  ],
+  "functions": [
+    {
+      "entry": 65536,
+      "external": false,
+      "fact_id": "fwfunction:cff5f321a96f5c9134f9d74d2d0c173494344151427972b6d9570c9610e004d0",
+      "name": "_start",
+      "ranges": [
+        {
+          "end": 65541,
+          "start": 65536
+        }
+      ],
+      "thunk": false
+    },
+    {
+      "entry": 65542,
+      "external": false,
+      "fact_id": "fwfunction:c97a6955510286de59177a902d6c98b0308fab6e14b030b0ebdc0933314b01a5",
+      "name": "main",
+      "ranges": [
+        {
+          "end": 65571,
+          "start": 65542
+        }
+      ],
+      "thunk": false
+    },
+    {
+      "entry": 65572,
+      "external": false,
+      "fact_id": "fwfunction:790d426cd7ac2169ffcecf22f5a31b23ba0bc57481429b48c07fc619ed4e269e",
+      "name": "helper",
+      "ranges": [
+        {
+          "end": 65577,
+          "start": 65572
+        }
+      ],
+      "thunk": false
+    }
+  ],
+  "ghidra_language": "ARM:LE:32:Cortex",
+  "ghidra_version": "12.3_DEV-d6192cb3f900f74152a4eeec1aa6758b6143b093",
+  "instructions": [
+    {
+      "block_id": "fwblock:b4b2188b95e205197a7bec18aa93b78c006a66359b523ff9bb11bd60af9bebb6",
+      "fact_id": "fwinstruction:4287da48a8c30e216485c611057d39fbd0b918696a6e942fb61cf6c8c33737cc",
+      "function_ids": [
+        "fwfunction:cff5f321a96f5c9134f9d74d2d0c173494344151427972b6d9570c9610e004d0"
+      ],
+      "mnemonic": "bl",
+      "operands": [
+        "0x00010006"
+      ],
+      "pc": 65536,
+      "raw_bytes": "00f001f8",
+      "text": "bl 0x00010006"
+    },
+    {
+      "block_id": "fwblock:c157f38fcc5361a5b69bc75e3b8c277cb89bb17ef4849998efa9a2547eaba79e",
+      "fact_id": "fwinstruction:48960ca8c71fc686fdd5bf2d0f73a91254eda668009c82baf66d9d0a750ee7f0",
+      "function_ids": [
+        "fwfunction:cff5f321a96f5c9134f9d74d2d0c173494344151427972b6d9570c9610e004d0"
+      ],
+      "mnemonic": "b",
+      "operands": [
+        "0x00010004"
+      ],
+      "pc": 65540,
+      "raw_bytes": "fee7",
+      "text": "b 0x00010004"
+    },
+    {
+      "block_id": "fwblock:10c28a5c3b837f91314ade28591dadfee367329893bf584068614af4d86287c1",
+      "fact_id": "fwinstruction:612b4e774ae9076e97ceac679cd1104ae85a692fa1854cad46b00cd138840696",
+      "function_ids": [
+        "fwfunction:c97a6955510286de59177a902d6c98b0308fab6e14b030b0ebdc0933314b01a5"
+      ],
+      "mnemonic": "push",
+      "operands": [
+        "{lr}"
+      ],
+      "pc": 65542,
+      "raw_bytes": "00b5",
+      "text": "push {lr}"
+    },
+    {
+      "block_id": "fwblock:10c28a5c3b837f91314ade28591dadfee367329893bf584068614af4d86287c1",
+      "fact_id": "fwinstruction:466c41f457dbff7926aac5129b3443e539ffcdaf0a385913bf2b1085ac5617da",
+      "function_ids": [
+        "fwfunction:c97a6955510286de59177a902d6c98b0308fab6e14b030b0ebdc0933314b01a5"
+      ],
+      "mnemonic": "movw",
+      "operands": [
+        "r0",
+        "#0x0"
+      ],
+      "pc": 65544,
+      "raw_bytes": "40f20000",
+      "text": "movw r0,#0x0"
+    },
+    {
+      "block_id": "fwblock:10c28a5c3b837f91314ade28591dadfee367329893bf584068614af4d86287c1",
+      "fact_id": "fwinstruction:ff3775bb8ba97440e36f88a497d0bdd8580f584244a7e73d0dbd0bfa6fffe57d",
+      "function_ids": [
+        "fwfunction:c97a6955510286de59177a902d6c98b0308fab6e14b030b0ebdc0933314b01a5"
+      ],
+      "mnemonic": "movt",
+      "operands": [
+        "r0",
+        "#0x4000"
+      ],
+      "pc": 65548,
+      "raw_bytes": "c4f20000",
+      "text": "movt r0,#0x4000"
+    },
+    {
+      "block_id": "fwblock:10c28a5c3b837f91314ade28591dadfee367329893bf584068614af4d86287c1",
+      "fact_id": "fwinstruction:fcd7658d9b3caf75ede2a0fb5f7775d14552043e5449e85307a51f7fb76d9a75",
+      "function_ids": [
+        "fwfunction:c97a6955510286de59177a902d6c98b0308fab6e14b030b0ebdc0933314b01a5"
+      ],
+      "mnemonic": "movs",
+      "operands": [
+        "r1",
+        "#0x1"
+      ],
+      "pc": 65552,
+      "raw_bytes": "0121",
+      "text": "movs r1,#0x1"
+    },
+    {
+      "block_id": "fwblock:10c28a5c3b837f91314ade28591dadfee367329893bf584068614af4d86287c1",
+      "fact_id": "fwinstruction:eac5f685f31521fee1c3730d6f3a7b57dc4ba64476259c4fcd24e74b58c735e2",
+      "function_ids": [
+        "fwfunction:c97a6955510286de59177a902d6c98b0308fab6e14b030b0ebdc0933314b01a5"
+      ],
+      "mnemonic": "str",
+      "operands": [
+        "r1",
+        "[r0,#0x0]"
+      ],
+      "pc": 65554,
+      "raw_bytes": "0160",
+      "text": "str r1,[r0,#0x0]"
+    },
+    {
+      "block_id": "fwblock:10c28a5c3b837f91314ade28591dadfee367329893bf584068614af4d86287c1",
+      "fact_id": "fwinstruction:62dc3b80bf3808621e640add587ade9915c6fceaed7162ab0bdb4ae7f59716a3",
+      "function_ids": [
+        "fwfunction:c97a6955510286de59177a902d6c98b0308fab6e14b030b0ebdc0933314b01a5"
+      ],
+      "mnemonic": "ldr",
+      "operands": [
+        "r2",
+        "[r0,#0x0]"
+      ],
+      "pc": 65556,
+      "raw_bytes": "0268",
+      "text": "ldr r2,[r0,#0x0]"
+    },
+    {
+      "block_id": "fwblock:10c28a5c3b837f91314ade28591dadfee367329893bf584068614af4d86287c1",
+      "fact_id": "fwinstruction:432625a8186a69c31443b1ae82175ac09a93afc0d2d95e1e5ede1fa6310af9bb",
+      "function_ids": [
+        "fwfunction:c97a6955510286de59177a902d6c98b0308fab6e14b030b0ebdc0933314b01a5"
+      ],
+      "mnemonic": "bl",
+      "operands": [
+        "0x00010024"
+      ],
+      "pc": 65558,
+      "raw_bytes": "00f005f8",
+      "text": "bl 0x00010024"
+    },
+    {
+      "block_id": "fwblock:10c28a5c3b837f91314ade28591dadfee367329893bf584068614af4d86287c1",
+      "fact_id": "fwinstruction:06e755891eb9b65ce83d5befe46c2051884c22e282be2eba8ff808e0c2734648",
+      "function_ids": [
+        "fwfunction:c97a6955510286de59177a902d6c98b0308fab6e14b030b0ebdc0933314b01a5"
+      ],
+      "mnemonic": "cmp",
+      "operands": [
+        "r2",
+        "#0x0"
+      ],
+      "pc": 65562,
+      "raw_bytes": "002a",
+      "text": "cmp r2,#0x0"
+    },
+    {
+      "block_id": "fwblock:10c28a5c3b837f91314ade28591dadfee367329893bf584068614af4d86287c1",
+      "fact_id": "fwinstruction:4f7ec7e30d20e2947be38c72c4ca3a1caac3cd2b29e724fc3fd4926ccdf6a952",
+      "function_ids": [
+        "fwfunction:c97a6955510286de59177a902d6c98b0308fab6e14b030b0ebdc0933314b01a5"
+      ],
+      "mnemonic": "beq",
+      "operands": [
+        "0x00010022"
+      ],
+      "pc": 65564,
+      "raw_bytes": "01d0",
+      "text": "beq 0x00010022"
+    },
+    {
+      "block_id": "fwblock:e0fbff920ae8faafc2df95378a0bb399b87baea96f1a6c88854582431c9476c5",
+      "fact_id": "fwinstruction:b1b79a25fa9d8e9bb35f125f3cba428c4e35a29a7371e69e6cf9938505379dc8",
+      "function_ids": [
+        "fwfunction:c97a6955510286de59177a902d6c98b0308fab6e14b030b0ebdc0933314b01a5"
+      ],
+      "mnemonic": "dmb",
+      "operands": [
+        "0x1f"
+      ],
+      "pc": 65566,
+      "raw_bytes": "bff35f8f",
+      "text": "dmb #0x1f"
+    },
+    {
+      "block_id": "fwblock:1ad3074cbd3a381c9f07972c37c16f94daa1ef4d10e837881f0e6a5899a865f5",
+      "fact_id": "fwinstruction:4899fdb2df5cce094d7e1a6f3ccddd618ea9eece1633707d3fb345ce6134a6f1",
+      "function_ids": [
+        "fwfunction:c97a6955510286de59177a902d6c98b0308fab6e14b030b0ebdc0933314b01a5"
+      ],
+      "mnemonic": "pop",
+      "operands": [
+        "{pc}"
+      ],
+      "pc": 65570,
+      "raw_bytes": "00bd",
+      "text": "pop {pc}"
+    },
+    {
+      "block_id": "fwblock:ecc3f74baa66046c99a84952711073ae9ca653335bc6b67f0e492eefa62a35ab",
+      "fact_id": "fwinstruction:d097c6bc28c8dfa537eca037b81e9115436d28e21e986dc4d43245e585fe6bda",
+      "function_ids": [
+        "fwfunction:790d426cd7ac2169ffcecf22f5a31b23ba0bc57481429b48c07fc619ed4e269e"
+      ],
+      "mnemonic": "mrs",
+      "operands": [
+        "r3",
+        "primask"
+      ],
+      "pc": 65572,
+      "raw_bytes": "eff31083",
+      "text": "mrs r3,primask"
+    },
+    {
+      "block_id": "fwblock:ecc3f74baa66046c99a84952711073ae9ca653335bc6b67f0e492eefa62a35ab",
+      "fact_id": "fwinstruction:3491376e18613f900bbb8e79e50d4f5f63407a2ead0c745c6c3bdfcb2f39b06e",
+      "function_ids": [
+        "fwfunction:790d426cd7ac2169ffcecf22f5a31b23ba0bc57481429b48c07fc619ed4e269e"
+      ],
+      "mnemonic": "bx",
+      "operands": [
+        "lr"
+      ],
+      "pc": 65576,
+      "raw_bytes": "7047",
+      "text": "bx lr"
+    }
+  ],
+  "references": [
+    {
+      "fact_id": "fwref:07a7734297b6191c50f3487680a22c06a8ff724121bef12c635647a686f8ae43",
+      "operand_index": 0,
+      "reference_type": "UNCONDITIONAL_CALL",
+      "source_pc": 65536,
+      "target": 65542
+    },
+    {
+      "fact_id": "fwref:6af2f804b900989fdfdd1f7d1243a6425891978cc906c1ee639432c5c0760dbf",
+      "operand_index": 0,
+      "reference_type": "UNCONDITIONAL_JUMP",
+      "source_pc": 65540,
+      "target": 65540
+    },
+    {
+      "fact_id": "fwref:59fbdc7744e978f90e6b2dbc3ad960116be6ae66c170d42c728abf31fb3e2c9d",
+      "operand_index": 0,
+      "reference_type": "UNCONDITIONAL_CALL",
+      "source_pc": 65558,
+      "target": 65572
+    },
+    {
+      "fact_id": "fwref:c3d7d653bca555339aefe706542dd152a56867fe97ed9c5fcbd97241e415ab55",
+      "operand_index": 0,
+      "reference_type": "CONDITIONAL_JUMP",
+      "source_pc": 65564,
+      "target": 65570
+    }
+  ],
+  "schema_version": "firmware-static-analysis/v1"
+}

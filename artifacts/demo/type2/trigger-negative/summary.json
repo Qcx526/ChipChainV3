@@ -1,0 +1,22 @@
+{
+  "candidate_id": "xlcandidate:5600cf8da53629d9c17d2fe71230da3d0cbef0374233549bc833683ce44808c0",
+  "firmware_analysis_id": "firmware-static:c720262408be12c97537f40f3ba5b56df4030d2774c58d64c6df52d325ef949a",
+  "resource_binding_set_id": "hwbindings:6a643b63f91c880db4c8341c5d6bf1276c49d604a3f8d6fd7f06d2f03f4879dc",
+  "resource_catalog_id": "hwcatalog:a882db1539b350b22117ae7ed2d35db2fa6f6ad10e2711aca9bd3129cf0846c9",
+  "static_compatibility_status": "CONTRADICTED",
+  "verification": {
+    "contract_id": "hwbehavior:d16acb6603bdff18aed64b4a19e549db0fdc5fd3f8359ba571d0e36d651955b7",
+    "deviation": "unknown",
+    "differential": "unknown",
+    "final_status": "trigger_contradicted",
+    "observation": "unknown",
+    "reference_control": {
+      "deviation_observed": null,
+      "expected_behavior": "unknown",
+      "result_id": "type2-reference-control:1474fcf7d95e7d86587ff23246a13f912e5ab56d7f9b5969428e02f8bc9db81f",
+      "trigger": "unknown"
+    },
+    "result_id": "type2-verification:7dc13746b7067f7ce4adf6cc11ba8eeeb01a3b2582b7a2456b005704772477e7",
+    "trigger": "contradicted"
+  }
+}

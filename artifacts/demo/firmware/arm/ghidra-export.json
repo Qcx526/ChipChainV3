@@ -1,0 +1,396 @@
+{
+  "blocks": [
+    {
+      "end": 65539,
+      "id": "block:0x10000",
+      "ranges": [
+        {
+          "end": 65539,
+          "start": 65536
+        }
+      ],
+      "start": 65536
+    },
+    {
+      "end": 65541,
+      "id": "block:0x10004",
+      "ranges": [
+        {
+          "end": 65541,
+          "start": 65540
+        }
+      ],
+      "start": 65540
+    },
+    {
+      "end": 65565,
+      "id": "block:0x10006",
+      "ranges": [
+        {
+          "end": 65565,
+          "start": 65542
+        }
+      ],
+      "start": 65542
+    },
+    {
+      "end": 65569,
+      "id": "block:0x1001e",
+      "ranges": [
+        {
+          "end": 65569,
+          "start": 65566
+        }
+      ],
+      "start": 65566
+    },
+    {
+      "end": 65571,
+      "id": "block:0x10022",
+      "ranges": [
+        {
+          "end": 65571,
+          "start": 65570
+        }
+      ],
+      "start": 65570
+    },
+    {
+      "end": 65577,
+      "id": "block:0x10024",
+      "ranges": [
+        {
+          "end": 65577,
+          "start": 65572
+        }
+      ],
+      "start": 65572
+    }
+  ],
+  "calls": [
+    {
+      "caller": 65536,
+      "direct": true,
+      "pc": 65536,
+      "target": 65542
+    },
+    {
+      "caller": 65542,
+      "direct": true,
+      "pc": 65558,
+      "target": 65572
+    }
+  ],
+  "compiler": "default",
+  "edges": [
+    {
+      "source": 65536,
+      "target": 65540,
+      "type": "FALL_THROUGH"
+    },
+    {
+      "source": 65536,
+      "target": 65542,
+      "type": "UNCONDITIONAL_CALL"
+    },
+    {
+      "source": 65540,
+      "target": 65540,
+      "type": "UNCONDITIONAL_JUMP"
+    },
+    {
+      "source": 65542,
+      "target": 65566,
+      "type": "FALL_THROUGH"
+    },
+    {
+      "source": 65542,
+      "target": 65570,
+      "type": "CONDITIONAL_JUMP"
+    },
+    {
+      "source": 65542,
+      "target": 65572,
+      "type": "UNCONDITIONAL_CALL"
+    },
+    {
+      "source": 65566,
+      "target": 65570,
+      "type": "FALL_THROUGH"
+    }
+  ],
+  "functions": [
+    {
+      "entry": 65536,
+      "external": false,
+      "id": "function:0x10000",
+      "name": "_start",
+      "ranges": [
+        {
+          "end": 65541,
+          "start": 65536
+        }
+      ],
+      "thunk": false
+    },
+    {
+      "entry": 65542,
+      "external": false,
+      "id": "function:0x10006",
+      "name": "main",
+      "ranges": [
+        {
+          "end": 65571,
+          "start": 65542
+        }
+      ],
+      "thunk": false
+    },
+    {
+      "entry": 65572,
+      "external": false,
+      "id": "function:0x10024",
+      "name": "helper",
+      "ranges": [
+        {
+          "end": 65577,
+          "start": 65572
+        }
+      ],
+      "thunk": false
+    }
+  ],
+  "image_base": 65536,
+  "instructions": [
+    {
+      "block_id": "block:0x10000",
+      "block_start": 65536,
+      "bytes": "00f001f8",
+      "function_entry": 65536,
+      "function_id": "function:0x10000",
+      "mnemonic": "bl",
+      "operands": [
+        "0x00010006"
+      ],
+      "pc": 65536,
+      "text": "bl 0x00010006"
+    },
+    {
+      "block_id": "block:0x10004",
+      "block_start": 65540,
+      "bytes": "fee7",
+      "function_entry": 65536,
+      "function_id": "function:0x10000",
+      "mnemonic": "b",
+      "operands": [
+        "0x00010004"
+      ],
+      "pc": 65540,
+      "text": "b 0x00010004"
+    },
+    {
+      "block_id": "block:0x10006",
+      "block_start": 65542,
+      "bytes": "00b5",
+      "function_entry": 65542,
+      "function_id": "function:0x10006",
+      "mnemonic": "push",
+      "operands": [
+        "{lr}"
+      ],
+      "pc": 65542,
+      "text": "push {lr}"
+    },
+    {
+      "block_id": "block:0x10006",
+      "block_start": 65542,
+      "bytes": "40f20000",
+      "function_entry": 65542,
+      "function_id": "function:0x10006",
+      "mnemonic": "movw",
+      "operands": [
+        "r0",
+        "#0x0"
+      ],
+      "pc": 65544,
+      "text": "movw r0,#0x0"
+    },
+    {
+      "block_id": "block:0x10006",
+      "block_start": 65542,
+      "bytes": "c4f20000",
+      "function_entry": 65542,
+      "function_id": "function:0x10006",
+      "mnemonic": "movt",
+      "operands": [
+        "r0",
+        "#0x4000"
+      ],
+      "pc": 65548,
+      "text": "movt r0,#0x4000"
+    },
+    {
+      "block_id": "block:0x10006",
+      "block_start": 65542,
+      "bytes": "0121",
+      "function_entry": 65542,
+      "function_id": "function:0x10006",
+      "mnemonic": "movs",
+      "operands": [
+        "r1",
+        "#0x1"
+      ],
+      "pc": 65552,
+      "text": "movs r1,#0x1"
+    },
+    {
+      "block_id": "block:0x10006",
+      "block_start": 65542,
+      "bytes": "0160",
+      "function_entry": 65542,
+      "function_id": "function:0x10006",
+      "mnemonic": "str",
+      "operands": [
+        "r1",
+        "[r0,#0x0]"
+      ],
+      "pc": 65554,
+      "text": "str r1,[r0,#0x0]"
+    },
+    {
+      "block_id": "block:0x10006",
+      "block_start": 65542,
+      "bytes": "0268",
+      "function_entry": 65542,
+      "function_id": "function:0x10006",
+      "mnemonic": "ldr",
+      "operands": [
+        "r2",
+        "[r0,#0x0]"
+      ],
+      "pc": 65556,
+      "text": "ldr r2,[r0,#0x0]"
+    },
+    {
+      "block_id": "block:0x10006",
+      "block_start": 65542,
+      "bytes": "00f005f8",
+      "function_entry": 65542,
+      "function_id": "function:0x10006",
+      "mnemonic": "bl",
+      "operands": [
+        "0x00010024"
+      ],
+      "pc": 65558,
+      "text": "bl 0x00010024"
+    },
+    {
+      "block_id": "block:0x10006",
+      "block_start": 65542,
+      "bytes": "002a",
+      "function_entry": 65542,
+      "function_id": "function:0x10006",
+      "mnemonic": "cmp",
+      "operands": [
+        "r2",
+        "#0x0"
+      ],
+      "pc": 65562,
+      "text": "cmp r2,#0x0"
+    },
+    {
+      "block_id": "block:0x10006",
+      "block_start": 65542,
+      "bytes": "01d0",
+      "function_entry": 65542,
+      "function_id": "function:0x10006",
+      "mnemonic": "beq",
+      "operands": [
+        "0x00010022"
+      ],
+      "pc": 65564,
+      "text": "beq 0x00010022"
+    },
+    {
+      "block_id": "block:0x1001e",
+      "block_start": 65566,
+      "bytes": "bff35f8f",
+      "function_entry": 65542,
+      "function_id": "function:0x10006",
+      "mnemonic": "dmb",
+      "operands": [
+        "0x1f"
+      ],
+      "pc": 65566,
+      "text": "dmb #0x1f"
+    },
+    {
+      "block_id": "block:0x10022",
+      "block_start": 65570,
+      "bytes": "00bd",
+      "function_entry": 65542,
+      "function_id": "function:0x10006",
+      "mnemonic": "pop",
+      "operands": [
+        "{pc}"
+      ],
+      "pc": 65570,
+      "text": "pop {pc}"
+    },
+    {
+      "block_id": "block:0x10024",
+      "block_start": 65572,
+      "bytes": "eff31083",
+      "function_entry": 65572,
+      "function_id": "function:0x10024",
+      "mnemonic": "mrs",
+      "operands": [
+        "r3",
+        "primask"
+      ],
+      "pc": 65572,
+      "text": "mrs r3,primask"
+    },
+    {
+      "block_id": "block:0x10024",
+      "block_start": 65572,
+      "bytes": "7047",
+      "function_entry": 65572,
+      "function_id": "function:0x10024",
+      "mnemonic": "bx",
+      "operands": [
+        "lr"
+      ],
+      "pc": 65576,
+      "text": "bx lr"
+    }
+  ],
+  "language": "ARM:LE:32:Cortex",
+  "references": [
+    {
+      "operand": 0,
+      "source": 65536,
+      "target": 65542,
+      "type": "UNCONDITIONAL_CALL"
+    },
+    {
+      "operand": 0,
+      "source": 65540,
+      "target": 65540,
+      "type": "UNCONDITIONAL_JUMP"
+    },
+    {
+      "operand": 0,
+      "source": 65558,
+      "target": 65572,
+      "type": "UNCONDITIONAL_CALL"
+    },
+    {
+      "operand": 0,
+      "source": 65564,
+      "target": 65570,
+      "type": "CONDITIONAL_JUMP"
+    }
+  ],
+  "schema": "ghidra-firmware-facts/v1"
+}

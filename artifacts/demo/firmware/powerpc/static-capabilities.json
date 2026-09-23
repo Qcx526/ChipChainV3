@@ -1,0 +1,4548 @@
+[
+  {
+    "architecture": "powerpc",
+    "capability_id": "fwcap:caa94503047a5c0c5b79554a800c6b714bd45c145a3e4f9fac9131d7f8c10b6b",
+    "capability_sha256": "caa94503047a5c0c5b79554a800c6b714bd45c145a3e4f9fac9131d7f8c10b6b",
+    "conditions": [
+      {
+        "condition_id": "condition:fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+        "condition_kind": "path",
+        "description": "Static site does not establish runtime path feasibility.",
+        "evidence_ids": [
+          "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65"
+        ],
+        "formalization_status": "unknown",
+        "predicate": null,
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+              "fwinstruction:2e17804399e18ca205187a3060c99dc286605c450396dc097911acd053ab260f"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+              "fwinstruction:2e17804399e18ca205187a3060c99dc286605c450396dc097911acd053ab260f"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_id": "target:fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+        "evidence_ids": [
+          "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65"
+        ],
+        "formalization_status": "formalized",
+        "kind": "target_set",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+              "fwinstruction:2e17804399e18ca205187a3060c99dc286605c450396dc097911acd053ab260f"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+              "fwinstruction:2e17804399e18ca205187a3060c99dc286605c450396dc097911acd053ab260f"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "targets": [
+          65544
+        ]
+      },
+      {
+        "constraint_id": "resource:fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+        "evidence_ids": [
+          "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65"
+        ],
+        "formalization_status": "formalized",
+        "identity": "code:0x10008",
+        "kind": "target_resource",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+              "fwinstruction:2e17804399e18ca205187a3060c99dc286605c450396dc097911acd053ab260f"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+              "fwinstruction:2e17804399e18ca205187a3060c99dc286605c450396dc097911acd053ab260f"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "resource_kind": "control_flow",
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      }
+    ],
+    "entry": {
+      "entry_id": "entry:fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+      "entry_kind": "code_site",
+      "evidence_ids": [
+        "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65"
+      ],
+      "execution_status": "static_only",
+      "formalization_status": "formalized",
+      "function_id": "fwfunction:10984ab35218a80cc80d7f17cd5580749c788bc22c55576534aa4678803e53d5",
+      "function_name": "_start",
+      "interface_id": null,
+      "ownership_status": "unique",
+      "pc": 65536,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+            "fwinstruction:2e17804399e18ca205187a3060c99dc286605c450396dc097911acd053ab260f"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+            "fwinstruction:2e17804399e18ca205187a3060c99dc286605c450396dc097911acd053ab260f"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "reachability_status": "unknown",
+      "retirement_observation_ids": [],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ]
+    },
+    "evidence": [
+      {
+        "analyzer": "ghidra-elf-static/v1",
+        "artifact_id": "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677",
+        "epistemic_status": "derived",
+        "evidence_id": "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+        "location": {
+          "address": 65536,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "synthetic",
+        "summary": "Synthetic fixture instruction; ELF bytes checked, static semantics only."
+      }
+    ],
+    "evidence_ids": [
+      "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65"
+    ],
+    "limitations": [
+      "Static-only does not prove execution or attacker control."
+    ],
+    "origin": {
+      "evidence_ids": [
+        "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65"
+      ],
+      "finding_ids": [],
+      "kind": "synthetic_fixture",
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+            "fwinstruction:2e17804399e18ca205187a3060c99dc286605c450396dc097911acd053ab260f"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+            "fwinstruction:2e17804399e18ca205187a3060c99dc286605c450396dc097911acd053ab260f"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ]
+    },
+    "primitives": [
+      {
+        "architecture": "powerpc",
+        "basis": "static_instruction",
+        "condition_ids": [
+          "condition:fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65"
+        ],
+        "constraint_ids": [
+          "resource:fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+          "target:fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65"
+        ],
+        "control": {
+          "dimensions": [],
+          "evidence_ids": [
+            "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65"
+          ],
+          "provenance": [
+            {
+              "source_artifact_ids": [
+                "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+              ],
+              "source_ids": [
+                "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+                "fwinstruction:2e17804399e18ca205187a3060c99dc286605c450396dc097911acd053ab260f"
+              ],
+              "source_kind": "synthetic_fixture",
+              "transformation": "explicit_input"
+            },
+            {
+              "source_artifact_ids": [
+                "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+              ],
+              "source_ids": [
+                "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+                "fwinstruction:2e17804399e18ca205187a3060c99dc286605c450396dc097911acd053ab260f"
+              ],
+              "source_kind": "synthetic_fixture",
+              "transformation": "explicit_input"
+            }
+          ],
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "status": "not_established",
+          "support_basis": "not_established"
+        },
+        "entry_id": "entry:fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+        "evidence_ids": [
+          "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65"
+        ],
+        "formalization_status": "formalized",
+        "instruction_sequence": [
+          "48000009"
+        ],
+        "kind": "DIRECT_CONTROL_TRANSFER",
+        "primitive_id": "primitive:fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+              "fwinstruction:2e17804399e18ca205187a3060c99dc286605c450396dc097911acd053ab260f"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+              "fwinstruction:2e17804399e18ca205187a3060c99dc286605c450396dc097911acd053ab260f"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "retirement_observation_ids": [],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "source_pc": 65536,
+        "source_registers": [],
+        "target_status": "resolved_direct",
+        "transfer_kind": "direct_call"
+      }
+    ],
+    "provenance": [
+      {
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+        ],
+        "source_ids": [
+          "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+          "fwinstruction:2e17804399e18ca205187a3060c99dc286605c450396dc097911acd053ab260f"
+        ],
+        "source_kind": "synthetic_fixture",
+        "transformation": "explicit_input"
+      },
+      {
+        "source_artifact_ids": [
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "source_ids": [
+          "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+          "fwinstruction:2e17804399e18ca205187a3060c99dc286605c450396dc097911acd053ab260f"
+        ],
+        "source_kind": "synthetic_fixture",
+        "transformation": "explicit_input"
+      }
+    ],
+    "retirement_evidence": [],
+    "schema_version": "firmware-capability/v1",
+    "scope": {
+      "applicability": "synthetic_only",
+      "assumptions": [
+        "Synthetic fixture; no arbitrary-input path feasibility."
+      ],
+      "evidence_ids": [
+        "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65"
+      ],
+      "firmware_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+      ],
+      "formalization_status": "partially_formalized",
+      "function_ids": [],
+      "known_limitations": [],
+      "origin_kind": "synthetic_fixture",
+      "platform_id": null,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+            "fwinstruction:2e17804399e18ca205187a3060c99dc286605c450396dc097911acd053ab260f"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:9219a5f2187820891517ea898d7995768cef385a2ddb921a6c4f3899cb67cf65",
+            "fwinstruction:2e17804399e18ca205187a3060c99dc286605c450396dc097911acd053ab260f"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "site_pcs": [
+        65536
+      ],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ],
+      "target": {
+        "architecture": "powerpc",
+        "endianness": "big",
+        "firmware_id": "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "isa_variant": null,
+        "processor_id": "not-established",
+        "word_size_bits": 32
+      },
+      "unmodeled_aspects": [
+        "deviation",
+        "external_control",
+        "hardware_trigger",
+        "runtime_order"
+      ]
+    },
+    "source_artifact_ids": [
+      "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+      "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+    ],
+    "source_artifacts": [
+      {
+        "artifact_id": "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "hash_kind": "file_bytes",
+        "sha256": "704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "source_kind": "synthetic_fixture"
+      },
+      {
+        "artifact_id": "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677",
+        "hash_kind": "file_bytes",
+        "sha256": "6dfdaa4eab4c75c957e67c4c042b3c2410328c584c0175d58a23d0145677ebe6",
+        "source_kind": "synthetic_fixture"
+      }
+    ],
+    "source_case_id": null
+  },
+  {
+    "architecture": "powerpc",
+    "capability_id": "fwcap:9927c6bd1ed4fdb5d3d71e0011cba1f5677cc5160c3942aaa5adbffbe38c4680",
+    "capability_sha256": "9927c6bd1ed4fdb5d3d71e0011cba1f5677cc5160c3942aaa5adbffbe38c4680",
+    "conditions": [
+      {
+        "condition_id": "condition:fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+        "condition_kind": "path",
+        "description": "Static site does not establish runtime path feasibility.",
+        "evidence_ids": [
+          "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9"
+        ],
+        "formalization_status": "unknown",
+        "predicate": null,
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+              "fwinstruction:b8755c8b1494693d9c18fd6cb2248a3e4be174fc4d920a61bff2c3d686440f80"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+              "fwinstruction:b8755c8b1494693d9c18fd6cb2248a3e4be174fc4d920a61bff2c3d686440f80"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_id": "target:fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+        "evidence_ids": [
+          "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9"
+        ],
+        "formalization_status": "formalized",
+        "kind": "target_set",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+              "fwinstruction:b8755c8b1494693d9c18fd6cb2248a3e4be174fc4d920a61bff2c3d686440f80"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+              "fwinstruction:b8755c8b1494693d9c18fd6cb2248a3e4be174fc4d920a61bff2c3d686440f80"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "targets": [
+          65540
+        ]
+      },
+      {
+        "constraint_id": "resource:fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+        "evidence_ids": [
+          "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9"
+        ],
+        "formalization_status": "formalized",
+        "identity": "code:0x10004",
+        "kind": "target_resource",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+              "fwinstruction:b8755c8b1494693d9c18fd6cb2248a3e4be174fc4d920a61bff2c3d686440f80"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+              "fwinstruction:b8755c8b1494693d9c18fd6cb2248a3e4be174fc4d920a61bff2c3d686440f80"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "resource_kind": "control_flow",
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      }
+    ],
+    "entry": {
+      "entry_id": "entry:fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+      "entry_kind": "code_site",
+      "evidence_ids": [
+        "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9"
+      ],
+      "execution_status": "static_only",
+      "formalization_status": "formalized",
+      "function_id": "fwfunction:10984ab35218a80cc80d7f17cd5580749c788bc22c55576534aa4678803e53d5",
+      "function_name": "_start",
+      "interface_id": null,
+      "ownership_status": "unique",
+      "pc": 65540,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+            "fwinstruction:b8755c8b1494693d9c18fd6cb2248a3e4be174fc4d920a61bff2c3d686440f80"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+            "fwinstruction:b8755c8b1494693d9c18fd6cb2248a3e4be174fc4d920a61bff2c3d686440f80"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "reachability_status": "unknown",
+      "retirement_observation_ids": [],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ]
+    },
+    "evidence": [
+      {
+        "analyzer": "ghidra-elf-static/v1",
+        "artifact_id": "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677",
+        "epistemic_status": "derived",
+        "evidence_id": "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+        "location": {
+          "address": 65540,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "synthetic",
+        "summary": "Synthetic fixture instruction; ELF bytes checked, static semantics only."
+      }
+    ],
+    "evidence_ids": [
+      "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9"
+    ],
+    "limitations": [
+      "Static-only does not prove execution or attacker control."
+    ],
+    "origin": {
+      "evidence_ids": [
+        "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9"
+      ],
+      "finding_ids": [],
+      "kind": "synthetic_fixture",
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+            "fwinstruction:b8755c8b1494693d9c18fd6cb2248a3e4be174fc4d920a61bff2c3d686440f80"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+            "fwinstruction:b8755c8b1494693d9c18fd6cb2248a3e4be174fc4d920a61bff2c3d686440f80"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ]
+    },
+    "primitives": [
+      {
+        "architecture": "powerpc",
+        "basis": "static_instruction",
+        "condition_ids": [
+          "condition:fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9"
+        ],
+        "constraint_ids": [
+          "resource:fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+          "target:fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9"
+        ],
+        "control": {
+          "dimensions": [],
+          "evidence_ids": [
+            "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9"
+          ],
+          "provenance": [
+            {
+              "source_artifact_ids": [
+                "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+              ],
+              "source_ids": [
+                "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+                "fwinstruction:b8755c8b1494693d9c18fd6cb2248a3e4be174fc4d920a61bff2c3d686440f80"
+              ],
+              "source_kind": "synthetic_fixture",
+              "transformation": "explicit_input"
+            },
+            {
+              "source_artifact_ids": [
+                "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+              ],
+              "source_ids": [
+                "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+                "fwinstruction:b8755c8b1494693d9c18fd6cb2248a3e4be174fc4d920a61bff2c3d686440f80"
+              ],
+              "source_kind": "synthetic_fixture",
+              "transformation": "explicit_input"
+            }
+          ],
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "status": "not_established",
+          "support_basis": "not_established"
+        },
+        "entry_id": "entry:fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+        "evidence_ids": [
+          "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9"
+        ],
+        "formalization_status": "formalized",
+        "instruction_sequence": [
+          "48000000"
+        ],
+        "kind": "DIRECT_CONTROL_TRANSFER",
+        "primitive_id": "primitive:fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+              "fwinstruction:b8755c8b1494693d9c18fd6cb2248a3e4be174fc4d920a61bff2c3d686440f80"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+              "fwinstruction:b8755c8b1494693d9c18fd6cb2248a3e4be174fc4d920a61bff2c3d686440f80"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "retirement_observation_ids": [],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "source_pc": 65540,
+        "source_registers": [],
+        "target_status": "resolved_direct",
+        "transfer_kind": "direct_jump"
+      }
+    ],
+    "provenance": [
+      {
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+        ],
+        "source_ids": [
+          "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+          "fwinstruction:b8755c8b1494693d9c18fd6cb2248a3e4be174fc4d920a61bff2c3d686440f80"
+        ],
+        "source_kind": "synthetic_fixture",
+        "transformation": "explicit_input"
+      },
+      {
+        "source_artifact_ids": [
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "source_ids": [
+          "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+          "fwinstruction:b8755c8b1494693d9c18fd6cb2248a3e4be174fc4d920a61bff2c3d686440f80"
+        ],
+        "source_kind": "synthetic_fixture",
+        "transformation": "explicit_input"
+      }
+    ],
+    "retirement_evidence": [],
+    "schema_version": "firmware-capability/v1",
+    "scope": {
+      "applicability": "synthetic_only",
+      "assumptions": [
+        "Synthetic fixture; no arbitrary-input path feasibility."
+      ],
+      "evidence_ids": [
+        "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9"
+      ],
+      "firmware_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+      ],
+      "formalization_status": "partially_formalized",
+      "function_ids": [],
+      "known_limitations": [],
+      "origin_kind": "synthetic_fixture",
+      "platform_id": null,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+            "fwinstruction:b8755c8b1494693d9c18fd6cb2248a3e4be174fc4d920a61bff2c3d686440f80"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:8bfb6c0bed0f6595ff80c14930040780ce6c2400ceb0db9e264d9cc11b2474c9",
+            "fwinstruction:b8755c8b1494693d9c18fd6cb2248a3e4be174fc4d920a61bff2c3d686440f80"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "site_pcs": [
+        65540
+      ],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ],
+      "target": {
+        "architecture": "powerpc",
+        "endianness": "big",
+        "firmware_id": "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "isa_variant": null,
+        "processor_id": "not-established",
+        "word_size_bits": 32
+      },
+      "unmodeled_aspects": [
+        "deviation",
+        "external_control",
+        "hardware_trigger",
+        "runtime_order"
+      ]
+    },
+    "source_artifact_ids": [
+      "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+      "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+    ],
+    "source_artifacts": [
+      {
+        "artifact_id": "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "hash_kind": "file_bytes",
+        "sha256": "704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "source_kind": "synthetic_fixture"
+      },
+      {
+        "artifact_id": "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677",
+        "hash_kind": "file_bytes",
+        "sha256": "6dfdaa4eab4c75c957e67c4c042b3c2410328c584c0175d58a23d0145677ebe6",
+        "source_kind": "synthetic_fixture"
+      }
+    ],
+    "source_case_id": null
+  },
+  {
+    "architecture": "powerpc",
+    "capability_id": "fwcap:57abd8e85e233fc799bf5a19998f7a0d9974d40fc495b8463857db06209bd00e",
+    "capability_sha256": "57abd8e85e233fc799bf5a19998f7a0d9974d40fc495b8463857db06209bd00e",
+    "conditions": [
+      {
+        "condition_id": "condition:fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d",
+        "condition_kind": "path",
+        "description": "Static site does not establish runtime path feasibility.",
+        "evidence_ids": [
+          "fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d"
+        ],
+        "formalization_status": "unknown",
+        "predicate": null,
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d",
+              "fwinstruction:4a9c1e43b2874b8e9d4c219c9b0478db895423ea0e975886834da6fcb62d6814"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d",
+              "fwinstruction:4a9c1e43b2874b8e9d4c219c9b0478db895423ea0e975886834da6fcb62d6814"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      }
+    ],
+    "constraints": [],
+    "entry": {
+      "entry_id": "entry:fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d",
+      "entry_kind": "code_site",
+      "evidence_ids": [
+        "fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d"
+      ],
+      "execution_status": "static_only",
+      "formalization_status": "formalized",
+      "function_id": "fwfunction:a815b6c8dc1b3b05e08f29251480bca5f566c36d334fa4117d6a1f76fd51cf06",
+      "function_name": "main",
+      "interface_id": null,
+      "ownership_status": "unique",
+      "pc": 65544,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d",
+            "fwinstruction:4a9c1e43b2874b8e9d4c219c9b0478db895423ea0e975886834da6fcb62d6814"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d",
+            "fwinstruction:4a9c1e43b2874b8e9d4c219c9b0478db895423ea0e975886834da6fcb62d6814"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "reachability_status": "unknown",
+      "retirement_observation_ids": [],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ]
+    },
+    "evidence": [
+      {
+        "analyzer": "ghidra-elf-static/v1",
+        "artifact_id": "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677",
+        "epistemic_status": "derived",
+        "evidence_id": "fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d",
+        "location": {
+          "address": 65544,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "synthetic",
+        "summary": "Synthetic fixture instruction; ELF bytes checked, static semantics only."
+      }
+    ],
+    "evidence_ids": [
+      "fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d"
+    ],
+    "limitations": [
+      "Static-only does not prove execution or attacker control."
+    ],
+    "origin": {
+      "evidence_ids": [
+        "fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d"
+      ],
+      "finding_ids": [],
+      "kind": "synthetic_fixture",
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d",
+            "fwinstruction:4a9c1e43b2874b8e9d4c219c9b0478db895423ea0e975886834da6fcb62d6814"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d",
+            "fwinstruction:4a9c1e43b2874b8e9d4c219c9b0478db895423ea0e975886834da6fcb62d6814"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ]
+    },
+    "primitives": [
+      {
+        "architecture": "powerpc",
+        "basis": "static_instruction",
+        "condition_ids": [
+          "condition:fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d"
+        ],
+        "constraint_ids": [],
+        "control": {
+          "dimensions": [],
+          "evidence_ids": [
+            "fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d"
+          ],
+          "provenance": [
+            {
+              "source_artifact_ids": [
+                "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+              ],
+              "source_ids": [
+                "fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d",
+                "fwinstruction:4a9c1e43b2874b8e9d4c219c9b0478db895423ea0e975886834da6fcb62d6814"
+              ],
+              "source_kind": "synthetic_fixture",
+              "transformation": "explicit_input"
+            },
+            {
+              "source_artifact_ids": [
+                "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+              ],
+              "source_ids": [
+                "fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d",
+                "fwinstruction:4a9c1e43b2874b8e9d4c219c9b0478db895423ea0e975886834da6fcb62d6814"
+              ],
+              "source_kind": "synthetic_fixture",
+              "transformation": "explicit_input"
+            }
+          ],
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "status": "not_established",
+          "support_basis": "not_established"
+        },
+        "entry_id": "entry:fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d",
+        "evidence_ids": [
+          "fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d"
+        ],
+        "formalization_status": "formalized",
+        "instruction_sequence": [
+          "3c604000"
+        ],
+        "kind": "INSTRUCTION_EXECUTION",
+        "primitive_id": "primitive:fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d",
+              "fwinstruction:4a9c1e43b2874b8e9d4c219c9b0478db895423ea0e975886834da6fcb62d6814"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d",
+              "fwinstruction:4a9c1e43b2874b8e9d4c219c9b0478db895423ea0e975886834da6fcb62d6814"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "retirement_observation_ids": [],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "source_pc": 65544,
+        "source_registers": [],
+        "target_status": "not_applicable",
+        "transfer_kind": null
+      }
+    ],
+    "provenance": [
+      {
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+        ],
+        "source_ids": [
+          "fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d",
+          "fwinstruction:4a9c1e43b2874b8e9d4c219c9b0478db895423ea0e975886834da6fcb62d6814"
+        ],
+        "source_kind": "synthetic_fixture",
+        "transformation": "explicit_input"
+      },
+      {
+        "source_artifact_ids": [
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "source_ids": [
+          "fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d",
+          "fwinstruction:4a9c1e43b2874b8e9d4c219c9b0478db895423ea0e975886834da6fcb62d6814"
+        ],
+        "source_kind": "synthetic_fixture",
+        "transformation": "explicit_input"
+      }
+    ],
+    "retirement_evidence": [],
+    "schema_version": "firmware-capability/v1",
+    "scope": {
+      "applicability": "synthetic_only",
+      "assumptions": [
+        "Synthetic fixture; no arbitrary-input path feasibility."
+      ],
+      "evidence_ids": [
+        "fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d"
+      ],
+      "firmware_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+      ],
+      "formalization_status": "partially_formalized",
+      "function_ids": [],
+      "known_limitations": [],
+      "origin_kind": "synthetic_fixture",
+      "platform_id": null,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d",
+            "fwinstruction:4a9c1e43b2874b8e9d4c219c9b0478db895423ea0e975886834da6fcb62d6814"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:3bceae9343c0a5c2c82fa8ce09672c3e5f1d2974952dc3951c9d885e1db81a2d",
+            "fwinstruction:4a9c1e43b2874b8e9d4c219c9b0478db895423ea0e975886834da6fcb62d6814"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "site_pcs": [
+        65544
+      ],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ],
+      "target": {
+        "architecture": "powerpc",
+        "endianness": "big",
+        "firmware_id": "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "isa_variant": null,
+        "processor_id": "not-established",
+        "word_size_bits": 32
+      },
+      "unmodeled_aspects": [
+        "deviation",
+        "external_control",
+        "hardware_trigger",
+        "runtime_order"
+      ]
+    },
+    "source_artifact_ids": [
+      "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+      "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+    ],
+    "source_artifacts": [
+      {
+        "artifact_id": "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "hash_kind": "file_bytes",
+        "sha256": "704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "source_kind": "synthetic_fixture"
+      },
+      {
+        "artifact_id": "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677",
+        "hash_kind": "file_bytes",
+        "sha256": "6dfdaa4eab4c75c957e67c4c042b3c2410328c584c0175d58a23d0145677ebe6",
+        "source_kind": "synthetic_fixture"
+      }
+    ],
+    "source_case_id": null
+  },
+  {
+    "architecture": "powerpc",
+    "capability_id": "fwcap:b4ff2d185ce9d5de9129ee188d5e29818a5c05379f78ed218827e59f29d7aa01",
+    "capability_sha256": "b4ff2d185ce9d5de9129ee188d5e29818a5c05379f78ed218827e59f29d7aa01",
+    "conditions": [
+      {
+        "condition_id": "condition:fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad",
+        "condition_kind": "path",
+        "description": "Static site does not establish runtime path feasibility.",
+        "evidence_ids": [
+          "fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad"
+        ],
+        "formalization_status": "unknown",
+        "predicate": null,
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad",
+              "fwinstruction:eace0349f3155c479164a4fb7bceb926ef521ffe6a81535c54cfafeec0835c14"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad",
+              "fwinstruction:eace0349f3155c479164a4fb7bceb926ef521ffe6a81535c54cfafeec0835c14"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      }
+    ],
+    "constraints": [],
+    "entry": {
+      "entry_id": "entry:fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad",
+      "entry_kind": "code_site",
+      "evidence_ids": [
+        "fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad"
+      ],
+      "execution_status": "static_only",
+      "formalization_status": "formalized",
+      "function_id": "fwfunction:a815b6c8dc1b3b05e08f29251480bca5f566c36d334fa4117d6a1f76fd51cf06",
+      "function_name": "main",
+      "interface_id": null,
+      "ownership_status": "unique",
+      "pc": 65548,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad",
+            "fwinstruction:eace0349f3155c479164a4fb7bceb926ef521ffe6a81535c54cfafeec0835c14"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad",
+            "fwinstruction:eace0349f3155c479164a4fb7bceb926ef521ffe6a81535c54cfafeec0835c14"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "reachability_status": "unknown",
+      "retirement_observation_ids": [],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ]
+    },
+    "evidence": [
+      {
+        "analyzer": "ghidra-elf-static/v1",
+        "artifact_id": "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677",
+        "epistemic_status": "derived",
+        "evidence_id": "fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad",
+        "location": {
+          "address": 65548,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "synthetic",
+        "summary": "Synthetic fixture instruction; ELF bytes checked, static semantics only."
+      }
+    ],
+    "evidence_ids": [
+      "fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad"
+    ],
+    "limitations": [
+      "Static-only does not prove execution or attacker control."
+    ],
+    "origin": {
+      "evidence_ids": [
+        "fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad"
+      ],
+      "finding_ids": [],
+      "kind": "synthetic_fixture",
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad",
+            "fwinstruction:eace0349f3155c479164a4fb7bceb926ef521ffe6a81535c54cfafeec0835c14"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad",
+            "fwinstruction:eace0349f3155c479164a4fb7bceb926ef521ffe6a81535c54cfafeec0835c14"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ]
+    },
+    "primitives": [
+      {
+        "architecture": "powerpc",
+        "basis": "static_instruction",
+        "condition_ids": [
+          "condition:fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad"
+        ],
+        "constraint_ids": [],
+        "control": {
+          "dimensions": [],
+          "evidence_ids": [
+            "fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad"
+          ],
+          "provenance": [
+            {
+              "source_artifact_ids": [
+                "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+              ],
+              "source_ids": [
+                "fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad",
+                "fwinstruction:eace0349f3155c479164a4fb7bceb926ef521ffe6a81535c54cfafeec0835c14"
+              ],
+              "source_kind": "synthetic_fixture",
+              "transformation": "explicit_input"
+            },
+            {
+              "source_artifact_ids": [
+                "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+              ],
+              "source_ids": [
+                "fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad",
+                "fwinstruction:eace0349f3155c479164a4fb7bceb926ef521ffe6a81535c54cfafeec0835c14"
+              ],
+              "source_kind": "synthetic_fixture",
+              "transformation": "explicit_input"
+            }
+          ],
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "status": "not_established",
+          "support_basis": "not_established"
+        },
+        "entry_id": "entry:fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad",
+        "evidence_ids": [
+          "fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad"
+        ],
+        "formalization_status": "formalized",
+        "instruction_sequence": [
+          "38800001"
+        ],
+        "kind": "INSTRUCTION_EXECUTION",
+        "primitive_id": "primitive:fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad",
+              "fwinstruction:eace0349f3155c479164a4fb7bceb926ef521ffe6a81535c54cfafeec0835c14"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad",
+              "fwinstruction:eace0349f3155c479164a4fb7bceb926ef521ffe6a81535c54cfafeec0835c14"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "retirement_observation_ids": [],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "source_pc": 65548,
+        "source_registers": [],
+        "target_status": "not_applicable",
+        "transfer_kind": null
+      }
+    ],
+    "provenance": [
+      {
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+        ],
+        "source_ids": [
+          "fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad",
+          "fwinstruction:eace0349f3155c479164a4fb7bceb926ef521ffe6a81535c54cfafeec0835c14"
+        ],
+        "source_kind": "synthetic_fixture",
+        "transformation": "explicit_input"
+      },
+      {
+        "source_artifact_ids": [
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "source_ids": [
+          "fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad",
+          "fwinstruction:eace0349f3155c479164a4fb7bceb926ef521ffe6a81535c54cfafeec0835c14"
+        ],
+        "source_kind": "synthetic_fixture",
+        "transformation": "explicit_input"
+      }
+    ],
+    "retirement_evidence": [],
+    "schema_version": "firmware-capability/v1",
+    "scope": {
+      "applicability": "synthetic_only",
+      "assumptions": [
+        "Synthetic fixture; no arbitrary-input path feasibility."
+      ],
+      "evidence_ids": [
+        "fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad"
+      ],
+      "firmware_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+      ],
+      "formalization_status": "partially_formalized",
+      "function_ids": [],
+      "known_limitations": [],
+      "origin_kind": "synthetic_fixture",
+      "platform_id": null,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad",
+            "fwinstruction:eace0349f3155c479164a4fb7bceb926ef521ffe6a81535c54cfafeec0835c14"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:12c6132bf1871fb7af4a767bb88b7cb6eac08b9594cd8c16f846323defcf64ad",
+            "fwinstruction:eace0349f3155c479164a4fb7bceb926ef521ffe6a81535c54cfafeec0835c14"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "site_pcs": [
+        65548
+      ],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ],
+      "target": {
+        "architecture": "powerpc",
+        "endianness": "big",
+        "firmware_id": "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "isa_variant": null,
+        "processor_id": "not-established",
+        "word_size_bits": 32
+      },
+      "unmodeled_aspects": [
+        "deviation",
+        "external_control",
+        "hardware_trigger",
+        "runtime_order"
+      ]
+    },
+    "source_artifact_ids": [
+      "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+      "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+    ],
+    "source_artifacts": [
+      {
+        "artifact_id": "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "hash_kind": "file_bytes",
+        "sha256": "704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "source_kind": "synthetic_fixture"
+      },
+      {
+        "artifact_id": "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677",
+        "hash_kind": "file_bytes",
+        "sha256": "6dfdaa4eab4c75c957e67c4c042b3c2410328c584c0175d58a23d0145677ebe6",
+        "source_kind": "synthetic_fixture"
+      }
+    ],
+    "source_case_id": null
+  },
+  {
+    "architecture": "powerpc",
+    "capability_id": "fwcap:a664c8113534d3902eb5a0ddbe4e4a27b90a046c3453880ae9c5f102088bc715",
+    "capability_sha256": "a664c8113534d3902eb5a0ddbe4e4a27b90a046c3453880ae9c5f102088bc715",
+    "conditions": [
+      {
+        "condition_id": "condition:fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+        "condition_kind": "path",
+        "description": "Static site does not establish runtime path feasibility.",
+        "evidence_ids": [
+          "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229"
+        ],
+        "formalization_status": "unknown",
+        "predicate": null,
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+              "fwinstruction:f3477aa32dff0870c79d3699ba0c077c74ee441a693a180ad256b13987561bf4"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+              "fwinstruction:f3477aa32dff0870c79d3699ba0c077c74ee441a693a180ad256b13987561bf4"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_id": "resource:fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+        "evidence_ids": [
+          "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229"
+        ],
+        "formalization_status": "partially_formalized",
+        "identity": null,
+        "kind": "target_resource",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+              "fwinstruction:f3477aa32dff0870c79d3699ba0c077c74ee441a693a180ad256b13987561bf4"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+              "fwinstruction:f3477aa32dff0870c79d3699ba0c077c74ee441a693a180ad256b13987561bf4"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "resource_kind": "memory",
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      },
+      {
+        "constraint_id": "address:fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+        "domain": {
+          "bit_width": 32,
+          "controlled_bits": null,
+          "exact": 1073741824,
+          "mask": null,
+          "masked_value": null,
+          "maximum": null,
+          "minimum": null
+        },
+        "evidence_ids": [
+          "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229"
+        ],
+        "formalization_status": "formalized",
+        "kind": "address",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+              "fwinstruction:f3477aa32dff0870c79d3699ba0c077c74ee441a693a180ad256b13987561bf4"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+              "fwinstruction:f3477aa32dff0870c79d3699ba0c077c74ee441a693a180ad256b13987561bf4"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      },
+      {
+        "constraint_id": "access_width:fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+        "domain": {
+          "bit_width": 32,
+          "controlled_bits": null,
+          "exact": 32,
+          "mask": null,
+          "masked_value": null,
+          "maximum": null,
+          "minimum": null
+        },
+        "evidence_ids": [
+          "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229"
+        ],
+        "formalization_status": "formalized",
+        "kind": "access_width",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+              "fwinstruction:f3477aa32dff0870c79d3699ba0c077c74ee441a693a180ad256b13987561bf4"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+              "fwinstruction:f3477aa32dff0870c79d3699ba0c077c74ee441a693a180ad256b13987561bf4"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      },
+      {
+        "constraint_id": "value:fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+        "domain": {
+          "bit_width": 32,
+          "controlled_bits": null,
+          "exact": 1,
+          "mask": null,
+          "masked_value": null,
+          "maximum": null,
+          "minimum": null
+        },
+        "evidence_ids": [
+          "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229"
+        ],
+        "formalization_status": "formalized",
+        "kind": "value",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+              "fwinstruction:f3477aa32dff0870c79d3699ba0c077c74ee441a693a180ad256b13987561bf4"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+              "fwinstruction:f3477aa32dff0870c79d3699ba0c077c74ee441a693a180ad256b13987561bf4"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      }
+    ],
+    "entry": {
+      "entry_id": "entry:fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+      "entry_kind": "code_site",
+      "evidence_ids": [
+        "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229"
+      ],
+      "execution_status": "static_only",
+      "formalization_status": "formalized",
+      "function_id": "fwfunction:a815b6c8dc1b3b05e08f29251480bca5f566c36d334fa4117d6a1f76fd51cf06",
+      "function_name": "main",
+      "interface_id": null,
+      "ownership_status": "unique",
+      "pc": 65552,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+            "fwinstruction:f3477aa32dff0870c79d3699ba0c077c74ee441a693a180ad256b13987561bf4"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+            "fwinstruction:f3477aa32dff0870c79d3699ba0c077c74ee441a693a180ad256b13987561bf4"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "reachability_status": "unknown",
+      "retirement_observation_ids": [],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ]
+    },
+    "evidence": [
+      {
+        "analyzer": "ghidra-elf-static/v1",
+        "artifact_id": "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677",
+        "epistemic_status": "derived",
+        "evidence_id": "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+        "location": {
+          "address": 65552,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "synthetic",
+        "summary": "Synthetic fixture instruction; ELF bytes checked, static semantics only."
+      }
+    ],
+    "evidence_ids": [
+      "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229"
+    ],
+    "limitations": [
+      "Static-only does not prove execution or attacker control."
+    ],
+    "origin": {
+      "evidence_ids": [
+        "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229"
+      ],
+      "finding_ids": [],
+      "kind": "synthetic_fixture",
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+            "fwinstruction:f3477aa32dff0870c79d3699ba0c077c74ee441a693a180ad256b13987561bf4"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+            "fwinstruction:f3477aa32dff0870c79d3699ba0c077c74ee441a693a180ad256b13987561bf4"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ]
+    },
+    "primitives": [
+      {
+        "architecture": "powerpc",
+        "basis": "static_instruction",
+        "condition_ids": [
+          "condition:fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229"
+        ],
+        "constraint_ids": [
+          "access_width:fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+          "address:fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+          "resource:fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+          "value:fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229"
+        ],
+        "control": {
+          "dimensions": [],
+          "evidence_ids": [
+            "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229"
+          ],
+          "provenance": [
+            {
+              "source_artifact_ids": [
+                "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+              ],
+              "source_ids": [
+                "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+                "fwinstruction:f3477aa32dff0870c79d3699ba0c077c74ee441a693a180ad256b13987561bf4"
+              ],
+              "source_kind": "synthetic_fixture",
+              "transformation": "explicit_input"
+            },
+            {
+              "source_artifact_ids": [
+                "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+              ],
+              "source_ids": [
+                "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+                "fwinstruction:f3477aa32dff0870c79d3699ba0c077c74ee441a693a180ad256b13987561bf4"
+              ],
+              "source_kind": "synthetic_fixture",
+              "transformation": "explicit_input"
+            }
+          ],
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "status": "not_established",
+          "support_basis": "not_established"
+        },
+        "entry_id": "entry:fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+        "evidence_ids": [
+          "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229"
+        ],
+        "formalization_status": "partially_formalized",
+        "instruction_sequence": [
+          "90830000"
+        ],
+        "kind": "MEMORY_WRITE",
+        "primitive_id": "primitive:fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+              "fwinstruction:f3477aa32dff0870c79d3699ba0c077c74ee441a693a180ad256b13987561bf4"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+              "fwinstruction:f3477aa32dff0870c79d3699ba0c077c74ee441a693a180ad256b13987561bf4"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "retirement_observation_ids": [],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "source_pc": 65552,
+        "source_registers": [],
+        "target_status": "not_applicable",
+        "transfer_kind": null
+      }
+    ],
+    "provenance": [
+      {
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+        ],
+        "source_ids": [
+          "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+          "fwinstruction:f3477aa32dff0870c79d3699ba0c077c74ee441a693a180ad256b13987561bf4"
+        ],
+        "source_kind": "synthetic_fixture",
+        "transformation": "explicit_input"
+      },
+      {
+        "source_artifact_ids": [
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "source_ids": [
+          "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+          "fwinstruction:f3477aa32dff0870c79d3699ba0c077c74ee441a693a180ad256b13987561bf4"
+        ],
+        "source_kind": "synthetic_fixture",
+        "transformation": "explicit_input"
+      }
+    ],
+    "retirement_evidence": [],
+    "schema_version": "firmware-capability/v1",
+    "scope": {
+      "applicability": "synthetic_only",
+      "assumptions": [
+        "Synthetic fixture; no arbitrary-input path feasibility."
+      ],
+      "evidence_ids": [
+        "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229"
+      ],
+      "firmware_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+      ],
+      "formalization_status": "partially_formalized",
+      "function_ids": [],
+      "known_limitations": [],
+      "origin_kind": "synthetic_fixture",
+      "platform_id": null,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+            "fwinstruction:f3477aa32dff0870c79d3699ba0c077c74ee441a693a180ad256b13987561bf4"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:16b478a6cbc52b5d672f2ea84deeee4565dd818a85720b5e6d13905771a6e229",
+            "fwinstruction:f3477aa32dff0870c79d3699ba0c077c74ee441a693a180ad256b13987561bf4"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "site_pcs": [
+        65552
+      ],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ],
+      "target": {
+        "architecture": "powerpc",
+        "endianness": "big",
+        "firmware_id": "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "isa_variant": null,
+        "processor_id": "not-established",
+        "word_size_bits": 32
+      },
+      "unmodeled_aspects": [
+        "deviation",
+        "external_control",
+        "hardware_trigger",
+        "runtime_order"
+      ]
+    },
+    "source_artifact_ids": [
+      "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+      "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+    ],
+    "source_artifacts": [
+      {
+        "artifact_id": "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "hash_kind": "file_bytes",
+        "sha256": "704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "source_kind": "synthetic_fixture"
+      },
+      {
+        "artifact_id": "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677",
+        "hash_kind": "file_bytes",
+        "sha256": "6dfdaa4eab4c75c957e67c4c042b3c2410328c584c0175d58a23d0145677ebe6",
+        "source_kind": "synthetic_fixture"
+      }
+    ],
+    "source_case_id": null
+  },
+  {
+    "architecture": "powerpc",
+    "capability_id": "fwcap:491cbf6707657b923fe270a6b7a0d8ee5ee6ba3c61eda20f6798fdb80b0fb6f4",
+    "capability_sha256": "491cbf6707657b923fe270a6b7a0d8ee5ee6ba3c61eda20f6798fdb80b0fb6f4",
+    "conditions": [
+      {
+        "condition_id": "condition:fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+        "condition_kind": "path",
+        "description": "Static site does not establish runtime path feasibility.",
+        "evidence_ids": [
+          "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a"
+        ],
+        "formalization_status": "unknown",
+        "predicate": null,
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+              "fwinstruction:9ac21523921608adf9edaf909b248eb5869e93a75b011eec55a91e3ba8e194a9"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+              "fwinstruction:9ac21523921608adf9edaf909b248eb5869e93a75b011eec55a91e3ba8e194a9"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_id": "resource:fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+        "evidence_ids": [
+          "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a"
+        ],
+        "formalization_status": "partially_formalized",
+        "identity": null,
+        "kind": "target_resource",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+              "fwinstruction:9ac21523921608adf9edaf909b248eb5869e93a75b011eec55a91e3ba8e194a9"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+              "fwinstruction:9ac21523921608adf9edaf909b248eb5869e93a75b011eec55a91e3ba8e194a9"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "resource_kind": "memory",
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      },
+      {
+        "constraint_id": "address:fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+        "domain": {
+          "bit_width": 32,
+          "controlled_bits": null,
+          "exact": 1073741824,
+          "mask": null,
+          "masked_value": null,
+          "maximum": null,
+          "minimum": null
+        },
+        "evidence_ids": [
+          "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a"
+        ],
+        "formalization_status": "formalized",
+        "kind": "address",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+              "fwinstruction:9ac21523921608adf9edaf909b248eb5869e93a75b011eec55a91e3ba8e194a9"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+              "fwinstruction:9ac21523921608adf9edaf909b248eb5869e93a75b011eec55a91e3ba8e194a9"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      },
+      {
+        "constraint_id": "access_width:fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+        "domain": {
+          "bit_width": 32,
+          "controlled_bits": null,
+          "exact": 32,
+          "mask": null,
+          "masked_value": null,
+          "maximum": null,
+          "minimum": null
+        },
+        "evidence_ids": [
+          "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a"
+        ],
+        "formalization_status": "formalized",
+        "kind": "access_width",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+              "fwinstruction:9ac21523921608adf9edaf909b248eb5869e93a75b011eec55a91e3ba8e194a9"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+              "fwinstruction:9ac21523921608adf9edaf909b248eb5869e93a75b011eec55a91e3ba8e194a9"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      }
+    ],
+    "entry": {
+      "entry_id": "entry:fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+      "entry_kind": "code_site",
+      "evidence_ids": [
+        "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a"
+      ],
+      "execution_status": "static_only",
+      "formalization_status": "formalized",
+      "function_id": "fwfunction:a815b6c8dc1b3b05e08f29251480bca5f566c36d334fa4117d6a1f76fd51cf06",
+      "function_name": "main",
+      "interface_id": null,
+      "ownership_status": "unique",
+      "pc": 65556,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+            "fwinstruction:9ac21523921608adf9edaf909b248eb5869e93a75b011eec55a91e3ba8e194a9"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+            "fwinstruction:9ac21523921608adf9edaf909b248eb5869e93a75b011eec55a91e3ba8e194a9"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "reachability_status": "unknown",
+      "retirement_observation_ids": [],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ]
+    },
+    "evidence": [
+      {
+        "analyzer": "ghidra-elf-static/v1",
+        "artifact_id": "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677",
+        "epistemic_status": "derived",
+        "evidence_id": "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+        "location": {
+          "address": 65556,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "synthetic",
+        "summary": "Synthetic fixture instruction; ELF bytes checked, static semantics only."
+      }
+    ],
+    "evidence_ids": [
+      "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a"
+    ],
+    "limitations": [
+      "Static-only does not prove execution or attacker control."
+    ],
+    "origin": {
+      "evidence_ids": [
+        "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a"
+      ],
+      "finding_ids": [],
+      "kind": "synthetic_fixture",
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+            "fwinstruction:9ac21523921608adf9edaf909b248eb5869e93a75b011eec55a91e3ba8e194a9"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+            "fwinstruction:9ac21523921608adf9edaf909b248eb5869e93a75b011eec55a91e3ba8e194a9"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ]
+    },
+    "primitives": [
+      {
+        "architecture": "powerpc",
+        "basis": "static_instruction",
+        "condition_ids": [
+          "condition:fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a"
+        ],
+        "constraint_ids": [
+          "access_width:fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+          "address:fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+          "resource:fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a"
+        ],
+        "control": {
+          "dimensions": [],
+          "evidence_ids": [
+            "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a"
+          ],
+          "provenance": [
+            {
+              "source_artifact_ids": [
+                "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+              ],
+              "source_ids": [
+                "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+                "fwinstruction:9ac21523921608adf9edaf909b248eb5869e93a75b011eec55a91e3ba8e194a9"
+              ],
+              "source_kind": "synthetic_fixture",
+              "transformation": "explicit_input"
+            },
+            {
+              "source_artifact_ids": [
+                "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+              ],
+              "source_ids": [
+                "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+                "fwinstruction:9ac21523921608adf9edaf909b248eb5869e93a75b011eec55a91e3ba8e194a9"
+              ],
+              "source_kind": "synthetic_fixture",
+              "transformation": "explicit_input"
+            }
+          ],
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "status": "not_established",
+          "support_basis": "not_established"
+        },
+        "entry_id": "entry:fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+        "evidence_ids": [
+          "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a"
+        ],
+        "formalization_status": "partially_formalized",
+        "instruction_sequence": [
+          "80a30000"
+        ],
+        "kind": "MEMORY_READ",
+        "primitive_id": "primitive:fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+              "fwinstruction:9ac21523921608adf9edaf909b248eb5869e93a75b011eec55a91e3ba8e194a9"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+              "fwinstruction:9ac21523921608adf9edaf909b248eb5869e93a75b011eec55a91e3ba8e194a9"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "retirement_observation_ids": [],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "source_pc": 65556,
+        "source_registers": [],
+        "target_status": "not_applicable",
+        "transfer_kind": null
+      }
+    ],
+    "provenance": [
+      {
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+        ],
+        "source_ids": [
+          "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+          "fwinstruction:9ac21523921608adf9edaf909b248eb5869e93a75b011eec55a91e3ba8e194a9"
+        ],
+        "source_kind": "synthetic_fixture",
+        "transformation": "explicit_input"
+      },
+      {
+        "source_artifact_ids": [
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "source_ids": [
+          "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+          "fwinstruction:9ac21523921608adf9edaf909b248eb5869e93a75b011eec55a91e3ba8e194a9"
+        ],
+        "source_kind": "synthetic_fixture",
+        "transformation": "explicit_input"
+      }
+    ],
+    "retirement_evidence": [],
+    "schema_version": "firmware-capability/v1",
+    "scope": {
+      "applicability": "synthetic_only",
+      "assumptions": [
+        "Synthetic fixture; no arbitrary-input path feasibility."
+      ],
+      "evidence_ids": [
+        "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a"
+      ],
+      "firmware_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+      ],
+      "formalization_status": "partially_formalized",
+      "function_ids": [],
+      "known_limitations": [],
+      "origin_kind": "synthetic_fixture",
+      "platform_id": null,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+            "fwinstruction:9ac21523921608adf9edaf909b248eb5869e93a75b011eec55a91e3ba8e194a9"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:80ca8e6da5aaaeeffbd6924bd211fc011126b8181fd4f7e7daabf30b8da4f07a",
+            "fwinstruction:9ac21523921608adf9edaf909b248eb5869e93a75b011eec55a91e3ba8e194a9"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "site_pcs": [
+        65556
+      ],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ],
+      "target": {
+        "architecture": "powerpc",
+        "endianness": "big",
+        "firmware_id": "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "isa_variant": null,
+        "processor_id": "not-established",
+        "word_size_bits": 32
+      },
+      "unmodeled_aspects": [
+        "deviation",
+        "external_control",
+        "hardware_trigger",
+        "runtime_order"
+      ]
+    },
+    "source_artifact_ids": [
+      "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+      "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+    ],
+    "source_artifacts": [
+      {
+        "artifact_id": "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "hash_kind": "file_bytes",
+        "sha256": "704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "source_kind": "synthetic_fixture"
+      },
+      {
+        "artifact_id": "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677",
+        "hash_kind": "file_bytes",
+        "sha256": "6dfdaa4eab4c75c957e67c4c042b3c2410328c584c0175d58a23d0145677ebe6",
+        "source_kind": "synthetic_fixture"
+      }
+    ],
+    "source_case_id": null
+  },
+  {
+    "architecture": "powerpc",
+    "capability_id": "fwcap:aa48a4909b370dff96ff09bcff6e3da51076060184ce36a7fdd608fc12b13bed",
+    "capability_sha256": "aa48a4909b370dff96ff09bcff6e3da51076060184ce36a7fdd608fc12b13bed",
+    "conditions": [
+      {
+        "condition_id": "condition:fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+        "condition_kind": "path",
+        "description": "Static site does not establish runtime path feasibility.",
+        "evidence_ids": [
+          "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013"
+        ],
+        "formalization_status": "unknown",
+        "predicate": null,
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+              "fwinstruction:2ad1eeac8be15ebfa96ff2a3ea7ed663d357d024e3596882369662bf73287b2f"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+              "fwinstruction:2ad1eeac8be15ebfa96ff2a3ea7ed663d357d024e3596882369662bf73287b2f"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_id": "target:fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+        "evidence_ids": [
+          "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013"
+        ],
+        "formalization_status": "formalized",
+        "kind": "target_set",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+              "fwinstruction:2ad1eeac8be15ebfa96ff2a3ea7ed663d357d024e3596882369662bf73287b2f"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+              "fwinstruction:2ad1eeac8be15ebfa96ff2a3ea7ed663d357d024e3596882369662bf73287b2f"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "targets": [
+          65580
+        ]
+      },
+      {
+        "constraint_id": "resource:fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+        "evidence_ids": [
+          "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013"
+        ],
+        "formalization_status": "formalized",
+        "identity": "code:0x1002c",
+        "kind": "target_resource",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+              "fwinstruction:2ad1eeac8be15ebfa96ff2a3ea7ed663d357d024e3596882369662bf73287b2f"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+              "fwinstruction:2ad1eeac8be15ebfa96ff2a3ea7ed663d357d024e3596882369662bf73287b2f"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "resource_kind": "control_flow",
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      }
+    ],
+    "entry": {
+      "entry_id": "entry:fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+      "entry_kind": "code_site",
+      "evidence_ids": [
+        "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013"
+      ],
+      "execution_status": "static_only",
+      "formalization_status": "formalized",
+      "function_id": "fwfunction:a815b6c8dc1b3b05e08f29251480bca5f566c36d334fa4117d6a1f76fd51cf06",
+      "function_name": "main",
+      "interface_id": null,
+      "ownership_status": "unique",
+      "pc": 65560,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+            "fwinstruction:2ad1eeac8be15ebfa96ff2a3ea7ed663d357d024e3596882369662bf73287b2f"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+            "fwinstruction:2ad1eeac8be15ebfa96ff2a3ea7ed663d357d024e3596882369662bf73287b2f"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "reachability_status": "unknown",
+      "retirement_observation_ids": [],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ]
+    },
+    "evidence": [
+      {
+        "analyzer": "ghidra-elf-static/v1",
+        "artifact_id": "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677",
+        "epistemic_status": "derived",
+        "evidence_id": "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+        "location": {
+          "address": 65560,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "synthetic",
+        "summary": "Synthetic fixture instruction; ELF bytes checked, static semantics only."
+      }
+    ],
+    "evidence_ids": [
+      "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013"
+    ],
+    "limitations": [
+      "Static-only does not prove execution or attacker control."
+    ],
+    "origin": {
+      "evidence_ids": [
+        "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013"
+      ],
+      "finding_ids": [],
+      "kind": "synthetic_fixture",
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+            "fwinstruction:2ad1eeac8be15ebfa96ff2a3ea7ed663d357d024e3596882369662bf73287b2f"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+            "fwinstruction:2ad1eeac8be15ebfa96ff2a3ea7ed663d357d024e3596882369662bf73287b2f"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ]
+    },
+    "primitives": [
+      {
+        "architecture": "powerpc",
+        "basis": "static_instruction",
+        "condition_ids": [
+          "condition:fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013"
+        ],
+        "constraint_ids": [
+          "resource:fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+          "target:fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013"
+        ],
+        "control": {
+          "dimensions": [],
+          "evidence_ids": [
+            "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013"
+          ],
+          "provenance": [
+            {
+              "source_artifact_ids": [
+                "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+              ],
+              "source_ids": [
+                "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+                "fwinstruction:2ad1eeac8be15ebfa96ff2a3ea7ed663d357d024e3596882369662bf73287b2f"
+              ],
+              "source_kind": "synthetic_fixture",
+              "transformation": "explicit_input"
+            },
+            {
+              "source_artifact_ids": [
+                "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+              ],
+              "source_ids": [
+                "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+                "fwinstruction:2ad1eeac8be15ebfa96ff2a3ea7ed663d357d024e3596882369662bf73287b2f"
+              ],
+              "source_kind": "synthetic_fixture",
+              "transformation": "explicit_input"
+            }
+          ],
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "status": "not_established",
+          "support_basis": "not_established"
+        },
+        "entry_id": "entry:fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+        "evidence_ids": [
+          "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013"
+        ],
+        "formalization_status": "formalized",
+        "instruction_sequence": [
+          "48000015"
+        ],
+        "kind": "DIRECT_CONTROL_TRANSFER",
+        "primitive_id": "primitive:fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+              "fwinstruction:2ad1eeac8be15ebfa96ff2a3ea7ed663d357d024e3596882369662bf73287b2f"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+              "fwinstruction:2ad1eeac8be15ebfa96ff2a3ea7ed663d357d024e3596882369662bf73287b2f"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "retirement_observation_ids": [],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "source_pc": 65560,
+        "source_registers": [],
+        "target_status": "resolved_direct",
+        "transfer_kind": "direct_call"
+      }
+    ],
+    "provenance": [
+      {
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+        ],
+        "source_ids": [
+          "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+          "fwinstruction:2ad1eeac8be15ebfa96ff2a3ea7ed663d357d024e3596882369662bf73287b2f"
+        ],
+        "source_kind": "synthetic_fixture",
+        "transformation": "explicit_input"
+      },
+      {
+        "source_artifact_ids": [
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "source_ids": [
+          "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+          "fwinstruction:2ad1eeac8be15ebfa96ff2a3ea7ed663d357d024e3596882369662bf73287b2f"
+        ],
+        "source_kind": "synthetic_fixture",
+        "transformation": "explicit_input"
+      }
+    ],
+    "retirement_evidence": [],
+    "schema_version": "firmware-capability/v1",
+    "scope": {
+      "applicability": "synthetic_only",
+      "assumptions": [
+        "Synthetic fixture; no arbitrary-input path feasibility."
+      ],
+      "evidence_ids": [
+        "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013"
+      ],
+      "firmware_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+      ],
+      "formalization_status": "partially_formalized",
+      "function_ids": [],
+      "known_limitations": [],
+      "origin_kind": "synthetic_fixture",
+      "platform_id": null,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+            "fwinstruction:2ad1eeac8be15ebfa96ff2a3ea7ed663d357d024e3596882369662bf73287b2f"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:abea6ea3d2a2595355ab5b78199ace120649d1184504144ff6568e6aabc52013",
+            "fwinstruction:2ad1eeac8be15ebfa96ff2a3ea7ed663d357d024e3596882369662bf73287b2f"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "site_pcs": [
+        65560
+      ],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ],
+      "target": {
+        "architecture": "powerpc",
+        "endianness": "big",
+        "firmware_id": "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "isa_variant": null,
+        "processor_id": "not-established",
+        "word_size_bits": 32
+      },
+      "unmodeled_aspects": [
+        "deviation",
+        "external_control",
+        "hardware_trigger",
+        "runtime_order"
+      ]
+    },
+    "source_artifact_ids": [
+      "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+      "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+    ],
+    "source_artifacts": [
+      {
+        "artifact_id": "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "hash_kind": "file_bytes",
+        "sha256": "704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "source_kind": "synthetic_fixture"
+      },
+      {
+        "artifact_id": "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677",
+        "hash_kind": "file_bytes",
+        "sha256": "6dfdaa4eab4c75c957e67c4c042b3c2410328c584c0175d58a23d0145677ebe6",
+        "source_kind": "synthetic_fixture"
+      }
+    ],
+    "source_case_id": null
+  },
+  {
+    "architecture": "powerpc",
+    "capability_id": "fwcap:204c1174426bfaaff6a740d9ab42743068c3490a4e0f5430d5d78f922005ee78",
+    "capability_sha256": "204c1174426bfaaff6a740d9ab42743068c3490a4e0f5430d5d78f922005ee78",
+    "conditions": [
+      {
+        "condition_id": "condition:fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241",
+        "condition_kind": "path",
+        "description": "Static site does not establish runtime path feasibility.",
+        "evidence_ids": [
+          "fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241"
+        ],
+        "formalization_status": "unknown",
+        "predicate": null,
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241",
+              "fwinstruction:ef7e71f8fa07f6f9775606377f1fde9023b4cd994beac46ae35f423ac6cb2bd8"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241",
+              "fwinstruction:ef7e71f8fa07f6f9775606377f1fde9023b4cd994beac46ae35f423ac6cb2bd8"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      }
+    ],
+    "constraints": [],
+    "entry": {
+      "entry_id": "entry:fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241",
+      "entry_kind": "code_site",
+      "evidence_ids": [
+        "fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241"
+      ],
+      "execution_status": "static_only",
+      "formalization_status": "formalized",
+      "function_id": "fwfunction:a815b6c8dc1b3b05e08f29251480bca5f566c36d334fa4117d6a1f76fd51cf06",
+      "function_name": "main",
+      "interface_id": null,
+      "ownership_status": "unique",
+      "pc": 65564,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241",
+            "fwinstruction:ef7e71f8fa07f6f9775606377f1fde9023b4cd994beac46ae35f423ac6cb2bd8"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241",
+            "fwinstruction:ef7e71f8fa07f6f9775606377f1fde9023b4cd994beac46ae35f423ac6cb2bd8"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "reachability_status": "unknown",
+      "retirement_observation_ids": [],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ]
+    },
+    "evidence": [
+      {
+        "analyzer": "ghidra-elf-static/v1",
+        "artifact_id": "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677",
+        "epistemic_status": "derived",
+        "evidence_id": "fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241",
+        "location": {
+          "address": 65564,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "synthetic",
+        "summary": "Synthetic fixture instruction; ELF bytes checked, static semantics only."
+      }
+    ],
+    "evidence_ids": [
+      "fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241"
+    ],
+    "limitations": [
+      "Static-only does not prove execution or attacker control."
+    ],
+    "origin": {
+      "evidence_ids": [
+        "fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241"
+      ],
+      "finding_ids": [],
+      "kind": "synthetic_fixture",
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241",
+            "fwinstruction:ef7e71f8fa07f6f9775606377f1fde9023b4cd994beac46ae35f423ac6cb2bd8"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241",
+            "fwinstruction:ef7e71f8fa07f6f9775606377f1fde9023b4cd994beac46ae35f423ac6cb2bd8"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ]
+    },
+    "primitives": [
+      {
+        "architecture": "powerpc",
+        "basis": "static_instruction",
+        "condition_ids": [
+          "condition:fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241"
+        ],
+        "constraint_ids": [],
+        "control": {
+          "dimensions": [],
+          "evidence_ids": [
+            "fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241"
+          ],
+          "provenance": [
+            {
+              "source_artifact_ids": [
+                "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+              ],
+              "source_ids": [
+                "fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241",
+                "fwinstruction:ef7e71f8fa07f6f9775606377f1fde9023b4cd994beac46ae35f423ac6cb2bd8"
+              ],
+              "source_kind": "synthetic_fixture",
+              "transformation": "explicit_input"
+            },
+            {
+              "source_artifact_ids": [
+                "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+              ],
+              "source_ids": [
+                "fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241",
+                "fwinstruction:ef7e71f8fa07f6f9775606377f1fde9023b4cd994beac46ae35f423ac6cb2bd8"
+              ],
+              "source_kind": "synthetic_fixture",
+              "transformation": "explicit_input"
+            }
+          ],
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "status": "not_established",
+          "support_basis": "not_established"
+        },
+        "entry_id": "entry:fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241",
+        "evidence_ids": [
+          "fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241"
+        ],
+        "formalization_status": "formalized",
+        "instruction_sequence": [
+          "2c050000"
+        ],
+        "kind": "INSTRUCTION_EXECUTION",
+        "primitive_id": "primitive:fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241",
+              "fwinstruction:ef7e71f8fa07f6f9775606377f1fde9023b4cd994beac46ae35f423ac6cb2bd8"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241",
+              "fwinstruction:ef7e71f8fa07f6f9775606377f1fde9023b4cd994beac46ae35f423ac6cb2bd8"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "retirement_observation_ids": [],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "source_pc": 65564,
+        "source_registers": [],
+        "target_status": "not_applicable",
+        "transfer_kind": null
+      }
+    ],
+    "provenance": [
+      {
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+        ],
+        "source_ids": [
+          "fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241",
+          "fwinstruction:ef7e71f8fa07f6f9775606377f1fde9023b4cd994beac46ae35f423ac6cb2bd8"
+        ],
+        "source_kind": "synthetic_fixture",
+        "transformation": "explicit_input"
+      },
+      {
+        "source_artifact_ids": [
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "source_ids": [
+          "fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241",
+          "fwinstruction:ef7e71f8fa07f6f9775606377f1fde9023b4cd994beac46ae35f423ac6cb2bd8"
+        ],
+        "source_kind": "synthetic_fixture",
+        "transformation": "explicit_input"
+      }
+    ],
+    "retirement_evidence": [],
+    "schema_version": "firmware-capability/v1",
+    "scope": {
+      "applicability": "synthetic_only",
+      "assumptions": [
+        "Synthetic fixture; no arbitrary-input path feasibility."
+      ],
+      "evidence_ids": [
+        "fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241"
+      ],
+      "firmware_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+      ],
+      "formalization_status": "partially_formalized",
+      "function_ids": [],
+      "known_limitations": [],
+      "origin_kind": "synthetic_fixture",
+      "platform_id": null,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241",
+            "fwinstruction:ef7e71f8fa07f6f9775606377f1fde9023b4cd994beac46ae35f423ac6cb2bd8"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:1b0ae7ea86aa5e1e05b6927671b4e19d13aadbe54ce71b707e87fb6e3f1dc241",
+            "fwinstruction:ef7e71f8fa07f6f9775606377f1fde9023b4cd994beac46ae35f423ac6cb2bd8"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "site_pcs": [
+        65564
+      ],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ],
+      "target": {
+        "architecture": "powerpc",
+        "endianness": "big",
+        "firmware_id": "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "isa_variant": null,
+        "processor_id": "not-established",
+        "word_size_bits": 32
+      },
+      "unmodeled_aspects": [
+        "deviation",
+        "external_control",
+        "hardware_trigger",
+        "runtime_order"
+      ]
+    },
+    "source_artifact_ids": [
+      "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+      "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+    ],
+    "source_artifacts": [
+      {
+        "artifact_id": "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "hash_kind": "file_bytes",
+        "sha256": "704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "source_kind": "synthetic_fixture"
+      },
+      {
+        "artifact_id": "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677",
+        "hash_kind": "file_bytes",
+        "sha256": "6dfdaa4eab4c75c957e67c4c042b3c2410328c584c0175d58a23d0145677ebe6",
+        "source_kind": "synthetic_fixture"
+      }
+    ],
+    "source_case_id": null
+  },
+  {
+    "architecture": "powerpc",
+    "capability_id": "fwcap:da10775d1d9d85b6931977f7b23bce31deb9d869376a76b4d152b9685a58f696",
+    "capability_sha256": "da10775d1d9d85b6931977f7b23bce31deb9d869376a76b4d152b9685a58f696",
+    "conditions": [
+      {
+        "condition_id": "condition:fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+        "condition_kind": "path",
+        "description": "Static site does not establish runtime path feasibility.",
+        "evidence_ids": [
+          "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92"
+        ],
+        "formalization_status": "unknown",
+        "predicate": null,
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+              "fwinstruction:0e4cbdc299ee89da37a92821659083e4ec6c60963c9f9ffd90e150c67b82217d"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+              "fwinstruction:0e4cbdc299ee89da37a92821659083e4ec6c60963c9f9ffd90e150c67b82217d"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_id": "target:fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+        "evidence_ids": [
+          "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92"
+        ],
+        "formalization_status": "formalized",
+        "kind": "target_set",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+              "fwinstruction:0e4cbdc299ee89da37a92821659083e4ec6c60963c9f9ffd90e150c67b82217d"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+              "fwinstruction:0e4cbdc299ee89da37a92821659083e4ec6c60963c9f9ffd90e150c67b82217d"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "targets": [
+          65576
+        ]
+      },
+      {
+        "constraint_id": "resource:fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+        "evidence_ids": [
+          "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92"
+        ],
+        "formalization_status": "formalized",
+        "identity": "code:0x10028",
+        "kind": "target_resource",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+              "fwinstruction:0e4cbdc299ee89da37a92821659083e4ec6c60963c9f9ffd90e150c67b82217d"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+              "fwinstruction:0e4cbdc299ee89da37a92821659083e4ec6c60963c9f9ffd90e150c67b82217d"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "resource_kind": "control_flow",
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      }
+    ],
+    "entry": {
+      "entry_id": "entry:fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+      "entry_kind": "code_site",
+      "evidence_ids": [
+        "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92"
+      ],
+      "execution_status": "static_only",
+      "formalization_status": "formalized",
+      "function_id": "fwfunction:a815b6c8dc1b3b05e08f29251480bca5f566c36d334fa4117d6a1f76fd51cf06",
+      "function_name": "main",
+      "interface_id": null,
+      "ownership_status": "unique",
+      "pc": 65568,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+            "fwinstruction:0e4cbdc299ee89da37a92821659083e4ec6c60963c9f9ffd90e150c67b82217d"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+            "fwinstruction:0e4cbdc299ee89da37a92821659083e4ec6c60963c9f9ffd90e150c67b82217d"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "reachability_status": "unknown",
+      "retirement_observation_ids": [],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ]
+    },
+    "evidence": [
+      {
+        "analyzer": "ghidra-elf-static/v1",
+        "artifact_id": "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677",
+        "epistemic_status": "derived",
+        "evidence_id": "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+        "location": {
+          "address": 65568,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "synthetic",
+        "summary": "Synthetic fixture instruction; ELF bytes checked, static semantics only."
+      }
+    ],
+    "evidence_ids": [
+      "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92"
+    ],
+    "limitations": [
+      "Static-only does not prove execution or attacker control."
+    ],
+    "origin": {
+      "evidence_ids": [
+        "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92"
+      ],
+      "finding_ids": [],
+      "kind": "synthetic_fixture",
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+            "fwinstruction:0e4cbdc299ee89da37a92821659083e4ec6c60963c9f9ffd90e150c67b82217d"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+            "fwinstruction:0e4cbdc299ee89da37a92821659083e4ec6c60963c9f9ffd90e150c67b82217d"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ]
+    },
+    "primitives": [
+      {
+        "architecture": "powerpc",
+        "basis": "static_instruction",
+        "condition_ids": [
+          "condition:fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92"
+        ],
+        "constraint_ids": [
+          "resource:fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+          "target:fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92"
+        ],
+        "control": {
+          "dimensions": [],
+          "evidence_ids": [
+            "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92"
+          ],
+          "provenance": [
+            {
+              "source_artifact_ids": [
+                "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+              ],
+              "source_ids": [
+                "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+                "fwinstruction:0e4cbdc299ee89da37a92821659083e4ec6c60963c9f9ffd90e150c67b82217d"
+              ],
+              "source_kind": "synthetic_fixture",
+              "transformation": "explicit_input"
+            },
+            {
+              "source_artifact_ids": [
+                "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+              ],
+              "source_ids": [
+                "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+                "fwinstruction:0e4cbdc299ee89da37a92821659083e4ec6c60963c9f9ffd90e150c67b82217d"
+              ],
+              "source_kind": "synthetic_fixture",
+              "transformation": "explicit_input"
+            }
+          ],
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "status": "not_established",
+          "support_basis": "not_established"
+        },
+        "entry_id": "entry:fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+        "evidence_ids": [
+          "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92"
+        ],
+        "formalization_status": "formalized",
+        "instruction_sequence": [
+          "41820008"
+        ],
+        "kind": "DIRECT_CONTROL_TRANSFER",
+        "primitive_id": "primitive:fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+              "fwinstruction:0e4cbdc299ee89da37a92821659083e4ec6c60963c9f9ffd90e150c67b82217d"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+              "fwinstruction:0e4cbdc299ee89da37a92821659083e4ec6c60963c9f9ffd90e150c67b82217d"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "retirement_observation_ids": [],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "source_pc": 65568,
+        "source_registers": [],
+        "target_status": "resolved_direct",
+        "transfer_kind": "conditional_branch"
+      }
+    ],
+    "provenance": [
+      {
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+        ],
+        "source_ids": [
+          "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+          "fwinstruction:0e4cbdc299ee89da37a92821659083e4ec6c60963c9f9ffd90e150c67b82217d"
+        ],
+        "source_kind": "synthetic_fixture",
+        "transformation": "explicit_input"
+      },
+      {
+        "source_artifact_ids": [
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "source_ids": [
+          "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+          "fwinstruction:0e4cbdc299ee89da37a92821659083e4ec6c60963c9f9ffd90e150c67b82217d"
+        ],
+        "source_kind": "synthetic_fixture",
+        "transformation": "explicit_input"
+      }
+    ],
+    "retirement_evidence": [],
+    "schema_version": "firmware-capability/v1",
+    "scope": {
+      "applicability": "synthetic_only",
+      "assumptions": [
+        "Synthetic fixture; no arbitrary-input path feasibility."
+      ],
+      "evidence_ids": [
+        "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92"
+      ],
+      "firmware_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+      ],
+      "formalization_status": "partially_formalized",
+      "function_ids": [],
+      "known_limitations": [],
+      "origin_kind": "synthetic_fixture",
+      "platform_id": null,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+            "fwinstruction:0e4cbdc299ee89da37a92821659083e4ec6c60963c9f9ffd90e150c67b82217d"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:f084ad0c37c0efcd246cc765eb3462645efc10a8ccae5e656fa4699e4af48a92",
+            "fwinstruction:0e4cbdc299ee89da37a92821659083e4ec6c60963c9f9ffd90e150c67b82217d"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "site_pcs": [
+        65568
+      ],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ],
+      "target": {
+        "architecture": "powerpc",
+        "endianness": "big",
+        "firmware_id": "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "isa_variant": null,
+        "processor_id": "not-established",
+        "word_size_bits": 32
+      },
+      "unmodeled_aspects": [
+        "deviation",
+        "external_control",
+        "hardware_trigger",
+        "runtime_order"
+      ]
+    },
+    "source_artifact_ids": [
+      "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+      "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+    ],
+    "source_artifacts": [
+      {
+        "artifact_id": "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "hash_kind": "file_bytes",
+        "sha256": "704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "source_kind": "synthetic_fixture"
+      },
+      {
+        "artifact_id": "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677",
+        "hash_kind": "file_bytes",
+        "sha256": "6dfdaa4eab4c75c957e67c4c042b3c2410328c584c0175d58a23d0145677ebe6",
+        "source_kind": "synthetic_fixture"
+      }
+    ],
+    "source_case_id": null
+  },
+  {
+    "architecture": "powerpc",
+    "capability_id": "fwcap:b2a94788274fcdda597c9e935bf2b8e1d1398a3edd4dc85431f480c9cb2d49e8",
+    "capability_sha256": "b2a94788274fcdda597c9e935bf2b8e1d1398a3edd4dc85431f480c9cb2d49e8",
+    "conditions": [
+      {
+        "condition_id": "condition:fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0",
+        "condition_kind": "path",
+        "description": "Static site does not establish runtime path feasibility.",
+        "evidence_ids": [
+          "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0"
+        ],
+        "formalization_status": "unknown",
+        "predicate": null,
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0",
+              "fwinstruction:721a0d995f812cf7fd2fb6e6d6b11ed5b2bcaeca0346fe022f96e0fbb7975c26"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0",
+              "fwinstruction:721a0d995f812cf7fd2fb6e6d6b11ed5b2bcaeca0346fe022f96e0fbb7975c26"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_id": "resource:fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0",
+        "evidence_ids": [
+          "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0"
+        ],
+        "formalization_status": "partially_formalized",
+        "identity": null,
+        "kind": "target_resource",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0",
+              "fwinstruction:721a0d995f812cf7fd2fb6e6d6b11ed5b2bcaeca0346fe022f96e0fbb7975c26"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0",
+              "fwinstruction:721a0d995f812cf7fd2fb6e6d6b11ed5b2bcaeca0346fe022f96e0fbb7975c26"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "resource_kind": "control_flow",
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      }
+    ],
+    "entry": {
+      "entry_id": "entry:fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0",
+      "entry_kind": "code_site",
+      "evidence_ids": [
+        "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0"
+      ],
+      "execution_status": "static_only",
+      "formalization_status": "formalized",
+      "function_id": "fwfunction:a815b6c8dc1b3b05e08f29251480bca5f566c36d334fa4117d6a1f76fd51cf06",
+      "function_name": "main",
+      "interface_id": null,
+      "ownership_status": "unique",
+      "pc": 65576,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0",
+            "fwinstruction:721a0d995f812cf7fd2fb6e6d6b11ed5b2bcaeca0346fe022f96e0fbb7975c26"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0",
+            "fwinstruction:721a0d995f812cf7fd2fb6e6d6b11ed5b2bcaeca0346fe022f96e0fbb7975c26"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "reachability_status": "unknown",
+      "retirement_observation_ids": [],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ]
+    },
+    "evidence": [
+      {
+        "analyzer": "ghidra-elf-static/v1",
+        "artifact_id": "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677",
+        "epistemic_status": "derived",
+        "evidence_id": "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0",
+        "location": {
+          "address": 65576,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "synthetic",
+        "summary": "Synthetic fixture instruction; ELF bytes checked, static semantics only."
+      }
+    ],
+    "evidence_ids": [
+      "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0"
+    ],
+    "limitations": [
+      "Static-only does not prove execution or attacker control."
+    ],
+    "origin": {
+      "evidence_ids": [
+        "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0"
+      ],
+      "finding_ids": [],
+      "kind": "synthetic_fixture",
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0",
+            "fwinstruction:721a0d995f812cf7fd2fb6e6d6b11ed5b2bcaeca0346fe022f96e0fbb7975c26"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0",
+            "fwinstruction:721a0d995f812cf7fd2fb6e6d6b11ed5b2bcaeca0346fe022f96e0fbb7975c26"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ]
+    },
+    "primitives": [
+      {
+        "architecture": "powerpc",
+        "basis": "static_instruction",
+        "condition_ids": [
+          "condition:fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0"
+        ],
+        "constraint_ids": [
+          "resource:fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0"
+        ],
+        "control": {
+          "dimensions": [],
+          "evidence_ids": [
+            "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0"
+          ],
+          "provenance": [
+            {
+              "source_artifact_ids": [
+                "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+              ],
+              "source_ids": [
+                "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0",
+                "fwinstruction:721a0d995f812cf7fd2fb6e6d6b11ed5b2bcaeca0346fe022f96e0fbb7975c26"
+              ],
+              "source_kind": "synthetic_fixture",
+              "transformation": "explicit_input"
+            },
+            {
+              "source_artifact_ids": [
+                "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+              ],
+              "source_ids": [
+                "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0",
+                "fwinstruction:721a0d995f812cf7fd2fb6e6d6b11ed5b2bcaeca0346fe022f96e0fbb7975c26"
+              ],
+              "source_kind": "synthetic_fixture",
+              "transformation": "explicit_input"
+            }
+          ],
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "status": "not_established",
+          "support_basis": "not_established"
+        },
+        "entry_id": "entry:fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0",
+        "evidence_ids": [
+          "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0"
+        ],
+        "formalization_status": "partially_formalized",
+        "instruction_sequence": [
+          "4e800020"
+        ],
+        "kind": "INDIRECT_CONTROL_TRANSFER",
+        "primitive_id": "primitive:fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0",
+              "fwinstruction:721a0d995f812cf7fd2fb6e6d6b11ed5b2bcaeca0346fe022f96e0fbb7975c26"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0",
+              "fwinstruction:721a0d995f812cf7fd2fb6e6d6b11ed5b2bcaeca0346fe022f96e0fbb7975c26"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "retirement_observation_ids": [],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "source_pc": 65576,
+        "source_registers": [],
+        "target_status": "indirect_unknown",
+        "transfer_kind": "return"
+      }
+    ],
+    "provenance": [
+      {
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+        ],
+        "source_ids": [
+          "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0",
+          "fwinstruction:721a0d995f812cf7fd2fb6e6d6b11ed5b2bcaeca0346fe022f96e0fbb7975c26"
+        ],
+        "source_kind": "synthetic_fixture",
+        "transformation": "explicit_input"
+      },
+      {
+        "source_artifact_ids": [
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "source_ids": [
+          "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0",
+          "fwinstruction:721a0d995f812cf7fd2fb6e6d6b11ed5b2bcaeca0346fe022f96e0fbb7975c26"
+        ],
+        "source_kind": "synthetic_fixture",
+        "transformation": "explicit_input"
+      }
+    ],
+    "retirement_evidence": [],
+    "schema_version": "firmware-capability/v1",
+    "scope": {
+      "applicability": "synthetic_only",
+      "assumptions": [
+        "Synthetic fixture; no arbitrary-input path feasibility."
+      ],
+      "evidence_ids": [
+        "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0"
+      ],
+      "firmware_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+      ],
+      "formalization_status": "partially_formalized",
+      "function_ids": [],
+      "known_limitations": [],
+      "origin_kind": "synthetic_fixture",
+      "platform_id": null,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0",
+            "fwinstruction:721a0d995f812cf7fd2fb6e6d6b11ed5b2bcaeca0346fe022f96e0fbb7975c26"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:5c1f40d9213eecccbce9600a3b4aab0d7ea7950e95fdd5a128cebd21948c82b0",
+            "fwinstruction:721a0d995f812cf7fd2fb6e6d6b11ed5b2bcaeca0346fe022f96e0fbb7975c26"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "site_pcs": [
+        65576
+      ],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ],
+      "target": {
+        "architecture": "powerpc",
+        "endianness": "big",
+        "firmware_id": "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "isa_variant": null,
+        "processor_id": "not-established",
+        "word_size_bits": 32
+      },
+      "unmodeled_aspects": [
+        "deviation",
+        "external_control",
+        "hardware_trigger",
+        "runtime_order"
+      ]
+    },
+    "source_artifact_ids": [
+      "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+      "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+    ],
+    "source_artifacts": [
+      {
+        "artifact_id": "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "hash_kind": "file_bytes",
+        "sha256": "704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "source_kind": "synthetic_fixture"
+      },
+      {
+        "artifact_id": "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677",
+        "hash_kind": "file_bytes",
+        "sha256": "6dfdaa4eab4c75c957e67c4c042b3c2410328c584c0175d58a23d0145677ebe6",
+        "source_kind": "synthetic_fixture"
+      }
+    ],
+    "source_case_id": null
+  },
+  {
+    "architecture": "powerpc",
+    "capability_id": "fwcap:8a6e135a944cf78e63e6295bf1595965264c9b290a4899e2f6f7dd1e57e7c49c",
+    "capability_sha256": "8a6e135a944cf78e63e6295bf1595965264c9b290a4899e2f6f7dd1e57e7c49c",
+    "conditions": [
+      {
+        "condition_id": "condition:fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6",
+        "condition_kind": "path",
+        "description": "Static site does not establish runtime path feasibility.",
+        "evidence_ids": [
+          "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6"
+        ],
+        "formalization_status": "unknown",
+        "predicate": null,
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6",
+              "fwinstruction:bbfc0564bd87bf560aa283f2193b49ec5ab90c192237cd89443c5e1a1bd3b1b9"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6",
+              "fwinstruction:bbfc0564bd87bf560aa283f2193b49ec5ab90c192237cd89443c5e1a1bd3b1b9"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_id": "resource:fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6",
+        "evidence_ids": [
+          "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6"
+        ],
+        "formalization_status": "partially_formalized",
+        "identity": null,
+        "kind": "target_resource",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6",
+              "fwinstruction:bbfc0564bd87bf560aa283f2193b49ec5ab90c192237cd89443c5e1a1bd3b1b9"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6",
+              "fwinstruction:bbfc0564bd87bf560aa283f2193b49ec5ab90c192237cd89443c5e1a1bd3b1b9"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "resource_kind": "control_flow",
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ]
+      }
+    ],
+    "entry": {
+      "entry_id": "entry:fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6",
+      "entry_kind": "code_site",
+      "evidence_ids": [
+        "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6"
+      ],
+      "execution_status": "static_only",
+      "formalization_status": "formalized",
+      "function_id": "fwfunction:49ee86ca41fcbd3d9a719d2cd8b5575e3867aa0c1a48bf8b70ec247d1556c0ec",
+      "function_name": "helper",
+      "interface_id": null,
+      "ownership_status": "unique",
+      "pc": 65584,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6",
+            "fwinstruction:bbfc0564bd87bf560aa283f2193b49ec5ab90c192237cd89443c5e1a1bd3b1b9"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6",
+            "fwinstruction:bbfc0564bd87bf560aa283f2193b49ec5ab90c192237cd89443c5e1a1bd3b1b9"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "reachability_status": "unknown",
+      "retirement_observation_ids": [],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ]
+    },
+    "evidence": [
+      {
+        "analyzer": "ghidra-elf-static/v1",
+        "artifact_id": "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677",
+        "epistemic_status": "derived",
+        "evidence_id": "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6",
+        "location": {
+          "address": 65584,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "synthetic",
+        "summary": "Synthetic fixture instruction; ELF bytes checked, static semantics only."
+      }
+    ],
+    "evidence_ids": [
+      "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6"
+    ],
+    "limitations": [
+      "Static-only does not prove execution or attacker control."
+    ],
+    "origin": {
+      "evidence_ids": [
+        "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6"
+      ],
+      "finding_ids": [],
+      "kind": "synthetic_fixture",
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6",
+            "fwinstruction:bbfc0564bd87bf560aa283f2193b49ec5ab90c192237cd89443c5e1a1bd3b1b9"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6",
+            "fwinstruction:bbfc0564bd87bf560aa283f2193b49ec5ab90c192237cd89443c5e1a1bd3b1b9"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ]
+    },
+    "primitives": [
+      {
+        "architecture": "powerpc",
+        "basis": "static_instruction",
+        "condition_ids": [
+          "condition:fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6"
+        ],
+        "constraint_ids": [
+          "resource:fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6"
+        ],
+        "control": {
+          "dimensions": [],
+          "evidence_ids": [
+            "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6"
+          ],
+          "provenance": [
+            {
+              "source_artifact_ids": [
+                "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+              ],
+              "source_ids": [
+                "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6",
+                "fwinstruction:bbfc0564bd87bf560aa283f2193b49ec5ab90c192237cd89443c5e1a1bd3b1b9"
+              ],
+              "source_kind": "synthetic_fixture",
+              "transformation": "explicit_input"
+            },
+            {
+              "source_artifact_ids": [
+                "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+              ],
+              "source_ids": [
+                "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6",
+                "fwinstruction:bbfc0564bd87bf560aa283f2193b49ec5ab90c192237cd89443c5e1a1bd3b1b9"
+              ],
+              "source_kind": "synthetic_fixture",
+              "transformation": "explicit_input"
+            }
+          ],
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "status": "not_established",
+          "support_basis": "not_established"
+        },
+        "entry_id": "entry:fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6",
+        "evidence_ids": [
+          "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6"
+        ],
+        "formalization_status": "partially_formalized",
+        "instruction_sequence": [
+          "4e800020"
+        ],
+        "kind": "INDIRECT_CONTROL_TRANSFER",
+        "primitive_id": "primitive:fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+            ],
+            "source_ids": [
+              "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6",
+              "fwinstruction:bbfc0564bd87bf560aa283f2193b49ec5ab90c192237cd89443c5e1a1bd3b1b9"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+            ],
+            "source_ids": [
+              "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6",
+              "fwinstruction:bbfc0564bd87bf560aa283f2193b49ec5ab90c192237cd89443c5e1a1bd3b1b9"
+            ],
+            "source_kind": "synthetic_fixture",
+            "transformation": "explicit_input"
+          }
+        ],
+        "retirement_observation_ids": [],
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "source_pc": 65584,
+        "source_registers": [],
+        "target_status": "indirect_unknown",
+        "transfer_kind": "return"
+      }
+    ],
+    "provenance": [
+      {
+        "source_artifact_ids": [
+          "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+        ],
+        "source_ids": [
+          "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6",
+          "fwinstruction:bbfc0564bd87bf560aa283f2193b49ec5ab90c192237cd89443c5e1a1bd3b1b9"
+        ],
+        "source_kind": "synthetic_fixture",
+        "transformation": "explicit_input"
+      },
+      {
+        "source_artifact_ids": [
+          "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+        ],
+        "source_ids": [
+          "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6",
+          "fwinstruction:bbfc0564bd87bf560aa283f2193b49ec5ab90c192237cd89443c5e1a1bd3b1b9"
+        ],
+        "source_kind": "synthetic_fixture",
+        "transformation": "explicit_input"
+      }
+    ],
+    "retirement_evidence": [],
+    "schema_version": "firmware-capability/v1",
+    "scope": {
+      "applicability": "synthetic_only",
+      "assumptions": [
+        "Synthetic fixture; no arbitrary-input path feasibility."
+      ],
+      "evidence_ids": [
+        "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6"
+      ],
+      "firmware_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+      ],
+      "formalization_status": "partially_formalized",
+      "function_ids": [],
+      "known_limitations": [],
+      "origin_kind": "synthetic_fixture",
+      "platform_id": null,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51"
+          ],
+          "source_ids": [
+            "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6",
+            "fwinstruction:bbfc0564bd87bf560aa283f2193b49ec5ab90c192237cd89443c5e1a1bd3b1b9"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+          ],
+          "source_ids": [
+            "fwbehavior:88dd1113ad4c8e1d8c4529d70f9e171a81af66c9675aaf9b6d568c79fb4e10c6",
+            "fwinstruction:bbfc0564bd87bf560aa283f2193b49ec5ab90c192237cd89443c5e1a1bd3b1b9"
+          ],
+          "source_kind": "synthetic_fixture",
+          "transformation": "explicit_input"
+        }
+      ],
+      "site_pcs": [
+        65584
+      ],
+      "source_artifact_ids": [
+        "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+      ],
+      "target": {
+        "architecture": "powerpc",
+        "endianness": "big",
+        "firmware_id": "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "isa_variant": null,
+        "processor_id": "not-established",
+        "word_size_bits": 32
+      },
+      "unmodeled_aspects": [
+        "deviation",
+        "external_control",
+        "hardware_trigger",
+        "runtime_order"
+      ]
+    },
+    "source_artifact_ids": [
+      "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+      "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677"
+    ],
+    "source_artifacts": [
+      {
+        "artifact_id": "elf:704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "hash_kind": "file_bytes",
+        "sha256": "704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+        "source_kind": "synthetic_fixture"
+      },
+      {
+        "artifact_id": "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677",
+        "hash_kind": "file_bytes",
+        "sha256": "6dfdaa4eab4c75c957e67c4c042b3c2410328c584c0175d58a23d0145677ebe6",
+        "source_kind": "synthetic_fixture"
+      }
+    ],
+    "source_case_id": null
+  }
+]

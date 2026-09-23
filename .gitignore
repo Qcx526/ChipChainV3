@@ -18,9 +18,18 @@ htmlcov/
 /samples/firmware/*
 !/samples/firmware/README.md
 !/samples/firmware/.gitkeep
+!/samples/firmware/arm/
+!/samples/firmware/riscv/
+!/samples/firmware/powerpc/
 /output/*
 !/output/README.md
 !/output/.gitkeep
 
 # Local import provenance contains machine-specific paths and real sample hashes.
 /samples/local-manifest.json
+
+# Project-managed tool installations stay local; their pinned metadata is tracked.
+/tools/ghidra/install/
+/tools/ghidra/*.tar.gz
+/tools/toolchains/install/
+/tools/toolchains/downloads/

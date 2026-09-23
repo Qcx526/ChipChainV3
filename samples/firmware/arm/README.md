@@ -1,0 +1,3 @@
+# ARM Cortex-M3 synthetic firmware
+
+`source.S` is a freestanding Thumb sample with three functions, a direct call, conditional branch, 32-bit memory load/store, DMB and PRIMASK read. `sample.elf` is built by `scripts/build_firmware_samples.py` using the pinned project-local ARM binutils. The ELF machine and Thumb entry are derived from ELF bytes, not this directory name. `manifest.json` pins source/ELF hashes and build commands; `expected/` contains an actual Ghidra Headless export, byte-checked canonical analysis, summary and deterministic report. The address `0x40000000` remains an ordinary memory access without an explicit hardware resource catalog.

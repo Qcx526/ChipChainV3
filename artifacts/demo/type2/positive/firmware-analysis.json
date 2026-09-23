@@ -1,0 +1,683 @@
+{
+  "analysis_id": "firmware-static:73203833226424dd68b57b9686bc5f3373bb9e4cec548c943e1e05b660cc5ec4",
+  "artifact": {
+    "architecture": "riscv",
+    "arm_cpu_name": null,
+    "arm_profile": null,
+    "bit_width": 32,
+    "endianness": "little",
+    "entry": 1048704,
+    "sections": [
+      {
+        "address": 0,
+        "flags": 0,
+        "name": "",
+        "section_type": "SHT_NULL",
+        "size": 0
+      },
+      {
+        "address": 1048576,
+        "flags": 6,
+        "name": ".text",
+        "section_type": "SHT_PROGBITS",
+        "size": 184
+      },
+      {
+        "address": 1052672,
+        "flags": 3,
+        "name": ".data",
+        "section_type": "SHT_PROGBITS",
+        "size": 4
+      },
+      {
+        "address": 0,
+        "flags": 0,
+        "name": ".riscv.attributes",
+        "section_type": "SHT_RISCV_ATTRIBUTES",
+        "size": 40
+      },
+      {
+        "address": 0,
+        "flags": 0,
+        "name": ".symtab",
+        "section_type": "SHT_SYMTAB",
+        "size": 160
+      },
+      {
+        "address": 0,
+        "flags": 0,
+        "name": ".strtab",
+        "section_type": "SHT_STRTAB",
+        "size": 69
+      },
+      {
+        "address": 0,
+        "flags": 0,
+        "name": ".shstrtab",
+        "section_type": "SHT_STRTAB",
+        "size": 57
+      }
+    ],
+    "segments": [
+      {
+        "file_offset": 4096,
+        "file_size": 184,
+        "flags": 5,
+        "memory_size": 184,
+        "virtual_address": 1048576
+      },
+      {
+        "file_offset": 8192,
+        "file_size": 4,
+        "flags": 6,
+        "memory_size": 4,
+        "virtual_address": 1052672
+      }
+    ],
+    "sha256": "42fe38fb5c106242c81797ece513b5ef86fc453d2ef63299514d1e98e9c06641"
+  },
+  "behaviors": [
+    {
+      "access_width_bits": null,
+      "address": null,
+      "address_status": "not_applicable",
+      "detail": null,
+      "fact_id": "fwbehavior:fbce972cb029c3b1d8f1eaa60e510e9427fe7203e72b0497a85d8f3e64cff611",
+      "instruction_id": "fwinstruction:214534591ceb674b749927e2bb4e7a88cee76958270175c2f153732b5df5fae4",
+      "kind": "INSTRUCTION",
+      "known_value": null,
+      "pc": 1048704,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": null
+    },
+    {
+      "access_width_bits": null,
+      "address": null,
+      "address_status": "not_applicable",
+      "detail": null,
+      "fact_id": "fwbehavior:02577f31ce747a08003b6397802e8ce636dc632c1cdf1dabcf6464176ccacbb7",
+      "instruction_id": "fwinstruction:d84bf58bd651e7b397e9b129fd799a5dd0a8d2cf02a22104bea76a5953a05d50",
+      "kind": "INSTRUCTION",
+      "known_value": null,
+      "pc": 1048708,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": null
+    },
+    {
+      "access_width_bits": 32,
+      "address": 262144,
+      "address_status": "exact",
+      "detail": null,
+      "fact_id": "fwbehavior:1c0127d778646c63b5102d2ce3ebbce75d0d281ad2938ab6b860756ae4028678",
+      "instruction_id": "fwinstruction:43221a150a27dc79e8ee3a7ffd1a35c3b88fa4039afee27d8571c5aee031c90b",
+      "kind": "MEMORY_STORE",
+      "known_value": 1,
+      "pc": 1048712,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": null
+    },
+    {
+      "access_width_bits": null,
+      "address": null,
+      "address_status": "not_applicable",
+      "detail": null,
+      "fact_id": "fwbehavior:b885eb4a5e2b6f20f54a3b6262c580e37e040a71f3df2d7eacbb58305bebaeff",
+      "instruction_id": "fwinstruction:31b3a062834cce44371d3fe513c5ec7f5ae5255464a29257acd2f87dcc992406",
+      "kind": "INSTRUCTION",
+      "known_value": null,
+      "pc": 1048716,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": null
+    },
+    {
+      "access_width_bits": 32,
+      "address": 262148,
+      "address_status": "exact",
+      "detail": null,
+      "fact_id": "fwbehavior:54abb5eb0f2ffed568ba4cacc8d2a1ba16d95b27212b3d5906bb7fe9ffc44bed",
+      "instruction_id": "fwinstruction:7c4538ed3f7edda647ae95b03f0bfce864199115f330c7d2ea32b08b2adffeef",
+      "kind": "MEMORY_STORE",
+      "known_value": 165,
+      "pc": 1048720,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": null
+    },
+    {
+      "access_width_bits": 32,
+      "address": 262152,
+      "address_status": "exact",
+      "detail": null,
+      "fact_id": "fwbehavior:d29d69d4de440df92a87251b2747399123c33d82fe49ad5c57156830d3b2c26a",
+      "instruction_id": "fwinstruction:fa9f5eac06096fe40d8358ce336031793b605c8294f55b040c3b1170edf46680",
+      "kind": "MEMORY_LOAD",
+      "known_value": null,
+      "pc": 1048724,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": null
+    },
+    {
+      "access_width_bits": null,
+      "address": null,
+      "address_status": "not_applicable",
+      "detail": null,
+      "fact_id": "fwbehavior:891c60fc546ecdabc669cb2c92f6a1b910ae49380fd295626ef5063cd873fba1",
+      "instruction_id": "fwinstruction:13e8e7108138403aa2bbef0d5f05a5d64a8b6b9a13bd56dd7ba8475431e79b8f",
+      "kind": "INSTRUCTION",
+      "known_value": null,
+      "pc": 1048728,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": null
+    },
+    {
+      "access_width_bits": null,
+      "address": null,
+      "address_status": "not_applicable",
+      "detail": null,
+      "fact_id": "fwbehavior:16634b2a320fd5c18086710675cdea5faeb2856bfaca713f85c1b2a4a4d29968",
+      "instruction_id": "fwinstruction:0e3721a5b433f5e1e2381ab176187132a052679a50057410f1fd1cd67f0ae283",
+      "kind": "INSTRUCTION",
+      "known_value": null,
+      "pc": 1048732,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": null
+    },
+    {
+      "access_width_bits": 32,
+      "address": 1052672,
+      "address_status": "exact",
+      "detail": null,
+      "fact_id": "fwbehavior:07720fcbcff184dc30e9600d9599680f718b02049aa55cf61c5878c788fa0452",
+      "instruction_id": "fwinstruction:a41f044c935cd0757c9c5ee78fe514b0a556f06158d48e002c98a8be55fbff87",
+      "kind": "MEMORY_STORE",
+      "known_value": null,
+      "pc": 1048736,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": null
+    },
+    {
+      "access_width_bits": null,
+      "address": null,
+      "address_status": "not_applicable",
+      "detail": null,
+      "fact_id": "fwbehavior:2981b04bb57455a676a138e5c48ed7543a6d76899a26b82cf5094f5d76dd10b4",
+      "instruction_id": "fwinstruction:3ada91ffb1f5788dfb5627316ecd31584f1f2bd486e5b031dc5cd3b5b0e8f7d7",
+      "kind": "INSTRUCTION",
+      "known_value": null,
+      "pc": 1048740,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": null
+    },
+    {
+      "access_width_bits": null,
+      "address": null,
+      "address_status": "not_applicable",
+      "detail": null,
+      "fact_id": "fwbehavior:303441afc6b8944808d84a814105ad01954b696d1803a83d1f8f0bec8950d0ee",
+      "instruction_id": "fwinstruction:1eafec868cbd7cbcac82bdcdbaaa5426cc262172d7c993c99dc14c88d7c22d17",
+      "kind": "INSTRUCTION",
+      "known_value": null,
+      "pc": 1048744,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": null
+    },
+    {
+      "access_width_bits": 32,
+      "address": 131080,
+      "address_status": "exact",
+      "detail": null,
+      "fact_id": "fwbehavior:f12bd5d4ec8dc60725feb982e579b5141295be4c517d638e9ef08be9d3812b7b",
+      "instruction_id": "fwinstruction:f77ce117dd93f59b2e67464eca84248219f080594c88980675dfb6e718bebe70",
+      "kind": "MEMORY_STORE",
+      "known_value": 1,
+      "pc": 1048748,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": null
+    },
+    {
+      "access_width_bits": null,
+      "address": null,
+      "address_status": "not_applicable",
+      "detail": "Unsupported mnemonic wfi",
+      "fact_id": "fwbehavior:005d59c2f4de2c0c364b41570971cd51a23b0c4200d24827d6987d0f870e3290",
+      "instruction_id": "fwinstruction:a9bf69ce2622bd6ae4ccd104387744fbf093415197d05fb855371712ea6b3283",
+      "kind": "UNKNOWN",
+      "known_value": null,
+      "pc": 1048752,
+      "semantic_status": "unsupported",
+      "system_register": null,
+      "target": null
+    },
+    {
+      "access_width_bits": null,
+      "address": null,
+      "address_status": "not_applicable",
+      "detail": null,
+      "fact_id": "fwbehavior:29d5657174b47ee982c819417e8841d98d8eb921baa80df30fb3e5357fdb5e12",
+      "instruction_id": "fwinstruction:62384af6c0395a418489814b0b966c95b7c3768dee9192bfe45a871ebee45a0d",
+      "kind": "DIRECT_BRANCH",
+      "known_value": null,
+      "pc": 1048756,
+      "semantic_status": "supported",
+      "system_register": null,
+      "target": 1048752
+    }
+  ],
+  "blocks": [
+    {
+      "end": 1048711,
+      "fact_id": "fwblock:e3a6abf482b62d560d262d0d92f6dfd10ce71ddf1a9c60132148b1285460a727",
+      "function_ids": [
+        "fwfunction:5bf06a362652937bd9d57e214f9ae5cb1bf0405a64b99d211d76f1c39a18216b"
+      ],
+      "ranges": [
+        {
+          "end": 1048711,
+          "start": 1048704
+        }
+      ],
+      "start": 1048704
+    },
+    {
+      "end": 1048719,
+      "fact_id": "fwblock:1e93f77d7e6570575cdb936f86f4f7f0d27a7c47b6da7c41e227d40fbd7cb482",
+      "function_ids": [
+        "fwfunction:5bf06a362652937bd9d57e214f9ae5cb1bf0405a64b99d211d76f1c39a18216b"
+      ],
+      "ranges": [
+        {
+          "end": 1048719,
+          "start": 1048712
+        }
+      ],
+      "start": 1048712
+    },
+    {
+      "end": 1048723,
+      "fact_id": "fwblock:33e26ea3bda10f2a9aea09a1de5c0b5f03bd037b7d7d5c43666d7cc140cc9dcd",
+      "function_ids": [
+        "fwfunction:5bf06a362652937bd9d57e214f9ae5cb1bf0405a64b99d211d76f1c39a18216b"
+      ],
+      "ranges": [
+        {
+          "end": 1048723,
+          "start": 1048720
+        }
+      ],
+      "start": 1048720
+    },
+    {
+      "end": 1048735,
+      "fact_id": "fwblock:d5ba8bd455afb6c96579bea17e9d5b3dec56e04e50db948383ca5fff5d00a3a4",
+      "function_ids": [
+        "fwfunction:5bf06a362652937bd9d57e214f9ae5cb1bf0405a64b99d211d76f1c39a18216b"
+      ],
+      "ranges": [
+        {
+          "end": 1048735,
+          "start": 1048724
+        }
+      ],
+      "start": 1048724
+    },
+    {
+      "end": 1048751,
+      "fact_id": "fwblock:87907c1aae70487c4b45162498e3bad9b8a94dc55e9eee19536fa00496c67743",
+      "function_ids": [
+        "fwfunction:5bf06a362652937bd9d57e214f9ae5cb1bf0405a64b99d211d76f1c39a18216b"
+      ],
+      "ranges": [
+        {
+          "end": 1048751,
+          "start": 1048736
+        }
+      ],
+      "start": 1048736
+    },
+    {
+      "end": 1048759,
+      "fact_id": "fwblock:9ed2e2a3ea69bc652880b77fae4f3e45823ec6579b5653ea496821bc4e220812",
+      "function_ids": [
+        "fwfunction:5bf06a362652937bd9d57e214f9ae5cb1bf0405a64b99d211d76f1c39a18216b"
+      ],
+      "ranges": [
+        {
+          "end": 1048759,
+          "start": 1048752
+        }
+      ],
+      "start": 1048752
+    }
+  ],
+  "calls": [],
+  "edges": [
+    {
+      "edge_type": "FALL_THROUGH",
+      "fact_id": "fwedge:bb6799896ff9a5ff77cf42a184720d9e76dc91b849de41c20caf5503713e5fd7",
+      "source_block_id": "fwblock:1e93f77d7e6570575cdb936f86f4f7f0d27a7c47b6da7c41e227d40fbd7cb482",
+      "target_address": 1048720,
+      "target_block_id": "fwblock:33e26ea3bda10f2a9aea09a1de5c0b5f03bd037b7d7d5c43666d7cc140cc9dcd"
+    },
+    {
+      "edge_type": "FALL_THROUGH",
+      "fact_id": "fwedge:e8d3311e48ad8efcd816360f2cfb2aaf4ac89e9610bec5e02477936cdc96af83",
+      "source_block_id": "fwblock:33e26ea3bda10f2a9aea09a1de5c0b5f03bd037b7d7d5c43666d7cc140cc9dcd",
+      "target_address": 1048724,
+      "target_block_id": "fwblock:d5ba8bd455afb6c96579bea17e9d5b3dec56e04e50db948383ca5fff5d00a3a4"
+    },
+    {
+      "edge_type": "FALL_THROUGH",
+      "fact_id": "fwedge:f5a2abadded2f453049312d824220f72f65b523effa7e5f74893ac6c1f1dc1eb",
+      "source_block_id": "fwblock:87907c1aae70487c4b45162498e3bad9b8a94dc55e9eee19536fa00496c67743",
+      "target_address": 1048752,
+      "target_block_id": "fwblock:9ed2e2a3ea69bc652880b77fae4f3e45823ec6579b5653ea496821bc4e220812"
+    },
+    {
+      "edge_type": "UNCONDITIONAL_JUMP",
+      "fact_id": "fwedge:37c5385c8dd76a2b88a9432096a2c9b57ae791dd51c400a96c6f45cc3a04a109",
+      "source_block_id": "fwblock:9ed2e2a3ea69bc652880b77fae4f3e45823ec6579b5653ea496821bc4e220812",
+      "target_address": 1048752,
+      "target_block_id": "fwblock:9ed2e2a3ea69bc652880b77fae4f3e45823ec6579b5653ea496821bc4e220812"
+    },
+    {
+      "edge_type": "FALL_THROUGH",
+      "fact_id": "fwedge:50d5fcde26b54aa31b13ca2268d30bb443c8f69b822e45003c009cf1baeb7f6b",
+      "source_block_id": "fwblock:d5ba8bd455afb6c96579bea17e9d5b3dec56e04e50db948383ca5fff5d00a3a4",
+      "target_address": 1048736,
+      "target_block_id": "fwblock:87907c1aae70487c4b45162498e3bad9b8a94dc55e9eee19536fa00496c67743"
+    },
+    {
+      "edge_type": "FALL_THROUGH",
+      "fact_id": "fwedge:69b10d0977474671c8da5fc0a3f4d09d10f007dd36e7ccf543e8e50e807aa12f",
+      "source_block_id": "fwblock:e3a6abf482b62d560d262d0d92f6dfd10ce71ddf1a9c60132148b1285460a727",
+      "target_address": 1048712,
+      "target_block_id": "fwblock:1e93f77d7e6570575cdb936f86f4f7f0d27a7c47b6da7c41e227d40fbd7cb482"
+    }
+  ],
+  "functions": [
+    {
+      "entry": 1048704,
+      "external": false,
+      "fact_id": "fwfunction:5bf06a362652937bd9d57e214f9ae5cb1bf0405a64b99d211d76f1c39a18216b",
+      "name": "entry",
+      "ranges": [
+        {
+          "end": 1048759,
+          "start": 1048704
+        }
+      ],
+      "thunk": false
+    }
+  ],
+  "ghidra_language": "RISCV:LE:32:default",
+  "ghidra_version": "12.3_DEV-d6192cb3f900f74152a4eeec1aa6758b6143b093",
+  "instructions": [
+    {
+      "block_id": "fwblock:e3a6abf482b62d560d262d0d92f6dfd10ce71ddf1a9c60132148b1285460a727",
+      "fact_id": "fwinstruction:214534591ceb674b749927e2bb4e7a88cee76958270175c2f153732b5df5fae4",
+      "function_ids": [
+        "fwfunction:5bf06a362652937bd9d57e214f9ae5cb1bf0405a64b99d211d76f1c39a18216b"
+      ],
+      "mnemonic": "lui",
+      "operands": [
+        "t0",
+        "0x40"
+      ],
+      "pc": 1048704,
+      "raw_bytes": "b7020400",
+      "text": "lui t0,0x40"
+    },
+    {
+      "block_id": "fwblock:e3a6abf482b62d560d262d0d92f6dfd10ce71ddf1a9c60132148b1285460a727",
+      "fact_id": "fwinstruction:d84bf58bd651e7b397e9b129fd799a5dd0a8d2cf02a22104bea76a5953a05d50",
+      "function_ids": [
+        "fwfunction:5bf06a362652937bd9d57e214f9ae5cb1bf0405a64b99d211d76f1c39a18216b"
+      ],
+      "mnemonic": "li",
+      "operands": [
+        "t1",
+        "0x1"
+      ],
+      "pc": 1048708,
+      "raw_bytes": "13031000",
+      "text": "li t1,0x1"
+    },
+    {
+      "block_id": "fwblock:1e93f77d7e6570575cdb936f86f4f7f0d27a7c47b6da7c41e227d40fbd7cb482",
+      "fact_id": "fwinstruction:43221a150a27dc79e8ee3a7ffd1a35c3b88fa4039afee27d8571c5aee031c90b",
+      "function_ids": [
+        "fwfunction:5bf06a362652937bd9d57e214f9ae5cb1bf0405a64b99d211d76f1c39a18216b"
+      ],
+      "mnemonic": "sw",
+      "operands": [
+        "t1",
+        "0x0",
+        "t0"
+      ],
+      "pc": 1048712,
+      "raw_bytes": "23a06200",
+      "text": "sw t1,0x0(t0)"
+    },
+    {
+      "block_id": "fwblock:1e93f77d7e6570575cdb936f86f4f7f0d27a7c47b6da7c41e227d40fbd7cb482",
+      "fact_id": "fwinstruction:31b3a062834cce44371d3fe513c5ec7f5ae5255464a29257acd2f87dcc992406",
+      "function_ids": [
+        "fwfunction:5bf06a362652937bd9d57e214f9ae5cb1bf0405a64b99d211d76f1c39a18216b"
+      ],
+      "mnemonic": "li",
+      "operands": [
+        "t1",
+        "0xa5"
+      ],
+      "pc": 1048716,
+      "raw_bytes": "1303500a",
+      "text": "li t1,0xa5"
+    },
+    {
+      "block_id": "fwblock:33e26ea3bda10f2a9aea09a1de5c0b5f03bd037b7d7d5c43666d7cc140cc9dcd",
+      "fact_id": "fwinstruction:7c4538ed3f7edda647ae95b03f0bfce864199115f330c7d2ea32b08b2adffeef",
+      "function_ids": [
+        "fwfunction:5bf06a362652937bd9d57e214f9ae5cb1bf0405a64b99d211d76f1c39a18216b"
+      ],
+      "mnemonic": "sw",
+      "operands": [
+        "t1",
+        "0x4",
+        "t0"
+      ],
+      "pc": 1048720,
+      "raw_bytes": "23a26200",
+      "text": "sw t1,0x4(t0)"
+    },
+    {
+      "block_id": "fwblock:d5ba8bd455afb6c96579bea17e9d5b3dec56e04e50db948383ca5fff5d00a3a4",
+      "fact_id": "fwinstruction:fa9f5eac06096fe40d8358ce336031793b605c8294f55b040c3b1170edf46680",
+      "function_ids": [
+        "fwfunction:5bf06a362652937bd9d57e214f9ae5cb1bf0405a64b99d211d76f1c39a18216b"
+      ],
+      "mnemonic": "lw",
+      "operands": [
+        "t2",
+        "0x8",
+        "t0"
+      ],
+      "pc": 1048724,
+      "raw_bytes": "83a38200",
+      "text": "lw t2,0x8(t0)"
+    },
+    {
+      "block_id": "fwblock:d5ba8bd455afb6c96579bea17e9d5b3dec56e04e50db948383ca5fff5d00a3a4",
+      "fact_id": "fwinstruction:13e8e7108138403aa2bbef0d5f05a5d64a8b6b9a13bd56dd7ba8475431e79b8f",
+      "function_ids": [
+        "fwfunction:5bf06a362652937bd9d57e214f9ae5cb1bf0405a64b99d211d76f1c39a18216b"
+      ],
+      "mnemonic": "lui",
+      "operands": [
+        "t3",
+        "0x101"
+      ],
+      "pc": 1048728,
+      "raw_bytes": "371e1000",
+      "text": "lui t3,0x101"
+    },
+    {
+      "block_id": "fwblock:d5ba8bd455afb6c96579bea17e9d5b3dec56e04e50db948383ca5fff5d00a3a4",
+      "fact_id": "fwinstruction:0e3721a5b433f5e1e2381ab176187132a052679a50057410f1fd1cd67f0ae283",
+      "function_ids": [
+        "fwfunction:5bf06a362652937bd9d57e214f9ae5cb1bf0405a64b99d211d76f1c39a18216b"
+      ],
+      "mnemonic": "mv",
+      "operands": [
+        "t3",
+        "t3"
+      ],
+      "pc": 1048732,
+      "raw_bytes": "130e0e00",
+      "text": "mv t3,t3"
+    },
+    {
+      "block_id": "fwblock:87907c1aae70487c4b45162498e3bad9b8a94dc55e9eee19536fa00496c67743",
+      "fact_id": "fwinstruction:a41f044c935cd0757c9c5ee78fe514b0a556f06158d48e002c98a8be55fbff87",
+      "function_ids": [
+        "fwfunction:5bf06a362652937bd9d57e214f9ae5cb1bf0405a64b99d211d76f1c39a18216b"
+      ],
+      "mnemonic": "sw",
+      "operands": [
+        "t2",
+        "0x0",
+        "t3"
+      ],
+      "pc": 1048736,
+      "raw_bytes": "23207e00",
+      "text": "sw t2,0x0(t3)"
+    },
+    {
+      "block_id": "fwblock:87907c1aae70487c4b45162498e3bad9b8a94dc55e9eee19536fa00496c67743",
+      "fact_id": "fwinstruction:3ada91ffb1f5788dfb5627316ecd31584f1f2bd486e5b031dc5cd3b5b0e8f7d7",
+      "function_ids": [
+        "fwfunction:5bf06a362652937bd9d57e214f9ae5cb1bf0405a64b99d211d76f1c39a18216b"
+      ],
+      "mnemonic": "lui",
+      "operands": [
+        "t0",
+        "0x20"
+      ],
+      "pc": 1048740,
+      "raw_bytes": "b7020200",
+      "text": "lui t0,0x20"
+    },
+    {
+      "block_id": "fwblock:87907c1aae70487c4b45162498e3bad9b8a94dc55e9eee19536fa00496c67743",
+      "fact_id": "fwinstruction:1eafec868cbd7cbcac82bdcdbaaa5426cc262172d7c993c99dc14c88d7c22d17",
+      "function_ids": [
+        "fwfunction:5bf06a362652937bd9d57e214f9ae5cb1bf0405a64b99d211d76f1c39a18216b"
+      ],
+      "mnemonic": "li",
+      "operands": [
+        "t1",
+        "0x1"
+      ],
+      "pc": 1048744,
+      "raw_bytes": "13031000",
+      "text": "li t1,0x1"
+    },
+    {
+      "block_id": "fwblock:87907c1aae70487c4b45162498e3bad9b8a94dc55e9eee19536fa00496c67743",
+      "fact_id": "fwinstruction:f77ce117dd93f59b2e67464eca84248219f080594c88980675dfb6e718bebe70",
+      "function_ids": [
+        "fwfunction:5bf06a362652937bd9d57e214f9ae5cb1bf0405a64b99d211d76f1c39a18216b"
+      ],
+      "mnemonic": "sw",
+      "operands": [
+        "t1",
+        "0x8",
+        "t0"
+      ],
+      "pc": 1048748,
+      "raw_bytes": "23a46200",
+      "text": "sw t1,0x8(t0)"
+    },
+    {
+      "block_id": "fwblock:9ed2e2a3ea69bc652880b77fae4f3e45823ec6579b5653ea496821bc4e220812",
+      "fact_id": "fwinstruction:a9bf69ce2622bd6ae4ccd104387744fbf093415197d05fb855371712ea6b3283",
+      "function_ids": [
+        "fwfunction:5bf06a362652937bd9d57e214f9ae5cb1bf0405a64b99d211d76f1c39a18216b"
+      ],
+      "mnemonic": "wfi",
+      "operands": [],
+      "pc": 1048752,
+      "raw_bytes": "73005010",
+      "text": "wfi"
+    },
+    {
+      "block_id": "fwblock:9ed2e2a3ea69bc652880b77fae4f3e45823ec6579b5653ea496821bc4e220812",
+      "fact_id": "fwinstruction:62384af6c0395a418489814b0b966c95b7c3768dee9192bfe45a871ebee45a0d",
+      "function_ids": [
+        "fwfunction:5bf06a362652937bd9d57e214f9ae5cb1bf0405a64b99d211d76f1c39a18216b"
+      ],
+      "mnemonic": "j",
+      "operands": [
+        "0x001000b0"
+      ],
+      "pc": 1048756,
+      "raw_bytes": "6ff0dfff",
+      "text": "j 0x001000b0"
+    }
+  ],
+  "references": [
+    {
+      "fact_id": "fwref:fd5d5fe8bba6e0182ec79161a54dd9cd0dd5028b8a3d8ffac8738c85944e5d29",
+      "operand_index": 2,
+      "reference_type": "WRITE",
+      "source_pc": 1048712,
+      "target": 262144
+    },
+    {
+      "fact_id": "fwref:e3557f094fe1e5cefef02f73e51f880d11921c13af9dd5433b9cac9a1571c3b9",
+      "operand_index": 2,
+      "reference_type": "WRITE",
+      "source_pc": 1048720,
+      "target": 262148
+    },
+    {
+      "fact_id": "fwref:aac9f04f9e9033ffa612f32c7929fd87a49cb00b74371fae15a98f30f4ac4ee7",
+      "operand_index": 2,
+      "reference_type": "READ",
+      "source_pc": 1048724,
+      "target": 262152
+    },
+    {
+      "fact_id": "fwref:3b2d55343f0467d9f74f071a853cb036fde0719117da248407937596f8fb3550",
+      "operand_index": 2,
+      "reference_type": "WRITE",
+      "source_pc": 1048736,
+      "target": 1052672
+    },
+    {
+      "fact_id": "fwref:ab296486681e6bacd6cdf3259985306df2aec2d377318ce10c0cc8de0064dbd9",
+      "operand_index": 2,
+      "reference_type": "WRITE",
+      "source_pc": 1048748,
+      "target": 131080
+    },
+    {
+      "fact_id": "fwref:e50cc61b13a7f6b4e5bc6877f57d148e54a425e4e6bd2eebfaedf9c20a332b89",
+      "operand_index": 0,
+      "reference_type": "UNCONDITIONAL_JUMP",
+      "source_pc": 1048756,
+      "target": 1048752
+    }
+  ],
+  "schema_version": "firmware-static-analysis/v1"
+}

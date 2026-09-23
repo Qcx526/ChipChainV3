@@ -1,0 +1,41 @@
+{
+  "binding_set_id": "hwbindings:387d8e86abd6163f7fb1c538b8d99deba3f680c32864d0c95314bdc8b1fe648c",
+  "bindings": [
+    {
+      "binding_id": "hwbind:15218ee4a4aeeb38868a531888275db5d356c09ebb6fd28e080fa2b9a192d8b8",
+      "binding_kind": "exact_address",
+      "evidence_ids": [
+        "fwcap:4b6b1669794f8150db458ebbda91da8628c97b81c20eb488112dc582dddc6471"
+      ],
+      "firmware_behavior_id": "primitive:mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21",
+      "hardware_resource_id": "hwresource:f7313f358ec9e513cf5de1c6bbd08aeec375a40297c427e1be10f4179006b76c",
+      "reason": "Unique exact typed resource match",
+      "status": "SUPPORTED"
+    },
+    {
+      "binding_id": "hwbind:da06839f88c0171f0e766ee428f5e17589b6019fb8ddc47b24bd25bff1b76036",
+      "binding_kind": "exact_address",
+      "evidence_ids": [
+        "fwcap:fecf7028d3058179846096d4cb27e35c3c398955119a4e69a6d1b677f962f556"
+      ],
+      "firmware_behavior_id": "primitive:mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713",
+      "hardware_resource_id": "hwresource:cae3b62eba4c7e20e6acff3d38a882c572545ec14aaed5436bed55491f1ec53a",
+      "reason": "Unique exact typed resource match",
+      "status": "SUPPORTED"
+    },
+    {
+      "binding_id": "hwbind:80b79d55574cae7129a567be6d345aeb2807e4f3e07de6c4b41ec25c1ae33b5b",
+      "binding_kind": "exact_address",
+      "evidence_ids": [
+        "fwcap:6283d93781354945c8c638ae133f310aabfac7962bb55c51efe60f5102246e01"
+      ],
+      "firmware_behavior_id": "primitive:mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513",
+      "hardware_resource_id": "hwresource:c90486fa66c10e388ac35c3aace5e63171d76e7a60a80f67c0451493cc79c3b5",
+      "reason": "Unique exact typed resource match",
+      "status": "SUPPORTED"
+    }
+  ],
+  "catalog_id": "hwcatalog:a882db1539b350b22117ae7ed2d35db2fa6f6ad10e2711aca9bd3129cf0846c9",
+  "firmware_source_id": "fwcapset:9393dac8681390cdefc2b7b8cde1620b39a46817d4c774e01d619f54a5c2befa",
+  "schema_version": "hardware-resource-bindings/v1"
+}

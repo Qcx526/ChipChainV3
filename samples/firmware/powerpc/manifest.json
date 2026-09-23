@@ -1,0 +1,29 @@
+{
+  "architecture": "powerpc",
+  "commands": [
+    [
+      "tools/toolchains/install/powerpc-binutils/usr/bin/powerpc-linux-gnu-as",
+      "-mppc",
+      "-o",
+      "output/firmware-build/powerpc.o",
+      "samples/firmware/powerpc/source.S"
+    ],
+    [
+      "tools/toolchains/install/powerpc-binutils/usr/bin/powerpc-linux-gnu-ld",
+      "--build-id=none",
+      "-m",
+      "elf32ppc",
+      "-Ttext=0x10000",
+      "-e",
+      "_start",
+      "-o",
+      "samples/firmware/powerpc/sample.elf",
+      "output/firmware-build/powerpc.o"
+    ]
+  ],
+  "elf_sha256": "704b3058b324c9267c8d6e9aa4c69ff72e9ad100d7bdd1411df9fd22aaf15d51",
+  "link_working_directory": ".",
+  "sample_kind": "synthetic_fixture",
+  "source_sha256": "81fd42845559ab29981070c58280a4f56f5e78c8ab737082d4ecf4db0287f5b5",
+  "toolchain_manifest": "tools/toolchains/MANIFEST.json"
+}

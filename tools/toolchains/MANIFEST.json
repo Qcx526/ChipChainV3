@@ -1,0 +1,25 @@
+{
+  "arm": {
+    "download_sha256": "5b2e7d51d169b4e48f25d0d3792be97a4c8409c07d49e78bca929c532d95816d",
+    "installation": "tools/toolchains/install/arm-binutils",
+    "name": "GNU binutils arm-none-eabi",
+    "source": "http://cn.archive.ubuntu.com/ubuntu/pool/universe/b/binutils-arm-none-eabi/binutils-arm-none-eabi_2.38-3ubuntu1+15build1_amd64.deb",
+    "version": "2.38-3ubuntu1+15build1"
+  },
+  "powerpc": {
+    "download_sha256": "25b07952753309f221ab556c587f1a80dc19e7d42efb613941b91a7bcfae3dba",
+    "installation": "tools/toolchains/install/powerpc-binutils",
+    "name": "GNU binutils powerpc-linux-gnu",
+    "source": "http://cn.archive.ubuntu.com/ubuntu/pool/main/b/binutils/binutils-powerpc-linux-gnu_2.38-4ubuntu2.12_amd64.deb",
+    "version": "2.38-4ubuntu2.12"
+  },
+  "riscv": {
+    "assembler_sha256": "993d8a133afe46178b87fc8c2418d6fafa202b91b0febbda33984d59c5717ed0",
+    "compiler_sha256": "cb87c27afc986e9e04559aa7bb19760da733d18aad93fa4ff87f03b0ae164d39",
+    "installation": "tools/toolchains/install/riscv32-lowrisc",
+    "linker_sha256": "24de54c232ee4ceaf3dac7436d30e7b9094d59320e338d2850a5ac3bf315bf7e",
+    "name": "GNU binutils riscv32-unknown-elf assembler/linker (lowRISC distribution)",
+    "source": "preinstalled local lowrisc-20220210-1 distribution, copied into repository workspace",
+    "version": "2.35 (crosstool-NG 1.24.0.498_5075e1f)"
+  }
+}

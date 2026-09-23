@@ -1,0 +1,56 @@
+{
+  "architecture": "riscv",
+  "catalog_id": "hwcatalog:a882db1539b350b22117ae7ed2d35db2fa6f6ad10e2711aca9bd3129cf0846c9",
+  "resources": [
+    {
+      "access": [
+        "read",
+        "write"
+      ],
+      "address_end": 262144,
+      "address_start": 262144,
+      "architecture": "riscv",
+      "kind": "MMIO_REGISTER",
+      "name": "ENABLE",
+      "register_identity": null,
+      "resource_id": "hwresource:c90486fa66c10e388ac35c3aace5e63171d76e7a60a80f67c0451493cc79c3b5",
+      "scope": "manually_curated_controlled_synthetic_fixture",
+      "source_id": "hwbehavior:d16acb6603bdff18aed64b4a19e549db0fdc5fd3f8359ba571d0e36d651955b7",
+      "width_bits": 32
+    },
+    {
+      "access": [
+        "read",
+        "write"
+      ],
+      "address_end": 262148,
+      "address_start": 262148,
+      "architecture": "riscv",
+      "kind": "MMIO_REGISTER",
+      "name": "COMMAND",
+      "register_identity": null,
+      "resource_id": "hwresource:cae3b62eba4c7e20e6acff3d38a882c572545ec14aaed5436bed55491f1ec53a",
+      "scope": "manually_curated_controlled_synthetic_fixture",
+      "source_id": "hwbehavior:d16acb6603bdff18aed64b4a19e549db0fdc5fd3f8359ba571d0e36d651955b7",
+      "width_bits": 32
+    },
+    {
+      "access": [
+        "read"
+      ],
+      "address_end": 262152,
+      "address_start": 262152,
+      "architecture": "riscv",
+      "kind": "MMIO_REGISTER",
+      "name": "STATUS",
+      "register_identity": null,
+      "resource_id": "hwresource:f7313f358ec9e513cf5de1c6bbd08aeec375a40297c427e1be10f4179006b76c",
+      "scope": "manually_curated_controlled_synthetic_fixture",
+      "source_id": "hwbehavior:d16acb6603bdff18aed64b4a19e549db0fdc5fd3f8359ba571d0e36d651955b7",
+      "width_bits": 32
+    }
+  ],
+  "schema_version": "hardware-resource-catalog/v1",
+  "scope": "manually_curated_controlled_synthetic_fixture",
+  "source_id": "hwbehavior:d16acb6603bdff18aed64b4a19e549db0fdc5fd3f8359ba571d0e36d651955b7"
+}

@@ -1,0 +1,31 @@
+{
+  "architecture": "riscv",
+  "commands": [
+    [
+      "tools/toolchains/install/riscv32-lowrisc/bin/riscv32-unknown-elf-as",
+      "-march=rv32im_zicsr",
+      "-mabi=ilp32",
+      "-o",
+      "output/firmware-build/riscv.o",
+      "samples/firmware/riscv/source.S"
+    ],
+    [
+      "tools/toolchains/install/riscv32-lowrisc/bin/riscv32-unknown-elf-ld",
+      "--build-id=none",
+      "--no-relax",
+      "-m",
+      "elf32lriscv",
+      "-Ttext=0x10000",
+      "-e",
+      "_start",
+      "-o",
+      "samples/firmware/riscv/sample.elf",
+      "riscv.o"
+    ]
+  ],
+  "elf_sha256": "cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
+  "link_working_directory": "output/firmware-build",
+  "sample_kind": "synthetic_fixture",
+  "source_sha256": "90eb3b9dad210bbc4367239bc597417163d1de43830e6742933c71363ac6629c",
+  "toolchain_manifest": "tools/toolchains/MANIFEST.json"
+}

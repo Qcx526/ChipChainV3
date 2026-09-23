@@ -1,0 +1,176 @@
+{
+  "binding_set_id": "hwbindings:5919d23cd0f0e985d5611cdbabc58ce251149ad5286e19394c22cc04adfbe621",
+  "bindings": [
+    {
+      "binding_id": "hwbind:bb4c221775431f1fad80ded7dab5fdb6442e51c6e80ecff68fe5e27f279b0b55",
+      "binding_kind": "unknown",
+      "evidence_ids": [
+        "fwinstruction:a9bf69ce2622bd6ae4ccd104387744fbf093415197d05fb855371712ea6b3283",
+        "42fe38fb5c106242c81797ece513b5ef86fc453d2ef63299514d1e98e9c06641"
+      ],
+      "firmware_behavior_id": "fwbehavior:005d59c2f4de2c0c364b41570971cd51a23b0c4200d24827d6987d0f870e3290",
+      "hardware_resource_id": null,
+      "reason": "No current typed resource requirement for this behavior",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "binding_id": "hwbind:206541300ae9fa4714f612109ef60c9cbcf42e919435233d21a2371a6161d948",
+      "binding_kind": "unknown",
+      "evidence_ids": [
+        "fwinstruction:d84bf58bd651e7b397e9b129fd799a5dd0a8d2cf02a22104bea76a5953a05d50",
+        "42fe38fb5c106242c81797ece513b5ef86fc453d2ef63299514d1e98e9c06641"
+      ],
+      "firmware_behavior_id": "fwbehavior:02577f31ce747a08003b6397802e8ce636dc632c1cdf1dabcf6464176ccacbb7",
+      "hardware_resource_id": null,
+      "reason": "No current typed resource requirement for this behavior",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "binding_id": "hwbind:845f6f7fbfecce26a5ced42096fb0152819c93f1960d8bff78c090f72ef79ac5",
+      "binding_kind": "unknown",
+      "evidence_ids": [
+        "fwinstruction:a41f044c935cd0757c9c5ee78fe514b0a556f06158d48e002c98a8be55fbff87",
+        "42fe38fb5c106242c81797ece513b5ef86fc453d2ef63299514d1e98e9c06641"
+      ],
+      "firmware_behavior_id": "fwbehavior:07720fcbcff184dc30e9600d9599680f718b02049aa55cf61c5878c788fa0452",
+      "hardware_resource_id": null,
+      "reason": "No catalog resource contains the exact identity",
+      "status": "UNKNOWN"
+    },
+    {
+      "binding_id": "hwbind:3dc498f583890e072d24ffe6bd93230687725fe1d24427176632de71a35749ab",
+      "binding_kind": "unknown",
+      "evidence_ids": [
+        "fwinstruction:0e3721a5b433f5e1e2381ab176187132a052679a50057410f1fd1cd67f0ae283",
+        "42fe38fb5c106242c81797ece513b5ef86fc453d2ef63299514d1e98e9c06641"
+      ],
+      "firmware_behavior_id": "fwbehavior:16634b2a320fd5c18086710675cdea5faeb2856bfaca713f85c1b2a4a4d29968",
+      "hardware_resource_id": null,
+      "reason": "No current typed resource requirement for this behavior",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "binding_id": "hwbind:960844d3bd6294aa3da4a6e9f7e8e6256d1560d2b4c0759e8311fcafc4108e0d",
+      "binding_kind": "exact_address",
+      "evidence_ids": [
+        "fwinstruction:43221a150a27dc79e8ee3a7ffd1a35c3b88fa4039afee27d8571c5aee031c90b",
+        "42fe38fb5c106242c81797ece513b5ef86fc453d2ef63299514d1e98e9c06641"
+      ],
+      "firmware_behavior_id": "fwbehavior:1c0127d778646c63b5102d2ce3ebbce75d0d281ad2938ab6b860756ae4028678",
+      "hardware_resource_id": "hwresource:c90486fa66c10e388ac35c3aace5e63171d76e7a60a80f67c0451493cc79c3b5",
+      "reason": "Unique exact typed resource match",
+      "status": "SUPPORTED"
+    },
+    {
+      "binding_id": "hwbind:4e7a7256282ce9bd346189d69ad1aa2cbb8048a0274b5a0090230e05b2b7987f",
+      "binding_kind": "unknown",
+      "evidence_ids": [
+        "fwinstruction:3ada91ffb1f5788dfb5627316ecd31584f1f2bd486e5b031dc5cd3b5b0e8f7d7",
+        "42fe38fb5c106242c81797ece513b5ef86fc453d2ef63299514d1e98e9c06641"
+      ],
+      "firmware_behavior_id": "fwbehavior:2981b04bb57455a676a138e5c48ed7543a6d76899a26b82cf5094f5d76dd10b4",
+      "hardware_resource_id": null,
+      "reason": "No current typed resource requirement for this behavior",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "binding_id": "hwbind:06664a6a24868efa03e246585150a9c7d5baa0e849b7e4e2869981e2fd2ceaa3",
+      "binding_kind": "unknown",
+      "evidence_ids": [
+        "fwinstruction:62384af6c0395a418489814b0b966c95b7c3768dee9192bfe45a871ebee45a0d",
+        "42fe38fb5c106242c81797ece513b5ef86fc453d2ef63299514d1e98e9c06641"
+      ],
+      "firmware_behavior_id": "fwbehavior:29d5657174b47ee982c819417e8841d98d8eb921baa80df30fb3e5357fdb5e12",
+      "hardware_resource_id": null,
+      "reason": "No current typed resource requirement for this behavior",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "binding_id": "hwbind:5957660e89a0ec62112049d1e1049e9b3e4f2d1617d3361357ac88fdf510dec3",
+      "binding_kind": "unknown",
+      "evidence_ids": [
+        "fwinstruction:1eafec868cbd7cbcac82bdcdbaaa5426cc262172d7c993c99dc14c88d7c22d17",
+        "42fe38fb5c106242c81797ece513b5ef86fc453d2ef63299514d1e98e9c06641"
+      ],
+      "firmware_behavior_id": "fwbehavior:303441afc6b8944808d84a814105ad01954b696d1803a83d1f8f0bec8950d0ee",
+      "hardware_resource_id": null,
+      "reason": "No current typed resource requirement for this behavior",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "binding_id": "hwbind:2d1eda2c43497197b25bc0fca281f09d6f15182e036a140bce87d06406f64c4a",
+      "binding_kind": "exact_address",
+      "evidence_ids": [
+        "fwinstruction:7c4538ed3f7edda647ae95b03f0bfce864199115f330c7d2ea32b08b2adffeef",
+        "42fe38fb5c106242c81797ece513b5ef86fc453d2ef63299514d1e98e9c06641"
+      ],
+      "firmware_behavior_id": "fwbehavior:54abb5eb0f2ffed568ba4cacc8d2a1ba16d95b27212b3d5906bb7fe9ffc44bed",
+      "hardware_resource_id": "hwresource:cae3b62eba4c7e20e6acff3d38a882c572545ec14aaed5436bed55491f1ec53a",
+      "reason": "Unique exact typed resource match",
+      "status": "SUPPORTED"
+    },
+    {
+      "binding_id": "hwbind:bdf059b2fb9d4b137855c39bc7cb4aab55b091cc11aac39b89907320c9b29597",
+      "binding_kind": "unknown",
+      "evidence_ids": [
+        "fwinstruction:13e8e7108138403aa2bbef0d5f05a5d64a8b6b9a13bd56dd7ba8475431e79b8f",
+        "42fe38fb5c106242c81797ece513b5ef86fc453d2ef63299514d1e98e9c06641"
+      ],
+      "firmware_behavior_id": "fwbehavior:891c60fc546ecdabc669cb2c92f6a1b910ae49380fd295626ef5063cd873fba1",
+      "hardware_resource_id": null,
+      "reason": "No current typed resource requirement for this behavior",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "binding_id": "hwbind:9ae75ef8dec882e1f73e4a629a51fb563f661e98492be27eba3d72e9137175f0",
+      "binding_kind": "unknown",
+      "evidence_ids": [
+        "fwinstruction:31b3a062834cce44371d3fe513c5ec7f5ae5255464a29257acd2f87dcc992406",
+        "42fe38fb5c106242c81797ece513b5ef86fc453d2ef63299514d1e98e9c06641"
+      ],
+      "firmware_behavior_id": "fwbehavior:b885eb4a5e2b6f20f54a3b6262c580e37e040a71f3df2d7eacbb58305bebaeff",
+      "hardware_resource_id": null,
+      "reason": "No current typed resource requirement for this behavior",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "binding_id": "hwbind:68a4a47bc7e9de47d5d1700a29be08dbac7de81661c39b811f7a457f9e59bffd",
+      "binding_kind": "exact_address",
+      "evidence_ids": [
+        "fwinstruction:fa9f5eac06096fe40d8358ce336031793b605c8294f55b040c3b1170edf46680",
+        "42fe38fb5c106242c81797ece513b5ef86fc453d2ef63299514d1e98e9c06641"
+      ],
+      "firmware_behavior_id": "fwbehavior:d29d69d4de440df92a87251b2747399123c33d82fe49ad5c57156830d3b2c26a",
+      "hardware_resource_id": "hwresource:f7313f358ec9e513cf5de1c6bbd08aeec375a40297c427e1be10f4179006b76c",
+      "reason": "Unique exact typed resource match",
+      "status": "SUPPORTED"
+    },
+    {
+      "binding_id": "hwbind:b8c2e421357182b7c9daee4703c57fb43f6c2d110a5243090428503390282197",
+      "binding_kind": "unknown",
+      "evidence_ids": [
+        "fwinstruction:f77ce117dd93f59b2e67464eca84248219f080594c88980675dfb6e718bebe70",
+        "42fe38fb5c106242c81797ece513b5ef86fc453d2ef63299514d1e98e9c06641"
+      ],
+      "firmware_behavior_id": "fwbehavior:f12bd5d4ec8dc60725feb982e579b5141295be4c517d638e9ef08be9d3812b7b",
+      "hardware_resource_id": null,
+      "reason": "No catalog resource contains the exact identity",
+      "status": "UNKNOWN"
+    },
+    {
+      "binding_id": "hwbind:c7a04cd5e6dfe249f5487c54a7f1d092929083bd4048e59ce4528ce9f25a4681",
+      "binding_kind": "unknown",
+      "evidence_ids": [
+        "fwinstruction:214534591ceb674b749927e2bb4e7a88cee76958270175c2f153732b5df5fae4",
+        "42fe38fb5c106242c81797ece513b5ef86fc453d2ef63299514d1e98e9c06641"
+      ],
+      "firmware_behavior_id": "fwbehavior:fbce972cb029c3b1d8f1eaa60e510e9427fe7203e72b0497a85d8f3e64cff611",
+      "hardware_resource_id": null,
+      "reason": "No current typed resource requirement for this behavior",
+      "status": "NOT_APPLICABLE"
+    }
+  ],
+  "catalog_id": "hwcatalog:a882db1539b350b22117ae7ed2d35db2fa6f6ad10e2711aca9bd3129cf0846c9",
+  "firmware_source_id": "firmware-static:73203833226424dd68b57b9686bc5f3373bb9e4cec548c943e1e05b660cc5ec4",
+  "schema_version": "hardware-resource-bindings/v1"
+}
