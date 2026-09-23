@@ -6,8 +6,8 @@ import pytest
 from chipchain.firmware import capability as cap
 from chipchain.firmware import mmio_grounding as grounding
 from chipchain.firmware.mmio_capability import materialize_mmio
-from tests.integration import test_syn_e2e1_bridge1 as frozen_bridge
-from tests.integration import test_syn_e2e1_b1_mmio_grounding as frozen_b1
+from tests.integration import test_execution_bridge_local as frozen_bridge
+from tests.integration import test_historical_boundaries_local as frozen_b1
 
 ROOT = Path(__file__).resolve().parents[2]
 WORKSPACE = ROOT / 'output/syn-e2e1-bridge1/joint-e358hh72'

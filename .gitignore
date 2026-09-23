@@ -21,8 +21,6 @@ htmlcov/
 /output/*
 !/output/README.md
 !/output/.gitkeep
-!/output/reviewed/
-!/output/reviewed/**
 
 # Local import provenance contains machine-specific paths and real sample hashes.
 /samples/local-manifest.json

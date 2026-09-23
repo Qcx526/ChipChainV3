@@ -1,0 +1,2 @@
+{"binding_id":"type2-state-binding:f65540b8e06177b72d79e732e45bb40d89b0b9a029dc8dec888388980fff1c1f","enable_address":262144,"enable_reset_value":0,"enable_subject":"SyntheticPeripheral.ENABLE","source_artifact_id":"synthetic-spec:a527f2fbb47f2980e0d1d40ebe734452404a0f9e81ff2093e9bb2bcef940a9f4","source_sha256":"a527f2fbb47f2980e0d1d40ebe734452404a0f9e81ff2093e9bb2bcef940a9f4","status_address":262152,"status_reset_value":0,"status_subject":"SyntheticPeripheral.STATUS"}
+

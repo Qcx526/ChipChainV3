@@ -5,27 +5,18 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "chipchain"
 version = "0.1.0"
-description = "ChipChain case-first firmware and hardware evidence analysis"
+description = "Evidence-driven Type-II firmware–hardware cross-layer analysis"
 requires-python = ">=3.11"
 dependencies = [
     "pydantic>=2.7,<3",
-    "capstone>=5.0.9,<6",
-    "PyYAML>=6.0.3,<7",
     "pyelftools>=0.33,<1",
-    "langchain-deepseek>=1.1,<1.2",
-    "python-dotenv>=1.1,<2",
-    "langchain>=1.2.10,<1.3",
-    "langgraph>=1.0.10,<1.1",
-    # Bundled dependency compatibility guard: prebuilt 1.0.13 imports runtime
-    # APIs absent from LangGraph 1.0.10. Keep the verified 1.0.8 release line.
-    # ChipChain does not import prebuilt APIs; see docs/architecture/v3-r0.md.
-    "langgraph-prebuilt>=1.0.8,<1.0.9",
 ]
+
+[project.scripts]
+chipchain = "chipchain.cli:main"
 
 [project.optional-dependencies]
 test = ["pytest>=8,<10"]
-# Optional tooling requires Python >=3.12; the base package remains >=3.11.
-angr = ["angr==9.3.4"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

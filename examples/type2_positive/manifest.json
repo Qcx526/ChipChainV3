@@ -1,0 +1,15 @@
+{
+  "contract": "fixtures/contract.json",
+  "controlled_source": {
+    "delta_bytes": "fixtures/source/delta",
+    "reference_manifest_bytes": "fixtures/source/reference-manifest",
+    "reference_peripheral_bytes": "fixtures/source/reference-peripheral",
+    "variant_manifest_bytes": "fixtures/source/variant-manifest",
+    "variant_patch_bytes": "fixtures/source/variant-patch",
+    "variant_peripheral_bytes": "fixtures/source/variant-peripheral"
+  },
+  "reference_run": "fixtures/runs/a5-reference/run.json",
+  "schema_version": "chipchain-type2-existing-artifacts/v1",
+  "state_binding": "fixtures/state-binding.json",
+  "target_run": "fixtures/runs/a5-variant/run.json"
+}

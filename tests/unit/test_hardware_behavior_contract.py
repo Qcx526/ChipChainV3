@@ -235,12 +235,15 @@ def test_source_and_evidence_registry_order_is_set_like():
 
 
 def test_unclassified_identity_cannot_duplicate_trigger_identity():
-    from tests.unit.test_hardware_behavior_contract_materialization import arguments, xl0
-    from chipchain.hardware.behavior_contract_materialization import materialize_xl0
-    condition = xl0()
-    result = materialize_xl0(condition, **arguments(condition))
-    data = result.model_dump(exclude={'schema_version', 'contract_id', 'contract_sha256'})
-    data['unclassified_atoms'][0]['atom']['atom_id'] = data['trigger'][0]['condition_id']
+    data = complete_input()
+    atom = copy.deepcopy(data['trigger'][0]['instructions'][0])
+    atom['atom_id'] = data['trigger'][0]['condition_id']
+    atom['kind'] = 'instruction'
+    data['unclassified_atoms'] = [dict(
+        atom=atom, reason='verification_metadata', formalization_status='unknown',
+        source_artifact_ids=data['source_artifact_ids'], evidence_ids=data['evidence_ids'],
+        provenance=data['provenance'],
+    )]
     with pytest.raises(ValueError, match='Duplicate'):
         HardwareBehaviorContractInput.model_validate(data)
 

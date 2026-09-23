@@ -1,0 +1,15 @@
+{
+  "contract": "../type2_positive/fixtures/contract.json",
+  "controlled_source": {
+    "delta_bytes": "../type2_positive/fixtures/source/delta",
+    "reference_manifest_bytes": "../type2_positive/fixtures/source/reference-manifest",
+    "reference_peripheral_bytes": "../type2_positive/fixtures/source/reference-peripheral",
+    "variant_manifest_bytes": "../type2_positive/fixtures/source/variant-manifest",
+    "variant_patch_bytes": "../type2_positive/fixtures/source/variant-patch",
+    "variant_peripheral_bytes": "../type2_positive/fixtures/source/variant-peripheral"
+  },
+  "reference_run": "../type2_positive/fixtures/runs/a4-reference/run.json",
+  "schema_version": "chipchain-type2-existing-artifacts/v1",
+  "state_binding": "../type2_positive/fixtures/state-binding.json",
+  "target_run": "../type2_positive/fixtures/runs/a4-variant/run.json"
+}

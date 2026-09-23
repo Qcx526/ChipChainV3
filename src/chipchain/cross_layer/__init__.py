@@ -1,4 +1,4 @@
-"""XL0 typed cross-layer contracts; deliberately independent of agent/workflow routing."""
+"""Typed cross-layer contracts and compatibility exports."""
 from .contracts import (
     CrossLayerAtomMatch, CrossLayerTriggerCandidate, FirmwareAtomBinding, FirmwareCrossLayerFactRef,
     cross_layer_candidate_sha256, parse_cross_layer_candidate, serialize_cross_layer_candidate,

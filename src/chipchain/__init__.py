@@ -1,3 +1,3 @@
-"""ChipChain V3: case-first cross-layer research contracts."""
+"""ChipChain: evidence-driven Type-II firmware–hardware analysis."""
 
 __version__ = "0.1.0"

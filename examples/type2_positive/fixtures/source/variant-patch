@@ -1,0 +1,13 @@
+--- a/examples/simple_system/rtl/synthetic_mmio.sv
++++ b/examples/simple_system/rtl/synthetic_mmio.sv
+@@ -34,7 +34,9 @@
+             32'h00040000: enable_q <= wdata_i;
+             32'h00040004: begin
+               command_q <= wdata_i;
+-              // STATUS_NEXT_STATE: reference retains its reset value.
++              // Pre-NBA enable_q: state before this accepted COMMAND write.
++              if ((enable_q == 32'h1) && (wdata_i == 32'h000000a5))
++                status_q <= 32'h0000dead;
+             end
+             default: ;
+           endcase

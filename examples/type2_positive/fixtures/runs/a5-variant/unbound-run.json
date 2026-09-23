@@ -1,0 +1,14 @@
+{
+  "bridge": "bridge.json",
+  "bus": "bus.jsonl",
+  "capabilities": "capabilities.json",
+  "elf": "firmware.elf",
+  "inputs": "inputs.json",
+  "observation_binding": null,
+  "platform": "platform.json",
+  "processor": "processor.log",
+  "runtime": "runtime.json",
+  "static": "static.json",
+  "stderr": "stderr.log",
+  "stdout": "stdout.log"
+}

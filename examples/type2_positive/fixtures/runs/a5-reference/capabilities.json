@@ -1,0 +1,2304 @@
+[
+  {
+    "architecture": "riscv",
+    "capability_id": "fwcap:000cca353ff6c59709869b6e1bb0a3c0a8986880470ef0734820e16e2f54fb04",
+    "capability_sha256": "000cca353ff6c59709869b6e1bb0a3c0a8986880470ef0734820e16e2f54fb04",
+    "conditions": [
+      {
+        "condition_id": "condition:mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513",
+        "condition_kind": "path",
+        "description": "Execution reaching this site is not established for arbitrary inputs or future runs.",
+        "evidence_ids": [
+          "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+        ],
+        "formalization_status": "unknown",
+        "predicate": null,
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_id": "resource:mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513",
+        "evidence_ids": [
+          "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+        ],
+        "formalization_status": "formalized",
+        "identity": "mmio-map:e702cd0222bbe54fd79f7f9f541bdf9c7448ddffa438e7eb4b1fb3b396ec5da9",
+        "kind": "target_resource",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          }
+        ],
+        "resource_kind": "mmio",
+        "source_artifact_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+        ]
+      },
+      {
+        "constraint_id": "address:mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513",
+        "domain": {
+          "bit_width": 32,
+          "controlled_bits": null,
+          "exact": 262144,
+          "mask": null,
+          "masked_value": null,
+          "maximum": null,
+          "minimum": null
+        },
+        "evidence_ids": [
+          "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+        ],
+        "formalization_status": "formalized",
+        "kind": "address",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+        ]
+      },
+      {
+        "constraint_id": "access_width:mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513",
+        "domain": {
+          "bit_width": 32,
+          "controlled_bits": null,
+          "exact": 32,
+          "mask": null,
+          "masked_value": null,
+          "maximum": null,
+          "minimum": null
+        },
+        "evidence_ids": [
+          "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+        ],
+        "formalization_status": "formalized",
+        "kind": "access_width",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+        ]
+      },
+      {
+        "constraint_id": "value:mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513",
+        "domain": {
+          "bit_width": 32,
+          "controlled_bits": null,
+          "exact": 1,
+          "mask": null,
+          "masked_value": null,
+          "maximum": null,
+          "minimum": null
+        },
+        "evidence_ids": [
+          "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+        ],
+        "formalization_status": "formalized",
+        "kind": "value",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+        ]
+      }
+    ],
+    "entry": {
+      "entry_id": "entry:mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513",
+      "entry_kind": "code_site",
+      "evidence_ids": [
+        "mmio-attested-bus:5944cd33c748b6639557dade7674aca6d4f7670180a3f6863c58d3d84f7a84e9",
+        "mmio-execution-binding:8aa81e5cb42bbc1d8eebeeb945bd4da5ab06bb6cc5299de7155852352b35c50d",
+        "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+        "mmio-processor:f7221541194c803b5d1cfb8a9e08b53438ec040893bb6b3b4d315444b8dfbecf",
+        "mmio-runtime:52b620f9f0488b9f9870d29c615d4e49aa2eef96f0305fd8e958c1a46ad2efc9",
+        "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+      ],
+      "execution_status": "source_instruction_retired",
+      "formalization_status": "formalized",
+      "function_id": null,
+      "function_name": null,
+      "interface_id": null,
+      "ownership_status": "unknown",
+      "pc": 1048712,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-attested-bus:5944cd33c748b6639557dade7674aca6d4f7670180a3f6863c58d3d84f7a84e9",
+            "mmio-execution-binding:8aa81e5cb42bbc1d8eebeeb945bd4da5ab06bb6cc5299de7155852352b35c50d",
+            "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+            "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+            "mmio-processor:f7221541194c803b5d1cfb8a9e08b53438ec040893bb6b3b4d315444b8dfbecf",
+            "mmio-runtime:52b620f9f0488b9f9870d29c615d4e49aa2eef96f0305fd8e958c1a46ad2efc9",
+            "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+          ],
+          "source_kind": "firmware_mmio_static",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "mmio-bridge-source:244d50f8f2e86d1b95ac26da807658dc95ad5b98ef643380bcc65dbc87937d4e"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-attested-bus:5944cd33c748b6639557dade7674aca6d4f7670180a3f6863c58d3d84f7a84e9",
+            "mmio-execution-binding:8aa81e5cb42bbc1d8eebeeb945bd4da5ab06bb6cc5299de7155852352b35c50d",
+            "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+            "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+            "mmio-processor:f7221541194c803b5d1cfb8a9e08b53438ec040893bb6b3b4d315444b8dfbecf",
+            "mmio-runtime:52b620f9f0488b9f9870d29c615d4e49aa2eef96f0305fd8e958c1a46ad2efc9",
+            "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+          ],
+          "source_kind": "runtime_trace",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-attested-bus:5944cd33c748b6639557dade7674aca6d4f7670180a3f6863c58d3d84f7a84e9",
+            "mmio-execution-binding:8aa81e5cb42bbc1d8eebeeb945bd4da5ab06bb6cc5299de7155852352b35c50d",
+            "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+            "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+            "mmio-processor:f7221541194c803b5d1cfb8a9e08b53438ec040893bb6b3b4d315444b8dfbecf",
+            "mmio-runtime:52b620f9f0488b9f9870d29c615d4e49aa2eef96f0305fd8e958c1a46ad2efc9",
+            "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+          ],
+          "source_kind": "runtime_trace",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-attested-bus:5944cd33c748b6639557dade7674aca6d4f7670180a3f6863c58d3d84f7a84e9",
+            "mmio-execution-binding:8aa81e5cb42bbc1d8eebeeb945bd4da5ab06bb6cc5299de7155852352b35c50d",
+            "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+            "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+            "mmio-processor:f7221541194c803b5d1cfb8a9e08b53438ec040893bb6b3b4d315444b8dfbecf",
+            "mmio-runtime:52b620f9f0488b9f9870d29c615d4e49aa2eef96f0305fd8e958c1a46ad2efc9",
+            "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+          ],
+          "source_kind": "firmware_mmio_static",
+          "transformation": "explicit_input"
+        }
+      ],
+      "reachability_status": "unknown",
+      "retirement_observation_ids": [
+        "mmio-processor:f7221541194c803b5d1cfb8a9e08b53438ec040893bb6b3b4d315444b8dfbecf"
+      ],
+      "source_artifact_ids": [
+        "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+        "mmio-bridge-source:244d50f8f2e86d1b95ac26da807658dc95ad5b98ef643380bcc65dbc87937d4e",
+        "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c",
+        "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+      ]
+    },
+    "evidence": [
+      {
+        "analyzer": "ibex-rvfi-bus-semantic-bijection/v1",
+        "artifact_id": "mmio-bridge-source:244d50f8f2e86d1b95ac26da807658dc95ad5b98ef643380bcc65dbc87937d4e",
+        "epistemic_status": "derived",
+        "evidence_id": "mmio-attested-bus:5944cd33c748b6639557dade7674aca6d4f7670180a3f6863c58d3d84f7a84e9",
+        "location": {
+          "address": 262144,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "deterministic_analyzer",
+        "summary": "Joint-bound bus observation reference."
+      },
+      {
+        "analyzer": "ibex-rvfi-bus-semantic-bijection/v1",
+        "artifact_id": "mmio-bridge-source:244d50f8f2e86d1b95ac26da807658dc95ad5b98ef643380bcc65dbc87937d4e",
+        "epistemic_status": "observed",
+        "evidence_id": "mmio-runtime:52b620f9f0488b9f9870d29c615d4e49aa2eef96f0305fd8e958c1a46ad2efc9",
+        "location": {
+          "address": 262144,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "deterministic_analyzer",
+        "summary": "Accepted/completed MMIO transaction observed."
+      },
+      {
+        "analyzer": "ibex-rvfi-bus-semantic-bijection/v1",
+        "artifact_id": "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c",
+        "epistemic_status": "derived",
+        "evidence_id": "mmio-execution-binding:8aa81e5cb42bbc1d8eebeeb945bd4da5ab06bb6cc5299de7155852352b35c50d",
+        "location": {
+          "address": 1048712,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "deterministic_analyzer",
+        "summary": "BOUND static/processor/bus execution binding reference."
+      },
+      {
+        "analyzer": "ibex-rvfi-bus-semantic-bijection/v1",
+        "artifact_id": "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c",
+        "epistemic_status": "derived",
+        "evidence_id": "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+        "location": {
+          "address": 1048712,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "deterministic_analyzer",
+        "summary": "Joint execution evidence reference."
+      },
+      {
+        "analyzer": "ibex-rvfi-bus-semantic-bijection/v1",
+        "artifact_id": "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c",
+        "epistemic_status": "observed",
+        "evidence_id": "mmio-processor:f7221541194c803b5d1cfb8a9e08b53438ec040893bb6b3b4d315444b8dfbecf",
+        "location": {
+          "address": 1048712,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "deterministic_analyzer",
+        "summary": "Source instruction runtime execution observed."
+      },
+      {
+        "analyzer": "rv32-lui-addi-lw-sw/v1",
+        "artifact_id": "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+        "epistemic_status": "derived",
+        "evidence_id": "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513",
+        "location": {
+          "address": 1048712,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "deterministic_analyzer",
+        "summary": "Resolved target MMIO instruction; static semantics only."
+      }
+    ],
+    "evidence_ids": [
+      "mmio-attested-bus:5944cd33c748b6639557dade7674aca6d4f7670180a3f6863c58d3d84f7a84e9",
+      "mmio-execution-binding:8aa81e5cb42bbc1d8eebeeb945bd4da5ab06bb6cc5299de7155852352b35c50d",
+      "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+      "mmio-processor:f7221541194c803b5d1cfb8a9e08b53438ec040893bb6b3b4d315444b8dfbecf",
+      "mmio-runtime:52b620f9f0488b9f9870d29c615d4e49aa2eef96f0305fd8e958c1a46ad2efc9",
+      "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+    ],
+    "limitations": [
+      "An absent value constraint on a WRITE means unresolved, never a runtime-filled value.",
+      "Normal firmware behavior is not external control or a verified hardware trigger.",
+      "Static-only does not imply nonexecution; UNKNOWN/NOT_SAME never authorize execution evidence."
+    ],
+    "origin": {
+      "evidence_ids": [
+        "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+      ],
+      "finding_ids": [],
+      "kind": "normal_behavior",
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+          ],
+          "source_kind": "firmware_mmio_static",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+          ],
+          "source_kind": "firmware_mmio_static",
+          "transformation": "explicit_input"
+        }
+      ],
+      "source_artifact_ids": [
+        "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+        "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+      ]
+    },
+    "primitives": [
+      {
+        "architecture": "riscv",
+        "basis": "static_instruction",
+        "condition_ids": [
+          "condition:mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+        ],
+        "constraint_ids": [
+          "access_width:mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513",
+          "address:mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513",
+          "resource:mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513",
+          "value:mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+        ],
+        "control": {
+          "dimensions": [],
+          "evidence_ids": [
+            "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+          ],
+          "provenance": [
+            {
+              "source_artifact_ids": [
+                "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+              ],
+              "source_ids": [
+                "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+                "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+              ],
+              "source_kind": "firmware_mmio_static",
+              "transformation": "explicit_input"
+            },
+            {
+              "source_artifact_ids": [
+                "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+              ],
+              "source_ids": [
+                "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+                "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+              ],
+              "source_kind": "firmware_mmio_static",
+              "transformation": "explicit_input"
+            }
+          ],
+          "source_artifact_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+          ],
+          "status": "not_established",
+          "support_basis": "not_established"
+        },
+        "entry_id": "entry:mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513",
+        "evidence_ids": [
+          "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+        ],
+        "formalization_status": "formalized",
+        "instruction_sequence": [
+          "23a06200"
+        ],
+        "kind": "MMIO_WRITE",
+        "primitive_id": "primitive:mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          }
+        ],
+        "retirement_observation_ids": [],
+        "source_artifact_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+        ],
+        "source_pc": 1048712,
+        "source_registers": [
+          "x5",
+          "x6"
+        ],
+        "target_status": "not_applicable",
+        "transfer_kind": null
+      }
+    ],
+    "provenance": [
+      {
+        "source_artifact_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+        ],
+        "source_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-attested-bus:5944cd33c748b6639557dade7674aca6d4f7670180a3f6863c58d3d84f7a84e9",
+          "mmio-execution-binding:8aa81e5cb42bbc1d8eebeeb945bd4da5ab06bb6cc5299de7155852352b35c50d",
+          "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+          "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+          "mmio-processor:f7221541194c803b5d1cfb8a9e08b53438ec040893bb6b3b4d315444b8dfbecf",
+          "mmio-runtime:52b620f9f0488b9f9870d29c615d4e49aa2eef96f0305fd8e958c1a46ad2efc9",
+          "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+        ],
+        "source_kind": "firmware_mmio_static",
+        "transformation": "explicit_input"
+      },
+      {
+        "source_artifact_ids": [
+          "mmio-bridge-source:244d50f8f2e86d1b95ac26da807658dc95ad5b98ef643380bcc65dbc87937d4e"
+        ],
+        "source_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-attested-bus:5944cd33c748b6639557dade7674aca6d4f7670180a3f6863c58d3d84f7a84e9",
+          "mmio-execution-binding:8aa81e5cb42bbc1d8eebeeb945bd4da5ab06bb6cc5299de7155852352b35c50d",
+          "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+          "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+          "mmio-processor:f7221541194c803b5d1cfb8a9e08b53438ec040893bb6b3b4d315444b8dfbecf",
+          "mmio-runtime:52b620f9f0488b9f9870d29c615d4e49aa2eef96f0305fd8e958c1a46ad2efc9",
+          "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+        ],
+        "source_kind": "runtime_trace",
+        "transformation": "explicit_input"
+      },
+      {
+        "source_artifact_ids": [
+          "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c"
+        ],
+        "source_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-attested-bus:5944cd33c748b6639557dade7674aca6d4f7670180a3f6863c58d3d84f7a84e9",
+          "mmio-execution-binding:8aa81e5cb42bbc1d8eebeeb945bd4da5ab06bb6cc5299de7155852352b35c50d",
+          "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+          "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+          "mmio-processor:f7221541194c803b5d1cfb8a9e08b53438ec040893bb6b3b4d315444b8dfbecf",
+          "mmio-runtime:52b620f9f0488b9f9870d29c615d4e49aa2eef96f0305fd8e958c1a46ad2efc9",
+          "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+        ],
+        "source_kind": "runtime_trace",
+        "transformation": "explicit_input"
+      },
+      {
+        "source_artifact_ids": [
+          "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+        ],
+        "source_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-attested-bus:5944cd33c748b6639557dade7674aca6d4f7670180a3f6863c58d3d84f7a84e9",
+          "mmio-execution-binding:8aa81e5cb42bbc1d8eebeeb945bd4da5ab06bb6cc5299de7155852352b35c50d",
+          "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+          "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+          "mmio-processor:f7221541194c803b5d1cfb8a9e08b53438ec040893bb6b3b4d315444b8dfbecf",
+          "mmio-runtime:52b620f9f0488b9f9870d29c615d4e49aa2eef96f0305fd8e958c1a46ad2efc9",
+          "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+        ],
+        "source_kind": "firmware_mmio_static",
+        "transformation": "explicit_input"
+      }
+    ],
+    "retirement_evidence": [
+      {
+        "architecture": "riscv",
+        "cycle": 8,
+        "evidence_ids": [
+          "mmio-processor:f7221541194c803b5d1cfb8a9e08b53438ec040893bb6b3b4d315444b8dfbecf"
+        ],
+        "instruction_encoding": "23a06200",
+        "interpretation": "source_instruction_retired_only",
+        "observation_id": "mmio-processor:f7221541194c803b5d1cfb8a9e08b53438ec040893bb6b3b4d315444b8dfbecf",
+        "pc": 1048712,
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-attested-bus:5944cd33c748b6639557dade7674aca6d4f7670180a3f6863c58d3d84f7a84e9",
+              "mmio-execution-binding:8aa81e5cb42bbc1d8eebeeb945bd4da5ab06bb6cc5299de7155852352b35c50d",
+              "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+              "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+              "mmio-processor:f7221541194c803b5d1cfb8a9e08b53438ec040893bb6b3b4d315444b8dfbecf",
+              "mmio-runtime:52b620f9f0488b9f9870d29c615d4e49aa2eef96f0305fd8e958c1a46ad2efc9",
+              "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+            ],
+            "source_kind": "runtime_trace",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c"
+        ],
+        "trace_line": 4
+      }
+    ],
+    "schema_version": "firmware-capability/v1",
+    "scope": {
+      "applicability": "specified_firmware_sites",
+      "assumptions": [
+        "Bounded static target map; execution evidence limited to its attested joint run."
+      ],
+      "evidence_ids": [
+        "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+      ],
+      "firmware_artifact_ids": [
+        "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+      ],
+      "formalization_status": "partially_formalized",
+      "function_ids": [],
+      "known_limitations": [],
+      "origin_kind": "normal_behavior",
+      "platform_id": "mmio-map:e702cd0222bbe54fd79f7f9f541bdf9c7448ddffa438e7eb4b1fb3b396ec5da9",
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+          ],
+          "source_kind": "firmware_mmio_static",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-static:eba41bb7fd8b3caa8444557637f50ab73397e6c493772d2aa40b60fc1be5f513"
+          ],
+          "source_kind": "firmware_mmio_static",
+          "transformation": "explicit_input"
+        }
+      ],
+      "site_pcs": [
+        1048712
+      ],
+      "source_artifact_ids": [
+        "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+        "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+      ],
+      "target": {
+        "architecture": "riscv",
+        "endianness": "little",
+        "firmware_id": "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254",
+        "isa_variant": null,
+        "processor_id": "mmio-map:e702cd0222bbe54fd79f7f9f541bdf9c7448ddffa438e7eb4b1fb3b396ec5da9",
+        "word_size_bits": 32
+      },
+      "unmodeled_aspects": [
+        "attack_chain",
+        "deviation_verification",
+        "external_input_control",
+        "general_path_feasibility",
+        "hardware_trigger"
+      ]
+    },
+    "source_artifact_ids": [
+      "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+      "mmio-bridge-source:244d50f8f2e86d1b95ac26da807658dc95ad5b98ef643380bcc65dbc87937d4e",
+      "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c",
+      "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+    ],
+    "source_artifacts": [
+      {
+        "artifact_id": "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+        "hash_kind": "file_bytes",
+        "sha256": "56c498d1d27456f7cb5db0a7a7fa63bc07ef7f8a6a5d1dd303cf74f146aa3d7e",
+        "source_kind": "firmware_mmio_static"
+      },
+      {
+        "artifact_id": "mmio-bridge-source:244d50f8f2e86d1b95ac26da807658dc95ad5b98ef643380bcc65dbc87937d4e",
+        "hash_kind": "file_bytes",
+        "sha256": "7c2b4822bfed95f27046935e81b2ead796ef6c884d5483f56640aa2251d2d13c",
+        "source_kind": "runtime_trace"
+      },
+      {
+        "artifact_id": "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c",
+        "hash_kind": "file_bytes",
+        "sha256": "3bf33502c710e859fdf7c046dbf5de5c209ebdfb54fda6262d50522e668d2d89",
+        "source_kind": "runtime_trace"
+      },
+      {
+        "artifact_id": "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254",
+        "hash_kind": "file_bytes",
+        "sha256": "42fe38fb5c106242c81797ece513b5ef86fc453d2ef63299514d1e98e9c06641",
+        "source_kind": "firmware_mmio_static"
+      }
+    ],
+    "source_case_id": null
+  },
+  {
+    "architecture": "riscv",
+    "capability_id": "fwcap:577e808e3c013888e1be84a5be54f00d7a7f5054aac38aed6a2ab54caf0df11b",
+    "capability_sha256": "577e808e3c013888e1be84a5be54f00d7a7f5054aac38aed6a2ab54caf0df11b",
+    "conditions": [
+      {
+        "condition_id": "condition:mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713",
+        "condition_kind": "path",
+        "description": "Execution reaching this site is not established for arbitrary inputs or future runs.",
+        "evidence_ids": [
+          "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+        ],
+        "formalization_status": "unknown",
+        "predicate": null,
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_id": "resource:mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713",
+        "evidence_ids": [
+          "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+        ],
+        "formalization_status": "formalized",
+        "identity": "mmio-map:e702cd0222bbe54fd79f7f9f541bdf9c7448ddffa438e7eb4b1fb3b396ec5da9",
+        "kind": "target_resource",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          }
+        ],
+        "resource_kind": "mmio",
+        "source_artifact_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+        ]
+      },
+      {
+        "constraint_id": "address:mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713",
+        "domain": {
+          "bit_width": 32,
+          "controlled_bits": null,
+          "exact": 262148,
+          "mask": null,
+          "masked_value": null,
+          "maximum": null,
+          "minimum": null
+        },
+        "evidence_ids": [
+          "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+        ],
+        "formalization_status": "formalized",
+        "kind": "address",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+        ]
+      },
+      {
+        "constraint_id": "access_width:mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713",
+        "domain": {
+          "bit_width": 32,
+          "controlled_bits": null,
+          "exact": 32,
+          "mask": null,
+          "masked_value": null,
+          "maximum": null,
+          "minimum": null
+        },
+        "evidence_ids": [
+          "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+        ],
+        "formalization_status": "formalized",
+        "kind": "access_width",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+        ]
+      },
+      {
+        "constraint_id": "value:mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713",
+        "domain": {
+          "bit_width": 32,
+          "controlled_bits": null,
+          "exact": 165,
+          "mask": null,
+          "masked_value": null,
+          "maximum": null,
+          "minimum": null
+        },
+        "evidence_ids": [
+          "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+        ],
+        "formalization_status": "formalized",
+        "kind": "value",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+        ]
+      }
+    ],
+    "entry": {
+      "entry_id": "entry:mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713",
+      "entry_kind": "code_site",
+      "evidence_ids": [
+        "mmio-attested-bus:6789eca7b4b23f86f16aff47aaa809c40d33c0a02b1e2807cd93360707723bf3",
+        "mmio-execution-binding:10bf121a4da957d6687f40c9fad0f2a924551d044261ccdabf6d953c6fbb4cd7",
+        "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+        "mmio-processor:206df7e0acf80750674c5867c415ea5c6590323a0a8687e205ce7ff09293bbf2",
+        "mmio-runtime:fd74003a0c0d2e49ff9b165ac606e2223d05b3be4bcb2ac4476067a6fc637a43",
+        "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+      ],
+      "execution_status": "source_instruction_retired",
+      "formalization_status": "formalized",
+      "function_id": null,
+      "function_name": null,
+      "interface_id": null,
+      "ownership_status": "unknown",
+      "pc": 1048720,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-attested-bus:6789eca7b4b23f86f16aff47aaa809c40d33c0a02b1e2807cd93360707723bf3",
+            "mmio-execution-binding:10bf121a4da957d6687f40c9fad0f2a924551d044261ccdabf6d953c6fbb4cd7",
+            "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+            "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+            "mmio-processor:206df7e0acf80750674c5867c415ea5c6590323a0a8687e205ce7ff09293bbf2",
+            "mmio-runtime:fd74003a0c0d2e49ff9b165ac606e2223d05b3be4bcb2ac4476067a6fc637a43",
+            "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+          ],
+          "source_kind": "firmware_mmio_static",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "mmio-bridge-source:244d50f8f2e86d1b95ac26da807658dc95ad5b98ef643380bcc65dbc87937d4e"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-attested-bus:6789eca7b4b23f86f16aff47aaa809c40d33c0a02b1e2807cd93360707723bf3",
+            "mmio-execution-binding:10bf121a4da957d6687f40c9fad0f2a924551d044261ccdabf6d953c6fbb4cd7",
+            "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+            "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+            "mmio-processor:206df7e0acf80750674c5867c415ea5c6590323a0a8687e205ce7ff09293bbf2",
+            "mmio-runtime:fd74003a0c0d2e49ff9b165ac606e2223d05b3be4bcb2ac4476067a6fc637a43",
+            "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+          ],
+          "source_kind": "runtime_trace",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-attested-bus:6789eca7b4b23f86f16aff47aaa809c40d33c0a02b1e2807cd93360707723bf3",
+            "mmio-execution-binding:10bf121a4da957d6687f40c9fad0f2a924551d044261ccdabf6d953c6fbb4cd7",
+            "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+            "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+            "mmio-processor:206df7e0acf80750674c5867c415ea5c6590323a0a8687e205ce7ff09293bbf2",
+            "mmio-runtime:fd74003a0c0d2e49ff9b165ac606e2223d05b3be4bcb2ac4476067a6fc637a43",
+            "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+          ],
+          "source_kind": "runtime_trace",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-attested-bus:6789eca7b4b23f86f16aff47aaa809c40d33c0a02b1e2807cd93360707723bf3",
+            "mmio-execution-binding:10bf121a4da957d6687f40c9fad0f2a924551d044261ccdabf6d953c6fbb4cd7",
+            "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+            "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+            "mmio-processor:206df7e0acf80750674c5867c415ea5c6590323a0a8687e205ce7ff09293bbf2",
+            "mmio-runtime:fd74003a0c0d2e49ff9b165ac606e2223d05b3be4bcb2ac4476067a6fc637a43",
+            "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+          ],
+          "source_kind": "firmware_mmio_static",
+          "transformation": "explicit_input"
+        }
+      ],
+      "reachability_status": "unknown",
+      "retirement_observation_ids": [
+        "mmio-processor:206df7e0acf80750674c5867c415ea5c6590323a0a8687e205ce7ff09293bbf2"
+      ],
+      "source_artifact_ids": [
+        "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+        "mmio-bridge-source:244d50f8f2e86d1b95ac26da807658dc95ad5b98ef643380bcc65dbc87937d4e",
+        "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c",
+        "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+      ]
+    },
+    "evidence": [
+      {
+        "analyzer": "ibex-rvfi-bus-semantic-bijection/v1",
+        "artifact_id": "mmio-bridge-source:244d50f8f2e86d1b95ac26da807658dc95ad5b98ef643380bcc65dbc87937d4e",
+        "epistemic_status": "derived",
+        "evidence_id": "mmio-attested-bus:6789eca7b4b23f86f16aff47aaa809c40d33c0a02b1e2807cd93360707723bf3",
+        "location": {
+          "address": 262148,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "deterministic_analyzer",
+        "summary": "Joint-bound bus observation reference."
+      },
+      {
+        "analyzer": "ibex-rvfi-bus-semantic-bijection/v1",
+        "artifact_id": "mmio-bridge-source:244d50f8f2e86d1b95ac26da807658dc95ad5b98ef643380bcc65dbc87937d4e",
+        "epistemic_status": "observed",
+        "evidence_id": "mmio-runtime:fd74003a0c0d2e49ff9b165ac606e2223d05b3be4bcb2ac4476067a6fc637a43",
+        "location": {
+          "address": 262148,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "deterministic_analyzer",
+        "summary": "Accepted/completed MMIO transaction observed."
+      },
+      {
+        "analyzer": "ibex-rvfi-bus-semantic-bijection/v1",
+        "artifact_id": "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c",
+        "epistemic_status": "derived",
+        "evidence_id": "mmio-execution-binding:10bf121a4da957d6687f40c9fad0f2a924551d044261ccdabf6d953c6fbb4cd7",
+        "location": {
+          "address": 1048720,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "deterministic_analyzer",
+        "summary": "BOUND static/processor/bus execution binding reference."
+      },
+      {
+        "analyzer": "ibex-rvfi-bus-semantic-bijection/v1",
+        "artifact_id": "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c",
+        "epistemic_status": "derived",
+        "evidence_id": "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+        "location": {
+          "address": 1048720,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "deterministic_analyzer",
+        "summary": "Joint execution evidence reference."
+      },
+      {
+        "analyzer": "ibex-rvfi-bus-semantic-bijection/v1",
+        "artifact_id": "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c",
+        "epistemic_status": "observed",
+        "evidence_id": "mmio-processor:206df7e0acf80750674c5867c415ea5c6590323a0a8687e205ce7ff09293bbf2",
+        "location": {
+          "address": 1048720,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "deterministic_analyzer",
+        "summary": "Source instruction runtime execution observed."
+      },
+      {
+        "analyzer": "rv32-lui-addi-lw-sw/v1",
+        "artifact_id": "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+        "epistemic_status": "derived",
+        "evidence_id": "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713",
+        "location": {
+          "address": 1048720,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "deterministic_analyzer",
+        "summary": "Resolved target MMIO instruction; static semantics only."
+      }
+    ],
+    "evidence_ids": [
+      "mmio-attested-bus:6789eca7b4b23f86f16aff47aaa809c40d33c0a02b1e2807cd93360707723bf3",
+      "mmio-execution-binding:10bf121a4da957d6687f40c9fad0f2a924551d044261ccdabf6d953c6fbb4cd7",
+      "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+      "mmio-processor:206df7e0acf80750674c5867c415ea5c6590323a0a8687e205ce7ff09293bbf2",
+      "mmio-runtime:fd74003a0c0d2e49ff9b165ac606e2223d05b3be4bcb2ac4476067a6fc637a43",
+      "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+    ],
+    "limitations": [
+      "An absent value constraint on a WRITE means unresolved, never a runtime-filled value.",
+      "Normal firmware behavior is not external control or a verified hardware trigger.",
+      "Static-only does not imply nonexecution; UNKNOWN/NOT_SAME never authorize execution evidence."
+    ],
+    "origin": {
+      "evidence_ids": [
+        "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+      ],
+      "finding_ids": [],
+      "kind": "normal_behavior",
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+          ],
+          "source_kind": "firmware_mmio_static",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+          ],
+          "source_kind": "firmware_mmio_static",
+          "transformation": "explicit_input"
+        }
+      ],
+      "source_artifact_ids": [
+        "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+        "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+      ]
+    },
+    "primitives": [
+      {
+        "architecture": "riscv",
+        "basis": "static_instruction",
+        "condition_ids": [
+          "condition:mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+        ],
+        "constraint_ids": [
+          "access_width:mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713",
+          "address:mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713",
+          "resource:mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713",
+          "value:mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+        ],
+        "control": {
+          "dimensions": [],
+          "evidence_ids": [
+            "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+          ],
+          "provenance": [
+            {
+              "source_artifact_ids": [
+                "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+              ],
+              "source_ids": [
+                "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+                "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+              ],
+              "source_kind": "firmware_mmio_static",
+              "transformation": "explicit_input"
+            },
+            {
+              "source_artifact_ids": [
+                "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+              ],
+              "source_ids": [
+                "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+                "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+              ],
+              "source_kind": "firmware_mmio_static",
+              "transformation": "explicit_input"
+            }
+          ],
+          "source_artifact_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+          ],
+          "status": "not_established",
+          "support_basis": "not_established"
+        },
+        "entry_id": "entry:mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713",
+        "evidence_ids": [
+          "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+        ],
+        "formalization_status": "formalized",
+        "instruction_sequence": [
+          "23a26200"
+        ],
+        "kind": "MMIO_WRITE",
+        "primitive_id": "primitive:mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          }
+        ],
+        "retirement_observation_ids": [],
+        "source_artifact_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+        ],
+        "source_pc": 1048720,
+        "source_registers": [
+          "x5",
+          "x6"
+        ],
+        "target_status": "not_applicable",
+        "transfer_kind": null
+      }
+    ],
+    "provenance": [
+      {
+        "source_artifact_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+        ],
+        "source_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-attested-bus:6789eca7b4b23f86f16aff47aaa809c40d33c0a02b1e2807cd93360707723bf3",
+          "mmio-execution-binding:10bf121a4da957d6687f40c9fad0f2a924551d044261ccdabf6d953c6fbb4cd7",
+          "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+          "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+          "mmio-processor:206df7e0acf80750674c5867c415ea5c6590323a0a8687e205ce7ff09293bbf2",
+          "mmio-runtime:fd74003a0c0d2e49ff9b165ac606e2223d05b3be4bcb2ac4476067a6fc637a43",
+          "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+        ],
+        "source_kind": "firmware_mmio_static",
+        "transformation": "explicit_input"
+      },
+      {
+        "source_artifact_ids": [
+          "mmio-bridge-source:244d50f8f2e86d1b95ac26da807658dc95ad5b98ef643380bcc65dbc87937d4e"
+        ],
+        "source_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-attested-bus:6789eca7b4b23f86f16aff47aaa809c40d33c0a02b1e2807cd93360707723bf3",
+          "mmio-execution-binding:10bf121a4da957d6687f40c9fad0f2a924551d044261ccdabf6d953c6fbb4cd7",
+          "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+          "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+          "mmio-processor:206df7e0acf80750674c5867c415ea5c6590323a0a8687e205ce7ff09293bbf2",
+          "mmio-runtime:fd74003a0c0d2e49ff9b165ac606e2223d05b3be4bcb2ac4476067a6fc637a43",
+          "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+        ],
+        "source_kind": "runtime_trace",
+        "transformation": "explicit_input"
+      },
+      {
+        "source_artifact_ids": [
+          "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c"
+        ],
+        "source_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-attested-bus:6789eca7b4b23f86f16aff47aaa809c40d33c0a02b1e2807cd93360707723bf3",
+          "mmio-execution-binding:10bf121a4da957d6687f40c9fad0f2a924551d044261ccdabf6d953c6fbb4cd7",
+          "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+          "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+          "mmio-processor:206df7e0acf80750674c5867c415ea5c6590323a0a8687e205ce7ff09293bbf2",
+          "mmio-runtime:fd74003a0c0d2e49ff9b165ac606e2223d05b3be4bcb2ac4476067a6fc637a43",
+          "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+        ],
+        "source_kind": "runtime_trace",
+        "transformation": "explicit_input"
+      },
+      {
+        "source_artifact_ids": [
+          "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+        ],
+        "source_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-attested-bus:6789eca7b4b23f86f16aff47aaa809c40d33c0a02b1e2807cd93360707723bf3",
+          "mmio-execution-binding:10bf121a4da957d6687f40c9fad0f2a924551d044261ccdabf6d953c6fbb4cd7",
+          "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+          "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+          "mmio-processor:206df7e0acf80750674c5867c415ea5c6590323a0a8687e205ce7ff09293bbf2",
+          "mmio-runtime:fd74003a0c0d2e49ff9b165ac606e2223d05b3be4bcb2ac4476067a6fc637a43",
+          "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+        ],
+        "source_kind": "firmware_mmio_static",
+        "transformation": "explicit_input"
+      }
+    ],
+    "retirement_evidence": [
+      {
+        "architecture": "riscv",
+        "cycle": 11,
+        "evidence_ids": [
+          "mmio-processor:206df7e0acf80750674c5867c415ea5c6590323a0a8687e205ce7ff09293bbf2"
+        ],
+        "instruction_encoding": "23a26200",
+        "interpretation": "source_instruction_retired_only",
+        "observation_id": "mmio-processor:206df7e0acf80750674c5867c415ea5c6590323a0a8687e205ce7ff09293bbf2",
+        "pc": 1048720,
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-attested-bus:6789eca7b4b23f86f16aff47aaa809c40d33c0a02b1e2807cd93360707723bf3",
+              "mmio-execution-binding:10bf121a4da957d6687f40c9fad0f2a924551d044261ccdabf6d953c6fbb4cd7",
+              "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+              "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+              "mmio-processor:206df7e0acf80750674c5867c415ea5c6590323a0a8687e205ce7ff09293bbf2",
+              "mmio-runtime:fd74003a0c0d2e49ff9b165ac606e2223d05b3be4bcb2ac4476067a6fc637a43",
+              "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+            ],
+            "source_kind": "runtime_trace",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c"
+        ],
+        "trace_line": 6
+      }
+    ],
+    "schema_version": "firmware-capability/v1",
+    "scope": {
+      "applicability": "specified_firmware_sites",
+      "assumptions": [
+        "Bounded static target map; execution evidence limited to its attested joint run."
+      ],
+      "evidence_ids": [
+        "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+      ],
+      "firmware_artifact_ids": [
+        "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+      ],
+      "formalization_status": "partially_formalized",
+      "function_ids": [],
+      "known_limitations": [],
+      "origin_kind": "normal_behavior",
+      "platform_id": "mmio-map:e702cd0222bbe54fd79f7f9f541bdf9c7448ddffa438e7eb4b1fb3b396ec5da9",
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+          ],
+          "source_kind": "firmware_mmio_static",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-static:d02ec676264734ee5cc6980a4f866cda07553756ea063091cfa30dc9a5372713"
+          ],
+          "source_kind": "firmware_mmio_static",
+          "transformation": "explicit_input"
+        }
+      ],
+      "site_pcs": [
+        1048720
+      ],
+      "source_artifact_ids": [
+        "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+        "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+      ],
+      "target": {
+        "architecture": "riscv",
+        "endianness": "little",
+        "firmware_id": "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254",
+        "isa_variant": null,
+        "processor_id": "mmio-map:e702cd0222bbe54fd79f7f9f541bdf9c7448ddffa438e7eb4b1fb3b396ec5da9",
+        "word_size_bits": 32
+      },
+      "unmodeled_aspects": [
+        "attack_chain",
+        "deviation_verification",
+        "external_input_control",
+        "general_path_feasibility",
+        "hardware_trigger"
+      ]
+    },
+    "source_artifact_ids": [
+      "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+      "mmio-bridge-source:244d50f8f2e86d1b95ac26da807658dc95ad5b98ef643380bcc65dbc87937d4e",
+      "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c",
+      "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+    ],
+    "source_artifacts": [
+      {
+        "artifact_id": "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+        "hash_kind": "file_bytes",
+        "sha256": "56c498d1d27456f7cb5db0a7a7fa63bc07ef7f8a6a5d1dd303cf74f146aa3d7e",
+        "source_kind": "firmware_mmio_static"
+      },
+      {
+        "artifact_id": "mmio-bridge-source:244d50f8f2e86d1b95ac26da807658dc95ad5b98ef643380bcc65dbc87937d4e",
+        "hash_kind": "file_bytes",
+        "sha256": "7c2b4822bfed95f27046935e81b2ead796ef6c884d5483f56640aa2251d2d13c",
+        "source_kind": "runtime_trace"
+      },
+      {
+        "artifact_id": "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c",
+        "hash_kind": "file_bytes",
+        "sha256": "3bf33502c710e859fdf7c046dbf5de5c209ebdfb54fda6262d50522e668d2d89",
+        "source_kind": "runtime_trace"
+      },
+      {
+        "artifact_id": "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254",
+        "hash_kind": "file_bytes",
+        "sha256": "42fe38fb5c106242c81797ece513b5ef86fc453d2ef63299514d1e98e9c06641",
+        "source_kind": "firmware_mmio_static"
+      }
+    ],
+    "source_case_id": null
+  },
+  {
+    "architecture": "riscv",
+    "capability_id": "fwcap:c45a41e91ace729baf76d915bb1ec207c21cc8316f1999c784a5d8f898396dfa",
+    "capability_sha256": "c45a41e91ace729baf76d915bb1ec207c21cc8316f1999c784a5d8f898396dfa",
+    "conditions": [
+      {
+        "condition_id": "condition:mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21",
+        "condition_kind": "path",
+        "description": "Execution reaching this site is not established for arbitrary inputs or future runs.",
+        "evidence_ids": [
+          "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+        ],
+        "formalization_status": "unknown",
+        "predicate": null,
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "constraint_id": "resource:mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21",
+        "evidence_ids": [
+          "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+        ],
+        "formalization_status": "formalized",
+        "identity": "mmio-map:e702cd0222bbe54fd79f7f9f541bdf9c7448ddffa438e7eb4b1fb3b396ec5da9",
+        "kind": "target_resource",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          }
+        ],
+        "resource_kind": "mmio",
+        "source_artifact_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+        ]
+      },
+      {
+        "constraint_id": "address:mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21",
+        "domain": {
+          "bit_width": 32,
+          "controlled_bits": null,
+          "exact": 262152,
+          "mask": null,
+          "masked_value": null,
+          "maximum": null,
+          "minimum": null
+        },
+        "evidence_ids": [
+          "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+        ],
+        "formalization_status": "formalized",
+        "kind": "address",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+        ]
+      },
+      {
+        "constraint_id": "access_width:mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21",
+        "domain": {
+          "bit_width": 32,
+          "controlled_bits": null,
+          "exact": 32,
+          "mask": null,
+          "masked_value": null,
+          "maximum": null,
+          "minimum": null
+        },
+        "evidence_ids": [
+          "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+        ],
+        "formalization_status": "formalized",
+        "kind": "access_width",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+        ]
+      }
+    ],
+    "entry": {
+      "entry_id": "entry:mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21",
+      "entry_kind": "code_site",
+      "evidence_ids": [
+        "mmio-attested-bus:8f3b4d3937ede98cc7e17da68fcbc7a94b92206ed05bfeb596f69255f211b505",
+        "mmio-execution-binding:9c8d56d3e93c26b0f7b0614af8452247086d3a4f1f4d9fe553220b94914c1a11",
+        "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+        "mmio-processor:5a08ff118915e89d794249b5bed14b0d616995e418cc2694ba80db6e1da04dbf",
+        "mmio-runtime:4da80fe59ed1aaaa3e76f01a7ae189626655dda2c56650aef8536980e45ae792",
+        "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+      ],
+      "execution_status": "source_instruction_retired",
+      "formalization_status": "formalized",
+      "function_id": null,
+      "function_name": null,
+      "interface_id": null,
+      "ownership_status": "unknown",
+      "pc": 1048724,
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-attested-bus:8f3b4d3937ede98cc7e17da68fcbc7a94b92206ed05bfeb596f69255f211b505",
+            "mmio-execution-binding:9c8d56d3e93c26b0f7b0614af8452247086d3a4f1f4d9fe553220b94914c1a11",
+            "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+            "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+            "mmio-processor:5a08ff118915e89d794249b5bed14b0d616995e418cc2694ba80db6e1da04dbf",
+            "mmio-runtime:4da80fe59ed1aaaa3e76f01a7ae189626655dda2c56650aef8536980e45ae792",
+            "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+          ],
+          "source_kind": "firmware_mmio_static",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "mmio-bridge-source:244d50f8f2e86d1b95ac26da807658dc95ad5b98ef643380bcc65dbc87937d4e"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-attested-bus:8f3b4d3937ede98cc7e17da68fcbc7a94b92206ed05bfeb596f69255f211b505",
+            "mmio-execution-binding:9c8d56d3e93c26b0f7b0614af8452247086d3a4f1f4d9fe553220b94914c1a11",
+            "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+            "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+            "mmio-processor:5a08ff118915e89d794249b5bed14b0d616995e418cc2694ba80db6e1da04dbf",
+            "mmio-runtime:4da80fe59ed1aaaa3e76f01a7ae189626655dda2c56650aef8536980e45ae792",
+            "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+          ],
+          "source_kind": "runtime_trace",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-attested-bus:8f3b4d3937ede98cc7e17da68fcbc7a94b92206ed05bfeb596f69255f211b505",
+            "mmio-execution-binding:9c8d56d3e93c26b0f7b0614af8452247086d3a4f1f4d9fe553220b94914c1a11",
+            "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+            "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+            "mmio-processor:5a08ff118915e89d794249b5bed14b0d616995e418cc2694ba80db6e1da04dbf",
+            "mmio-runtime:4da80fe59ed1aaaa3e76f01a7ae189626655dda2c56650aef8536980e45ae792",
+            "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+          ],
+          "source_kind": "runtime_trace",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-attested-bus:8f3b4d3937ede98cc7e17da68fcbc7a94b92206ed05bfeb596f69255f211b505",
+            "mmio-execution-binding:9c8d56d3e93c26b0f7b0614af8452247086d3a4f1f4d9fe553220b94914c1a11",
+            "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+            "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+            "mmio-processor:5a08ff118915e89d794249b5bed14b0d616995e418cc2694ba80db6e1da04dbf",
+            "mmio-runtime:4da80fe59ed1aaaa3e76f01a7ae189626655dda2c56650aef8536980e45ae792",
+            "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+          ],
+          "source_kind": "firmware_mmio_static",
+          "transformation": "explicit_input"
+        }
+      ],
+      "reachability_status": "unknown",
+      "retirement_observation_ids": [
+        "mmio-processor:5a08ff118915e89d794249b5bed14b0d616995e418cc2694ba80db6e1da04dbf"
+      ],
+      "source_artifact_ids": [
+        "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+        "mmio-bridge-source:244d50f8f2e86d1b95ac26da807658dc95ad5b98ef643380bcc65dbc87937d4e",
+        "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c",
+        "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+      ]
+    },
+    "evidence": [
+      {
+        "analyzer": "ibex-rvfi-bus-semantic-bijection/v1",
+        "artifact_id": "mmio-bridge-source:244d50f8f2e86d1b95ac26da807658dc95ad5b98ef643380bcc65dbc87937d4e",
+        "epistemic_status": "derived",
+        "evidence_id": "mmio-attested-bus:8f3b4d3937ede98cc7e17da68fcbc7a94b92206ed05bfeb596f69255f211b505",
+        "location": {
+          "address": 262152,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "deterministic_analyzer",
+        "summary": "Joint-bound bus observation reference."
+      },
+      {
+        "analyzer": "ibex-rvfi-bus-semantic-bijection/v1",
+        "artifact_id": "mmio-bridge-source:244d50f8f2e86d1b95ac26da807658dc95ad5b98ef643380bcc65dbc87937d4e",
+        "epistemic_status": "observed",
+        "evidence_id": "mmio-runtime:4da80fe59ed1aaaa3e76f01a7ae189626655dda2c56650aef8536980e45ae792",
+        "location": {
+          "address": 262152,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "deterministic_analyzer",
+        "summary": "Accepted/completed MMIO transaction observed."
+      },
+      {
+        "analyzer": "ibex-rvfi-bus-semantic-bijection/v1",
+        "artifact_id": "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c",
+        "epistemic_status": "derived",
+        "evidence_id": "mmio-execution-binding:9c8d56d3e93c26b0f7b0614af8452247086d3a4f1f4d9fe553220b94914c1a11",
+        "location": {
+          "address": 1048724,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "deterministic_analyzer",
+        "summary": "BOUND static/processor/bus execution binding reference."
+      },
+      {
+        "analyzer": "ibex-rvfi-bus-semantic-bijection/v1",
+        "artifact_id": "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c",
+        "epistemic_status": "derived",
+        "evidence_id": "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+        "location": {
+          "address": 1048724,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "deterministic_analyzer",
+        "summary": "Joint execution evidence reference."
+      },
+      {
+        "analyzer": "ibex-rvfi-bus-semantic-bijection/v1",
+        "artifact_id": "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c",
+        "epistemic_status": "observed",
+        "evidence_id": "mmio-processor:5a08ff118915e89d794249b5bed14b0d616995e418cc2694ba80db6e1da04dbf",
+        "location": {
+          "address": 1048724,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "deterministic_analyzer",
+        "summary": "Source instruction runtime execution observed."
+      },
+      {
+        "analyzer": "rv32-lui-addi-lw-sw/v1",
+        "artifact_id": "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+        "epistemic_status": "derived",
+        "evidence_id": "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21",
+        "location": {
+          "address": 1048724,
+          "basic_block": null,
+          "bit_range": null,
+          "function": null,
+          "instruction_index": null,
+          "line": null,
+          "register_name": null,
+          "signal": null,
+          "time": null
+        },
+        "source_type": "deterministic_analyzer",
+        "summary": "Resolved target MMIO instruction; static semantics only."
+      }
+    ],
+    "evidence_ids": [
+      "mmio-attested-bus:8f3b4d3937ede98cc7e17da68fcbc7a94b92206ed05bfeb596f69255f211b505",
+      "mmio-execution-binding:9c8d56d3e93c26b0f7b0614af8452247086d3a4f1f4d9fe553220b94914c1a11",
+      "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+      "mmio-processor:5a08ff118915e89d794249b5bed14b0d616995e418cc2694ba80db6e1da04dbf",
+      "mmio-runtime:4da80fe59ed1aaaa3e76f01a7ae189626655dda2c56650aef8536980e45ae792",
+      "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+    ],
+    "limitations": [
+      "An absent value constraint on a WRITE means unresolved, never a runtime-filled value.",
+      "Normal firmware behavior is not external control or a verified hardware trigger.",
+      "Static-only does not imply nonexecution; UNKNOWN/NOT_SAME never authorize execution evidence."
+    ],
+    "origin": {
+      "evidence_ids": [
+        "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+      ],
+      "finding_ids": [],
+      "kind": "normal_behavior",
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+          ],
+          "source_kind": "firmware_mmio_static",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+          ],
+          "source_kind": "firmware_mmio_static",
+          "transformation": "explicit_input"
+        }
+      ],
+      "source_artifact_ids": [
+        "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+        "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+      ]
+    },
+    "primitives": [
+      {
+        "architecture": "riscv",
+        "basis": "static_instruction",
+        "condition_ids": [
+          "condition:mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+        ],
+        "constraint_ids": [
+          "access_width:mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21",
+          "address:mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21",
+          "resource:mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+        ],
+        "control": {
+          "dimensions": [],
+          "evidence_ids": [
+            "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+          ],
+          "provenance": [
+            {
+              "source_artifact_ids": [
+                "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+              ],
+              "source_ids": [
+                "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+                "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+              ],
+              "source_kind": "firmware_mmio_static",
+              "transformation": "explicit_input"
+            },
+            {
+              "source_artifact_ids": [
+                "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+              ],
+              "source_ids": [
+                "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+                "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+              ],
+              "source_kind": "firmware_mmio_static",
+              "transformation": "explicit_input"
+            }
+          ],
+          "source_artifact_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+          ],
+          "status": "not_established",
+          "support_basis": "not_established"
+        },
+        "entry_id": "entry:mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21",
+        "evidence_ids": [
+          "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+        ],
+        "formalization_status": "formalized",
+        "instruction_sequence": [
+          "83a38200"
+        ],
+        "kind": "MMIO_READ",
+        "primitive_id": "primitive:mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21",
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          },
+          {
+            "source_artifact_ids": [
+              "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+            ],
+            "source_kind": "firmware_mmio_static",
+            "transformation": "explicit_input"
+          }
+        ],
+        "retirement_observation_ids": [],
+        "source_artifact_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+        ],
+        "source_pc": 1048724,
+        "source_registers": [
+          "x5"
+        ],
+        "target_status": "not_applicable",
+        "transfer_kind": null
+      }
+    ],
+    "provenance": [
+      {
+        "source_artifact_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+        ],
+        "source_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-attested-bus:8f3b4d3937ede98cc7e17da68fcbc7a94b92206ed05bfeb596f69255f211b505",
+          "mmio-execution-binding:9c8d56d3e93c26b0f7b0614af8452247086d3a4f1f4d9fe553220b94914c1a11",
+          "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+          "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+          "mmio-processor:5a08ff118915e89d794249b5bed14b0d616995e418cc2694ba80db6e1da04dbf",
+          "mmio-runtime:4da80fe59ed1aaaa3e76f01a7ae189626655dda2c56650aef8536980e45ae792",
+          "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+        ],
+        "source_kind": "firmware_mmio_static",
+        "transformation": "explicit_input"
+      },
+      {
+        "source_artifact_ids": [
+          "mmio-bridge-source:244d50f8f2e86d1b95ac26da807658dc95ad5b98ef643380bcc65dbc87937d4e"
+        ],
+        "source_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-attested-bus:8f3b4d3937ede98cc7e17da68fcbc7a94b92206ed05bfeb596f69255f211b505",
+          "mmio-execution-binding:9c8d56d3e93c26b0f7b0614af8452247086d3a4f1f4d9fe553220b94914c1a11",
+          "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+          "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+          "mmio-processor:5a08ff118915e89d794249b5bed14b0d616995e418cc2694ba80db6e1da04dbf",
+          "mmio-runtime:4da80fe59ed1aaaa3e76f01a7ae189626655dda2c56650aef8536980e45ae792",
+          "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+        ],
+        "source_kind": "runtime_trace",
+        "transformation": "explicit_input"
+      },
+      {
+        "source_artifact_ids": [
+          "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c"
+        ],
+        "source_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-attested-bus:8f3b4d3937ede98cc7e17da68fcbc7a94b92206ed05bfeb596f69255f211b505",
+          "mmio-execution-binding:9c8d56d3e93c26b0f7b0614af8452247086d3a4f1f4d9fe553220b94914c1a11",
+          "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+          "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+          "mmio-processor:5a08ff118915e89d794249b5bed14b0d616995e418cc2694ba80db6e1da04dbf",
+          "mmio-runtime:4da80fe59ed1aaaa3e76f01a7ae189626655dda2c56650aef8536980e45ae792",
+          "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+        ],
+        "source_kind": "runtime_trace",
+        "transformation": "explicit_input"
+      },
+      {
+        "source_artifact_ids": [
+          "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+        ],
+        "source_ids": [
+          "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+          "mmio-attested-bus:8f3b4d3937ede98cc7e17da68fcbc7a94b92206ed05bfeb596f69255f211b505",
+          "mmio-execution-binding:9c8d56d3e93c26b0f7b0614af8452247086d3a4f1f4d9fe553220b94914c1a11",
+          "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+          "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+          "mmio-processor:5a08ff118915e89d794249b5bed14b0d616995e418cc2694ba80db6e1da04dbf",
+          "mmio-runtime:4da80fe59ed1aaaa3e76f01a7ae189626655dda2c56650aef8536980e45ae792",
+          "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+        ],
+        "source_kind": "firmware_mmio_static",
+        "transformation": "explicit_input"
+      }
+    ],
+    "retirement_evidence": [
+      {
+        "architecture": "riscv",
+        "cycle": 13,
+        "evidence_ids": [
+          "mmio-processor:5a08ff118915e89d794249b5bed14b0d616995e418cc2694ba80db6e1da04dbf"
+        ],
+        "instruction_encoding": "83a38200",
+        "interpretation": "source_instruction_retired_only",
+        "observation_id": "mmio-processor:5a08ff118915e89d794249b5bed14b0d616995e418cc2694ba80db6e1da04dbf",
+        "pc": 1048724,
+        "provenance": [
+          {
+            "source_artifact_ids": [
+              "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c"
+            ],
+            "source_ids": [
+              "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+              "mmio-attested-bus:8f3b4d3937ede98cc7e17da68fcbc7a94b92206ed05bfeb596f69255f211b505",
+              "mmio-execution-binding:9c8d56d3e93c26b0f7b0614af8452247086d3a4f1f4d9fe553220b94914c1a11",
+              "mmio-execution-bridges:c0e94c39906649cefbf394c888f75b54e86f9014283fbae07903aaf9f84815fe",
+              "mmio-joint-run:d713c57f0829e716556a750724b3c537fd47c4ca34df8963b12149b831edf3d6",
+              "mmio-processor:5a08ff118915e89d794249b5bed14b0d616995e418cc2694ba80db6e1da04dbf",
+              "mmio-runtime:4da80fe59ed1aaaa3e76f01a7ae189626655dda2c56650aef8536980e45ae792",
+              "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+            ],
+            "source_kind": "runtime_trace",
+            "transformation": "explicit_input"
+          }
+        ],
+        "source_artifact_ids": [
+          "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c"
+        ],
+        "trace_line": 7
+      }
+    ],
+    "schema_version": "firmware-capability/v1",
+    "scope": {
+      "applicability": "specified_firmware_sites",
+      "assumptions": [
+        "Bounded static target map; execution evidence limited to its attested joint run."
+      ],
+      "evidence_ids": [
+        "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+      ],
+      "firmware_artifact_ids": [
+        "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+      ],
+      "formalization_status": "partially_formalized",
+      "function_ids": [],
+      "known_limitations": [],
+      "origin_kind": "normal_behavior",
+      "platform_id": "mmio-map:e702cd0222bbe54fd79f7f9f541bdf9c7448ddffa438e7eb4b1fb3b396ec5da9",
+      "provenance": [
+        {
+          "source_artifact_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+          ],
+          "source_kind": "firmware_mmio_static",
+          "transformation": "explicit_input"
+        },
+        {
+          "source_artifact_ids": [
+            "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+          ],
+          "source_ids": [
+            "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+            "mmio-static:72d9eee963f5fe246380f959c72e20d16b1a4dbb6090152fca2753632b969a21"
+          ],
+          "source_kind": "firmware_mmio_static",
+          "transformation": "explicit_input"
+        }
+      ],
+      "site_pcs": [
+        1048724
+      ],
+      "source_artifact_ids": [
+        "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+        "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+      ],
+      "target": {
+        "architecture": "riscv",
+        "endianness": "little",
+        "firmware_id": "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254",
+        "isa_variant": null,
+        "processor_id": "mmio-map:e702cd0222bbe54fd79f7f9f541bdf9c7448ddffa438e7eb4b1fb3b396ec5da9",
+        "word_size_bits": 32
+      },
+      "unmodeled_aspects": [
+        "attack_chain",
+        "deviation_verification",
+        "external_input_control",
+        "general_path_feasibility",
+        "hardware_trigger"
+      ]
+    },
+    "source_artifact_ids": [
+      "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+      "mmio-bridge-source:244d50f8f2e86d1b95ac26da807658dc95ad5b98ef643380bcc65dbc87937d4e",
+      "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c",
+      "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254"
+    ],
+    "source_artifacts": [
+      {
+        "artifact_id": "fwmmio-static:049287cc59e8c8be32c4f1fcf61b5a125833e3a173509573a098af35cb2ba2fa",
+        "hash_kind": "file_bytes",
+        "sha256": "56c498d1d27456f7cb5db0a7a7fa63bc07ef7f8a6a5d1dd303cf74f146aa3d7e",
+        "source_kind": "firmware_mmio_static"
+      },
+      {
+        "artifact_id": "mmio-bridge-source:244d50f8f2e86d1b95ac26da807658dc95ad5b98ef643380bcc65dbc87937d4e",
+        "hash_kind": "file_bytes",
+        "sha256": "7c2b4822bfed95f27046935e81b2ead796ef6c884d5483f56640aa2251d2d13c",
+        "source_kind": "runtime_trace"
+      },
+      {
+        "artifact_id": "mmio-bridge-source:cf572ec9fd182f5340d11f8d41303fa795c14a1b7a7e100fc026b2e5f743386c",
+        "hash_kind": "file_bytes",
+        "sha256": "3bf33502c710e859fdf7c046dbf5de5c209ebdfb54fda6262d50522e668d2d89",
+        "source_kind": "runtime_trace"
+      },
+      {
+        "artifact_id": "mmio-firmware:79c0b57bcbacf47067d4a84fc74dec924290f686948e57bd94dad4a25ca94254",
+        "hash_kind": "file_bytes",
+        "sha256": "42fe38fb5c106242c81797ece513b5ef86fc453d2ef63299514d1e98e9c06641",
+        "source_kind": "firmware_mmio_static"
+      }
+    ],
+    "source_case_id": null
+  }
+]

@@ -11,8 +11,8 @@ from chipchain.firmware import mmio_grounding as b1
 from chipchain.firmware.mmio_capability import materialize_mmio
 from chipchain.hardware import behavior_contract as hw
 from chipchain.cross_layer import type2_verifier as v
-from tests.integration import test_syn_e2e1_bridge1 as frozen_bridge
-from tests.integration import test_syn_e2e1_b1_mmio_grounding as frozen_b1
+from tests.integration import test_execution_bridge_local as frozen_bridge
+from tests.integration import test_historical_boundaries_local as frozen_b1
 
 ROOT=Path(__file__).resolve().parents[2]
 A=ROOT/'output/syn-e2e1-a/experiment-tn2kt3tu'
@@ -131,6 +131,11 @@ def evaluate():
 
 def test_real_golden_p1_n1_n2_u1():
     p1,n1,u1=evaluate()
+    assert (p1.result_id,n1.result_id,p1.reference_control.verification_id,u1.result_id)==(
+        'type2-verification:9c7ef89582f89727fcacdb6b8bb7334ba79733c4182a6e7b341ba324e2fa6b82',
+        'type2-verification:7dc13746b7067f7ce4adf6cc11ba8eeeb01a3b2582b7a2456b005704772477e7',
+        'type2-reference-control:2d1ae9b25f06e6009e54b2081253ad93da1b3f8c1d91e942fd4ef6ed7dea28ab',
+        'type2-verification:21db55b0e4ddb2f545e57ebb731f09bd7bd1b6b465dbe4c63f4c49bd07dd526a')
     assert (p1.trigger.status,p1.deviation.status,p1.observation.status,p1.differential.status,p1.final_status)==(
         'supported','supported','supported','supported','verified_controlled_type2_chain')
     assert {x.status for x in p1.trigger.conditions}=={'supported'}

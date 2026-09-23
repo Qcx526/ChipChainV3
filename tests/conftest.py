@@ -1,14 +1,11 @@
 """Synthetic fixtures and a suite-wide offline execution boundary."""
 
 import os
-from pathlib import Path
 import socket
 import subprocess
-from collections.abc import Callable, Iterator
+from collections.abc import Iterator
 
 import pytest
-
-from chipchain.domain.case import CaseBundle
 
 # Set before importing any workflow: ambient tracing must not create network traffic.
 os.environ["LANGSMITH_TRACING"] = "false"
@@ -32,12 +29,3 @@ def offline_only(monkeypatch: pytest.MonkeyPatch) -> Iterator[None]:
                  "DEEPSEEK_API_KEY", "CHIPCHAIN_ENABLE_REAL_LLM"):
         monkeypatch.delenv(name, raising=False)
     yield
-
-
-@pytest.fixture
-def load_case() -> Callable[[str], CaseBundle]:
-    def load(name: str) -> CaseBundle:
-        path = Path(__file__).parents[1] / "examples" / "cases" / f"{name}.json"
-        return CaseBundle.model_validate_json(path.read_text())
-
-    return load

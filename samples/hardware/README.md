@@ -1,15 +1,5 @@
 # Hardware input workspace
 
-此目录用于真实硬件侧研究输入，例如 ProcessorFuzz SI、testcase ELF、ISA/RTL trace、
-register/CSR snapshot、exception records 和 divergence results。
-建议按 `hw-case-001/` 等样本子目录组织，不强制内部格式。
+Use this Git-ignored directory for local hardware research inputs such as RTL sources, traces, simulator logs or future SI artifacts. The current controlled Type-II CLI does not parse arbitrary raw hardware files; it consumes an existing canonical hardware behavior contract and provenance-bound run artifacts through an explicit manifest.
 
-实际数据默认被 Git 忽略；这里不放 synthetic fixtures，也不实现 parser。
-synthetic examples/tests 位于 repository 的 `examples/` 与 `tests/`。
-
-paired CaseBundle 同时引用硬件与固件 artifact，不必复制样本到 cross_layer 目录。
-此目录只是工作区约定，ArtifactRef 也可引用仓库外的只读材料。
-
-当前本地已填充 `ibex-simple-system/`（源码、shim、simulator）和
-`encorpus/ibex/driver/743/`、`820/`；这些数据被 Git 忽略。
-目录清单、case views 与验证命令见 [workspace 清单](../README.md)。
+Keep real inputs out of `examples/`. Artifact paths may refer to external read-only locations; this directory is a convention, not a domain restriction.

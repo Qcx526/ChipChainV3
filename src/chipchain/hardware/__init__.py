@@ -1,4 +1,4 @@
-"""Additive hardware behavior requirements; current workflows do not consume XL1."""
+"""Specification-backed hardware behavior contracts."""
 from .behavior_contract import (
     HardwareBehaviorContract, HardwareBehaviorContractInput,
     build_hardware_behavior_contract, formalization_summary,
