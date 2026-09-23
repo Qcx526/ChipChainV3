@@ -21,7 +21,7 @@ Positive = Annotated[int, Field(strict=True, gt=0)]
 Formalization = Literal['formalized', 'partially_formalized', 'unformalized', 'unknown']
 OriginKind = Literal['normal_behavior', 'vulnerability_derived', 'manual_research_input', 'synthetic_fixture', 'unknown']
 SourceKind = Literal['firmware_a6', 'firmware_a5', 'firmware_a4', 'processor_behavior_ir',
-                     'runtime_trace', 'fuzzware_observation', 'firmware_vulnerability_record',
+                     'runtime_trace', 'firmware_mmio_static', 'fuzzware_observation', 'firmware_vulnerability_record',
                      'manual_research_input', 'synthetic_fixture']
 
 
