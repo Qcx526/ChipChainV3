@@ -4,5 +4,6 @@ Upstream revision: https://github.com/NationalSecurityAgency/ghidra/commit/d6192
 Original upstream archive: unavailable; no original download archive was present.
 Local reproducible bundle: tools/ghidra/ghidra_12.3_DEV-local.tar.gz (Git-ignored)
 Local bundle SHA256: ac63353b6c7f5d1cda033e6003e96dedd85e19ba1aabb89f62575ad29e65456e
+chipchain_release_asset_url=https://github.com/Qcx526/ChipChainV3/releases/download/v3-ghidra-setup-stable/ghidra_12.3_DEV-local.tar.gz
 Installed file manifest: tools/ghidra/SHA256SUMS (5459 files)
 Installed file manifest SHA256: b670f0ce7d652175a3adeb5427cfe5b65327aa859c42613b759f3bf3ad76bb1a

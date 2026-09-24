@@ -37,23 +37,29 @@ The verifier returns `supported`, `contradicted`, or `unknown` for the component
 
 Python 3.11+ is required by `pyproject.toml`. On some Ubuntu systems, `python3` is Python 3.10; [setup_env.sh](scripts/setup_env.sh) checks the actual interpreter version, searches for a compatible Python, creates or reuses `.venv`, upgrades pip **inside that environment**, and installs ChipChain editable. Upgrading pip does not upgrade Python. Use `--python /path/to/python` to select an interpreter, `--verify-only` to inspect the existing environment without changing it, or `--with-test` for test dependencies. An incompatible existing environment is preserved unless you explicitly use `--recreate` with a compatible replacement interpreter.
 
-The Type-II replay needs only the package and deterministic dependencies. Fresh raw-ELF `firmware analyze` uses pinned Ghidra 12.3 DEV and Java 25. The project installation is `tools/ghidra/install/`; its [pinned metadata and setup instructions](tools/ghidra/README.md) are tracked while the large distribution is ignored. The original upstream archive is unavailable; provide a local copy of the pinned distribution. The script does not download it or install Java.
+The Type-II replay needs only the package and deterministic dependencies. Fresh raw-ELF `firmware analyze` uses pinned Ghidra 12.3 DEV and Java 25. The project installation is `tools/ghidra/install/`; its [pinned metadata and setup instructions](tools/ghidra/README.md) are tracked while the large distribution is ignored. The original upstream archive was unavailable when the local bundle was made. The default setup now downloads that pinned bundle from a ChipChain GitHub Release when no installation or cache exists; it does not install Java.
 
-For a fresh clone of current `main`, use a locally supplied Ghidra archive:
+For an online fresh clone of current `main`:
 
 ```bash
 git clone https://github.com/Qcx526/ChipChainV3.git
 cd ChipChainV3
 ./scripts/setup_env.sh
 source .venv/bin/activate
-./scripts/setup_ghidra.sh --archive /path/to/pinned-ghidra.tar.gz
-./scripts/setup_ghidra.sh --verify-only
+./scripts/setup_ghidra.sh
 chipchain firmware analyze \
   --elf samples/firmware/riscv/sample.elf \
   --output output/firmware-smoke-test
 ```
 
-The published `v3-ghidra-setup-stable` tag predates `setup_env.sh`; use a revision containing this script until a new environment-setup tag is published.
+For an offline machine, provide the pinned archive explicitly:
+
+```bash
+./scripts/setup_ghidra.sh --offline --archive /media/usb/ghidra_12.3_DEV-local.tar.gz
+./scripts/setup_ghidra.sh --verify-only
+```
+
+`--offline` never accesses the network. The default download and every installation still require the pinned archive digest (for the canonical bundle name), Ghidra version/revision and the complete installed-file SHA256 manifest. Release hosting does not change the provenance or evidence checks. The published `v3-ghidra-setup-stable` tag predates `setup_env.sh`; use a revision containing both scripts until a newer tag is published.
 
 The tracked [canonical demo artifacts](artifacts/demo) can be inspected without Ghidra. To run new raw-ELF static analysis, install and verify the pinned Ghidra distribution first. `--ghidra-home /explicit/path` remains available for an explicitly managed installation.
 

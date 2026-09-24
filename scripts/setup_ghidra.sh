@@ -6,14 +6,18 @@ metadata_dir="$repo_root/tools/ghidra"
 install_dir="$metadata_dir/install"
 archive=""
 verify_only=false
+offline=false
 
 usage() {
   cat <<'EOF'
-Usage: ./scripts/setup_ghidra.sh [--verify-only] [--archive PATH] [--install-dir PATH]
+Usage: ./scripts/setup_ghidra.sh [--verify-only] [--offline] [--archive PATH]
+                                [--install-dir PATH]
 
 Verify the pinned project-managed Ghidra installation, or install it from a
-local archive. Relative paths are resolved from the current directory for
---archive and from the repository root for --install-dir. No download occurs.
+local archive. When no installation, archive or cache exists, download the
+pinned ChipChain Release asset unless --offline is set. Relative paths are
+resolved from the current directory for --archive and from the repository
+root for --install-dir.
 EOF
 }
 
@@ -26,6 +30,7 @@ while (($#)); do
   case "$1" in
     --help|-h) usage; exit 0 ;;
     --verify-only) verify_only=true; shift ;;
+    --offline) offline=true; shift ;;
     --archive|--install-dir)
       option=$1
       (($# >= 2)) || fail "$option requires a path."
@@ -75,12 +80,16 @@ done < "$version_file"
   fail "Malformed pinned version metadata: $version_file"
 
 bundle_sha=""
+release_url=""
 while IFS= read -r line || [[ -n $line ]]; do
   case "$line" in
     'Local bundle SHA256: '*) bundle_sha=${line#'Local bundle SHA256: '} ;;
+    chipchain_release_asset_url=*) release_url=${line#*=} ;;
   esac
 done < "$source_file"
 [[ $bundle_sha =~ ^[0-9a-f]{64}$ ]] || fail "Missing local bundle SHA256 in $source_file"
+[[ $release_url =~ ^https://[^[:space:]]+$ && ${release_url##*/} == ghidra_12.3_DEV-local.tar.gz ]] ||
+  fail "Missing or invalid HTTPS ChipChain release asset URL in $source_file"
 
 printf '[ChipChain] Repository: %s\n' "$repo_root"
 printf '[ChipChain] Required Java: >=%s\n' "$minimum_java"
@@ -160,16 +169,60 @@ if $verify_only; then
   fail "Ghidra is not installed at $install_dir. Provide the pinned local distribution with: ./scripts/setup_ghidra.sh --archive /path/to/archive.tar.gz (see tools/ghidra/README.md)."
 fi
 
+download_stage=""
+stage=""
+cleanup() {
+  [[ -z $stage ]] || rm -rf -- "$stage"
+  [[ -z $download_stage ]] || rm -f -- "$download_stage"
+}
+trap cleanup EXIT
+
+verify_bundle_sha() {
+  local checked_archive=$1 actual_sha
+  printf '[ChipChain] Verifying archive SHA256...\n'
+  actual_sha=$(sha256sum -- "$checked_archive")
+  actual_sha=${actual_sha%% *}
+  [[ $actual_sha == "$bundle_sha" ]] || fail "Archive SHA256 mismatch for $checked_archive: got $actual_sha; required $bundle_sha. No extraction or cache promotion occurred."
+  printf '[ChipChain] Archive SHA256 PASS.\n'
+}
+
+archive_verified=false
 if [[ -z $archive ]]; then
   archive="$metadata_dir/ghidra_12.3_DEV-local.tar.gz"
+  if [[ ! -f $archive ]]; then
+    if $offline; then
+      fail "Ghidra is not installed and no cached bundle exists. Offline mode forbids download; provide the pinned distribution with: ./scripts/setup_ghidra.sh --offline --archive /path/to/archive.tar.gz"
+    fi
+    if command -v curl >/dev/null 2>&1; then
+      downloader=curl
+    elif command -v wget >/dev/null 2>&1; then
+      downloader=wget
+    else
+      fail "Neither curl nor wget is available. Install one downloader or provide the archive explicitly: ./scripts/setup_ghidra.sh --archive /path/to/archive.tar.gz"
+    fi
+    printf '[ChipChain] Ghidra is not installed.\n'
+    printf '[ChipChain] Downloading pinned Ghidra %s %s...\n' "$pinned_version" "$pinned_release"
+    printf '[ChipChain] Source:\n  %s\n' "$release_url"
+    download_stage=$(mktemp "$metadata_dir/.chipchain-download.XXXXXXXX")
+    if [[ $downloader == curl ]]; then
+      curl --fail --location --silent --show-error --proto '=https' --proto-redir '=https' \
+        --output "$download_stage" "$release_url" || fail "Download failed. Retry or provide a local archive with --archive."
+    else
+      wget --https-only --output-document="$download_stage" "$release_url" ||
+        fail "Download failed. Retry or provide a local archive with --archive."
+    fi
+    printf '[ChipChain] Download complete.\n'
+    verify_bundle_sha "$download_stage"
+    archive_verified=true
+    [[ ! -e $archive && ! -L $archive ]] || fail "Cached archive appeared during download; it was not overwritten: $archive"
+    mv -T -- "$download_stage" "$archive"
+    download_stage=""
+  fi
 fi
 [[ -f $archive ]] || fail "Ghidra is not installed and local archive is missing: $archive. Provide the pinned distribution with: ./scripts/setup_ghidra.sh --archive /path/to/archive.tar.gz (see tools/ghidra/README.md)."
 
 if [[ ${archive##*/} == ghidra_12.3_DEV-local.tar.gz ]]; then
-  printf '[ChipChain] Verifying local bundle SHA256...\n'
-  actual_sha=$(sha256sum -- "$archive")
-  actual_sha=${actual_sha%% *}
-  [[ $actual_sha == "$bundle_sha" ]] || fail "Local bundle SHA256 mismatch: got $actual_sha; required $bundle_sha. Archive was not extracted."
+  $archive_verified || verify_bundle_sha "$archive"
 else
   printf '[ChipChain] External archive: installed files will be checked against the pinned manifest; no original-archive hash is claimed.\n'
 fi
@@ -178,8 +231,6 @@ command -v python3 >/dev/null 2>&1 || fail 'Python 3 is required to safely inspe
 install_parent=$(dirname -- "$install_dir")
 mkdir -p -- "$install_parent"
 stage=$(mktemp -d "$install_parent/.chipchain-ghidra-stage.XXXXXXXX")
-cleanup() { rm -rf -- "$stage"; }
-trap cleanup EXIT
 
 python3 - "$archive" "$stage" <<'PY'
 import pathlib
