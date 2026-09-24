@@ -35,17 +35,17 @@ The verifier returns `supported`, `contradicted`, or `unknown` for the component
 
 ## Install and quick start
 
-Python 3.11+ is required. The Type-II replay needs only the package and deterministic dependencies. Fresh raw-ELF `firmware analyze` uses pinned Ghidra 12.3 DEV and Java 25. The project installation is `tools/ghidra/install/`; its [pinned metadata and setup instructions](tools/ghidra/README.md) are tracked while the large distribution is ignored. The original upstream archive is unavailable; provide a local copy of the pinned distribution. The script does not download it or install Java.
+Python 3.11+ is required by `pyproject.toml`. On some Ubuntu systems, `python3` is Python 3.10; [setup_env.sh](scripts/setup_env.sh) checks the actual interpreter version, searches for a compatible Python, creates or reuses `.venv`, upgrades pip **inside that environment**, and installs ChipChain editable. Upgrading pip does not upgrade Python. Use `--python /path/to/python` to select an interpreter, `--verify-only` to inspect the existing environment without changing it, or `--with-test` for test dependencies. An incompatible existing environment is preserved unless you explicitly use `--recreate` with a compatible replacement interpreter.
 
-For a fresh clone, use a published revision that includes this setup script and a locally supplied Ghidra archive:
+The Type-II replay needs only the package and deterministic dependencies. Fresh raw-ELF `firmware analyze` uses pinned Ghidra 12.3 DEV and Java 25. The project installation is `tools/ghidra/install/`; its [pinned metadata and setup instructions](tools/ghidra/README.md) are tracked while the large distribution is ignored. The original upstream archive is unavailable; provide a local copy of the pinned distribution. The script does not download it or install Java.
+
+For a fresh clone of current `main`, use a locally supplied Ghidra archive:
 
 ```bash
 git clone https://github.com/Qcx526/ChipChainV3.git
 cd ChipChainV3
-git checkout YOUR_RELEASE_TAG_WITH_SETUP_SCRIPT
-python3 -m venv .venv
+./scripts/setup_env.sh
 source .venv/bin/activate
-pip install -e .
 ./scripts/setup_ghidra.sh --archive /path/to/pinned-ghidra.tar.gz
 ./scripts/setup_ghidra.sh --verify-only
 chipchain firmware analyze \
@@ -53,13 +53,12 @@ chipchain firmware analyze \
   --output output/firmware-smoke-test
 ```
 
-Replace `YOUR_RELEASE_TAG_WITH_SETUP_SCRIPT` with the tag assigned when this packaging change is published; the earlier `v3-type2-processorfuzz-ingestion-stable` tag predates the script.
+The published `v3-ghidra-setup-stable` tag predates `setup_env.sh`; use a revision containing this script until a new environment-setup tag is published.
 
 The tracked [canonical demo artifacts](artifacts/demo) can be inspected without Ghidra. To run new raw-ELF static analysis, install and verify the pinned Ghidra distribution first. `--ghidra-home /explicit/path` remains available for an explicitly managed installation.
 
 ```bash
-python3 -m venv .venv
-.venv/bin/python -m pip install -e '.[test]'
+./scripts/setup_env.sh --with-test
 .venv/bin/python -m chipchain.cli firmware analyze --elf samples/firmware/arm/sample.elf --output output/arm
 .venv/bin/python -m chipchain.cli firmware analyze --elf samples/firmware/riscv/sample.elf --output output/riscv
 .venv/bin/python -m chipchain.cli firmware analyze --elf samples/firmware/powerpc/sample.elf --output output/powerpc
