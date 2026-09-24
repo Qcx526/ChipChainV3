@@ -1,5 +1,5 @@
 {
-  "binding_set_id": "hwbindings:f3bd5fdd876c0d699fc9d7e7d625ed39649b06e56f56feede1cdeb7532efad73",
+  "binding_set_id": "hwbindings:186e72b359750343472ea93cdd00e68a7efdf0657b61b72ab25ccf9144bd6bda",
   "bindings": [
     {
       "binding_id": "hwbind:16a35798d2e7268b27ad60968cfb3e15c84e40757b48f98f9fe16e1a45f20582",
@@ -171,6 +171,6 @@
     }
   ],
   "catalog_id": "hwcatalog:a882db1539b350b22117ae7ed2d35db2fa6f6ad10e2711aca9bd3129cf0846c9",
-  "firmware_source_id": "firmware-static:c720262408be12c97537f40f3ba5b56df4030d2774c58d64c6df52d325ef949a",
+  "firmware_source_id": "firmware-static:39e6085995dae6913299962133e95a8b561457e36624cb2a3b5c6c7b581a751e",
   "schema_version": "hardware-resource-bindings/v1"
 }

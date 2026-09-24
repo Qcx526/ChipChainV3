@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+from zipfile import BadZipFile
 
 from chipchain.workflow.type2 import analyze_manifest, write_result
 
@@ -19,6 +20,14 @@ def main(argv: list[str] | None = None) -> int:
     firmware_analyze.add_argument("--elf", required=True)
     firmware_analyze.add_argument("--output", required=True)
     firmware_analyze.add_argument("--ghidra-home")
+    processorfuzz = commands.add_parser("processorfuzz", help="ingest ProcessorFuzz delivery")
+    processorfuzz_commands = processorfuzz.add_subparsers(dest="processorfuzz_command", required=True)
+    processorfuzz_analyze = processorfuzz_commands.add_parser("analyze", help="analyze package without LLM")
+    processorfuzz_analyze.add_argument("--package", required=True)
+    processorfuzz_analyze.add_argument("--output", required=True)
+    processorfuzz_analyze.add_argument("--ghidra-home")
+    processorfuzz_analyze.add_argument("--hardware-trigger-validation", action="store_true",
+                                      help="explicitly classify this hardware-team delivery and its trigger-test ELF")
     args = parser.parse_args(argv)
     try:
         if args.command == "firmware":
@@ -33,9 +42,16 @@ def main(argv: list[str] | None = None) -> int:
                                            export=exported.model_dump(mode="json", by_alias=True))
             print(f"{result.analysis_id}: {output}")
             return 0
+        if args.command == "processorfuzz":
+            from chipchain.workflow.processorfuzz import analyze_package, HARDWARE_TRIGGER_VALIDATION
+            output = analyze_package(args.package, args.output, ghidra_home=args.ghidra_home,
+                                     role_declaration=HARDWARE_TRIGGER_VALIDATION
+                                     if args.hardware_trigger_validation else None)
+            print(f"ProcessorFuzz analysis: {output}")
+            return 0
         analysis = analyze_manifest(args.manifest)
         output = write_result(analysis, args.output, verbose_artifacts=args.verbose_artifacts)
-    except (OSError, ValueError, TypeError) as exc:
+    except (OSError, ValueError, TypeError, RuntimeError, BadZipFile) as exc:
         parser.exit(2, f"chipchain: {type(exc).__name__}: {exc}\n")
     print(f"{analysis.result.final_status}: {output}")
     return 0

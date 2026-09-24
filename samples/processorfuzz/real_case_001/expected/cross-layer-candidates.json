@@ -1,0 +1,11 @@
+{
+  "missing_requirements": [
+    "authoritative_hardware_behavior_contract",
+    "si_elf_build_binding",
+    "signature_execution_context_binding",
+    "rtl_source_revision",
+    "generic_type2_runtime_evaluator"
+  ],
+  "status": "INCOMPLETE",
+  "verification_status": "NOT_ESTABLISHED"
+}

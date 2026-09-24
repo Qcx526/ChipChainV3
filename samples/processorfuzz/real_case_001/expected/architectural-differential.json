@@ -1,0 +1,29 @@
+{
+  "comparison_scope": "raw 128-bit signature words by exact index; register attribution unknown",
+  "different_fields": [
+    {
+      "index": 37,
+      "isa_raw": "00000002000420000000000000000000",
+      "rtl_raw": "80000002000460000000000000000000"
+    },
+    {
+      "index": 44,
+      "isa_raw": "000000000000b1090000000a00042000",
+      "rtl_raw": "000000000000b1098000000a00046000"
+    },
+    {
+      "index": 48,
+      "isa_raw": "00000000000000000000000000000002",
+      "rtl_raw": "00000000141416730000000000000002"
+    }
+  ],
+  "differential_id": "architectural-differential:1b883b2205910236e549c65793bf4ef1288b643de9d21d9737d5eb53b82bc9bc",
+  "matching_fields": 251,
+  "raw_values_differ": true,
+  "reference_artifact_id": "sha256:3f9463d3d49f73942396edc67223269ab004e05042e58579c51805f797f80a37",
+  "rtl_artifact_id": "sha256:e14bcb08de2e6d62ee0368aa4d244375ca1e64178392b39f5b4866d25f577513",
+  "same_execution_context_binding": "UNKNOWN",
+  "same_firmware_binding": "UNKNOWN",
+  "same_testcase_binding": "UNKNOWN",
+  "status": "UNKNOWN"
+}

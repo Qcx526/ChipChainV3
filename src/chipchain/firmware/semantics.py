@@ -25,9 +25,10 @@ def memory_arm(operand: str, registers: dict[str, int]) -> int | None:
 
 def memory_offset(operand: str, registers: dict[str, int]) -> int | None:
     match = re.fullmatch(r"(-?0x[0-9a-fA-F]+|-?[0-9]+)\(([a-z0-9]+)\)", operand.lower())
-    if not match or match.group(2) not in registers:
+    if not match:
         return None
-    return registers[match.group(2)] + int(match.group(1), 0)
+    base = register_value(registers, match.group(2))
+    return base + int(match.group(1), 0) if base is not None else None
 
 
 def memory_result(kind: K, address: int | None, value: int | None = None,
@@ -38,7 +39,7 @@ def memory_result(kind: K, address: int | None, value: int | None = None,
 
 
 def classify(instruction: ExportInstruction, architecture: str,
-             registers: dict[str, int]) -> dict:
+             registers: dict[str, int]) -> tuple[dict, ...]:
     if architecture == "arm":
         from chipchain.firmware.semantics_arm import classify_arm
         return classify_arm(instruction, registers)
@@ -54,3 +55,12 @@ def classify(instruction: ExportInstruction, architecture: str,
 def unsupported(instruction: ExportInstruction) -> dict:
     return {"kind": K.UNKNOWN, "semantic_status": "unsupported",
             "detail": f"Unsupported mnemonic {instruction.mnemonic}"}
+
+
+def register_value(registers: dict[str, int], name: str) -> int | None:
+    return 0 if name.lower() in {"zero", "x0"} else registers.get(name.lower())
+
+
+def kill(registers: dict[str, int], name: str) -> None:
+    if name.lower() not in {"zero", "x0"}:
+        registers.pop(name.lower(), None)

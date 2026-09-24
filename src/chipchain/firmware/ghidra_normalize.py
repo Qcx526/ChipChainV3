@@ -1,6 +1,9 @@
 """Reconcile exported structure with authoritative ELF bytes and create static IR."""
 from __future__ import annotations
 
+from hashlib import sha256
+from pathlib import Path
+
 from chipchain.firmware.elf import ElfImage, ghidra_language
 from chipchain.firmware.ghidra import GHIDRA_VERSION
 from chipchain.firmware.ghidra_models import GhidraExport
@@ -75,14 +78,14 @@ def normalize(image: ElfImage, exported: GhidraExport):
             registers.clear()
         previous_function = current_function
         previous_block = raw.block_start
-        semantic = classify(raw, image.identity.architecture, registers)
-        semantic_payload = StaticBehaviorFact.model_construct(
-            fact_id="", instruction_id=iid, pc=pc, **semantic).model_dump(
-                mode="json", exclude={"fact_id", "instruction_id", "pc"},
-                exclude_none=True, exclude_defaults=True)
-        behaviors.append(StaticBehaviorFact(
-            fact_id=content_id("fwbehavior", {"instruction": iid, "semantic": semantic_payload}),
-            instruction_id=iid, pc=pc, **semantic))
+        for semantic in classify(raw, image.identity.architecture, registers):
+            semantic_payload = StaticBehaviorFact.model_construct(
+                fact_id="", instruction_id=iid, pc=pc, **semantic).model_dump(
+                    mode="json", exclude={"fact_id", "instruction_id", "pc"},
+                    exclude_none=True, exclude_defaults=True)
+            behaviors.append(StaticBehaviorFact(
+                fact_id=content_id("fwbehavior", {"instruction": iid, "semantic": semantic_payload}),
+                instruction_id=iid, pc=pc, **semantic))
 
     edges = []
     for raw in exported.edges:
@@ -122,7 +125,16 @@ def normalize(image: ElfImage, exported: GhidraExport):
         refs.append(ReferenceFact(fact_id=content_id("fwref", {"elf": sha, **fields}), **fields))
     refs = sorted({x.fact_id: x for x in refs}.values(), key=lambda x: (x.source_pc, x.operand_index, x.fact_id))
 
+    exporter = Path(__file__).resolve().parents[3] / "scripts/ghidra/ExportFirmwareFacts.java"
+    semantics_root = Path(__file__).resolve().parent
+    semantics_bytes = ((semantics_root / "semantics.py").read_bytes() +
+                       (semantics_root / f"semantics_{image.identity.architecture}.py").read_bytes())
+    producer = {"analyzer": "chipchain-general-firmware/v2", "ghidra": GHIDRA_VERSION,
+                "exporter_sha256": sha256(exporter.read_bytes()).hexdigest(),
+                "semantics": "chipchain-three-isa-semantics/r1",
+                "semantics_sha256": sha256(semantics_bytes).hexdigest()}
     return build_analysis(artifact=image.identity, ghidra_language=exported.language,
+                          producer=producer,
                           ghidra_version=GHIDRA_VERSION, functions=tuple(functions), blocks=tuple(blocks),
                           instructions=tuple(instructions), edges=tuple(edges), calls=tuple(calls),
                           references=tuple(refs), behaviors=tuple(behaviors))

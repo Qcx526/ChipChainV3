@@ -1,0 +1,103 @@
+{
+  "binding_set_id": "fwcontinuity-set:6847b783adf5307bbbe09db088942089a19da9e9d1be80205b5e113997d0fed6",
+  "bindings": [
+    {
+      "binding_id": "fwcontinuity:ff50424c1d0035f955d16b0a7ff8c8f6816dbd79280ff1870a61a73f26c25b23",
+      "reason": "Missing or incomplete runtime semantic match",
+      "runtime_capability_ids": [],
+      "static_capability_id": "fwcap:1dd50fa36b79c7234f309e11a8df169d9628549e395e5a94f3af1dd6a1b1cf07",
+      "status": "UNKNOWN"
+    },
+    {
+      "binding_id": "fwcontinuity:67acfabab5580516b6b5df51159a20175a15c9ccbd708e9f984a42974bd1ed8a",
+      "reason": "Unique exact ELF/ISA/PC/primitive/resource/address/width/value/encoding match",
+      "runtime_capability_ids": [
+        "fwcap:02371d93bab08f10140ae6b681c87726c0d4e9b9f193144e2946b523227a4e22"
+      ],
+      "static_capability_id": "fwcap:2d617d770c34817cffb5c70c92193f2c6df08863d845c8b4b9ee6e30b01f33b3",
+      "status": "BOUND"
+    },
+    {
+      "binding_id": "fwcontinuity:a360c4f74c62eadc05f61236889548d06cd877d4b14d5682c8f07b702292eff0",
+      "reason": "Missing or incomplete runtime semantic match",
+      "runtime_capability_ids": [],
+      "static_capability_id": "fwcap:3668df401c7ecc220abe409a1154f31a5af7f28bd47e4e71f7891d077edf8962",
+      "status": "UNKNOWN"
+    },
+    {
+      "binding_id": "fwcontinuity:1352c94f13664eabc17c0e15b3d16d077c8fc46fc1a490777e7745f73b9ebb0c",
+      "reason": "Missing or incomplete runtime semantic match",
+      "runtime_capability_ids": [],
+      "static_capability_id": "fwcap:3a18adac4ab0d7526f9972a02051a58d63aba23c944b3e93a9a5dd5da46ee1f2",
+      "status": "UNKNOWN"
+    },
+    {
+      "binding_id": "fwcontinuity:d81e47f979be6bcde141cfca6560e7fcdd4747a254038385393b2ded626c0e2c",
+      "reason": "Missing or incomplete runtime semantic match",
+      "runtime_capability_ids": [],
+      "static_capability_id": "fwcap:3e23ce1a3c99d49a9fa65e6447ae9762a0be39034e1874560f6f4d53a9de0e0b",
+      "status": "UNKNOWN"
+    },
+    {
+      "binding_id": "fwcontinuity:b11f3ebe0e5aab88c998c709ff7278589ed9337cbe6ec74c93c1a668fd287df3",
+      "reason": "Missing or incomplete runtime semantic match",
+      "runtime_capability_ids": [],
+      "static_capability_id": "fwcap:6fe7fcd2bb31d89b848941d6c551df5dafb5c1298b86f9448e3c6cafc32bcb10",
+      "status": "UNKNOWN"
+    },
+    {
+      "binding_id": "fwcontinuity:2c610f17e42c045473d64bd22d4e5ace172eda8020002574c19cbf8acda31c6f",
+      "reason": "Missing or incomplete runtime semantic match",
+      "runtime_capability_ids": [],
+      "static_capability_id": "fwcap:874e70db0d0465279bf8817d42918b9fb54c35235a7ca9532d4c16b1dc3aa1f3",
+      "status": "UNKNOWN"
+    },
+    {
+      "binding_id": "fwcontinuity:706981195642b1dd2ea3641d14455823c43545809c5e7bb3039c5f4e465197e5",
+      "reason": "Missing or incomplete runtime semantic match",
+      "runtime_capability_ids": [],
+      "static_capability_id": "fwcap:9cf1fc60cb23b048e6699f230e13ac9a1220a92051aa0825bbbd0d68ba310cdb",
+      "status": "UNKNOWN"
+    },
+    {
+      "binding_id": "fwcontinuity:686cca130a15cfd51d1df00665645d2059ee992c2b8998951c036db38ea9cf77",
+      "reason": "Missing or incomplete runtime semantic match",
+      "runtime_capability_ids": [],
+      "static_capability_id": "fwcap:b01e11f05969bafd74a7786a8ef4d63ab99be9b7aad8bfabd03074602bf36abc",
+      "status": "UNKNOWN"
+    },
+    {
+      "binding_id": "fwcontinuity:332ef3da3bda7f3e81dd979059ce30a46134a1bfdc565f18b5c2a54afa306dd5",
+      "reason": "Unique exact ELF/ISA/PC/primitive/resource/address/width/value/encoding match",
+      "runtime_capability_ids": [
+        "fwcap:7e756deb16930bc7ace19c8ebaacab4f0ba435ebf9b96c317b3816b351e2684c"
+      ],
+      "static_capability_id": "fwcap:b883872e3b9be86c62a96d9986d234e9d0309fac113591abf20439ed71775a87",
+      "status": "BOUND"
+    },
+    {
+      "binding_id": "fwcontinuity:3ee4ff66d9f1cc7b46ffc8e79c3528870af0b64b19da58bae92f7ebbba9c34b4",
+      "reason": "Missing or incomplete runtime semantic match",
+      "runtime_capability_ids": [],
+      "static_capability_id": "fwcap:cb1c2d51fc43ff61c63bb336ee13964b891403eadc1bb9a67c2073e52a8b955c",
+      "status": "UNKNOWN"
+    },
+    {
+      "binding_id": "fwcontinuity:bf562e229a34afb8a3b9d14adb9c6baca23bc0940897b5bdb0e14fd04f77dacd",
+      "reason": "Missing or incomplete runtime semantic match",
+      "runtime_capability_ids": [],
+      "static_capability_id": "fwcap:d269c7d8fca4fcd0ca5654d346272009fc4bc29b17cef292315c49e0bca4f596",
+      "status": "UNKNOWN"
+    },
+    {
+      "binding_id": "fwcontinuity:4755f6a531db21f48be56af8e49a9f816f50d4857d4f381da5fb6ccd84e39ebf",
+      "reason": "Unique exact ELF/ISA/PC/primitive/resource/address/width/value/encoding match",
+      "runtime_capability_ids": [
+        "fwcap:5fca088b8349c12d1f60bd2e1f2cb7d8d226178374afb55d3e380cb164479db0"
+      ],
+      "static_capability_id": "fwcap:e0dfe5cfaca4aa027e2290c137b456a5133fac1ad3fca783c398fda78e2391b8",
+      "status": "BOUND"
+    }
+  ],
+  "schema_version": "static-runtime-capability-bindings/v1"
+}

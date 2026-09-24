@@ -1,5 +1,5 @@
 {
-  "analysis_id": "firmware-static:1989292a076ecaff87fad80525dbbdcf0f1949fbe8c7fb367088529025251677",
+  "analysis_id": "firmware-static:802b12767a48dfb28a00f0c5d50a728c892a3374e407837b073e946ef0f7e42b",
   "artifact": {
     "architecture": "powerpc",
     "arm_cpu_name": null,
@@ -627,6 +627,13 @@
       "text": "blr"
     }
   ],
+  "producer": {
+    "analyzer": "chipchain-general-firmware/v2",
+    "exporter_sha256": "b006cc85631d9ef7f9232a03dbc05ce418296f885f427b9e2bd2762f46b9cbbe",
+    "ghidra": "12.3_DEV-d6192cb3f900f74152a4eeec1aa6758b6143b093",
+    "semantics": "chipchain-three-isa-semantics/r1",
+    "semantics_sha256": "e0732c4a0aeee858c65e11eaf3f661eba92d3659cae11757253fc91bc391addd"
+  },
   "references": [
     {
       "fact_id": "fwref:1930f7bd8ef3845506feb497f84e7037dc3ed20f9b50732a61e72f116fc357da",
@@ -671,5 +678,5 @@
       "target": 65576
     }
   ],
-  "schema_version": "firmware-static-analysis/v1"
+  "schema_version": "firmware-static-analysis/v2"
 }

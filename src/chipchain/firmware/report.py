@@ -34,12 +34,14 @@ def firmware_summary(value: FirmwareStaticAnalysis) -> dict:
         "system_register_write_count": counts[K.SYSTEM_REGISTER_WRITE],
         "barrier_count": counts[K.MEMORY_BARRIER] + counts[K.INSTRUCTION_BARRIER],
         "atomic_count": counts[K.ATOMIC_LOAD] + counts[K.ATOMIC_STORE],
+        "tlb_invalidate_count": counts[K.TLB_INVALIDATE],
         "exception_return_count": counts[K.EXCEPTION_RETURN],
         "unsupported_count": sum(b.semantic_status == "unsupported" for b in value.behaviors),
         "unresolved_address_count": sum(b.address_status == "unknown" for b in value.behaviors),
         "ambiguous_ownership_count": sum(len(i.function_ids) > 1 for i in value.instructions),
         "ghidra_language": value.ghidra_language,
         "ghidra_version": value.ghidra_version,
+        "producer": value.producer,
     }
 
 
@@ -110,7 +112,8 @@ def render_firmware_report(value: FirmwareStaticAnalysis) -> str:
               "|---|---|---|---|---|---|"]
     for b in value.behaviors:
         if b.kind in {K.SYSTEM_REGISTER_READ, K.SYSTEM_REGISTER_WRITE, K.MEMORY_BARRIER,
-                      K.INSTRUCTION_BARRIER, K.ATOMIC_LOAD, K.ATOMIC_STORE, K.EXCEPTION_RETURN}:
+                      K.INSTRUCTION_BARRIER, K.TLB_INVALIDATE, K.ATOMIC_LOAD,
+                      K.ATOMIC_STORE, K.EXCEPTION_RETURN}:
             i = instructions[b.instruction_id]
             name = ", ".join(functions[x] for x in i.function_ids) or "unresolved"
             lines.append(f"| `0x{b.pc:x}` | `{name}` | `{i.text}` | {b.kind} | "

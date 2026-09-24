@@ -1,0 +1,103 @@
+{
+  "binding_set_id": "fwcontinuity-set:e095cb8f8be0f0750ac42cd82c5627bcf20e54cd8c3ad321e2caaf5259db0dd0",
+  "bindings": [
+    {
+      "binding_id": "fwcontinuity:eb2e5e3b4e50bd5e236c07964876bccdb605318a61ac4b3daded28c77749330a",
+      "reason": "Missing or incomplete runtime semantic match",
+      "runtime_capability_ids": [],
+      "static_capability_id": "fwcap:00e17ae5ea5a296e71731c6632c7264b6c8490aeb8ce63e2447ff1be8d80d5f3",
+      "status": "UNKNOWN"
+    },
+    {
+      "binding_id": "fwcontinuity:32022535be2a7e2e9083517067ae48997dbf7375df799cc4ddd1f362b0c7b68b",
+      "reason": "Missing or incomplete runtime semantic match",
+      "runtime_capability_ids": [],
+      "static_capability_id": "fwcap:24179e361791fd500ea469ea49c20d1e26da08e8bd38422defeb54906685113f",
+      "status": "UNKNOWN"
+    },
+    {
+      "binding_id": "fwcontinuity:56b05854b355582a4a6cc024c6e050c7d27122b3567cecd441710c2708904876",
+      "reason": "Missing or incomplete runtime semantic match",
+      "runtime_capability_ids": [],
+      "static_capability_id": "fwcap:32b452fca55f271a1bb1007f472cd9ecff223a0cac0cc15e5f93ce07bbc2f9f0",
+      "status": "UNKNOWN"
+    },
+    {
+      "binding_id": "fwcontinuity:6d45b8b32e6b64066fa3020b4832253c8b050861d19eefc631bf3d5b72f068db",
+      "reason": "Missing or incomplete runtime semantic match",
+      "runtime_capability_ids": [],
+      "static_capability_id": "fwcap:372898164dd890c9b12fc7106ac0d741fc43f4801710d2fb94fde5b5a596b171",
+      "status": "UNKNOWN"
+    },
+    {
+      "binding_id": "fwcontinuity:10996f0855538af798813f9f69df3ecbe10aacb410c9eda5eb970d6a093a9187",
+      "reason": "Missing or incomplete runtime semantic match",
+      "runtime_capability_ids": [],
+      "static_capability_id": "fwcap:44aa9e954851617492ac25d7bd0da05b8f1e099ec58e80cabd2f485c5636ef1c",
+      "status": "UNKNOWN"
+    },
+    {
+      "binding_id": "fwcontinuity:c483f97680d4867204c119b1b4808678886376ed54bc24bd1ce0826f7f26348e",
+      "reason": "Missing or incomplete runtime semantic match",
+      "runtime_capability_ids": [],
+      "static_capability_id": "fwcap:4fe93a87371d929e169473d1bd70e147e0aec8d8ce4e4441005610ebea67224d",
+      "status": "UNKNOWN"
+    },
+    {
+      "binding_id": "fwcontinuity:8ca1963b1236fe3790827b94aa57de3fa9c8dd45016cafa4972f3f6f324cc75d",
+      "reason": "Missing or incomplete runtime semantic match",
+      "runtime_capability_ids": [],
+      "static_capability_id": "fwcap:5e1889cd8055d8e05c2172cee4859e73d9bf09ef6cd7db903e85aa8f951bb290",
+      "status": "UNKNOWN"
+    },
+    {
+      "binding_id": "fwcontinuity:3e84eae064209be069f70692bd55ce61f6b2b9eee4567c4260a9de4b00d03f9d",
+      "reason": "Unique exact ELF/ISA/PC/primitive/resource/address/width/value/encoding match",
+      "runtime_capability_ids": [
+        "fwcap:6283d93781354945c8c638ae133f310aabfac7962bb55c51efe60f5102246e01"
+      ],
+      "static_capability_id": "fwcap:677cb4cd658605f74895d9b4ee1bfbbf649cc37becc3dc060915b53c49a9bb98",
+      "status": "BOUND"
+    },
+    {
+      "binding_id": "fwcontinuity:04840d4bac6af1e41fb5e7c958343502ea8d0e3b9bd8168abb404675bce65666",
+      "reason": "Missing or incomplete runtime semantic match",
+      "runtime_capability_ids": [],
+      "static_capability_id": "fwcap:6957d75fe4fea70d903b1a89e0a7b3e2d3e2cccef861fe6431aa2b187ae0795f",
+      "status": "UNKNOWN"
+    },
+    {
+      "binding_id": "fwcontinuity:0d9cfe0c7c778c3b707ac12761bd86941c41262c749f74d341b0f435fc1daa07",
+      "reason": "Unique exact ELF/ISA/PC/primitive/resource/address/width/value/encoding match",
+      "runtime_capability_ids": [
+        "fwcap:4b6b1669794f8150db458ebbda91da8628c97b81c20eb488112dc582dddc6471"
+      ],
+      "static_capability_id": "fwcap:a866347005f3ff06135c3367c435d3e59ca0364a5f0148e0e693a8d87990fcc7",
+      "status": "BOUND"
+    },
+    {
+      "binding_id": "fwcontinuity:caafadd1bc076787364550171458ca7c23eff7284ba860a80866c8953318f1ea",
+      "reason": "Unique exact ELF/ISA/PC/primitive/resource/address/width/value/encoding match",
+      "runtime_capability_ids": [
+        "fwcap:fecf7028d3058179846096d4cb27e35c3c398955119a4e69a6d1b677f962f556"
+      ],
+      "static_capability_id": "fwcap:b1f01cce077a877673f01963e31b42e1ef84bb71ec213456453f7e87ce599f5c",
+      "status": "BOUND"
+    },
+    {
+      "binding_id": "fwcontinuity:9cfb387472935f3e2999a95df69ea2f9c3974fdbca1caf80d9643e0ffc4b8d25",
+      "reason": "Missing or incomplete runtime semantic match",
+      "runtime_capability_ids": [],
+      "static_capability_id": "fwcap:d077d42e91a569867571595448200bf137424f9b7e81b4947177c444282d8bef",
+      "status": "UNKNOWN"
+    },
+    {
+      "binding_id": "fwcontinuity:67337da9be82256fbb31322c44b00ca9bb9af9ea9b2907b42896948600924c14",
+      "reason": "Missing or incomplete runtime semantic match",
+      "runtime_capability_ids": [],
+      "static_capability_id": "fwcap:f43c5a2bf4902dbd39bec5e0b0aba0aa0e2fc6f8c9249554be409b7745307d5d",
+      "status": "UNKNOWN"
+    }
+  ],
+  "schema_version": "static-runtime-capability-bindings/v1"
+}

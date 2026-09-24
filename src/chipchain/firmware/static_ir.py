@@ -11,7 +11,7 @@ from pydantic import BaseModel
 
 from chipchain.domain.common import Contract
 
-SCHEMA = "firmware-static-analysis/v1"
+SCHEMA = "firmware-static-analysis/v2"
 
 
 def canonical(value: object) -> bytes:
@@ -163,11 +163,12 @@ class StaticBehaviorFact(Contract):
 
 
 class FirmwareStaticAnalysis(Contract):
-    schema_version: Literal["firmware-static-analysis/v1"] = SCHEMA
+    schema_version: Literal["firmware-static-analysis/v2"] = SCHEMA
     analysis_id: str
     artifact: FirmwareArtifactIdentity
     ghidra_language: str
     ghidra_version: str
+    producer: dict[str, str]
     functions: tuple[FirmwareFunctionFact, ...]
     blocks: tuple[BasicBlockFact, ...]
     instructions: tuple[InstructionFact, ...]

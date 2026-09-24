@@ -1,7 +1,8 @@
 {
-  "candidate_id": "xlcandidate:5600cf8da53629d9c17d2fe71230da3d0cbef0374233549bc833683ce44808c0",
-  "firmware_analysis_id": "firmware-static:c720262408be12c97537f40f3ba5b56df4030d2774c58d64c6df52d325ef949a",
-  "resource_binding_set_id": "hwbindings:6a643b63f91c880db4c8341c5d6bf1276c49d604a3f8d6fd7f06d2f03f4879dc",
+  "candidate_id": "xlcandidate:8dc99bd8bcaa72167953a75792f1eb5ac8a21e00e909cb35ab6c53498bcc1471",
+  "continuity_binding_set_id": "fwcontinuity-set:6847b783adf5307bbbe09db088942089a19da9e9d1be80205b5e113997d0fed6",
+  "firmware_analysis_id": "firmware-static:39e6085995dae6913299962133e95a8b561457e36624cb2a3b5c6c7b581a751e",
+  "resource_binding_set_id": "hwbindings:56cc4eada0f83c3a24e62c2f6ccd7407b8e663a73bde1a830cb93949589c7694",
   "resource_catalog_id": "hwcatalog:a882db1539b350b22117ae7ed2d35db2fa6f6ad10e2711aca9bd3129cf0846c9",
   "static_compatibility_status": "CONTRADICTED",
   "verification": {

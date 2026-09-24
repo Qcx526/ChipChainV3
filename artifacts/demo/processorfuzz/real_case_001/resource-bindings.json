@@ -1,0 +1,11 @@
+{
+  "reason": "No independently bound hardware resource catalog",
+  "resource_hints": {
+    "ARCHITECTURAL_STATE": 2,
+    "CSR": 92,
+    "EXCEPTION_STATE": 7,
+    "MEMORY": 175,
+    "TLB": 2
+  },
+  "status": "UNKNOWN"
+}

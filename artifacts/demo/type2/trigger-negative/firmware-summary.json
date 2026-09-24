@@ -1,6 +1,6 @@
 {
   "ambiguous_ownership_count": 0,
-  "analysis_id": "firmware-static:c720262408be12c97537f40f3ba5b56df4030d2774c58d64c6df52d325ef949a",
+  "analysis_id": "firmware-static:39e6085995dae6913299962133e95a8b561457e36624cb2a3b5c6c7b581a751e",
   "architecture": "riscv",
   "arm_cpu_name": "not established",
   "arm_profile": "not applicable",
@@ -23,8 +23,16 @@
   "memory_store_count": 4,
   "mmio_read_count": 0,
   "mmio_write_count": 0,
+  "producer": {
+    "analyzer": "chipchain-general-firmware/v2",
+    "exporter_sha256": "b006cc85631d9ef7f9232a03dbc05ce418296f885f427b9e2bd2762f46b9cbbe",
+    "ghidra": "12.3_DEV-d6192cb3f900f74152a4eeec1aa6758b6143b093",
+    "semantics": "chipchain-three-isa-semantics/r1",
+    "semantics_sha256": "0454ca318a5af7dd42e71e7f3b0e92f11424ffe035184b88f90d2ec92d3532ca"
+  },
   "system_register_read_count": 0,
   "system_register_write_count": 0,
+  "tlb_invalidate_count": 0,
   "unresolved_address_count": 0,
   "unresolved_call_count": 0,
   "unsupported_count": 1

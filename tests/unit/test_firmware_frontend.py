@@ -99,7 +99,7 @@ def test_unsupported_instruction_preserved_without_analysis_failure(arch):
 def test_unknown_address_does_not_turn_into_mmio():
     i = ExportInstruction(pc=4, bytes="0000", mnemonic="str", operands=["r1", "[r0,#0x0]"],
                           text="str r1,[r0,#0x0]", function_entry=None, block_start=None)
-    result = classify(i, "arm", {})
+    result = classify(i, "arm", {})[0]
     assert result["kind"] == K.MEMORY_STORE
     assert result["address_status"] == "unknown"
 

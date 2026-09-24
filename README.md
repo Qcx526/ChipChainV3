@@ -2,7 +2,7 @@
 
 ChipChain is an **evidence-driven, multi-architecture firmware–hardware cross-layer analysis framework**. The general firmware frontend supports ARM, RISC-V and PowerPC ELF static analysis. The current verified end-to-end security path focuses on controlled synthetic Ibex/RISC-V Type-II chains.
 
-The current runtime backend is a **controlled synthetic Ibex MMIO experiment**. It replays existing ELF, trace, source, contract, and capability artifacts without invoking an LLM, building RTL, or running a simulator. ARM and PowerPC do not yet have Type-II runtime verification results. This repository does not claim a physical-chip vulnerability.
+The verified Type-II runtime backend remains the **controlled synthetic Ibex MMIO experiment**. A separate ProcessorFuzz ingestion path reads an authentic hardware-team delivery ZIP. Its ELF is **hardware-supplied trigger-test firmware**, not customer or production firmware. The path parses RISC-V ELF/SI/RTL/ISA/signature evidence and reports unresolved source bindings without declaring a verified Type-II result. Neither path invokes an LLM. ARM and PowerPC do not yet have Type-II runtime verification results. This repository does not claim a physical-chip vulnerability.
 
 ```mermaid
 flowchart TD
@@ -17,7 +17,7 @@ flowchart TD
     RE --> V[Existing Type-II verifier]
 ```
 
-The controlled Type-II demo uses its reviewed frozen CAP0 MMIO capabilities for static matching. The new general frontend independently analyzes the same ELF and binds resolved generic memory facts to the synthetic resource catalog. These are distinct evidence streams. See the [capability mapping audit](docs/firmware-capability-mapping.md).
+The controlled Type-II demo now derives its cross-layer candidate from the General Firmware Frontend's ELF/Ghidra static capability projection. A deterministic continuity record checks each projected static capability against the reviewed frozen CAP0 runtime capabilities by ELF hash, ISA, PC, primitive, resource/address, width, known write value and instruction bytes. The frozen verifier still consumes its original runtime evidence. See the [capability mapping audit](docs/firmware-capability-mapping.md).
 
 ## What is verified
 
@@ -46,6 +46,10 @@ python3 -m venv .venv
 .venv/bin/python -m chipchain.cli analyze \
   --manifest examples/type2_positive/manifest.json \
   --output output/type2-positive
+.venv/bin/python -m chipchain.cli processorfuzz analyze \
+  --package samples/processorfuzz/real_case_001/raw/testis.zip \
+  --output output/processorfuzz-real \
+  --hardware-trigger-validation
 ```
 
 After installation, `chipchain analyze` is equivalent to `python -m chipchain.cli analyze`. Try the other two packaged examples:
@@ -61,6 +65,7 @@ An existing nonempty output directory is rejected to protect earlier results.
 `firmware analyze` actually runs project-managed Ghidra Headless, verifies every exported instruction byte against an executable ELF `PT_LOAD` mapping, and writes `firmware-analysis.json`, `firmware-summary.json`, `firmware-report.md`, and `ghidra-export.json`. An unsupported architecture/language is an explicit error; an unsupported individual instruction remains a path-independent `UNKNOWN` fact with PC, bytes and mnemonic. The three [synthetic sample ELFs](samples/firmware/README.md) and their normalized expected exports are tracked. Their exact project-local [build toolchains](tools/toolchains/README.md) and recipe are documented.
 
 The complete reviewable results live under [artifacts/demo](artifacts/demo). Regenerate them offline from tracked exports and bytes with `PYTHONPATH=src .venv/bin/python scripts/build_demo_artifacts.py`; add `--refresh-ghidra` to rerun project Ghidra on every tracked ELF.
+Rebuild the [ProcessorFuzz case artifacts](artifacts/demo/processorfuzz/real_case_001/processorfuzz-report.md) from the unchanged ZIP with `.venv/bin/python scripts/build_processorfuzz_artifacts.py --package samples/processorfuzz/real_case_001/raw/testis.zip`. The requested name `processorfuzz-case.zip` was absent when this run was made; the supplied archive is `testis.zip`, pinned by SHA256 in its [sample README](samples/processorfuzz/real_case_001/README.md).
 
 ## Inputs
 
@@ -69,7 +74,7 @@ The complete reviewable results live under [artifacts/demo](artifacts/demo). Reg
 The examples include small synthetic artifacts under `examples/type2_positive/fixtures/`; the negative and unknown manifests reuse these files. Their frozen scientific identities are replayed from the included bytes. `samples/firmware/{arm,riscv,powerpc}` now contain tracked synthetic instruction-coverage samples; other real research inputs in `samples/` remain ignored. `output/` is an ignored result workspace. See [examples](examples/README.md) and [samples](samples/README.md).
 The portable fixtures contain pinned source manifests and changed peripheral bytes, not the full RTL source tree or a simulator executable. They replay the frozen evidence chain; independent regeneration of source/platform attestations requires the separately retained local research workspace.
 
-The Type-II `analyze` subcommand accepts **existing canonical runtime artifacts**; the `firmware analyze` subcommand accepts a raw ELF for static analysis. Neither command accepts raw `.si`, arbitrary hardware logs, or an arbitrary `--firmware firmware.elf --hardware-spec hardware.json --hardware-log hardware.log` verification pipeline. Such adapters require separate validated ingestion before Type-II verification can consume their outputs.
+The Type-II `analyze` subcommand accepts **existing canonical runtime artifacts**; `firmware analyze` accepts a raw ELF for static analysis. `processorfuzz analyze` accepts a ZIP or directory and produces static and runtime observations, provenance conflicts, trace alignment, and a signature comparison. The `--hardware-trigger-validation` flag is an explicit intake role declaration, not a deduction from ZIP contents. The package can help ground the hardware trigger reference and evaluate evidence binding; it cannot establish that customer firmware contains the trigger. General firmware-analysis validation uses independently authored project samples. Future customer firmware must enter as a separate evidence source through the same generic firmware frontend. This ProcessorFuzz case has no verified HBC chain and its Type-II status is `NOT_ESTABLISHED`.
 
 ## Outputs and how to read them
 
@@ -80,6 +85,7 @@ The Type-II `analyze` subcommand accepts **existing canonical runtime artifacts*
 | `report.md` | Short, human-readable Chinese explanation and scope warning. |
 
 The static frontend writes its own detailed twelve-section `firmware-report.md`. Each sample has a [tracked ARM](artifacts/demo/firmware/arm/firmware-report.md), [RISC-V](artifacts/demo/firmware/riscv/firmware-report.md), and [PowerPC](artifacts/demo/firmware/powerpc/firmware-report.md) report. Ordinary `MEMORY_LOAD`/`MEMORY_STORE` facts are retained as memory operations; MMIO counts remain zero until a typed hardware resource catalog is supplied. The [P1 cross-layer report](artifacts/demo/type2/positive/cross-layer-report.md) and [P1 verification report](artifacts/demo/type2/positive/verification-report.md) show the static candidate and runtime judgement separately.
+The [real ProcessorFuzz report](artifacts/demo/processorfuzz/real_case_001/processorfuzz-report.md) distinguishes raw signature differences from a bound architectural differential and lists the rejected `disassembly.asm` and unbound `note.log`.
 
 For the positive example, `report.md` begins:
 
@@ -110,6 +116,7 @@ These outcomes and their content-addressed IDs are asserted by portable tests an
 | `tests/` | Identity, provenance, fail-closed, component and golden regressions. |
 | `experiments/` | Frozen synthetic-source and collector material used by local historical replay. |
 | `samples/firmware/{arm,riscv,powerpc}/` | Tracked synthetic source, ELF, manifest and expected static analysis. |
+| `samples/processorfuzz/real_case_001/` | Immutable hardware-team ZIP and canonical expected ingestion results. |
 | `artifacts/demo/` | Reviewable canonical firmware, candidate and Type-II reports. |
 | `tools/ghidra/`, `tools/toolchains/`, `scripts/` | Pinned local tools, architecture-neutral exporter and build recipes. |
 | `output/` | Ignored local run results. |

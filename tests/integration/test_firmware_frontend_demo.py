@@ -7,6 +7,7 @@ from pathlib import Path
 import pytest
 
 from chipchain.cross_layer.matching import match_requirements, render_cross_layer_report
+from chipchain.cross_layer.capability_continuity import bind_static_runtime_capabilities
 from chipchain.cross_layer.resource_binding import bind_capabilities, bind_resources
 from chipchain.firmware.elf import ElfImage
 from chipchain.firmware.ghidra_models import GhidraExport
@@ -50,13 +51,16 @@ def test_type2_static_binding_candidate_and_runtime_separation(name, manifest, s
         static, synthetic_fixture=True, bindings=static_bindings, catalog=catalog)
     projected_kinds = [p.kind.value for c in projected for p in c.primitives]
     assert projected_kinds.count("MMIO_WRITE") == 2 and projected_kinds.count("MMIO_READ") == 1
-    bindings = bind_capabilities(verified.target.capabilities, catalog)
-    candidate = match_requirements(verified.target.capabilities, bindings, verified.contract)
+    bindings = bind_capabilities(projected, catalog)
+    candidate = match_requirements(projected, bindings, verified.contract)
     assert candidate.static_compatibility_status == status
     assert candidate.verification_required
     assert candidate.model_dump(mode="json") == json.loads((directory / "cross-layer-candidates.json").read_text())
+    continuity = bind_static_runtime_capabilities(projected, verified.target.capabilities)
+    assert sum(x.status == "BOUND" for x in continuity.bindings) == 3
+    assert continuity.model_dump(mode="json") == json.loads((directory / "capability-continuity.json").read_text())
     assert render_cross_layer_report(candidate, bindings, verified.contract,
-                                     catalog=catalog, capabilities=verified.target.capabilities) in (
+                                     catalog=catalog, capabilities=projected) in (
         directory / "cross-layer-report.md").read_text()
     assert verified.result.result_id == json.loads((directory / "summary.json").read_text())["verification"]["result_id"]
 

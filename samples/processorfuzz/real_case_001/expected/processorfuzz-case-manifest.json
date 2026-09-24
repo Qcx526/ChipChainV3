@@ -1,0 +1,826 @@
+{
+  "archive_sha256": "c0fe4e328be70238cfd7383fe3cc9b58267eeafc0795d1dbb8b4b074ad69df34",
+  "bindings": {
+    "isa_trace_to_elf": "PARTIAL_BYTE_MATCH",
+    "rtl_trace_to_elf": "PARTIAL_BYTE_MATCH",
+    "si_to_elf": "UNKNOWN",
+    "signatures_same_execution": "UNKNOWN"
+  },
+  "build_metadata_sha256": "f53740fc56ce5907026a925be85caf42c76535e9e529520867d4d8d84ab37a7c",
+  "case_id": "processorfuzz-si:0f48abbedb080992a588369f82e8475c811f944ed6f44a64d852165a28fda6e1",
+  "conflicting_artifact_hashes": [
+    "091ef6d7688f7356d776cb03ecd7521241d5cecc70bdd20810bc8523f58bfc9c"
+  ],
+  "conflicting_artifacts": [
+    {
+      "conflict_count": 278,
+      "conflict_examples": [
+        {
+          "disassembly_bytes": "6f00c02f",
+          "elf_bytes": "6f00802d",
+          "pc": "0x80000084"
+        },
+        {
+          "disassembly_bytes": "170e0000",
+          "elf_bytes": "73000000",
+          "pc": "0x80000114"
+        },
+        {
+          "disassembly_bytes": "130e0e01",
+          "elf_bytes": "97200000",
+          "pc": "0x80000118"
+        },
+        {
+          "disassembly_bytes": "e7040e00",
+          "elf_bytes": "9380800e",
+          "pc": "0x8000011c"
+        },
+        {
+          "disassembly_bytes": "73001000",
+          "elf_bytes": "73210010",
+          "pc": "0x80000120"
+        },
+        {
+          "disassembly_bytes": "17010300",
+          "elf_bytes": "23bc2004",
+          "pc": "0x80000124"
+        },
+        {
+          "disassembly_bytes": "1301c1f8",
+          "elf_bytes": "73214010",
+          "pc": "0x80000128"
+        },
+        {
+          "disassembly_bytes": "13010101",
+          "elf_bytes": "23b82006",
+          "pc": "0x8000012c"
+        },
+        {
+          "disassembly_bytes": "2f3ce1a1",
+          "elf_bytes": "73215010",
+          "pc": "0x80000130"
+        },
+        {
+          "disassembly_bytes": "53abc510",
+          "elf_bytes": "23bc2006",
+          "pc": "0x80000134"
+        },
+        {
+          "disassembly_bytes": "73000000",
+          "elf_bytes": "73216010",
+          "pc": "0x80000138"
+        },
+        {
+          "disassembly_bytes": "97200000",
+          "elf_bytes": "23b02008",
+          "pc": "0x8000013c"
+        }
+      ],
+      "mapped_instructions_checked": 348,
+      "path": "testis/out/tests/disassembly.asm",
+      "reason": "Instruction bytes disagree with authoritative ELF",
+      "status": "CONFLICT_WITH_ELF"
+    }
+  ],
+  "customer_firmware": false,
+  "elf_sha256": "649da678efb42c1224e1ddb1b37c43561b56ba522d75b2ac5b77a06d5b0cbc86",
+  "firmware_origin": "hardware_department",
+  "firmware_role": "hardware_supplied_trigger_test_firmware",
+  "inventory": [
+    {
+      "artifact_id": "sha256:4b7bfcc2d3c7594724ad1c1196b3aabdfd44dab334b17438734ddfd76aa7fbcf",
+      "path": "testis/build/RocketTile",
+      "role": "simulator",
+      "sha256": "4b7bfcc2d3c7594724ad1c1196b3aabdfd44dab334b17438734ddfd76aa7fbcf",
+      "size_bytes": 4803392
+    },
+    {
+      "artifact_id": "sha256:2ec341733bd47a8687ec03219ae22d34f1f0269a41fb9d470a2ea1d4f3d900ea",
+      "path": "testis/build/Vtop.cpp",
+      "role": "other",
+      "sha256": "2ec341733bd47a8687ec03219ae22d34f1f0269a41fb9d470a2ea1d4f3d900ea",
+      "size_bytes": 667245
+    },
+    {
+      "artifact_id": "sha256:e751443fbadd7db717f7136861a6af759018c187b1b1d502c526fabf21f642e3",
+      "path": "testis/build/Vtop.d",
+      "role": "other",
+      "sha256": "e751443fbadd7db717f7136861a6af759018c187b1b1d502c526fabf21f642e3",
+      "size_bytes": 316
+    },
+    {
+      "artifact_id": "sha256:a87cb1314ca1dd2ca2264a7ed514f7e1d564f64ed991361bc4d8e06c3b16c36d",
+      "path": "testis/build/Vtop.h",
+      "role": "other",
+      "sha256": "a87cb1314ca1dd2ca2264a7ed514f7e1d564f64ed991361bc4d8e06c3b16c36d",
+      "size_bytes": 1930649
+    },
+    {
+      "artifact_id": "sha256:3d72b819b50f263af99219bb2bfae42fefd6b128115a661db21842af639087b1",
+      "path": "testis/build/Vtop.mk",
+      "role": "other",
+      "sha256": "3d72b819b50f263af99219bb2bfae42fefd6b128115a661db21842af639087b1",
+      "size_bytes": 2043
+    },
+    {
+      "artifact_id": "sha256:a2f6df92ca943f3316cb5824ca993fe74f874269f4325b6d2a1774aa3ddb0532",
+      "path": "testis/build/Vtop.o",
+      "role": "other",
+      "sha256": "a2f6df92ca943f3316cb5824ca993fe74f874269f4325b6d2a1774aa3ddb0532",
+      "size_bytes": 69080
+    },
+    {
+      "artifact_id": "sha256:a968ce5cbde96e83f846f21197825de24d4fe70d18f03759f839afe878af98a5",
+      "path": "testis/build/Vtop_TLB.cpp",
+      "role": "other",
+      "sha256": "a968ce5cbde96e83f846f21197825de24d4fe70d18f03759f839afe878af98a5",
+      "size_bytes": 475803
+    },
+    {
+      "artifact_id": "sha256:209f53b5c520ee1c2fe77859ae5dfbedda2e0ef10b343219e7fb71a017a97329",
+      "path": "testis/build/Vtop_TLB.d",
+      "role": "other",
+      "sha256": "209f53b5c520ee1c2fe77859ae5dfbedda2e0ef10b343219e7fb71a017a97329",
+      "size_bytes": 327
+    },
+    {
+      "artifact_id": "sha256:a6533aadbf0522d9984a5d67397a70f836cf2169c54d78177757bcd8f6e1821e",
+      "path": "testis/build/Vtop_TLB.h",
+      "role": "other",
+      "sha256": "a6533aadbf0522d9984a5d67397a70f836cf2169c54d78177757bcd8f6e1821e",
+      "size_bytes": 134621
+    },
+    {
+      "artifact_id": "sha256:f2cae7d207ca7a81457e2e0d471413ca1cfe14608d39423490d28a3c61b87051",
+      "path": "testis/build/Vtop_TLB.o",
+      "role": "other",
+      "sha256": "f2cae7d207ca7a81457e2e0d471413ca1cfe14608d39423490d28a3c61b87051",
+      "size_bytes": 52336
+    },
+    {
+      "artifact_id": "sha256:d448ac21213bf743f84198648ab4f259e8e3690693adc56b95d41b176988c9b3",
+      "path": "testis/build/Vtop_TLB__1.cpp",
+      "role": "other",
+      "sha256": "d448ac21213bf743f84198648ab4f259e8e3690693adc56b95d41b176988c9b3",
+      "size_bytes": 534181
+    },
+    {
+      "artifact_id": "sha256:ecb28c531a7833407ac0b44d422601b1182c2c7b84c8a27d5581bb43a1e3d9d0",
+      "path": "testis/build/Vtop_TLB__1.d",
+      "role": "other",
+      "sha256": "ecb28c531a7833407ac0b44d422601b1182c2c7b84c8a27d5581bb43a1e3d9d0",
+      "size_bytes": 333
+    },
+    {
+      "artifact_id": "sha256:dc290e403dad5004774b77ef6b173a55584949099dff06b7064c0375ecd48b73",
+      "path": "testis/build/Vtop_TLB__1.o",
+      "role": "other",
+      "sha256": "dc290e403dad5004774b77ef6b173a55584949099dff06b7064c0375ecd48b73",
+      "size_bytes": 62280
+    },
+    {
+      "artifact_id": "sha256:49fa96427d94277e5aac3a52289798e1c3e92102f16d677c551e51743ab2482b",
+      "path": "testis/build/Vtop_TLB__1__Slow.cpp",
+      "role": "other",
+      "sha256": "49fa96427d94277e5aac3a52289798e1c3e92102f16d677c551e51743ab2482b",
+      "size_bytes": 375391
+    },
+    {
+      "artifact_id": "sha256:9eeafb587420dfa7132b04fea10429713984bc23e071306a6957755999bbbbba",
+      "path": "testis/build/Vtop_TLB__1__Slow.d",
+      "role": "other",
+      "sha256": "9eeafb587420dfa7132b04fea10429713984bc23e071306a6957755999bbbbba",
+      "size_bytes": 345
+    },
+    {
+      "artifact_id": "sha256:fd538cc7c5a7a786fdd59787f560926d544e00b916d1d56b140c8d3b008ca311",
+      "path": "testis/build/Vtop_TLB__1__Slow.o",
+      "role": "other",
+      "sha256": "fd538cc7c5a7a786fdd59787f560926d544e00b916d1d56b140c8d3b008ca311",
+      "size_bytes": 200680
+    },
+    {
+      "artifact_id": "sha256:7f7107f7fb472b8cb9051902cf78d71df61c68423fde14eb333462f1c890d622",
+      "path": "testis/build/Vtop_TLB__2.cpp",
+      "role": "other",
+      "sha256": "7f7107f7fb472b8cb9051902cf78d71df61c68423fde14eb333462f1c890d622",
+      "size_bytes": 211
+    },
+    {
+      "artifact_id": "sha256:54bd35cb5f399d8384741877d4464e4b07fbbca58273b8015855d686c25236ce",
+      "path": "testis/build/Vtop_TLB__2.d",
+      "role": "other",
+      "sha256": "54bd35cb5f399d8384741877d4464e4b07fbbca58273b8015855d686c25236ce",
+      "size_bytes": 333
+    },
+    {
+      "artifact_id": "sha256:d324c8d9dc090a4195777094a39a22bf314a12d64a0549d3ae7240f5aca50ebb",
+      "path": "testis/build/Vtop_TLB__2.o",
+      "role": "other",
+      "sha256": "d324c8d9dc090a4195777094a39a22bf314a12d64a0549d3ae7240f5aca50ebb",
+      "size_bytes": 944
+    },
+    {
+      "artifact_id": "sha256:6f3eb8a0749b7038de6f63dced7bf9affd5e308f9fa1754bd345c95c18914ba2",
+      "path": "testis/build/Vtop_TLB__Slow.cpp",
+      "role": "other",
+      "sha256": "6f3eb8a0749b7038de6f63dced7bf9affd5e308f9fa1754bd345c95c18914ba2",
+      "size_bytes": 427282
+    },
+    {
+      "artifact_id": "sha256:c990b22514ab3240d476b6c5fa8f6c4bfa571a20aece0545026b5d20080494ba",
+      "path": "testis/build/Vtop_TLB__Slow.d",
+      "role": "other",
+      "sha256": "c990b22514ab3240d476b6c5fa8f6c4bfa571a20aece0545026b5d20080494ba",
+      "size_bytes": 339
+    },
+    {
+      "artifact_id": "sha256:37fbfe6c19c86880dc4d4344426db49a656efac64c92db43660cc996b1ddde09",
+      "path": "testis/build/Vtop_TLB__Slow.o",
+      "role": "other",
+      "sha256": "37fbfe6c19c86880dc4d4344426db49a656efac64c92db43660cc996b1ddde09",
+      "size_bytes": 117760
+    },
+    {
+      "artifact_id": "sha256:1207f3a995c360c7d99e26d4698a2ea6cd470d9795c240af171c5dfdc6c7654e",
+      "path": "testis/build/Vtop__1.cpp",
+      "role": "other",
+      "sha256": "1207f3a995c360c7d99e26d4698a2ea6cd470d9795c240af171c5dfdc6c7654e",
+      "size_bytes": 684258
+    },
+    {
+      "artifact_id": "sha256:8a4c71c0e238fb80eb0ad403cbb2b54ac05af4ab16ca51d9057fd6bb1a8fa819",
+      "path": "testis/build/Vtop__1.d",
+      "role": "other",
+      "sha256": "8a4c71c0e238fb80eb0ad403cbb2b54ac05af4ab16ca51d9057fd6bb1a8fa819",
+      "size_bytes": 322
+    },
+    {
+      "artifact_id": "sha256:c875fea304f5736571ad093be28762726324609ec1bc3c4478f8fe8d245db163",
+      "path": "testis/build/Vtop__1.o",
+      "role": "other",
+      "sha256": "c875fea304f5736571ad093be28762726324609ec1bc3c4478f8fe8d245db163",
+      "size_bytes": 49264
+    },
+    {
+      "artifact_id": "sha256:cb8c3cbdb33c6487e03d8342b308820c4d61b729d185a8de3c034c1a275f25c0",
+      "path": "testis/build/Vtop__1__Slow.cpp",
+      "role": "other",
+      "sha256": "cb8c3cbdb33c6487e03d8342b308820c4d61b729d185a8de3c034c1a275f25c0",
+      "size_bytes": 915848
+    },
+    {
+      "artifact_id": "sha256:80f8dbd356d144c277c02db603a7f0cd769dbea19c94d365e1dba3b0d5d08ca0",
+      "path": "testis/build/Vtop__1__Slow.d",
+      "role": "other",
+      "sha256": "80f8dbd356d144c277c02db603a7f0cd769dbea19c94d365e1dba3b0d5d08ca0",
+      "size_bytes": 337
+    },
+    {
+      "artifact_id": "sha256:a082adcff4fdc33484c27378aa35d507792c2cd6121afc816db27221b7f10680",
+      "path": "testis/build/Vtop__1__Slow.o",
+      "role": "other",
+      "sha256": "a082adcff4fdc33484c27378aa35d507792c2cd6121afc816db27221b7f10680",
+      "size_bytes": 171120
+    },
+    {
+      "artifact_id": "sha256:2c360ecbfd25a227e7ad318a4530e3e778d81b490d1749bf961585a5f9b624bf",
+      "path": "testis/build/Vtop__2.cpp",
+      "role": "other",
+      "sha256": "2c360ecbfd25a227e7ad318a4530e3e778d81b490d1749bf961585a5f9b624bf",
+      "size_bytes": 678026
+    },
+    {
+      "artifact_id": "sha256:71e24f940e07a2979b27a876be59f1221f97d84e231203343e63ec5fa6b70232",
+      "path": "testis/build/Vtop__2.d",
+      "role": "other",
+      "sha256": "71e24f940e07a2979b27a876be59f1221f97d84e231203343e63ec5fa6b70232",
+      "size_bytes": 322
+    },
+    {
+      "artifact_id": "sha256:a5b345ab79279db3d7fea9ae4c87cd0408a4e47a69ebe78c1e0dc397fe06c5cf",
+      "path": "testis/build/Vtop__2.o",
+      "role": "other",
+      "sha256": "a5b345ab79279db3d7fea9ae4c87cd0408a4e47a69ebe78c1e0dc397fe06c5cf",
+      "size_bytes": 59512
+    },
+    {
+      "artifact_id": "sha256:5393f95d5fe55b7210e1ef319a1cf14eab897397f7c256f458534796aefdaf45",
+      "path": "testis/build/Vtop__2__Slow.cpp",
+      "role": "other",
+      "sha256": "5393f95d5fe55b7210e1ef319a1cf14eab897397f7c256f458534796aefdaf45",
+      "size_bytes": 958782
+    },
+    {
+      "artifact_id": "sha256:a9890baa7bcef5a3b345c8fcf8937ccecad726a7f0dede243db7410624dc003e",
+      "path": "testis/build/Vtop__2__Slow.d",
+      "role": "other",
+      "sha256": "a9890baa7bcef5a3b345c8fcf8937ccecad726a7f0dede243db7410624dc003e",
+      "size_bytes": 337
+    },
+    {
+      "artifact_id": "sha256:c9f5b6c492642b7d7a312ed6755d0f1108317e0a265d565ea3e882f1018d3e97",
+      "path": "testis/build/Vtop__2__Slow.o",
+      "role": "other",
+      "sha256": "c9f5b6c492642b7d7a312ed6755d0f1108317e0a265d565ea3e882f1018d3e97",
+      "size_bytes": 175896
+    },
+    {
+      "artifact_id": "sha256:26e674f09acedcb14e1d46369de3d63d7aa298e8a621abb704841d1681a64f24",
+      "path": "testis/build/Vtop__3.cpp",
+      "role": "other",
+      "sha256": "26e674f09acedcb14e1d46369de3d63d7aa298e8a621abb704841d1681a64f24",
+      "size_bytes": 798816
+    },
+    {
+      "artifact_id": "sha256:ff5aae5ec464504bfc4d220cbada735457fff23106d3e2519969246254da5e3b",
+      "path": "testis/build/Vtop__3.d",
+      "role": "other",
+      "sha256": "ff5aae5ec464504bfc4d220cbada735457fff23106d3e2519969246254da5e3b",
+      "size_bytes": 322
+    },
+    {
+      "artifact_id": "sha256:8f188d2eb524e89ff7142770718f77f0f5f27307b10fed4646d9fd725361b859",
+      "path": "testis/build/Vtop__3.o",
+      "role": "other",
+      "sha256": "8f188d2eb524e89ff7142770718f77f0f5f27307b10fed4646d9fd725361b859",
+      "size_bytes": 49896
+    },
+    {
+      "artifact_id": "sha256:cb8d929cbf68d00270e918aaa4b761cb8d761f75669c61a64aa502d49ff7e760",
+      "path": "testis/build/Vtop__3__Slow.cpp",
+      "role": "other",
+      "sha256": "cb8d929cbf68d00270e918aaa4b761cb8d761f75669c61a64aa502d49ff7e760",
+      "size_bytes": 937502
+    },
+    {
+      "artifact_id": "sha256:f559a4f01737377bc75baf85926b0c7a8a49dde6bba57af8cd543f047e5b1da8",
+      "path": "testis/build/Vtop__3__Slow.d",
+      "role": "other",
+      "sha256": "f559a4f01737377bc75baf85926b0c7a8a49dde6bba57af8cd543f047e5b1da8",
+      "size_bytes": 337
+    },
+    {
+      "artifact_id": "sha256:191f5bee566ec28c05df3174a68e0d02b308320a0a2b5149842396d3ea50ace0",
+      "path": "testis/build/Vtop__3__Slow.o",
+      "role": "other",
+      "sha256": "191f5bee566ec28c05df3174a68e0d02b308320a0a2b5149842396d3ea50ace0",
+      "size_bytes": 166576
+    },
+    {
+      "artifact_id": "sha256:67d10cd8aac94dc7b1c3e5e6f74dfc50726e6cdcd031860b509637a3d31ac244",
+      "path": "testis/build/Vtop__4.cpp",
+      "role": "other",
+      "sha256": "67d10cd8aac94dc7b1c3e5e6f74dfc50726e6cdcd031860b509637a3d31ac244",
+      "size_bytes": 908689
+    },
+    {
+      "artifact_id": "sha256:d898ece3ce053c918a0df372b7062407137d83e3061803a50329d1808ff84831",
+      "path": "testis/build/Vtop__4.d",
+      "role": "other",
+      "sha256": "d898ece3ce053c918a0df372b7062407137d83e3061803a50329d1808ff84831",
+      "size_bytes": 322
+    },
+    {
+      "artifact_id": "sha256:1215fa8f1653c2bafe3c9780a0a6dd102ef8e59334a988b7989645bb0eb0ee3c",
+      "path": "testis/build/Vtop__4.o",
+      "role": "other",
+      "sha256": "1215fa8f1653c2bafe3c9780a0a6dd102ef8e59334a988b7989645bb0eb0ee3c",
+      "size_bytes": 51744
+    },
+    {
+      "artifact_id": "sha256:76b324180c5f4b527888d51c70fbc30c0e4389cbe30997766946708d031fb66a",
+      "path": "testis/build/Vtop__4__Slow.cpp",
+      "role": "other",
+      "sha256": "76b324180c5f4b527888d51c70fbc30c0e4389cbe30997766946708d031fb66a",
+      "size_bytes": 894524
+    },
+    {
+      "artifact_id": "sha256:1af466694eb3b3d9064a1a836de45b353f48b6af81d032b0c6bfe68eb39f8c47",
+      "path": "testis/build/Vtop__4__Slow.d",
+      "role": "other",
+      "sha256": "1af466694eb3b3d9064a1a836de45b353f48b6af81d032b0c6bfe68eb39f8c47",
+      "size_bytes": 337
+    },
+    {
+      "artifact_id": "sha256:d043f9788eceb3b1b7a66ef3ca6b2fb6b5f1326e6cb8da3224baf60b4b57bd9f",
+      "path": "testis/build/Vtop__4__Slow.o",
+      "role": "other",
+      "sha256": "d043f9788eceb3b1b7a66ef3ca6b2fb6b5f1326e6cb8da3224baf60b4b57bd9f",
+      "size_bytes": 141168
+    },
+    {
+      "artifact_id": "sha256:365f359627a4494af8676084b5c4b07fbaeb189207ca6c5134d13356509cdf40",
+      "path": "testis/build/Vtop__5.cpp",
+      "role": "other",
+      "sha256": "365f359627a4494af8676084b5c4b07fbaeb189207ca6c5134d13356509cdf40",
+      "size_bytes": 641986
+    },
+    {
+      "artifact_id": "sha256:e388fb8493db4531aa86dc840d08c74fff82be57b3b4c67c883cc55d0635ad20",
+      "path": "testis/build/Vtop__5.d",
+      "role": "other",
+      "sha256": "e388fb8493db4531aa86dc840d08c74fff82be57b3b4c67c883cc55d0635ad20",
+      "size_bytes": 322
+    },
+    {
+      "artifact_id": "sha256:5c955cb662726ad7a2b92051e51318e28f67ffb17118c8f23e6fd28cdf3447e0",
+      "path": "testis/build/Vtop__5.o",
+      "role": "other",
+      "sha256": "5c955cb662726ad7a2b92051e51318e28f67ffb17118c8f23e6fd28cdf3447e0",
+      "size_bytes": 56352
+    },
+    {
+      "artifact_id": "sha256:55d7d345102c2752042274c5808463c3fa7454b332945da4dbd5dd1853db7c01",
+      "path": "testis/build/Vtop__5__Slow.cpp",
+      "role": "other",
+      "sha256": "55d7d345102c2752042274c5808463c3fa7454b332945da4dbd5dd1853db7c01",
+      "size_bytes": 1771944
+    },
+    {
+      "artifact_id": "sha256:e42cf8dc2ce2160b9a0a68b32cd9db8c4ff64962d02446dc900df0d0455d19ef",
+      "path": "testis/build/Vtop__5__Slow.d",
+      "role": "other",
+      "sha256": "e42cf8dc2ce2160b9a0a68b32cd9db8c4ff64962d02446dc900df0d0455d19ef",
+      "size_bytes": 337
+    },
+    {
+      "artifact_id": "sha256:90bde95904407848f55abd99930332fe73fb0050a2043d222112ce8cf451962c",
+      "path": "testis/build/Vtop__5__Slow.o",
+      "role": "other",
+      "sha256": "90bde95904407848f55abd99930332fe73fb0050a2043d222112ce8cf451962c",
+      "size_bytes": 980632
+    },
+    {
+      "artifact_id": "sha256:760684840a79d1e8ff0adadd4831e70e0de5e130937c73888491f734d3d71de8",
+      "path": "testis/build/Vtop__6.cpp",
+      "role": "other",
+      "sha256": "760684840a79d1e8ff0adadd4831e70e0de5e130937c73888491f734d3d71de8",
+      "size_bytes": 788761
+    },
+    {
+      "artifact_id": "sha256:cdbf33b2d56f5fc555a145e6d3f7278b31b03151928b78625392cd4590eec826",
+      "path": "testis/build/Vtop__6.d",
+      "role": "other",
+      "sha256": "cdbf33b2d56f5fc555a145e6d3f7278b31b03151928b78625392cd4590eec826",
+      "size_bytes": 322
+    },
+    {
+      "artifact_id": "sha256:1e405617392273126a46b55c5c0711dd6bcb319ae4b83bd4c7405d703dd93fa7",
+      "path": "testis/build/Vtop__6.o",
+      "role": "other",
+      "sha256": "1e405617392273126a46b55c5c0711dd6bcb319ae4b83bd4c7405d703dd93fa7",
+      "size_bytes": 66784
+    },
+    {
+      "artifact_id": "sha256:b7cc43a6b08795b0ad5ba01aec5c8b8bb5c9c0103d9f2b43c3b2801952988347",
+      "path": "testis/build/Vtop__6__Slow.cpp",
+      "role": "other",
+      "sha256": "b7cc43a6b08795b0ad5ba01aec5c8b8bb5c9c0103d9f2b43c3b2801952988347",
+      "size_bytes": 146606
+    },
+    {
+      "artifact_id": "sha256:8062c07c7edf67a4ff59487de7cf40baeb9156ba915efe2c4eca6849b2fbb94d",
+      "path": "testis/build/Vtop__6__Slow.d",
+      "role": "other",
+      "sha256": "8062c07c7edf67a4ff59487de7cf40baeb9156ba915efe2c4eca6849b2fbb94d",
+      "size_bytes": 337
+    },
+    {
+      "artifact_id": "sha256:6a450e625f19e860bb67d26ef74c9da4f79bb5ba16809a0c71bffe75c9d1b1aa",
+      "path": "testis/build/Vtop__6__Slow.o",
+      "role": "other",
+      "sha256": "6a450e625f19e860bb67d26ef74c9da4f79bb5ba16809a0c71bffe75c9d1b1aa",
+      "size_bytes": 83888
+    },
+    {
+      "artifact_id": "sha256:a7979ae8b5596704c5427df93e9383764cc9eaa2597b70786b0165dd7717540f",
+      "path": "testis/build/Vtop__7.cpp",
+      "role": "other",
+      "sha256": "a7979ae8b5596704c5427df93e9383764cc9eaa2597b70786b0165dd7717540f",
+      "size_bytes": 441712
+    },
+    {
+      "artifact_id": "sha256:636cb95a2ebb1496a5822cc5f608aecc01e1e5a9852301cc44eea3c48f0a2f0a",
+      "path": "testis/build/Vtop__7.d",
+      "role": "other",
+      "sha256": "636cb95a2ebb1496a5822cc5f608aecc01e1e5a9852301cc44eea3c48f0a2f0a",
+      "size_bytes": 322
+    },
+    {
+      "artifact_id": "sha256:09f3dd36fbf20b04129d395327b8e3344e5c313e675330a731a94f362c74be1f",
+      "path": "testis/build/Vtop__7.o",
+      "role": "other",
+      "sha256": "09f3dd36fbf20b04129d395327b8e3344e5c313e675330a731a94f362c74be1f",
+      "size_bytes": 55368
+    },
+    {
+      "artifact_id": "sha256:596e1bc575bb742bc1b7fa6238d3c9c6fce83a0b9ffbfa4708d8861847c85533",
+      "path": "testis/build/Vtop__ALL.a",
+      "role": "other",
+      "sha256": "596e1bc575bb742bc1b7fa6238d3c9c6fce83a0b9ffbfa4708d8861847c85533",
+      "size_bytes": 6664552
+    },
+    {
+      "artifact_id": "sha256:8773ff8dca9c9cd2b6bd44866425460a86a2fac90c380d17bdb32b9cc7a54934",
+      "path": "testis/build/Vtop__Dpi.cpp",
+      "role": "other",
+      "sha256": "8773ff8dca9c9cd2b6bd44866425460a86a2fac90c380d17bdb32b9cc7a54934",
+      "size_bytes": 669
+    },
+    {
+      "artifact_id": "sha256:ed11cd00fec6de2f9b0eb48fa3f3a3c2c8a5cdc1006c212a30926cdeff1d7adf",
+      "path": "testis/build/Vtop__Dpi.d",
+      "role": "other",
+      "sha256": "ed11cd00fec6de2f9b0eb48fa3f3a3c2c8a5cdc1006c212a30926cdeff1d7adf",
+      "size_bytes": 213
+    },
+    {
+      "artifact_id": "sha256:3f8aa12618911406f4e85b58fb750bca6854c33dbc5c94742e8b611260a7b6e0",
+      "path": "testis/build/Vtop__Dpi.h",
+      "role": "other",
+      "sha256": "3f8aa12618911406f4e85b58fb750bca6854c33dbc5c94742e8b611260a7b6e0",
+      "size_bytes": 437
+    },
+    {
+      "artifact_id": "sha256:ced729e68b212d56d339fbdd23270d8cb603ad845870e8d3b4e00f0a537b3e1d",
+      "path": "testis/build/Vtop__Dpi.o",
+      "role": "other",
+      "sha256": "ced729e68b212d56d339fbdd23270d8cb603ad845870e8d3b4e00f0a537b3e1d",
+      "size_bytes": 944
+    },
+    {
+      "artifact_id": "sha256:e2bdb343fd606200f1fabd1cb38bc19dfd08fa0a52891bbb109a7520cca4a2ed",
+      "path": "testis/build/Vtop__Slow.cpp",
+      "role": "other",
+      "sha256": "e2bdb343fd606200f1fabd1cb38bc19dfd08fa0a52891bbb109a7520cca4a2ed",
+      "size_bytes": 845223
+    },
+    {
+      "artifact_id": "sha256:355fda2cd01247e8334c125fce35798f3fe5be227e78c03f1067b33069a58410",
+      "path": "testis/build/Vtop__Slow.d",
+      "role": "other",
+      "sha256": "355fda2cd01247e8334c125fce35798f3fe5be227e78c03f1067b33069a58410",
+      "size_bytes": 331
+    },
+    {
+      "artifact_id": "sha256:6d248a94d86118d43b44d8a4083b1dff0b2b8d98998855a033860339be12a490",
+      "path": "testis/build/Vtop__Slow.o",
+      "role": "other",
+      "sha256": "6d248a94d86118d43b44d8a4083b1dff0b2b8d98998855a033860339be12a490",
+      "size_bytes": 172848
+    },
+    {
+      "artifact_id": "sha256:a40b2b192741df643d64970795a146f4ce386102d84181233744eec1146b14bc",
+      "path": "testis/build/Vtop__Syms.cpp",
+      "role": "other",
+      "sha256": "a40b2b192741df643d64970795a146f4ce386102d84181233744eec1146b14bc",
+      "size_bytes": 4108108
+    },
+    {
+      "artifact_id": "sha256:c6ca12ca326f947942e6c69422be59afff581e11fc9d13b4d8e05cfa5604abf4",
+      "path": "testis/build/Vtop__Syms.d",
+      "role": "other",
+      "sha256": "c6ca12ca326f947942e6c69422be59afff581e11fc9d13b4d8e05cfa5604abf4",
+      "size_bytes": 239
+    },
+    {
+      "artifact_id": "sha256:8f0db980e34707416045dceb7225b2c0ba2124ced774201998c5ba28f752f9c8",
+      "path": "testis/build/Vtop__Syms.h",
+      "role": "other",
+      "sha256": "8f0db980e34707416045dceb7225b2c0ba2124ced774201998c5ba28f752f9c8",
+      "size_bytes": 9034
+    },
+    {
+      "artifact_id": "sha256:d31aaa1a5aee6d0af587bb12bd00a884aafcad53bb0fc7c5524f6cea8b6b5e26",
+      "path": "testis/build/Vtop__Syms.o",
+      "role": "other",
+      "sha256": "d31aaa1a5aee6d0af587bb12bd00a884aafcad53bb0fc7c5524f6cea8b6b5e26",
+      "size_bytes": 2763656
+    },
+    {
+      "artifact_id": "sha256:c76f39318b70df7d19179a65bc245ca753786d68068cba9eba05c9f7597784b4",
+      "path": "testis/build/Vtop__Syms__1.cpp",
+      "role": "other",
+      "sha256": "c76f39318b70df7d19179a65bc245ca753786d68068cba9eba05c9f7597784b4",
+      "size_bytes": 1551673
+    },
+    {
+      "artifact_id": "sha256:73e40bb5dbd8e3982686512a246824b12eba7d643311b108379245eafafae3a3",
+      "path": "testis/build/Vtop__Syms__1.d",
+      "role": "other",
+      "sha256": "73e40bb5dbd8e3982686512a246824b12eba7d643311b108379245eafafae3a3",
+      "size_bytes": 245
+    },
+    {
+      "artifact_id": "sha256:bcb80028c26b117ab8f1ee6e87d17064a026b207c8aaf25878db9c94e60f51fc",
+      "path": "testis/build/Vtop__Syms__1.o",
+      "role": "other",
+      "sha256": "bcb80028c26b117ab8f1ee6e87d17064a026b207c8aaf25878db9c94e60f51fc",
+      "size_bytes": 1103328
+    },
+    {
+      "artifact_id": "sha256:77b82a18ef425fc2f592422a78c8c5844663e6181d4356d66fc0407d13b0a503",
+      "path": "testis/build/Vtop__ver.d",
+      "role": "other",
+      "sha256": "77b82a18ef425fc2f592422a78c8c5844663e6181d4356d66fc0407d13b0a503",
+      "size_bytes": 964
+    },
+    {
+      "artifact_id": "sha256:f53740fc56ce5907026a925be85caf42c76535e9e529520867d4d8d84ab37a7c",
+      "path": "testis/build/Vtop__verFiles.dat",
+      "role": "build_metadata",
+      "sha256": "f53740fc56ce5907026a925be85caf42c76535e9e529520867d4d8d84ab37a7c",
+      "size_bytes": 3877
+    },
+    {
+      "artifact_id": "sha256:113118a7a88be5badfe5859ae23994186083bb91228fdaaf33bf0b2374ebdcaa",
+      "path": "testis/build/Vtop_classes.mk",
+      "role": "other",
+      "sha256": "113118a7a88be5badfe5859ae23994186083bb91228fdaaf33bf0b2374ebdcaa",
+      "size_bytes": 1904
+    },
+    {
+      "artifact_id": "sha256:732c561b14aaca04bce0b70fd57bc8dcd0a92af7aedae7223801077e434d9e16",
+      "path": "testis/build/verilated.d",
+      "role": "other",
+      "sha256": "732c561b14aaca04bce0b70fd57bc8dcd0a92af7aedae7223801077e434d9e16",
+      "size_bytes": 358
+    },
+    {
+      "artifact_id": "sha256:b2a3dec8283341588ca6fd0ae8fbbb42fa31777b2b9218447b893477f1f7a3e0",
+      "path": "testis/build/verilated.o",
+      "role": "other",
+      "sha256": "b2a3dec8283341588ca6fd0ae8fbbb42fa31777b2b9218447b893477f1f7a3e0",
+      "size_bytes": 141216
+    },
+    {
+      "artifact_id": "sha256:1887c7fb96a6352a6d2a42d76df4c0685f692aba60aabe388f1678a95929e78b",
+      "path": "testis/build/verilated_dpi.d",
+      "role": "other",
+      "sha256": "1887c7fb96a6352a6d2a42d76df4c0685f692aba60aabe388f1678a95929e78b",
+      "size_bytes": 447
+    },
+    {
+      "artifact_id": "sha256:4e1fc8a9988894683bb1a68b10088a2279c56e70f17ec493801c7cca4d439a41",
+      "path": "testis/build/verilated_dpi.o",
+      "role": "other",
+      "sha256": "4e1fc8a9988894683bb1a68b10088a2279c56e70f17ec493801c7cca4d439a41",
+      "size_bytes": 23624
+    },
+    {
+      "artifact_id": "sha256:ef9c29c1bae2639a9271edd5c12603ecf2e30059e55840f3d12aef6ead490911",
+      "path": "testis/build/verilated_vpi.d",
+      "role": "other",
+      "sha256": "ef9c29c1bae2639a9271edd5c12603ecf2e30059e55840f3d12aef6ead490911",
+      "size_bytes": 408
+    },
+    {
+      "artifact_id": "sha256:85d99b677ce46bd51790d768fbb280e42747628d0846c188c9c6bc5cac3b5768",
+      "path": "testis/build/verilated_vpi.o",
+      "role": "other",
+      "sha256": "85d99b677ce46bd51790d768fbb280e42747628d0846c188c9c6bc5cac3b5768",
+      "size_bytes": 128440
+    },
+    {
+      "artifact_id": "sha256:17938dc01c88ecda4751beac581de31e52a765181518c1e55ff21346d6730f52",
+      "path": "testis/build/verilator.d",
+      "role": "other",
+      "sha256": "17938dc01c88ecda4751beac581de31e52a765181518c1e55ff21346d6730f52",
+      "size_bytes": 547
+    },
+    {
+      "artifact_id": "sha256:a1276f58932837cc46737868e4b7a4c69f0031ff5470b2f62e31e07cc68aa1eb",
+      "path": "testis/build/verilator.o",
+      "role": "other",
+      "sha256": "a1276f58932837cc46737868e4b7a4c69f0031ff5470b2f62e31e07cc68aa1eb",
+      "size_bytes": 5336
+    },
+    {
+      "artifact_id": "sha256:00b5c824a6db9e4854cd3e12a2e7f7dadcd7872090c79680c24c1da1b90a73bf",
+      "path": "testis/note.log",
+      "role": "human_note",
+      "sha256": "00b5c824a6db9e4854cd3e12a2e7f7dadcd7872090c79680c24c1da1b90a73bf",
+      "size_bytes": 950
+    },
+    {
+      "artifact_id": "sha256:3f9463d3d49f73942396edc67223269ab004e05042e58579c51805f797f80a37",
+      "path": "testis/out/.isa_sig_0.txt",
+      "role": "isa_signature",
+      "sha256": "3f9463d3d49f73942396edc67223269ab004e05042e58579c51805f797f80a37",
+      "size_bytes": 8382
+    },
+    {
+      "artifact_id": "sha256:e14bcb08de2e6d62ee0368aa4d244375ca1e64178392b39f5b4866d25f577513",
+      "path": "testis/out/.rtl_sig_0.txt",
+      "role": "rtl_signature",
+      "sha256": "e14bcb08de2e6d62ee0368aa4d244375ca1e64178392b39f5b4866d25f577513",
+      "size_bytes": 8382
+    },
+    {
+      "artifact_id": "sha256:9b9cb6de2db097855d744a6f8d087db611c66553acf9d34666246ec8030d127c",
+      "path": "testis/out/tests/.input_1.S",
+      "role": "assembly",
+      "sha256": "9b9cb6de2db097855d744a6f8d087db611c66553acf9d34666246ec8030d127c",
+      "size_bytes": 40109
+    },
+    {
+      "artifact_id": "sha256:649da678efb42c1224e1ddb1b37c43561b56ba522d75b2ac5b77a06d5b0cbc86",
+      "path": "testis/out/tests/.input_1.elf",
+      "role": "elf",
+      "sha256": "649da678efb42c1224e1ddb1b37c43561b56ba522d75b2ac5b77a06d5b0cbc86",
+      "size_bytes": 56152
+    },
+    {
+      "artifact_id": "sha256:88ac462ff45e59eba9006792de9a0b7400a7e09e0fd38ceb2fb53189923177bf",
+      "path": "testis/out/tests/.input_1.hex",
+      "role": "other",
+      "sha256": "88ac462ff45e59eba9006792de9a0b7400a7e09e0fd38ceb2fb53189923177bf",
+      "size_bytes": 836672
+    },
+    {
+      "artifact_id": "sha256:cb6dbcbd7d67a78bc5f070342ff03178562ded53edf3f2467db26d999059e1f6",
+      "path": "testis/out/tests/.input_1.si",
+      "role": "si",
+      "sha256": "cb6dbcbd7d67a78bc5f070342ff03178562ded53edf3f2467db26d999059e1f6",
+      "size_bytes": 26671
+    },
+    {
+      "artifact_id": "sha256:a70be6f6dfd6c9f4637378ef0be9f6b4a4882ac157fdf36fc68b45f0dd24585a",
+      "path": "testis/out/tests/.input_1.symbols",
+      "role": "other",
+      "sha256": "a70be6f6dfd6c9f4637378ef0be9f6b4a4882ac157fdf36fc68b45f0dd24585a",
+      "size_bytes": 14702
+    },
+    {
+      "artifact_id": "sha256:091ef6d7688f7356d776cb03ecd7521241d5cecc70bdd20810bc8523f58bfc9c",
+      "path": "testis/out/tests/disassembly.asm",
+      "role": "disassembly",
+      "sha256": "091ef6d7688f7356d776cb03ecd7521241d5cecc70bdd20810bc8523f58bfc9c",
+      "size_bytes": 18042
+    },
+    {
+      "artifact_id": "sha256:71df08ccfbd1f17a1942f5a01d574ef49c51acd5d0d50e077fc8946fadb8b87c",
+      "path": "testis/out/trace/isa_1.csv",
+      "role": "isa_csv",
+      "sha256": "71df08ccfbd1f17a1942f5a01d574ef49c51acd5d0d50e077fc8946fadb8b87c",
+      "size_bytes": 40148
+    },
+    {
+      "artifact_id": "sha256:9197d3ba3b3e31b59d893deacfd87f159d51e28f67b7b1ffe32e56c8be2b2093",
+      "path": "testis/out/trace/isa_1.log",
+      "role": "isa_log",
+      "sha256": "9197d3ba3b3e31b59d893deacfd87f159d51e28f67b7b1ffe32e56c8be2b2093",
+      "size_bytes": 275856
+    },
+    {
+      "artifact_id": "sha256:0a5374306877f87ceb9de6d3e89788c23e6614b823c8ee34f84ce2cf5d470379",
+      "path": "testis/out/trace/rtl_1.log",
+      "role": "rtl_trace",
+      "sha256": "0a5374306877f87ceb9de6d3e89788c23e6614b823c8ee34f84ce2cf5d470379",
+      "size_bytes": 527602
+    },
+    {
+      "artifact_id": "sha256:c87ec35073af989e43e701f098002fd4aea13db388a4769ea9a1e1705656cca5",
+      "path": "testis/out/transition.db",
+      "role": "other",
+      "sha256": "c87ec35073af989e43e701f098002fd4aea13db388a4769ea9a1e1705656cca5",
+      "size_bytes": 101263
+    },
+    {
+      "artifact_id": "sha256:cb6dbcbd7d67a78bc5f070342ff03178562ded53edf3f2467db26d999059e1f6",
+      "path": "testis/tests/.input_918_gen.si",
+      "role": "si",
+      "sha256": "cb6dbcbd7d67a78bc5f070342ff03178562ded53edf3f2467db26d999059e1f6",
+      "size_bytes": 26671
+    }
+  ],
+  "isa_log_sha256": "9197d3ba3b3e31b59d893deacfd87f159d51e28f67b7b1ffe32e56c8be2b2093",
+  "isa_signature_sha256": "3f9463d3d49f73942396edc67223269ab004e05042e58579c51805f797f80a37",
+  "isa_trace_sha256": "71df08ccfbd1f17a1942f5a01d574ef49c51acd5d0d50e077fc8946fadb8b87c",
+  "manifest_id": "processorfuzz-manifest:04a5d55a3003eb52ba958d1cba93aa5c02712bc0a65a403d5bdfdb6b400f0e58",
+  "package_role": "hardware_trigger_validation_package",
+  "role_basis": "hardware_team_delivery_intake",
+  "rtl_signature_sha256": "e14bcb08de2e6d62ee0368aa4d244375ca1e64178392b39f5b4866d25f577513",
+  "rtl_source_revision": "not_established",
+  "rtl_trace_sha256": "0a5374306877f87ceb9de6d3e89788c23e6614b823c8ee34f84ce2cf5d470379",
+  "schema_version": "processorfuzz-case-manifest/v2",
+  "selected_paths": {
+    "elf": "testis/out/tests/.input_1.elf",
+    "isa_csv": "testis/out/trace/isa_1.csv",
+    "isa_log": "testis/out/trace/isa_1.log",
+    "isa_signature": "testis/out/.isa_sig_0.txt",
+    "rtl_signature": "testis/out/.rtl_sig_0.txt",
+    "rtl_trace": "testis/out/trace/rtl_1.log",
+    "si": "testis/out/tests/.input_1.si"
+  },
+  "si_sha256": "cb6dbcbd7d67a78bc5f070342ff03178562ded53edf3f2467db26d999059e1f6",
+  "simulator_sha256": "4b7bfcc2d3c7594724ad1c1196b3aabdfd44dab334b17438734ddfd76aa7fbcf",
+  "unbound_artifacts": [
+    {
+      "path": "testis/note.log",
+      "reason": "Human note is not runtime evidence",
+      "role": "human_note"
+    }
+  ]
+}

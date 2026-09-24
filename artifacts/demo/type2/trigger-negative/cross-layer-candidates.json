@@ -1,10 +1,20 @@
 {
-  "binding_set_id": "hwbindings:6a643b63f91c880db4c8341c5d6bf1276c49d604a3f8d6fd7f06d2f03f4879dc",
-  "candidate_id": "xlcandidate:5600cf8da53629d9c17d2fe71230da3d0cbef0374233549bc833683ce44808c0",
+  "binding_set_id": "hwbindings:56cc4eada0f83c3a24e62c2f6ccd7407b8e663a73bde1a830cb93949589c7694",
+  "candidate_id": "xlcandidate:8dc99bd8bcaa72167953a75792f1eb5ac8a21e00e909cb35ab6c53498bcc1471",
   "capability_ids": [
-    "fwcap:02371d93bab08f10140ae6b681c87726c0d4e9b9f193144e2946b523227a4e22",
-    "fwcap:5fca088b8349c12d1f60bd2e1f2cb7d8d226178374afb55d3e380cb164479db0",
-    "fwcap:7e756deb16930bc7ace19c8ebaacab4f0ba435ebf9b96c317b3816b351e2684c"
+    "fwcap:1dd50fa36b79c7234f309e11a8df169d9628549e395e5a94f3af1dd6a1b1cf07",
+    "fwcap:2d617d770c34817cffb5c70c92193f2c6df08863d845c8b4b9ee6e30b01f33b3",
+    "fwcap:3668df401c7ecc220abe409a1154f31a5af7f28bd47e4e71f7891d077edf8962",
+    "fwcap:3a18adac4ab0d7526f9972a02051a58d63aba23c944b3e93a9a5dd5da46ee1f2",
+    "fwcap:3e23ce1a3c99d49a9fa65e6447ae9762a0be39034e1874560f6f4d53a9de0e0b",
+    "fwcap:6fe7fcd2bb31d89b848941d6c551df5dafb5c1298b86f9448e3c6cafc32bcb10",
+    "fwcap:874e70db0d0465279bf8817d42918b9fb54c35235a7ca9532d4c16b1dc3aa1f3",
+    "fwcap:9cf1fc60cb23b048e6699f230e13ac9a1220a92051aa0825bbbd0d68ba310cdb",
+    "fwcap:b01e11f05969bafd74a7786a8ef4d63ab99be9b7aad8bfabd03074602bf36abc",
+    "fwcap:b883872e3b9be86c62a96d9986d234e9d0309fac113591abf20439ed71775a87",
+    "fwcap:cb1c2d51fc43ff61c63bb336ee13964b891403eadc1bb9a67c2073e52a8b955c",
+    "fwcap:d269c7d8fca4fcd0ca5654d346272009fc4bc29b17cef292315c49e0bca4f596",
+    "fwcap:e0dfe5cfaca4aa027e2290c137b456a5133fac1ad3fca783c398fda78e2391b8"
   ],
   "contract_id": "hwbehavior:d16acb6603bdff18aed64b4a19e549db0fdc5fd3f8359ba571d0e36d651955b7",
   "missing_requirements": [
@@ -27,15 +37,15 @@
       "static_compatibility_status": "UNKNOWN"
     },
     {
-      "match_id": "xlrequirement:b7bc9ebb47c5f8cb54d155ed0e1e041f932a1b5170409e86106a8c1ab888b6c4",
+      "match_id": "xlrequirement:d7a0105f2e33b2ca82653a32a96e850b883be7ff0ccb1b84c97ac4031e901c31",
       "matched_capability_ids": [
-        "fwcap:02371d93bab08f10140ae6b681c87726c0d4e9b9f193144e2946b523227a4e22"
+        "fwcap:2d617d770c34817cffb5c70c92193f2c6df08863d845c8b4b9ee6e30b01f33b3"
       ],
       "missing_requirements": [],
       "reason": "Exact address access conflicts with required value, width or resource permission",
       "requirement_id": "type2:command-write",
       "resource_binding_ids": [
-        "hwbind:15a8612c79f2beb8b1a6395a60dc9b9ddeab6fee48ca7d48f3246752040f6ab5"
+        "hwbind:5ddbd03a65a2d622ead000f8d7a948e020b0796b14281532ac6898e8cebca443"
       ],
       "static_compatibility_status": "CONTRADICTED"
     },
@@ -51,15 +61,15 @@
       "static_compatibility_status": "UNKNOWN"
     },
     {
-      "match_id": "xlrequirement:0bfa1108b9e1e459fe4fbe12f650567f48d708c162f133446b20a67be81cda1c",
+      "match_id": "xlrequirement:f7fce79f8c680d14862258d9168fe467806d0c2ba503538bed5f6d24fa9e5632",
       "matched_capability_ids": [
-        "fwcap:7e756deb16930bc7ace19c8ebaacab4f0ba435ebf9b96c317b3816b351e2684c"
+        "fwcap:b883872e3b9be86c62a96d9986d234e9d0309fac113591abf20439ed71775a87"
       ],
       "missing_requirements": [],
       "reason": "Exact typed resource, access, width and known value compatible",
       "requirement_id": "type2:enable-write",
       "resource_binding_ids": [
-        "hwbind:ac1294786f30dcc6a1c05a56d39f9e48694004eaf1542c7029ddbca49a2a834a"
+        "hwbind:b2e9adf5adcbe768f4c336a7055cef052e9032e5852e351b7cc80768da431dab"
       ],
       "static_compatibility_status": "SUPPORTED"
     },

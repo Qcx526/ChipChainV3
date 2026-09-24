@@ -1,8 +1,8 @@
 [
   {
     "architecture": "riscv",
-    "capability_id": "fwcap:743e7fa26b33e1e31a33e4f5509d5f3d8d192ebaad566a32f7be245de72220d9",
-    "capability_sha256": "743e7fa26b33e1e31a33e4f5509d5f3d8d192ebaad566a32f7be245de72220d9",
+    "capability_id": "fwcap:052b7f0854059b1a34afde9d71230a691c7fc362f4c75501fadbadae9dd3f8f4",
+    "capability_sha256": "052b7f0854059b1a34afde9d71230a691c7fc362f4c75501fadbadae9dd3f8f4",
     "conditions": [
       {
         "condition_id": "condition:fwbehavior:7ab2ad7a2a76386661fbaf0bcf7e9bc923e2ad74caf437f5481210825fae3d29",
@@ -27,7 +27,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:7ab2ad7a2a76386661fbaf0bcf7e9bc923e2ad74caf437f5481210825fae3d29",
@@ -39,7 +39,7 @@
         ],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       }
     ],
@@ -65,7 +65,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:7ab2ad7a2a76386661fbaf0bcf7e9bc923e2ad74caf437f5481210825fae3d29",
@@ -77,7 +77,7 @@
         ],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "targets": [
           65544
@@ -105,7 +105,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:7ab2ad7a2a76386661fbaf0bcf7e9bc923e2ad74caf437f5481210825fae3d29",
@@ -118,7 +118,7 @@
         "resource_kind": "control_flow",
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       }
     ],
@@ -149,7 +149,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:7ab2ad7a2a76386661fbaf0bcf7e9bc923e2ad74caf437f5481210825fae3d29",
@@ -163,13 +163,13 @@
       "retirement_observation_ids": [],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ]
     },
     "evidence": [
       {
         "analyzer": "ghidra-elf-static/v1",
-        "artifact_id": "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb",
+        "artifact_id": "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29",
         "epistemic_status": "derived",
         "evidence_id": "fwbehavior:7ab2ad7a2a76386661fbaf0bcf7e9bc923e2ad74caf437f5481210825fae3d29",
         "location": {
@@ -213,7 +213,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:7ab2ad7a2a76386661fbaf0bcf7e9bc923e2ad74caf437f5481210825fae3d29",
@@ -225,7 +225,7 @@
       ],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ]
     },
     "primitives": [
@@ -258,7 +258,7 @@
             },
             {
               "source_artifact_ids": [
-                "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+                "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
               ],
               "source_ids": [
                 "fwbehavior:7ab2ad7a2a76386661fbaf0bcf7e9bc923e2ad74caf437f5481210825fae3d29",
@@ -270,7 +270,7 @@
           ],
           "source_artifact_ids": [
             "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "status": "not_established",
           "support_basis": "not_established"
@@ -299,7 +299,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:7ab2ad7a2a76386661fbaf0bcf7e9bc923e2ad74caf437f5481210825fae3d29",
@@ -312,7 +312,7 @@
         "retirement_observation_ids": [],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "source_pc": 65536,
         "source_registers": [],
@@ -334,7 +334,7 @@
       },
       {
         "source_artifact_ids": [
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "source_ids": [
           "fwbehavior:7ab2ad7a2a76386661fbaf0bcf7e9bc923e2ad74caf437f5481210825fae3d29",
@@ -376,7 +376,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:7ab2ad7a2a76386661fbaf0bcf7e9bc923e2ad74caf437f5481210825fae3d29",
@@ -391,7 +391,7 @@
       ],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ],
       "target": {
         "architecture": "riscv",
@@ -410,7 +410,7 @@
     },
     "source_artifact_ids": [
       "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-      "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+      "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
     ],
     "source_artifacts": [
       {
@@ -420,9 +420,9 @@
         "source_kind": "synthetic_fixture"
       },
       {
-        "artifact_id": "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb",
+        "artifact_id": "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29",
         "hash_kind": "file_bytes",
-        "sha256": "7a978572f2294a3732ae9628cc896c721a6c0d1f3bb38ee1911e9daa27ebe577",
+        "sha256": "a47cdd2b187d920e8e12ec95b258b4be6409fae486172026de03d05782fe69c5",
         "source_kind": "synthetic_fixture"
       }
     ],
@@ -430,8 +430,8 @@
   },
   {
     "architecture": "riscv",
-    "capability_id": "fwcap:b33c550563e3cd47968e645da275a24ff7911c387453e472f6c674cb08eac716",
-    "capability_sha256": "b33c550563e3cd47968e645da275a24ff7911c387453e472f6c674cb08eac716",
+    "capability_id": "fwcap:eb6d081c12a343ad93d9d093949bf71fb8f6327f437f9508e9341c1f94abae27",
+    "capability_sha256": "eb6d081c12a343ad93d9d093949bf71fb8f6327f437f9508e9341c1f94abae27",
     "conditions": [
       {
         "condition_id": "condition:fwbehavior:9b40cf57b4df74fd4c8e1fdaa11d2ea515286fa387b84f478c2cd4a080ee1b02",
@@ -456,7 +456,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:9b40cf57b4df74fd4c8e1fdaa11d2ea515286fa387b84f478c2cd4a080ee1b02",
@@ -468,7 +468,7 @@
         ],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       }
     ],
@@ -494,7 +494,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:9b40cf57b4df74fd4c8e1fdaa11d2ea515286fa387b84f478c2cd4a080ee1b02",
@@ -506,7 +506,7 @@
         ],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "targets": [
           65540
@@ -534,7 +534,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:9b40cf57b4df74fd4c8e1fdaa11d2ea515286fa387b84f478c2cd4a080ee1b02",
@@ -547,7 +547,7 @@
         "resource_kind": "control_flow",
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       }
     ],
@@ -578,7 +578,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:9b40cf57b4df74fd4c8e1fdaa11d2ea515286fa387b84f478c2cd4a080ee1b02",
@@ -592,13 +592,13 @@
       "retirement_observation_ids": [],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ]
     },
     "evidence": [
       {
         "analyzer": "ghidra-elf-static/v1",
-        "artifact_id": "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb",
+        "artifact_id": "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29",
         "epistemic_status": "derived",
         "evidence_id": "fwbehavior:9b40cf57b4df74fd4c8e1fdaa11d2ea515286fa387b84f478c2cd4a080ee1b02",
         "location": {
@@ -642,7 +642,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:9b40cf57b4df74fd4c8e1fdaa11d2ea515286fa387b84f478c2cd4a080ee1b02",
@@ -654,7 +654,7 @@
       ],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ]
     },
     "primitives": [
@@ -687,7 +687,7 @@
             },
             {
               "source_artifact_ids": [
-                "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+                "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
               ],
               "source_ids": [
                 "fwbehavior:9b40cf57b4df74fd4c8e1fdaa11d2ea515286fa387b84f478c2cd4a080ee1b02",
@@ -699,7 +699,7 @@
           ],
           "source_artifact_ids": [
             "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "status": "not_established",
           "support_basis": "not_established"
@@ -728,7 +728,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:9b40cf57b4df74fd4c8e1fdaa11d2ea515286fa387b84f478c2cd4a080ee1b02",
@@ -741,7 +741,7 @@
         "retirement_observation_ids": [],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "source_pc": 65540,
         "source_registers": [],
@@ -763,7 +763,7 @@
       },
       {
         "source_artifact_ids": [
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "source_ids": [
           "fwbehavior:9b40cf57b4df74fd4c8e1fdaa11d2ea515286fa387b84f478c2cd4a080ee1b02",
@@ -805,7 +805,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:9b40cf57b4df74fd4c8e1fdaa11d2ea515286fa387b84f478c2cd4a080ee1b02",
@@ -820,7 +820,7 @@
       ],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ],
       "target": {
         "architecture": "riscv",
@@ -839,7 +839,7 @@
     },
     "source_artifact_ids": [
       "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-      "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+      "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
     ],
     "source_artifacts": [
       {
@@ -849,9 +849,9 @@
         "source_kind": "synthetic_fixture"
       },
       {
-        "artifact_id": "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb",
+        "artifact_id": "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29",
         "hash_kind": "file_bytes",
-        "sha256": "7a978572f2294a3732ae9628cc896c721a6c0d1f3bb38ee1911e9daa27ebe577",
+        "sha256": "a47cdd2b187d920e8e12ec95b258b4be6409fae486172026de03d05782fe69c5",
         "source_kind": "synthetic_fixture"
       }
     ],
@@ -859,8 +859,8 @@
   },
   {
     "architecture": "riscv",
-    "capability_id": "fwcap:d72843a4b2d0d69aefd69ee4accd914b3a14ee5ea45e3d81d6877ba3a10a2013",
-    "capability_sha256": "d72843a4b2d0d69aefd69ee4accd914b3a14ee5ea45e3d81d6877ba3a10a2013",
+    "capability_id": "fwcap:8c2941ac8f870f64f88c3165a73dfc295c69a0d855df338f82f42d715063e92a",
+    "capability_sha256": "8c2941ac8f870f64f88c3165a73dfc295c69a0d855df338f82f42d715063e92a",
     "conditions": [
       {
         "condition_id": "condition:fwbehavior:7973246be309775925390a46b222a431650b7dfa59a6fde4d27ae0c5fcbec882",
@@ -885,7 +885,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:7973246be309775925390a46b222a431650b7dfa59a6fde4d27ae0c5fcbec882",
@@ -897,7 +897,7 @@
         ],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       }
     ],
@@ -929,7 +929,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:7973246be309775925390a46b222a431650b7dfa59a6fde4d27ae0c5fcbec882",
@@ -943,13 +943,13 @@
       "retirement_observation_ids": [],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ]
     },
     "evidence": [
       {
         "analyzer": "ghidra-elf-static/v1",
-        "artifact_id": "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb",
+        "artifact_id": "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29",
         "epistemic_status": "derived",
         "evidence_id": "fwbehavior:7973246be309775925390a46b222a431650b7dfa59a6fde4d27ae0c5fcbec882",
         "location": {
@@ -993,7 +993,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:7973246be309775925390a46b222a431650b7dfa59a6fde4d27ae0c5fcbec882",
@@ -1005,7 +1005,7 @@
       ],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ]
     },
     "primitives": [
@@ -1035,7 +1035,7 @@
             },
             {
               "source_artifact_ids": [
-                "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+                "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
               ],
               "source_ids": [
                 "fwbehavior:7973246be309775925390a46b222a431650b7dfa59a6fde4d27ae0c5fcbec882",
@@ -1047,7 +1047,7 @@
           ],
           "source_artifact_ids": [
             "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "status": "not_established",
           "support_basis": "not_established"
@@ -1076,7 +1076,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:7973246be309775925390a46b222a431650b7dfa59a6fde4d27ae0c5fcbec882",
@@ -1089,7 +1089,7 @@
         "retirement_observation_ids": [],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "source_pc": 65544,
         "source_registers": [],
@@ -1111,7 +1111,7 @@
       },
       {
         "source_artifact_ids": [
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "source_ids": [
           "fwbehavior:7973246be309775925390a46b222a431650b7dfa59a6fde4d27ae0c5fcbec882",
@@ -1153,7 +1153,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:7973246be309775925390a46b222a431650b7dfa59a6fde4d27ae0c5fcbec882",
@@ -1168,7 +1168,7 @@
       ],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ],
       "target": {
         "architecture": "riscv",
@@ -1187,7 +1187,7 @@
     },
     "source_artifact_ids": [
       "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-      "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+      "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
     ],
     "source_artifacts": [
       {
@@ -1197,9 +1197,9 @@
         "source_kind": "synthetic_fixture"
       },
       {
-        "artifact_id": "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb",
+        "artifact_id": "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29",
         "hash_kind": "file_bytes",
-        "sha256": "7a978572f2294a3732ae9628cc896c721a6c0d1f3bb38ee1911e9daa27ebe577",
+        "sha256": "a47cdd2b187d920e8e12ec95b258b4be6409fae486172026de03d05782fe69c5",
         "source_kind": "synthetic_fixture"
       }
     ],
@@ -1207,8 +1207,8 @@
   },
   {
     "architecture": "riscv",
-    "capability_id": "fwcap:d976b6677d313f57e53de5ad5ce1d4c22a488539396a36bc5e1bcd09c7f60860",
-    "capability_sha256": "d976b6677d313f57e53de5ad5ce1d4c22a488539396a36bc5e1bcd09c7f60860",
+    "capability_id": "fwcap:d1478d994a987d7e06306123a69030f64b36c51afcf0d98fe90dd4f24719b167",
+    "capability_sha256": "d1478d994a987d7e06306123a69030f64b36c51afcf0d98fe90dd4f24719b167",
     "conditions": [
       {
         "condition_id": "condition:fwbehavior:9b0abe92bf2b59041d5690c4120ec99887b7340e1590a0ae65d4cc490e14877a",
@@ -1233,7 +1233,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:9b0abe92bf2b59041d5690c4120ec99887b7340e1590a0ae65d4cc490e14877a",
@@ -1245,7 +1245,7 @@
         ],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       }
     ],
@@ -1277,7 +1277,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:9b0abe92bf2b59041d5690c4120ec99887b7340e1590a0ae65d4cc490e14877a",
@@ -1291,13 +1291,13 @@
       "retirement_observation_ids": [],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ]
     },
     "evidence": [
       {
         "analyzer": "ghidra-elf-static/v1",
-        "artifact_id": "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb",
+        "artifact_id": "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29",
         "epistemic_status": "derived",
         "evidence_id": "fwbehavior:9b0abe92bf2b59041d5690c4120ec99887b7340e1590a0ae65d4cc490e14877a",
         "location": {
@@ -1341,7 +1341,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:9b0abe92bf2b59041d5690c4120ec99887b7340e1590a0ae65d4cc490e14877a",
@@ -1353,7 +1353,7 @@
       ],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ]
     },
     "primitives": [
@@ -1383,7 +1383,7 @@
             },
             {
               "source_artifact_ids": [
-                "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+                "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
               ],
               "source_ids": [
                 "fwbehavior:9b0abe92bf2b59041d5690c4120ec99887b7340e1590a0ae65d4cc490e14877a",
@@ -1395,7 +1395,7 @@
           ],
           "source_artifact_ids": [
             "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "status": "not_established",
           "support_basis": "not_established"
@@ -1424,7 +1424,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:9b0abe92bf2b59041d5690c4120ec99887b7340e1590a0ae65d4cc490e14877a",
@@ -1437,7 +1437,7 @@
         "retirement_observation_ids": [],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "source_pc": 65548,
         "source_registers": [],
@@ -1459,7 +1459,7 @@
       },
       {
         "source_artifact_ids": [
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "source_ids": [
           "fwbehavior:9b0abe92bf2b59041d5690c4120ec99887b7340e1590a0ae65d4cc490e14877a",
@@ -1501,7 +1501,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:9b0abe92bf2b59041d5690c4120ec99887b7340e1590a0ae65d4cc490e14877a",
@@ -1516,7 +1516,7 @@
       ],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ],
       "target": {
         "architecture": "riscv",
@@ -1535,7 +1535,7 @@
     },
     "source_artifact_ids": [
       "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-      "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+      "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
     ],
     "source_artifacts": [
       {
@@ -1545,9 +1545,9 @@
         "source_kind": "synthetic_fixture"
       },
       {
-        "artifact_id": "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb",
+        "artifact_id": "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29",
         "hash_kind": "file_bytes",
-        "sha256": "7a978572f2294a3732ae9628cc896c721a6c0d1f3bb38ee1911e9daa27ebe577",
+        "sha256": "a47cdd2b187d920e8e12ec95b258b4be6409fae486172026de03d05782fe69c5",
         "source_kind": "synthetic_fixture"
       }
     ],
@@ -1555,8 +1555,8 @@
   },
   {
     "architecture": "riscv",
-    "capability_id": "fwcap:24f2e3e61ca17612802709bb868d753fdb006c65c76a8aed3fa3c26d710a9a99",
-    "capability_sha256": "24f2e3e61ca17612802709bb868d753fdb006c65c76a8aed3fa3c26d710a9a99",
+    "capability_id": "fwcap:49652e575c96492ea3c43db22f2506ab1152680510591a62a3fcc538aa12f3e8",
+    "capability_sha256": "49652e575c96492ea3c43db22f2506ab1152680510591a62a3fcc538aa12f3e8",
     "conditions": [
       {
         "condition_id": "condition:fwbehavior:53d43a4bde803b29eb52e063185eace3676af0072426bd93a8750b7e372ca2d2",
@@ -1581,7 +1581,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:53d43a4bde803b29eb52e063185eace3676af0072426bd93a8750b7e372ca2d2",
@@ -1593,7 +1593,7 @@
         ],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       }
     ],
@@ -1620,7 +1620,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:53d43a4bde803b29eb52e063185eace3676af0072426bd93a8750b7e372ca2d2",
@@ -1633,7 +1633,7 @@
         "resource_kind": "memory",
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       },
       {
@@ -1666,7 +1666,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:53d43a4bde803b29eb52e063185eace3676af0072426bd93a8750b7e372ca2d2",
@@ -1678,7 +1678,7 @@
         ],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       },
       {
@@ -1711,7 +1711,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:53d43a4bde803b29eb52e063185eace3676af0072426bd93a8750b7e372ca2d2",
@@ -1723,7 +1723,7 @@
         ],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       },
       {
@@ -1756,7 +1756,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:53d43a4bde803b29eb52e063185eace3676af0072426bd93a8750b7e372ca2d2",
@@ -1768,7 +1768,7 @@
         ],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       }
     ],
@@ -1799,7 +1799,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:53d43a4bde803b29eb52e063185eace3676af0072426bd93a8750b7e372ca2d2",
@@ -1813,13 +1813,13 @@
       "retirement_observation_ids": [],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ]
     },
     "evidence": [
       {
         "analyzer": "ghidra-elf-static/v1",
-        "artifact_id": "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb",
+        "artifact_id": "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29",
         "epistemic_status": "derived",
         "evidence_id": "fwbehavior:53d43a4bde803b29eb52e063185eace3676af0072426bd93a8750b7e372ca2d2",
         "location": {
@@ -1863,7 +1863,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:53d43a4bde803b29eb52e063185eace3676af0072426bd93a8750b7e372ca2d2",
@@ -1875,7 +1875,7 @@
       ],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ]
     },
     "primitives": [
@@ -1910,7 +1910,7 @@
             },
             {
               "source_artifact_ids": [
-                "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+                "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
               ],
               "source_ids": [
                 "fwbehavior:53d43a4bde803b29eb52e063185eace3676af0072426bd93a8750b7e372ca2d2",
@@ -1922,7 +1922,7 @@
           ],
           "source_artifact_ids": [
             "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "status": "not_established",
           "support_basis": "not_established"
@@ -1951,7 +1951,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:53d43a4bde803b29eb52e063185eace3676af0072426bd93a8750b7e372ca2d2",
@@ -1964,7 +1964,7 @@
         "retirement_observation_ids": [],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "source_pc": 65552,
         "source_registers": [],
@@ -1986,7 +1986,7 @@
       },
       {
         "source_artifact_ids": [
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "source_ids": [
           "fwbehavior:53d43a4bde803b29eb52e063185eace3676af0072426bd93a8750b7e372ca2d2",
@@ -2028,7 +2028,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:53d43a4bde803b29eb52e063185eace3676af0072426bd93a8750b7e372ca2d2",
@@ -2043,7 +2043,7 @@
       ],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ],
       "target": {
         "architecture": "riscv",
@@ -2062,7 +2062,7 @@
     },
     "source_artifact_ids": [
       "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-      "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+      "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
     ],
     "source_artifacts": [
       {
@@ -2072,9 +2072,9 @@
         "source_kind": "synthetic_fixture"
       },
       {
-        "artifact_id": "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb",
+        "artifact_id": "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29",
         "hash_kind": "file_bytes",
-        "sha256": "7a978572f2294a3732ae9628cc896c721a6c0d1f3bb38ee1911e9daa27ebe577",
+        "sha256": "a47cdd2b187d920e8e12ec95b258b4be6409fae486172026de03d05782fe69c5",
         "source_kind": "synthetic_fixture"
       }
     ],
@@ -2082,8 +2082,8 @@
   },
   {
     "architecture": "riscv",
-    "capability_id": "fwcap:c64a9230993d4b5a7fff9c95e441b39374805765d50f677fbdedb6506dc77dd2",
-    "capability_sha256": "c64a9230993d4b5a7fff9c95e441b39374805765d50f677fbdedb6506dc77dd2",
+    "capability_id": "fwcap:3f93c51e5a62b8dad4212d5e52c5f4753430bf4797c7d2bdd7145474c1c1bf1e",
+    "capability_sha256": "3f93c51e5a62b8dad4212d5e52c5f4753430bf4797c7d2bdd7145474c1c1bf1e",
     "conditions": [
       {
         "condition_id": "condition:fwbehavior:c2118c82c14141ad0caa8b722bee2b052d5b91bede8b66390b21d37400f01349",
@@ -2108,7 +2108,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:c2118c82c14141ad0caa8b722bee2b052d5b91bede8b66390b21d37400f01349",
@@ -2120,7 +2120,7 @@
         ],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       }
     ],
@@ -2147,7 +2147,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:c2118c82c14141ad0caa8b722bee2b052d5b91bede8b66390b21d37400f01349",
@@ -2160,7 +2160,7 @@
         "resource_kind": "memory",
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       },
       {
@@ -2193,7 +2193,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:c2118c82c14141ad0caa8b722bee2b052d5b91bede8b66390b21d37400f01349",
@@ -2205,7 +2205,7 @@
         ],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       },
       {
@@ -2238,7 +2238,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:c2118c82c14141ad0caa8b722bee2b052d5b91bede8b66390b21d37400f01349",
@@ -2250,7 +2250,7 @@
         ],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       }
     ],
@@ -2281,7 +2281,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:c2118c82c14141ad0caa8b722bee2b052d5b91bede8b66390b21d37400f01349",
@@ -2295,13 +2295,13 @@
       "retirement_observation_ids": [],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ]
     },
     "evidence": [
       {
         "analyzer": "ghidra-elf-static/v1",
-        "artifact_id": "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb",
+        "artifact_id": "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29",
         "epistemic_status": "derived",
         "evidence_id": "fwbehavior:c2118c82c14141ad0caa8b722bee2b052d5b91bede8b66390b21d37400f01349",
         "location": {
@@ -2345,7 +2345,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:c2118c82c14141ad0caa8b722bee2b052d5b91bede8b66390b21d37400f01349",
@@ -2357,7 +2357,7 @@
       ],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ]
     },
     "primitives": [
@@ -2391,7 +2391,7 @@
             },
             {
               "source_artifact_ids": [
-                "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+                "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
               ],
               "source_ids": [
                 "fwbehavior:c2118c82c14141ad0caa8b722bee2b052d5b91bede8b66390b21d37400f01349",
@@ -2403,7 +2403,7 @@
           ],
           "source_artifact_ids": [
             "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "status": "not_established",
           "support_basis": "not_established"
@@ -2432,7 +2432,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:c2118c82c14141ad0caa8b722bee2b052d5b91bede8b66390b21d37400f01349",
@@ -2445,7 +2445,7 @@
         "retirement_observation_ids": [],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "source_pc": 65556,
         "source_registers": [],
@@ -2467,7 +2467,7 @@
       },
       {
         "source_artifact_ids": [
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "source_ids": [
           "fwbehavior:c2118c82c14141ad0caa8b722bee2b052d5b91bede8b66390b21d37400f01349",
@@ -2509,7 +2509,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:c2118c82c14141ad0caa8b722bee2b052d5b91bede8b66390b21d37400f01349",
@@ -2524,7 +2524,7 @@
       ],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ],
       "target": {
         "architecture": "riscv",
@@ -2543,7 +2543,7 @@
     },
     "source_artifact_ids": [
       "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-      "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+      "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
     ],
     "source_artifacts": [
       {
@@ -2553,9 +2553,9 @@
         "source_kind": "synthetic_fixture"
       },
       {
-        "artifact_id": "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb",
+        "artifact_id": "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29",
         "hash_kind": "file_bytes",
-        "sha256": "7a978572f2294a3732ae9628cc896c721a6c0d1f3bb38ee1911e9daa27ebe577",
+        "sha256": "a47cdd2b187d920e8e12ec95b258b4be6409fae486172026de03d05782fe69c5",
         "source_kind": "synthetic_fixture"
       }
     ],
@@ -2563,8 +2563,8 @@
   },
   {
     "architecture": "riscv",
-    "capability_id": "fwcap:72991ef6484c3ecf7187dfc8b5f90af9f3133b0447f33411c83492aa6bc529f8",
-    "capability_sha256": "72991ef6484c3ecf7187dfc8b5f90af9f3133b0447f33411c83492aa6bc529f8",
+    "capability_id": "fwcap:63cf8a09fe98a5bc99355ecf70b86dfd299754427263e70c0afdaa208de7bcab",
+    "capability_sha256": "63cf8a09fe98a5bc99355ecf70b86dfd299754427263e70c0afdaa208de7bcab",
     "conditions": [
       {
         "condition_id": "condition:fwbehavior:fd146848cccd03cf1ab65bebddc46424f09419ac5c1d24e95dd15bd09e6ca4ce",
@@ -2589,7 +2589,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:fd146848cccd03cf1ab65bebddc46424f09419ac5c1d24e95dd15bd09e6ca4ce",
@@ -2601,7 +2601,7 @@
         ],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       }
     ],
@@ -2627,7 +2627,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:fd146848cccd03cf1ab65bebddc46424f09419ac5c1d24e95dd15bd09e6ca4ce",
@@ -2639,7 +2639,7 @@
         ],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "targets": [
           65576
@@ -2667,7 +2667,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:fd146848cccd03cf1ab65bebddc46424f09419ac5c1d24e95dd15bd09e6ca4ce",
@@ -2680,7 +2680,7 @@
         "resource_kind": "control_flow",
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       }
     ],
@@ -2711,7 +2711,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:fd146848cccd03cf1ab65bebddc46424f09419ac5c1d24e95dd15bd09e6ca4ce",
@@ -2725,13 +2725,13 @@
       "retirement_observation_ids": [],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ]
     },
     "evidence": [
       {
         "analyzer": "ghidra-elf-static/v1",
-        "artifact_id": "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb",
+        "artifact_id": "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29",
         "epistemic_status": "derived",
         "evidence_id": "fwbehavior:fd146848cccd03cf1ab65bebddc46424f09419ac5c1d24e95dd15bd09e6ca4ce",
         "location": {
@@ -2775,7 +2775,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:fd146848cccd03cf1ab65bebddc46424f09419ac5c1d24e95dd15bd09e6ca4ce",
@@ -2787,7 +2787,7 @@
       ],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ]
     },
     "primitives": [
@@ -2820,7 +2820,7 @@
             },
             {
               "source_artifact_ids": [
-                "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+                "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
               ],
               "source_ids": [
                 "fwbehavior:fd146848cccd03cf1ab65bebddc46424f09419ac5c1d24e95dd15bd09e6ca4ce",
@@ -2832,7 +2832,7 @@
           ],
           "source_artifact_ids": [
             "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "status": "not_established",
           "support_basis": "not_established"
@@ -2861,7 +2861,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:fd146848cccd03cf1ab65bebddc46424f09419ac5c1d24e95dd15bd09e6ca4ce",
@@ -2874,7 +2874,7 @@
         "retirement_observation_ids": [],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "source_pc": 65560,
         "source_registers": [],
@@ -2896,7 +2896,7 @@
       },
       {
         "source_artifact_ids": [
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "source_ids": [
           "fwbehavior:fd146848cccd03cf1ab65bebddc46424f09419ac5c1d24e95dd15bd09e6ca4ce",
@@ -2938,7 +2938,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:fd146848cccd03cf1ab65bebddc46424f09419ac5c1d24e95dd15bd09e6ca4ce",
@@ -2953,7 +2953,7 @@
       ],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ],
       "target": {
         "architecture": "riscv",
@@ -2972,7 +2972,7 @@
     },
     "source_artifact_ids": [
       "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-      "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+      "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
     ],
     "source_artifacts": [
       {
@@ -2982,9 +2982,9 @@
         "source_kind": "synthetic_fixture"
       },
       {
-        "artifact_id": "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb",
+        "artifact_id": "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29",
         "hash_kind": "file_bytes",
-        "sha256": "7a978572f2294a3732ae9628cc896c721a6c0d1f3bb38ee1911e9daa27ebe577",
+        "sha256": "a47cdd2b187d920e8e12ec95b258b4be6409fae486172026de03d05782fe69c5",
         "source_kind": "synthetic_fixture"
       }
     ],
@@ -2992,8 +2992,8 @@
   },
   {
     "architecture": "riscv",
-    "capability_id": "fwcap:e881eb1744327be9103194ca604dbd1cd53bfff090fd2e1b9acd9b4604293412",
-    "capability_sha256": "e881eb1744327be9103194ca604dbd1cd53bfff090fd2e1b9acd9b4604293412",
+    "capability_id": "fwcap:b361f4bdb1878d2d783512d9a7f40f0f06f80cfcc30926ff4c74100f882e4258",
+    "capability_sha256": "b361f4bdb1878d2d783512d9a7f40f0f06f80cfcc30926ff4c74100f882e4258",
     "conditions": [
       {
         "condition_id": "condition:fwbehavior:9643e09f9a7d2a931caef5cb1180809eb02184a83d704a7eabeb9a876580d275",
@@ -3018,7 +3018,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:9643e09f9a7d2a931caef5cb1180809eb02184a83d704a7eabeb9a876580d275",
@@ -3030,7 +3030,7 @@
         ],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       }
     ],
@@ -3056,7 +3056,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:9643e09f9a7d2a931caef5cb1180809eb02184a83d704a7eabeb9a876580d275",
@@ -3068,7 +3068,7 @@
         ],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "targets": [
           65572
@@ -3096,7 +3096,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:9643e09f9a7d2a931caef5cb1180809eb02184a83d704a7eabeb9a876580d275",
@@ -3109,7 +3109,7 @@
         "resource_kind": "control_flow",
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       }
     ],
@@ -3140,7 +3140,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:9643e09f9a7d2a931caef5cb1180809eb02184a83d704a7eabeb9a876580d275",
@@ -3154,13 +3154,13 @@
       "retirement_observation_ids": [],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ]
     },
     "evidence": [
       {
         "analyzer": "ghidra-elf-static/v1",
-        "artifact_id": "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb",
+        "artifact_id": "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29",
         "epistemic_status": "derived",
         "evidence_id": "fwbehavior:9643e09f9a7d2a931caef5cb1180809eb02184a83d704a7eabeb9a876580d275",
         "location": {
@@ -3204,7 +3204,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:9643e09f9a7d2a931caef5cb1180809eb02184a83d704a7eabeb9a876580d275",
@@ -3216,7 +3216,7 @@
       ],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ]
     },
     "primitives": [
@@ -3249,7 +3249,7 @@
             },
             {
               "source_artifact_ids": [
-                "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+                "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
               ],
               "source_ids": [
                 "fwbehavior:9643e09f9a7d2a931caef5cb1180809eb02184a83d704a7eabeb9a876580d275",
@@ -3261,7 +3261,7 @@
           ],
           "source_artifact_ids": [
             "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "status": "not_established",
           "support_basis": "not_established"
@@ -3290,7 +3290,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:9643e09f9a7d2a931caef5cb1180809eb02184a83d704a7eabeb9a876580d275",
@@ -3303,7 +3303,7 @@
         "retirement_observation_ids": [],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "source_pc": 65564,
         "source_registers": [],
@@ -3325,7 +3325,7 @@
       },
       {
         "source_artifact_ids": [
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "source_ids": [
           "fwbehavior:9643e09f9a7d2a931caef5cb1180809eb02184a83d704a7eabeb9a876580d275",
@@ -3367,7 +3367,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:9643e09f9a7d2a931caef5cb1180809eb02184a83d704a7eabeb9a876580d275",
@@ -3382,7 +3382,7 @@
       ],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ],
       "target": {
         "architecture": "riscv",
@@ -3401,7 +3401,7 @@
     },
     "source_artifact_ids": [
       "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-      "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+      "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
     ],
     "source_artifacts": [
       {
@@ -3411,9 +3411,9 @@
         "source_kind": "synthetic_fixture"
       },
       {
-        "artifact_id": "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb",
+        "artifact_id": "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29",
         "hash_kind": "file_bytes",
-        "sha256": "7a978572f2294a3732ae9628cc896c721a6c0d1f3bb38ee1911e9daa27ebe577",
+        "sha256": "a47cdd2b187d920e8e12ec95b258b4be6409fae486172026de03d05782fe69c5",
         "source_kind": "synthetic_fixture"
       }
     ],
@@ -3421,8 +3421,8 @@
   },
   {
     "architecture": "riscv",
-    "capability_id": "fwcap:0ce4882513388f83dbca4e46c4fc9bcf3620987bdd4b9835503bc2362bb86869",
-    "capability_sha256": "0ce4882513388f83dbca4e46c4fc9bcf3620987bdd4b9835503bc2362bb86869",
+    "capability_id": "fwcap:86fd083ff394fbaaf508267acf39323719fa12c7faeb2176194452138ce2a64e",
+    "capability_sha256": "86fd083ff394fbaaf508267acf39323719fa12c7faeb2176194452138ce2a64e",
     "conditions": [
       {
         "condition_id": "condition:fwbehavior:8342f67c003235c230bb48a4a335668f16e3f86875cc40496a2297ddb57a3350",
@@ -3447,7 +3447,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:8342f67c003235c230bb48a4a335668f16e3f86875cc40496a2297ddb57a3350",
@@ -3459,7 +3459,7 @@
         ],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       }
     ],
@@ -3486,7 +3486,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:8342f67c003235c230bb48a4a335668f16e3f86875cc40496a2297ddb57a3350",
@@ -3499,7 +3499,7 @@
         "resource_kind": "control_flow",
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       }
     ],
@@ -3530,7 +3530,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:8342f67c003235c230bb48a4a335668f16e3f86875cc40496a2297ddb57a3350",
@@ -3544,13 +3544,13 @@
       "retirement_observation_ids": [],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ]
     },
     "evidence": [
       {
         "analyzer": "ghidra-elf-static/v1",
-        "artifact_id": "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb",
+        "artifact_id": "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29",
         "epistemic_status": "derived",
         "evidence_id": "fwbehavior:8342f67c003235c230bb48a4a335668f16e3f86875cc40496a2297ddb57a3350",
         "location": {
@@ -3594,7 +3594,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:8342f67c003235c230bb48a4a335668f16e3f86875cc40496a2297ddb57a3350",
@@ -3606,7 +3606,7 @@
       ],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ]
     },
     "primitives": [
@@ -3638,7 +3638,7 @@
             },
             {
               "source_artifact_ids": [
-                "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+                "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
               ],
               "source_ids": [
                 "fwbehavior:8342f67c003235c230bb48a4a335668f16e3f86875cc40496a2297ddb57a3350",
@@ -3650,7 +3650,7 @@
           ],
           "source_artifact_ids": [
             "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "status": "not_established",
           "support_basis": "not_established"
@@ -3679,7 +3679,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:8342f67c003235c230bb48a4a335668f16e3f86875cc40496a2297ddb57a3350",
@@ -3692,7 +3692,7 @@
         "retirement_observation_ids": [],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "source_pc": 65572,
         "source_registers": [],
@@ -3714,7 +3714,7 @@
       },
       {
         "source_artifact_ids": [
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "source_ids": [
           "fwbehavior:8342f67c003235c230bb48a4a335668f16e3f86875cc40496a2297ddb57a3350",
@@ -3756,7 +3756,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:8342f67c003235c230bb48a4a335668f16e3f86875cc40496a2297ddb57a3350",
@@ -3771,7 +3771,7 @@
       ],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ],
       "target": {
         "architecture": "riscv",
@@ -3790,7 +3790,7 @@
     },
     "source_artifact_ids": [
       "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-      "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+      "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
     ],
     "source_artifacts": [
       {
@@ -3800,9 +3800,9 @@
         "source_kind": "synthetic_fixture"
       },
       {
-        "artifact_id": "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb",
+        "artifact_id": "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29",
         "hash_kind": "file_bytes",
-        "sha256": "7a978572f2294a3732ae9628cc896c721a6c0d1f3bb38ee1911e9daa27ebe577",
+        "sha256": "a47cdd2b187d920e8e12ec95b258b4be6409fae486172026de03d05782fe69c5",
         "source_kind": "synthetic_fixture"
       }
     ],
@@ -3810,8 +3810,8 @@
   },
   {
     "architecture": "riscv",
-    "capability_id": "fwcap:bd786c61f0b25b3cc92f39946530ff47a191be3288e61320e126f34ef6cd5cf3",
-    "capability_sha256": "bd786c61f0b25b3cc92f39946530ff47a191be3288e61320e126f34ef6cd5cf3",
+    "capability_id": "fwcap:ef613762d6c1c4c9220879f47aebb28733e55e9eca14cc2d5578388fa544c9ad",
+    "capability_sha256": "ef613762d6c1c4c9220879f47aebb28733e55e9eca14cc2d5578388fa544c9ad",
     "conditions": [
       {
         "condition_id": "condition:fwbehavior:e3bdd6f9942a43c1f599b28af07b684d0a74a736d5c2bfc3d28668dadf76ef5e",
@@ -3836,7 +3836,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:e3bdd6f9942a43c1f599b28af07b684d0a74a736d5c2bfc3d28668dadf76ef5e",
@@ -3848,7 +3848,7 @@
         ],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       }
     ],
@@ -3875,7 +3875,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:e3bdd6f9942a43c1f599b28af07b684d0a74a736d5c2bfc3d28668dadf76ef5e",
@@ -3888,7 +3888,7 @@
         "resource_kind": "csr",
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       },
       {
@@ -3913,7 +3913,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:e3bdd6f9942a43c1f599b28af07b684d0a74a736d5c2bfc3d28668dadf76ef5e",
@@ -3925,7 +3925,7 @@
         ],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       }
     ],
@@ -3956,7 +3956,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:e3bdd6f9942a43c1f599b28af07b684d0a74a736d5c2bfc3d28668dadf76ef5e",
@@ -3970,13 +3970,13 @@
       "retirement_observation_ids": [],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ]
     },
     "evidence": [
       {
         "analyzer": "ghidra-elf-static/v1",
-        "artifact_id": "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb",
+        "artifact_id": "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29",
         "epistemic_status": "derived",
         "evidence_id": "fwbehavior:e3bdd6f9942a43c1f599b28af07b684d0a74a736d5c2bfc3d28668dadf76ef5e",
         "location": {
@@ -4020,7 +4020,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:e3bdd6f9942a43c1f599b28af07b684d0a74a736d5c2bfc3d28668dadf76ef5e",
@@ -4032,7 +4032,7 @@
       ],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ]
     },
     "primitives": [
@@ -4065,7 +4065,7 @@
             },
             {
               "source_artifact_ids": [
-                "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+                "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
               ],
               "source_ids": [
                 "fwbehavior:e3bdd6f9942a43c1f599b28af07b684d0a74a736d5c2bfc3d28668dadf76ef5e",
@@ -4077,7 +4077,7 @@
           ],
           "source_artifact_ids": [
             "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "status": "not_established",
           "support_basis": "not_established"
@@ -4106,7 +4106,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:e3bdd6f9942a43c1f599b28af07b684d0a74a736d5c2bfc3d28668dadf76ef5e",
@@ -4119,7 +4119,7 @@
         "retirement_observation_ids": [],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "source_pc": 65576,
         "source_registers": [],
@@ -4141,7 +4141,7 @@
       },
       {
         "source_artifact_ids": [
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "source_ids": [
           "fwbehavior:e3bdd6f9942a43c1f599b28af07b684d0a74a736d5c2bfc3d28668dadf76ef5e",
@@ -4183,7 +4183,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:e3bdd6f9942a43c1f599b28af07b684d0a74a736d5c2bfc3d28668dadf76ef5e",
@@ -4198,7 +4198,7 @@
       ],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ],
       "target": {
         "architecture": "riscv",
@@ -4217,7 +4217,7 @@
     },
     "source_artifact_ids": [
       "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-      "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+      "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
     ],
     "source_artifacts": [
       {
@@ -4227,9 +4227,9 @@
         "source_kind": "synthetic_fixture"
       },
       {
-        "artifact_id": "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb",
+        "artifact_id": "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29",
         "hash_kind": "file_bytes",
-        "sha256": "7a978572f2294a3732ae9628cc896c721a6c0d1f3bb38ee1911e9daa27ebe577",
+        "sha256": "a47cdd2b187d920e8e12ec95b258b4be6409fae486172026de03d05782fe69c5",
         "source_kind": "synthetic_fixture"
       }
     ],
@@ -4237,8 +4237,8 @@
   },
   {
     "architecture": "riscv",
-    "capability_id": "fwcap:6fbacdcf1c72db60b06d58e44ddd802e2a456c1cc3320b07aa60aaaca04b1426",
-    "capability_sha256": "6fbacdcf1c72db60b06d58e44ddd802e2a456c1cc3320b07aa60aaaca04b1426",
+    "capability_id": "fwcap:99f1021cebe5e006ed0a1e0dc74840a3c2c2ba53111508ea67b04416f3eac626",
+    "capability_sha256": "99f1021cebe5e006ed0a1e0dc74840a3c2c2ba53111508ea67b04416f3eac626",
     "conditions": [
       {
         "condition_id": "condition:fwbehavior:8c9edfc078271f57fe65440de7b9614caf91d69317b1a966712c7350ba3ce6f9",
@@ -4263,7 +4263,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:8c9edfc078271f57fe65440de7b9614caf91d69317b1a966712c7350ba3ce6f9",
@@ -4275,7 +4275,7 @@
         ],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       }
     ],
@@ -4302,7 +4302,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:8c9edfc078271f57fe65440de7b9614caf91d69317b1a966712c7350ba3ce6f9",
@@ -4315,7 +4315,7 @@
         "resource_kind": "control_flow",
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ]
       }
     ],
@@ -4346,7 +4346,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:8c9edfc078271f57fe65440de7b9614caf91d69317b1a966712c7350ba3ce6f9",
@@ -4360,13 +4360,13 @@
       "retirement_observation_ids": [],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ]
     },
     "evidence": [
       {
         "analyzer": "ghidra-elf-static/v1",
-        "artifact_id": "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb",
+        "artifact_id": "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29",
         "epistemic_status": "derived",
         "evidence_id": "fwbehavior:8c9edfc078271f57fe65440de7b9614caf91d69317b1a966712c7350ba3ce6f9",
         "location": {
@@ -4410,7 +4410,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:8c9edfc078271f57fe65440de7b9614caf91d69317b1a966712c7350ba3ce6f9",
@@ -4422,7 +4422,7 @@
       ],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ]
     },
     "primitives": [
@@ -4454,7 +4454,7 @@
             },
             {
               "source_artifact_ids": [
-                "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+                "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
               ],
               "source_ids": [
                 "fwbehavior:8c9edfc078271f57fe65440de7b9614caf91d69317b1a966712c7350ba3ce6f9",
@@ -4466,7 +4466,7 @@
           ],
           "source_artifact_ids": [
             "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "status": "not_established",
           "support_basis": "not_established"
@@ -4495,7 +4495,7 @@
           },
           {
             "source_artifact_ids": [
-              "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+              "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
             ],
             "source_ids": [
               "fwbehavior:8c9edfc078271f57fe65440de7b9614caf91d69317b1a966712c7350ba3ce6f9",
@@ -4508,7 +4508,7 @@
         "retirement_observation_ids": [],
         "source_artifact_ids": [
           "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "source_pc": 65580,
         "source_registers": [],
@@ -4530,7 +4530,7 @@
       },
       {
         "source_artifact_ids": [
-          "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+          "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
         ],
         "source_ids": [
           "fwbehavior:8c9edfc078271f57fe65440de7b9614caf91d69317b1a966712c7350ba3ce6f9",
@@ -4572,7 +4572,7 @@
         },
         {
           "source_artifact_ids": [
-            "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+            "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
           ],
           "source_ids": [
             "fwbehavior:8c9edfc078271f57fe65440de7b9614caf91d69317b1a966712c7350ba3ce6f9",
@@ -4587,7 +4587,7 @@
       ],
       "source_artifact_ids": [
         "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-        "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+        "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
       ],
       "target": {
         "architecture": "riscv",
@@ -4606,7 +4606,7 @@
     },
     "source_artifact_ids": [
       "elf:cc6d4dd0b9d83a60103bda0e7fe60f876762c04dd76ec257deeb995ebcc90a95",
-      "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb"
+      "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29"
     ],
     "source_artifacts": [
       {
@@ -4616,9 +4616,9 @@
         "source_kind": "synthetic_fixture"
       },
       {
-        "artifact_id": "firmware-static:79a684cf6f658a94700b2467d5ca5ece2a62afea6cfcc65b17a661d9e66758bb",
+        "artifact_id": "firmware-static:7cd8331018a18819f875a63950f9f672e8d3ecbf5284ba9020cca6ca64d1fd29",
         "hash_kind": "file_bytes",
-        "sha256": "7a978572f2294a3732ae9628cc896c721a6c0d1f3bb38ee1911e9daa27ebe577",
+        "sha256": "a47cdd2b187d920e8e12ec95b258b4be6409fae486172026de03d05782fe69c5",
         "source_kind": "synthetic_fixture"
       }
     ],

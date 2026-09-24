@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+from hashlib import sha256
 from pathlib import Path
 import subprocess
 import tempfile
@@ -34,8 +35,12 @@ def analyze_headless(path: str | Path, image: ElfImage, *, ghidra_home: str | Pa
     with tempfile.TemporaryDirectory(prefix="firmware-ghidra-", dir=root) as temporary:
         workspace = Path(temporary)
         output = workspace / "export.json"
+        snapshot = workspace / "input.elf"
+        snapshot.write_bytes(image.data)
+        if sha256(snapshot.read_bytes()).hexdigest() != image.identity.sha256:
+            raise ValueError("Ghidra input snapshot hash mismatch")
         compiler = "gcc" if image.identity.architecture == "riscv" else "default"
-        command = [str(executable), str(workspace), "project", "-import", str(Path(path).resolve()),
+        command = [str(executable), str(workspace), "project", "-import", str(snapshot),
                    "-processor", ghidra_language(image.identity), "-cspec", compiler,
                    "-scriptPath", str(script.parent), "-postScript", script.name, str(output),
                    "-deleteProject", "-analysisTimeoutPerFile", "120"]

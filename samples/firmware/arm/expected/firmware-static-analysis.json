@@ -1,5 +1,5 @@
 {
-  "analysis_id": "firmware-static:9a68978d7e218636dda69df18c80879fd50397b0955d54f5d48f237ac29c6e97",
+  "analysis_id": "firmware-static:8e9301294297c74edab9c6c4fed5138acf4bdec404dc2500a12427f9c667575b",
   "artifact": {
     "architecture": "arm",
     "arm_cpu_name": "Cortex-M3",
@@ -716,6 +716,13 @@
       "text": "bx lr"
     }
   ],
+  "producer": {
+    "analyzer": "chipchain-general-firmware/v2",
+    "exporter_sha256": "b006cc85631d9ef7f9232a03dbc05ce418296f885f427b9e2bd2762f46b9cbbe",
+    "ghidra": "12.3_DEV-d6192cb3f900f74152a4eeec1aa6758b6143b093",
+    "semantics": "chipchain-three-isa-semantics/r1",
+    "semantics_sha256": "700f47a2faca4c699fa752d61c3f0e6099c49739644914a22f94bdf92a1d2138"
+  },
   "references": [
     {
       "fact_id": "fwref:07a7734297b6191c50f3487680a22c06a8ff724121bef12c635647a686f8ae43",
@@ -746,5 +753,5 @@
       "target": 65570
     }
   ],
-  "schema_version": "firmware-static-analysis/v1"
+  "schema_version": "firmware-static-analysis/v2"
 }

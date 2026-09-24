@@ -6,7 +6,7 @@
 
 | 指标 | 结果 |
 |---|---:|
-| analysis_id | `firmware-static:73203833226424dd68b57b9686bc5f3373bb9e4cec548c943e1e05b660cc5ec4` |
+| analysis_id | `firmware-static:136094fdf58c0aed22831850d18eff889667b48d643a1ca7c6ba2a130dd6c385` |
 | architecture | `riscv` |
 | bit_width | `32` |
 | endianness | `little` |
@@ -29,12 +29,14 @@
 | system_register_write_count | `0` |
 | barrier_count | `0` |
 | atomic_count | `0` |
+| tlb_invalidate_count | `0` |
 | exception_return_count | `0` |
 | unsupported_count | `1` |
 | unresolved_address_count | `0` |
 | ambiguous_ownership_count | `0` |
 | ghidra_language | `RISCV:LE:32:default` |
 | ghidra_version | `12.3_DEV-d6192cb3f900f74152a4eeec1aa6758b6143b093` |
+| producer | `{'analyzer': 'chipchain-general-firmware/v2', 'ghidra': '12.3_DEV-d6192cb3f900f74152a4eeec1aa6758b6143b093', 'exporter_sha256': 'b006cc85631d9ef7f9232a03dbc05ce418296f885f427b9e2bd2762f46b9cbbe', 'semantics': 'chipchain-three-isa-semantics/r1', 'semantics_sha256': '0454ca318a5af7dd42e71e7f3b0e92f11424ffe035184b88f90d2ec92d3532ca'}` |
 
 ### Evidence-backed behavior examples
 
@@ -114,7 +116,7 @@ Unresolved ≠ nonexistent. Unsupported ≠ safe.
 
 ## 11. Provenance and Toolchain
 
-Analysis `firmware-static:73203833226424dd68b57b9686bc5f3373bb9e4cec548c943e1e05b660cc5ec4`。Ghidra `12.3_DEV-d6192cb3f900f74152a4eeec1aa6758b6143b093` / `RISCV:LE:32:default` 导出结构；每条指令 bytes 与 SHA256 为 `42fe38fb5c106242c81797ece513b5ef86fc453d2ef63299514d1e98e9c06641` 的 ELF PT_LOAD 可执行映射逐条比对。事实 ID 由内容计算，不含本机路径、时间或随机数。
+Analysis `firmware-static:136094fdf58c0aed22831850d18eff889667b48d643a1ca7c6ba2a130dd6c385`。Ghidra `12.3_DEV-d6192cb3f900f74152a4eeec1aa6758b6143b093` / `RISCV:LE:32:default` 导出结构；每条指令 bytes 与 SHA256 为 `42fe38fb5c106242c81797ece513b5ef86fc453d2ef63299514d1e98e9c06641` 的 ELF PT_LOAD 可执行映射逐条比对。事实 ID 由内容计算，不含本机路径、时间或随机数。
 
 ## 12. Scientific Limitations
 

@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 from chipchain.cross_layer.matching import match_requirements, render_cross_layer_report
+from chipchain.cross_layer.capability_continuity import bind_static_runtime_capabilities
 from chipchain.cross_layer.resource_binding import bind_capabilities, bind_resources
 from chipchain.firmware.elf import ElfImage
 from chipchain.firmware.ghidra import analyze_headless
@@ -111,17 +112,19 @@ def build_type2(*, refresh: bool) -> None:
         projected = materialize_synthetic_static_capabilities(
             static, synthetic_fixture=True, bindings=static_bindings, catalog=catalog)
         dump(target / "static-capabilities.json", [c.model_dump(mode="json") for c in projected])
-        bindings = bind_capabilities(verified.target.capabilities, catalog)
-        candidate = match_requirements(verified.target.capabilities, bindings, verified.contract)
+        bindings = bind_capabilities(projected, catalog)
+        candidate = match_requirements(projected, bindings, verified.contract)
+        continuity = bind_static_runtime_capabilities(projected, verified.target.capabilities)
         dump(target / "resource-bindings.json", bindings)
+        dump(target / "runtime-resource-bindings.json",
+             bind_capabilities(verified.target.capabilities, catalog))
+        dump(target / "capability-continuity.json", continuity)
         dump(target / "cross-layer-candidates.json", candidate)
         (target / "cross-layer-report.md").write_text(
             render_cross_layer_report(candidate, bindings, verified.contract,
-                                      catalog=catalog, capabilities=verified.target.capabilities) +
-            "\nGeneral Ghidra static facts and frozen CAP0 MMIO facts are distinct evidence streams. "
-            "This candidate uses frozen CAP0 constraints; the accompanying static-resource-bindings "
-            "and static-capabilities show which generic memory facts independently resolved to the catalog. "
-            "Newly projected static capabilities are not substituted into the frozen runtime verifier.\n")
+                                      catalog=catalog, capabilities=projected) +
+            "\nCandidate 来自 General Firmware Frontend 的静态能力；capability-continuity.json "
+            "逐项核对 frozen runtime capability。冻结 Type-II verifier 仍使用原始 runtime evidence。\n")
         (target / "verification.json").write_text(frozen_canonical(verified.result) + "\n")
         (target / "verification-report.md").write_text(verification_report(verified))
         dump(target / "summary.json", {
@@ -129,6 +132,7 @@ def build_type2(*, refresh: bool) -> None:
             "resource_catalog_id": catalog.catalog_id,
             "resource_binding_set_id": bindings.binding_set_id,
             "candidate_id": candidate.candidate_id,
+            "continuity_binding_set_id": continuity.binding_set_id,
             "static_compatibility_status": candidate.static_compatibility_status,
             "verification": verification_summary(verified),
         })
