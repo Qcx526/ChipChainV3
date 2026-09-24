@@ -35,7 +35,27 @@ The verifier returns `supported`, `contradicted`, or `unknown` for the component
 
 ## Install and quick start
 
-Python 3.11+ is required. The Type-II replay needs only the package and deterministic dependencies. `firmware analyze` uses Ghidra 12.3 DEV and Java 25. The working installation is in `tools/ghidra/install/` locally; [pinned metadata](tools/ghidra/README.md) is tracked while the large distribution is ignored. A fresh clone must provide this distribution there or use `--ghidra-home /explicit/path`.
+Python 3.11+ is required. The Type-II replay needs only the package and deterministic dependencies. Fresh raw-ELF `firmware analyze` uses pinned Ghidra 12.3 DEV and Java 25. The project installation is `tools/ghidra/install/`; its [pinned metadata and setup instructions](tools/ghidra/README.md) are tracked while the large distribution is ignored. The original upstream archive is unavailable; provide a local copy of the pinned distribution. The script does not download it or install Java.
+
+For a fresh clone, use a published revision that includes this setup script and a locally supplied Ghidra archive:
+
+```bash
+git clone https://github.com/Qcx526/ChipChainV3.git
+cd ChipChainV3
+git checkout YOUR_RELEASE_TAG_WITH_SETUP_SCRIPT
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e .
+./scripts/setup_ghidra.sh --archive /path/to/pinned-ghidra.tar.gz
+./scripts/setup_ghidra.sh --verify-only
+chipchain firmware analyze \
+  --elf samples/firmware/riscv/sample.elf \
+  --output output/firmware-smoke-test
+```
+
+Replace `YOUR_RELEASE_TAG_WITH_SETUP_SCRIPT` with the tag assigned when this packaging change is published; the earlier `v3-type2-processorfuzz-ingestion-stable` tag predates the script.
+
+The tracked [canonical demo artifacts](artifacts/demo) can be inspected without Ghidra. To run new raw-ELF static analysis, install and verify the pinned Ghidra distribution first. `--ghidra-home /explicit/path` remains available for an explicitly managed installation.
 
 ```bash
 python3 -m venv .venv
