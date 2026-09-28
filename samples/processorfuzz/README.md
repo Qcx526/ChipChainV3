@@ -19,3 +19,9 @@ with existing adapters. Its inventory and brief are not scientific evidence
 or trusted provenance bindings. Keep reviewed expected artifacts and focused
 regression tests with each adapted case; an incomplete case may remain
 `UNKNOWN` / `NOT_ESTABLISHED`.
+
+## 新样本适配
+
+如需使用 Codex 适配新的 ProcessorFuzz 硬件交付样本，请直接复制：
+
+`docs/hardware-sample-adaptation.md` 中的 **Codex 快速适配入口**。

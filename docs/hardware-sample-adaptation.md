@@ -35,3 +35,15 @@ The outputs do **not** assert SI↔ELF, trace↔ELF, signature↔run or source-r
 7. Stop and report the new support, evidence boundaries, tests and remaining unknowns for primary-engineering review before any commit or tag.
 
 This guide intentionally stops at adaptation. Static Fact != Runtime Fact; CFG reachability != execution; trigger support != deviation; pattern/candidate != vulnerability; simulation evidence != physical silicon evidence. A later dedicated adaptation session handles one raw sample at a time; this guide does not add or adapt `real_case_002`.
+
+## Codex 快速适配入口
+
+请适配以下新硬件样本：
+
+CASE_ID=real_case_NNN
+DECLARED_TOOL_FAMILY=processorfuzz
+RAW_SOURCE=/path/to/sample.zip
+SAMPLE_ROOT=samples/processorfuzz/real_case_NNN
+
+严格按照 docs/hardware-sample-adaptation.md 执行。
+完成后停止在 commit 前并报告。

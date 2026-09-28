@@ -1,0 +1,4 @@
+#ifndef BENCH_CONFIG_H
+#define BENCH_CONFIG_H
+#define BENCH_TLB_INVALIDATE 0
+#endif

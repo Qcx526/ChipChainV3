@@ -1,0 +1,24 @@
+{
+  "architecture": "riscv64-little",
+  "benchmark_scope": "static/cross-layer research benchmark",
+  "contract_kind": "SyntheticBenchmarkContract",
+  "hardware_deviation_status": "NOT_ESTABLISHED",
+  "hardware_reference_case": "processorfuzz/real_case_001",
+  "hardware_reference_relation": "The SI and byte-checked reference ELF separately contain sfence.vma; SI-to-ELF provenance and execution of those instructions are not established.",
+  "negative_expectation": "CONTRADICTS_SYNTHETIC_BENCHMARK_CONTRACT",
+  "negative_variant": "negative_trigger",
+  "physical_silicon_applicability": "NOT_ESTABLISHED",
+  "positive_expectation": "SATISFIES_SYNTHETIC_BENCHMARK_CONTRACT",
+  "positive_variant": "positive",
+  "real_hardware_trigger_status": "NOT_ESTABLISHED",
+  "requirement": {
+    "call_path": "main -> app_run -> controller_step -> controller_dispatch -> pager_apply -> pager_commit -> arch_translation_sync",
+    "negative_instruction": "fence rw,rw",
+    "positive_instruction": "sfence.vma x0,x0",
+    "scope": "The instruction in the synthetic arch_translation_sync helper after a page-table entry update; source and compiled static ELF/IR only.",
+    "single_mutation": "BENCH_TLB_INVALIDATE is 1 for positive and 0 for negative_trigger."
+  },
+  "runtime_execution_status": "NOT_ESTABLISHED",
+  "sample_kind": "realistic_synthetic_firmware",
+  "type2_verification_status": "NOT_ESTABLISHED"
+}
