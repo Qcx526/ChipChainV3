@@ -96,6 +96,8 @@ Rebuild the [ProcessorFuzz case artifacts](artifacts/demo/processorfuzz/real_cas
 
 `--manifest` names a JSON **artifact index**. It points to an existing `HardwareBehaviorContract`, optional state/source proof, and target and Reference run indexes. Each run index points to the canonical static catalog, runtime observations, execution bridge, platform proof, firmware capabilities, input identity, ELF bytes, raw bus/processor traces, stdout/stderr, and an optional explicit observation binding. Paths are relative to their containing index; external read-only files may also be referenced. The index is an I/O envelope, not a scientific schema or new ID recipe.
 
+New hardware-team deliveries follow the developer-only [Hardware Sample Adaptation Guide](docs/hardware-sample-adaptation.md). Its inspection utility produces a bounded inventory and brief for adapter development; those diagnostics are not scientific evidence or Type-II conclusions.
+
 The examples include small synthetic artifacts under `examples/type2_positive/fixtures/`; the negative and unknown manifests reuse these files. Their frozen scientific identities are replayed from the included bytes. `samples/firmware/{arm,riscv,powerpc}` now contain tracked synthetic instruction-coverage samples; other real research inputs in `samples/` remain ignored. `output/` is an ignored result workspace. See [examples](examples/README.md) and [samples](samples/README.md).
 The portable fixtures contain pinned source manifests and changed peripheral bytes, not the full RTL source tree or a simulator executable. They replay the frozen evidence chain; independent regeneration of source/platform attestations requires the separately retained local research workspace.
 
