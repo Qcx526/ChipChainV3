@@ -92,6 +92,28 @@ An existing nonempty output directory is rejected to protect earlier results.
 The complete reviewable results live under [artifacts/demo](artifacts/demo). Regenerate them offline from tracked exports and bytes with `PYTHONPATH=src .venv/bin/python scripts/build_demo_artifacts.py`; add `--refresh-ghidra` to rerun project Ghidra on every tracked ELF.
 Rebuild the [ProcessorFuzz case artifacts](artifacts/demo/processorfuzz/real_case_001/processorfuzz-report.md) from the unchanged ZIP with `.venv/bin/python scripts/build_processorfuzz_artifacts.py --package samples/processorfuzz/real_case_001/raw/testis.zip`. The requested name `processorfuzz-case.zip` was absent when this run was made; the supplied archive is `testis.zip`, pinned by SHA256 in its [sample README](samples/processorfuzz/real_case_001/README.md).
 
+### Prepare a cross-layer case from separate analyses
+
+The tracked [realistic synthetic RISC-V firmware benchmark](samples/firmware/riscv/processorfuzz_real_case_001/design-note.md) provides FW-POS and FW-NEG-TRIGGER. With the project Ghidra installation available, analyze either firmware ELF, analyze the hardware-team delivery, then assemble their existing output directories:
+
+```bash
+chipchain firmware analyze \
+  --elf samples/firmware/riscv/processorfuzz_real_case_001/positive/firmware.elf \
+  --output output/fw-pos-analysis
+chipchain processorfuzz analyze \
+  --package samples/processorfuzz/real_case_001/raw/testis.zip \
+  --output output/processorfuzz-real-case-001 \
+  --hardware-trigger-validation
+chipchain type2 prepare \
+  --firmware output/fw-pos-analysis \
+  --hardware output/processorfuzz-real-case-001 \
+  --output output/type2-case-fw-pos
+```
+
+To prepare FW-NEG-TRIGGER against the same hardware analysis, run `chipchain firmware analyze` with `samples/firmware/riscv/processorfuzz_real_case_001/negative_trigger/firmware.elf` and `--output output/fw-neg-analysis`, then run `chipchain type2 prepare --firmware output/fw-neg-analysis --hardware output/processorfuzz-real-case-001 --output output/type2-case-fw-neg`. Use new or empty output directories for each preparation.
+
+FW-POS and FW-NEG-TRIGGER are independently authored **realistic synthetic firmware**, not customer production firmware. The ProcessorFuzz ZIP contains a different **hardware-supplied trigger-test ELF**; its traces and signatures are not execution evidence for either synthetic ELF. `type2 prepare` writes a case manifest, bounded semantic associations, verification readiness, and a readable report. It checks consistency among the supplied canonical outputs; it does not independently re-attest the raw ELF or ZIP bytes. **Successful case assembly does not mean Type-II verification succeeded.** Missing firmware-specific runtime evidence or an authoritative hardware behavior contract cannot be replaced by shared instruction semantics. The frozen Type-II runtime verifier applies to controlled Ibex MMIO evidence and is not applicable to this ProcessorFuzz/TLB pairing.
+
 ## Inputs
 
 `--manifest` names a JSON **artifact index**. It points to an existing `HardwareBehaviorContract`, optional state/source proof, and target and Reference run indexes. Each run index points to the canonical static catalog, runtime observations, execution bridge, platform proof, firmware capabilities, input identity, ELF bytes, raw bus/processor traces, stdout/stderr, and an optional explicit observation binding. Paths are relative to their containing index; external read-only files may also be referenced. The index is an I/O envelope, not a scientific schema or new ID recipe.

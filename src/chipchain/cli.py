@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+from pathlib import Path
 from zipfile import BadZipFile
 
 from chipchain.workflow.type2 import analyze_manifest, write_result
@@ -30,6 +31,12 @@ def main(argv: list[str] | None = None) -> int:
     processorfuzz_analyze.add_argument("--elf-member", help="exact package-relative ELF member for analysis; not a provenance binding")
     processorfuzz_analyze.add_argument("--hardware-trigger-validation", action="store_true",
                                       help="explicitly classify this hardware-team delivery and its trigger-test ELF")
+    type2 = commands.add_parser("type2", help="prepare an independently analyzed cross-layer case")
+    type2_commands = type2.add_subparsers(dest="type2_command", required=True)
+    type2_prepare = type2_commands.add_parser("prepare", help="assemble readiness without verification")
+    type2_prepare.add_argument("--firmware", required=True, help="firmware analyze output directory")
+    type2_prepare.add_argument("--hardware", required=True, help="processorfuzz analyze output directory")
+    type2_prepare.add_argument("--output", required=True, help="new or empty case directory")
     args = parser.parse_args(argv)
     try:
         if args.command == "firmware":
@@ -51,6 +58,17 @@ def main(argv: list[str] | None = None) -> int:
                                      role_declaration=HARDWARE_TRIGGER_VALIDATION
                                      if args.hardware_trigger_validation else None)
             print(f"ProcessorFuzz analysis: {output}")
+            return 0
+        if args.command == "type2":
+            from chipchain.cross_layer.case_assembly import prepare_case, write_case
+            target = Path(args.output).resolve()
+            if any(target.is_relative_to(Path(source).resolve())
+                   for source in (args.firmware, args.hardware)):
+                raise ValueError("Case output must be outside both input directories")
+            prepared = prepare_case(args.firmware, args.hardware)
+            output = write_case(prepared, args.output)
+            print(f"{prepared.case_manifest['case_id']}: {output}; "
+                  f"verification_ready={str(prepared.readiness['ready']).lower()}")
             return 0
         analysis = analyze_manifest(args.manifest)
         output = write_result(analysis, args.output, verbose_artifacts=args.verbose_artifacts)
