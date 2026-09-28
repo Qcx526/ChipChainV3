@@ -26,6 +26,8 @@ def main(argv: list[str] | None = None) -> int:
     processorfuzz_analyze.add_argument("--package", required=True)
     processorfuzz_analyze.add_argument("--output", required=True)
     processorfuzz_analyze.add_argument("--ghidra-home")
+    processorfuzz_analyze.add_argument("--si-member", help="exact package-relative SI member for analysis; not a provenance binding")
+    processorfuzz_analyze.add_argument("--elf-member", help="exact package-relative ELF member for analysis; not a provenance binding")
     processorfuzz_analyze.add_argument("--hardware-trigger-validation", action="store_true",
                                       help="explicitly classify this hardware-team delivery and its trigger-test ELF")
     args = parser.parse_args(argv)
@@ -45,6 +47,7 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "processorfuzz":
             from chipchain.workflow.processorfuzz import analyze_package, HARDWARE_TRIGGER_VALIDATION
             output = analyze_package(args.package, args.output, ghidra_home=args.ghidra_home,
+                                     si_member=args.si_member, elf_member=args.elf_member,
                                      role_declaration=HARDWARE_TRIGGER_VALIDATION
                                      if args.hardware_trigger_validation else None)
             print(f"ProcessorFuzz analysis: {output}")

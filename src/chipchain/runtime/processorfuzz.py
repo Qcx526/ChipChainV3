@@ -105,13 +105,17 @@ def parse_isa_log(data: bytes, source: RuntimeSource) -> dict:
             "unparsed_rows": len(lines) - len(observations)}
 
 
-def parse_signature(data: bytes, source: RuntimeSource, stream: str) -> dict:
-    _require_source(data, source)
+def parse_signature(data: bytes, source: RuntimeSource | None, stream: str) -> dict:
+    # A signature can be read without a runtime source. Do not manufacture trace
+    # identities just to compare its raw words.
+    if source is not None:
+        _require_source(data, source)
     lines = data.decode("ascii", errors="strict").splitlines()
     if not lines or any(not re.fullmatch(r"[0-9a-fA-F]{32}", line) for line in lines):
         raise ValueError("Unsupported signature format")
     return {"schema_version": "architectural-signature/v1", "stream": stream,
-            "source": source.model_dump(mode="json"), "sha256": sha256(data).hexdigest(),
+            "source": source.model_dump(mode="json") if source is not None else None,
+            "sha256": sha256(data).hexdigest(),
             "word_width_bits": 128, "words": [line.lower() for line in lines]}
 
 
@@ -121,7 +125,10 @@ def differential(rtl: dict, isa: dict, *, testcase_binding: str,
     mismatches = [{"index": i, "rtl_raw": x, "isa_raw": y}
                   for i, (x, y) in enumerate(zip(a, b)) if x != y]
     a_source, b_source = rtl["source"], isa["source"]
-    source_conflict = any(a_source[key] != b_source[key] for key in
+    if a_source is None or b_source is None:
+        # Even a caller-supplied BOUND label cannot establish missing sources.
+        testcase_binding = firmware_binding = execution_context_binding = "UNKNOWN"
+    source_conflict = a_source is not None and b_source is not None and any(a_source[key] != b_source[key] for key in
                           ("case_id", "elf_sha256", "si_sha256", "rtl_trace_sha256",
                            "isa_trace_sha256", "simulator_sha256", "build_metadata_sha256"))
     fields = {"reference_artifact_id": "sha256:" + isa["sha256"],

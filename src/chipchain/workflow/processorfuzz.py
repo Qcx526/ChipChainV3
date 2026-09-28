@@ -106,7 +106,7 @@ def _role(name: str) -> str:
     if base.endswith(".si"): return "si"
     if base.endswith(".elf"): return "elf"
     if base.endswith(".s"): return "assembly"
-    if base == "disassembly.asm": return "disassembly"
+    if base.endswith(".asm"): return "disassembly"
     if base == "note.log": return "human_note"
     if re.fullmatch(r"rtl_\d+\.log", base): return "rtl_trace"
     if re.fullmatch(r"isa_\d+\.csv", base): return "isa_csv"
@@ -126,6 +126,15 @@ def _unique(files: dict[str, bytes], role: str) -> tuple[str, bytes]:
     if len(hashes) != 1:
         raise ValueError(f"Ambiguous {role} artifacts with different contents")
     return sorted(options)[0]
+
+
+def _select(files: dict[str, bytes], role: str, member: str | None) -> tuple[str, bytes]:
+    """Select an analysis input, without asserting any build/run binding."""
+    if member is None:
+        return _unique(files, role)
+    if member not in files or _role(member) != role:
+        raise ValueError(f"Selected {role} member is absent or has the wrong artifact role: {member}")
+    return member, files[member]
 
 
 _DISASM = re.compile(r"^\s*([0-9a-fA-F]{6,16}):\s+([0-9a-fA-F]{4,16})\s+", re.M)
@@ -203,17 +212,21 @@ def _static_capabilities(analysis) -> list[dict]:
 
 
 def analyze_package(package: str | Path, output: str | Path, *, ghidra_home: str | Path | None = None,
-                    role_declaration: ProcessorFuzzRoleDeclaration | None = None) -> Path:
+                    role_declaration: ProcessorFuzzRoleDeclaration | None = None,
+                    si_member: str | None = None, elf_member: str | None = None) -> Path:
     role_declaration = role_declaration or UNCLASSIFIED_ROLE
     role_declaration = ProcessorFuzzRoleDeclaration.model_validate(role_declaration.model_dump(mode="json"))
     files, archive_sha = _package(Path(package))
     if not files:
         raise ValueError("Empty ProcessorFuzz package")
-    si_path, si_bytes = _unique(files, "si")
-    elf_path, elf_bytes = _unique(files, "elf")
-    rtl_path, rtl_bytes = _unique(files, "rtl_trace")
-    isa_csv_path, isa_csv_bytes = _unique(files, "isa_csv")
-    isa_log_path, isa_log_bytes = _unique(files, "isa_log")
+    si_path, si_bytes = _select(files, "si", si_member)
+    elf_path, elf_bytes = _select(files, "elf", elf_member)
+    trace_present = any(_role(name) in {"rtl_trace", "isa_csv", "isa_log"} for name in files)
+    # Only the all-absent profile is added here. Partial or malformed trace
+    # deliveries still fail closed rather than silently discarding records.
+    rtl_path, rtl_bytes = _unique(files, "rtl_trace") if trace_present else (None, None)
+    isa_csv_path, isa_csv_bytes = _unique(files, "isa_csv") if trace_present else (None, None)
+    isa_log_path, isa_log_bytes = _unique(files, "isa_log") if trace_present else (None, None)
     rtl_sig_path, rtl_sig_bytes = _unique(files, "rtl_signature")
     isa_sig_path, isa_sig_bytes = _unique(files, "isa_signature")
     si = parse_si(si_bytes)
@@ -221,6 +234,8 @@ def analyze_package(package: str | Path, output: str | Path, *, ghidra_home: str
     if image.identity.architecture != "riscv":
         raise ValueError("ProcessorFuzz package requires RISC-V ELF")
     target = Path(output)
+    if target.exists() and (not target.is_dir() or any(target.iterdir())):
+        raise ValueError("Output directory must be new or empty")
     target.mkdir(parents=True, exist_ok=True)
     # Ghidra imports a private snapshot of the bytes held by ElfImage.
     exported = analyze_headless(elf_path, image, ghidra_home=ghidra_home)
@@ -228,24 +243,28 @@ def analyze_package(package: str | Path, output: str | Path, *, ghidra_home: str
     simulator = next((data for name, data in files.items() if _role(name) == "simulator"), None)
     build = next((data for name, data in files.items() if _role(name) == "build_metadata"), None)
     source_common = dict(case_id=si.case_id, elf_sha256=image.identity.sha256,
-                         si_sha256=si.raw_sha256, rtl_trace_sha256=_sha(rtl_bytes),
-                         isa_trace_sha256=_sha(isa_csv_bytes),
+                         si_sha256=si.raw_sha256, rtl_trace_sha256=_sha(rtl_bytes) if trace_present else None,
+                         isa_trace_sha256=_sha(isa_csv_bytes) if trace_present else None,
                          simulator_sha256=_sha(simulator) if simulator else None,
                          build_metadata_sha256=_sha(build) if build else None,
                          rtl_source_revision="not_established")
-    rtl = parse_rtl_trace(rtl_bytes, RuntimeSource(trace_sha256=_sha(rtl_bytes), **source_common))
-    isa = parse_isa_csv(isa_csv_bytes, RuntimeSource(trace_sha256=_sha(isa_csv_bytes), **source_common))
-    isa_log = parse_isa_log(isa_log_bytes, RuntimeSource(trace_sha256=_sha(isa_log_bytes), **source_common))
-    rtl_sig = parse_signature(rtl_sig_bytes, RuntimeSource(trace_sha256=_sha(rtl_sig_bytes), **source_common), "rtl")
-    isa_sig = parse_signature(isa_sig_bytes, RuntimeSource(trace_sha256=_sha(isa_sig_bytes), **source_common), "isa_reference")
-    coverage_rtl = _elf_trace_coverage(image, rtl["instruction_observations"])
-    coverage_isa = _elf_trace_coverage(image, isa["instruction_observations"])
+    rtl = isa = isa_log = None
+    if trace_present:
+        rtl = parse_rtl_trace(rtl_bytes, RuntimeSource(trace_sha256=_sha(rtl_bytes), **source_common))
+        isa = parse_isa_csv(isa_csv_bytes, RuntimeSource(trace_sha256=_sha(isa_csv_bytes), **source_common))
+        isa_log = parse_isa_log(isa_log_bytes, RuntimeSource(trace_sha256=_sha(isa_log_bytes), **source_common))
+    rtl_sig = parse_signature(rtl_sig_bytes, RuntimeSource(trace_sha256=_sha(rtl_sig_bytes), **source_common)
+                              if trace_present else None, "rtl")
+    isa_sig = parse_signature(isa_sig_bytes, RuntimeSource(trace_sha256=_sha(isa_sig_bytes), **source_common)
+                              if trace_present else None, "isa_reference")
+    coverage_rtl = _elf_trace_coverage(image, rtl["instruction_observations"]) if rtl else {"status": "UNKNOWN"}
+    coverage_isa = _elf_trace_coverage(image, isa["instruction_observations"]) if isa else {"status": "UNKNOWN"}
     # Byte agreement can bind sampled trace instructions to ELF, but not the SI,
     # simulator source revision, or signature production context.
     diff = differential(rtl_sig, isa_sig, testcase_binding="UNKNOWN",
                         firmware_binding="UNKNOWN", execution_context_binding="UNKNOWN")
-    alignment = align_traces(rtl, isa)
-    disassembly = next(((name, data) for name, data in files.items() if _role(name) == "disassembly"), None)
+    alignment = align_traces(rtl, isa) if trace_present else {"status": "UNKNOWN"}
+    disassembly = _unique(files, "disassembly") if any(_role(n) == "disassembly" for n in files) else None
     disassembly_result = _disassembly_status(disassembly[1], image) if disassembly else None
     inventory = [{"path": name, "role": _role(name), "sha256": _sha(data),
                   "artifact_id": "sha256:" + _sha(data), "size_bytes": len(data)}
@@ -256,11 +275,17 @@ def analyze_package(package: str | Path, output: str | Path, *, ghidra_home: str
                for name in sorted(files) if _role(name) == "human_note"]
     if disassembly and not conflicts:
         unbound.append({"path": disassembly[0], "role": "disassembly", "reason": "No producer binding"})
+    for name, data in sorted(files.items()):
+        role = _role(name)
+        if role in {"si", "elf"} and data != {"si": si_bytes, "elf": elf_bytes}[role]:
+            unbound.append({"path": name, "role": role,
+                            "reason": "Not selected for analysis; no build or execution binding"})
     manifest_fields = {"schema_version": "processorfuzz-case-manifest/v2", "case_id": si.case_id,
                        **role_declaration.model_dump(mode="json"),
                        "archive_sha256": archive_sha, "si_sha256": si.raw_sha256,
-                       "elf_sha256": image.identity.sha256, "rtl_trace_sha256": _sha(rtl_bytes),
-                       "isa_trace_sha256": _sha(isa_csv_bytes), "isa_log_sha256": _sha(isa_log_bytes),
+                       "elf_sha256": image.identity.sha256, "rtl_trace_sha256": source_common["rtl_trace_sha256"],
+                       "isa_trace_sha256": source_common["isa_trace_sha256"],
+                       "isa_log_sha256": _sha(isa_log_bytes) if trace_present else None,
                        "rtl_signature_sha256": _sha(rtl_sig_bytes), "isa_signature_sha256": _sha(isa_sig_bytes),
                        "simulator_sha256": source_common["simulator_sha256"],
                        "build_metadata_sha256": source_common["build_metadata_sha256"],
@@ -269,6 +294,14 @@ def analyze_package(package: str | Path, output: str | Path, *, ghidra_home: str
                                     "isa_trace_to_elf": coverage_isa["status"],
                                     "signatures_same_execution": "UNKNOWN"},
                        "conflicting_artifact_hashes": sorted(_sha(files[x["path"]]) for x in conflicts)}
+    if not trace_present:
+        manifest_fields.update({"ingestion_profile": "signature_only",
+                                "missing_artifacts": ["rtl_trace", "isa_csv", "isa_log"]})
+    if si_member is not None or elf_member is not None:
+        manifest_fields["selection_basis"] = {
+            "si": "explicit_member" if si_member is not None else "unique_content",
+            "elf": "explicit_member" if elf_member is not None else "unique_content",
+            "provenance_binding": "UNKNOWN"}
     manifest = {"manifest_id": content_id("processorfuzz-manifest", manifest_fields), **manifest_fields,
                 "inventory": inventory, "selected_paths": {"si": si_path, "elf": elf_path,
                 "rtl_trace": rtl_path, "isa_csv": isa_csv_path, "isa_log": isa_log_path,
@@ -276,12 +309,15 @@ def analyze_package(package: str | Path, output: str | Path, *, ghidra_home: str
                 "unbound_artifacts": unbound, "conflicting_artifacts": conflicts}
     summary = firmware_summary(analysis)
     summary.update({"case_id": si.case_id, "manifest_id": manifest["manifest_id"],
-                    "rtl_instruction_count": len(rtl["instruction_observations"]),
-                    "isa_instruction_count": len(isa["instruction_observations"]),
-                    "isa_log_instruction_count": len(isa_log["instruction_observations"]),
+                    "rtl_instruction_count": len(rtl["instruction_observations"]) if rtl else None,
+                    "isa_instruction_count": len(isa["instruction_observations"]) if isa else None,
+                    "isa_log_instruction_count": len(isa_log["instruction_observations"]) if isa_log else None,
                     "signature_different_word_count": len(diff["different_fields"]),
                     "architectural_differential_status": diff["status"],
                     "type2_verification_status": "NOT_ESTABLISHED"})
+    if not trace_present:
+        summary.update({"ingestion_profile": "signature_only", "execution_trace_status": "MISSING",
+                        "runtime_source_binding": "UNKNOWN", "type2_verification_readiness": "not verification-ready"})
     _json(target / "processorfuzz-case-manifest.json", manifest)
     _json(target / "processorfuzz-si.json", si.model_dump(mode="json"))
     (target / "firmware-analysis.json").write_text(serialize_analysis(analysis))
@@ -294,12 +330,16 @@ def analyze_package(package: str | Path, output: str | Path, *, ghidra_home: str
         firmware_report.replace("# Firmware Analysis Report\n",
                                 f"# Firmware Analysis Report\n\n{scope_note}\n", 1))
     _json(target / "ghidra-export.json", exported.model_dump(mode="json", by_alias=True))
-    _json(target / "rtl-runtime-evidence.json", {**rtl, "elf_byte_coverage": coverage_rtl,
+    if trace_present:
+        _json(target / "rtl-runtime-evidence.json", {**rtl, "elf_byte_coverage": coverage_rtl,
                                                   "alignment": alignment})
-    _json(target / "isa-reference-evidence.json", {**isa, "elf_byte_coverage": coverage_isa,
+        _json(target / "isa-reference-evidence.json", {**isa, "elf_byte_coverage": coverage_isa,
                                                     "isa_log_summary": {"source": isa_log["source"],
                                                     "instruction_count": len(isa_log["instruction_observations"]),
                                                     "unparsed_rows": isa_log["unparsed_rows"]}})
+    else:
+        _json(target / "rtl-signature.json", rtl_sig)
+        _json(target / "isa-signature.json", isa_sig)
     _json(target / "architectural-differential.json", diff)
     static_caps = _static_capabilities(analysis)
     _json(target / "static-capabilities.json", {"schema_version": "general-static-capability-set/v1",
@@ -312,11 +352,47 @@ def analyze_package(package: str | Path, output: str | Path, *, ghidra_home: str
     _json(target / "cross-layer-candidates.json", {"status": "INCOMPLETE", "verification_status": "NOT_ESTABLISHED",
           "missing_requirements": ["authoritative_hardware_behavior_contract", "si_elf_build_binding",
                                    "signature_execution_context_binding", "rtl_source_revision",
-                                   "generic_type2_runtime_evaluator"]})
+                                   "generic_type2_runtime_evaluator"] +
+                                  ([] if trace_present else ["rtl_execution_trace", "isa_execution_trace"])})
     _json(target / "summary.json", summary)
-    (target / "processorfuzz-report.md").write_text(_render_report(manifest, si, summary, rtl, isa,
-                                                                     coverage_rtl, coverage_isa, diff, alignment))
+    report = (_render_report(manifest, si, summary, rtl, isa, coverage_rtl, coverage_isa, diff, alignment)
+              if trace_present else _render_signature_only_report(manifest, si, summary, diff))
+    (target / "processorfuzz-report.md").write_text(report)
     return target
+
+
+def _render_signature_only_report(manifest, si, summary, diff) -> str:
+    selected = manifest["selected_paths"]
+    role_statement = (
+        "调用方明确声明为硬件团队触发验证包；ELF 是触发测试程序，不是客户固件。"
+        if manifest["package_role"] == "hardware_trigger_validation_package" else
+        "具体包／ELF 角色未分类；不能将硬件侧 ELF 当作客户固件，也未证明其触发验证用途。")
+    lines = ["# ProcessorFuzz 无执行轨迹交付包报告", "",
+             "摄入完成；执行轨迹缺失，Type-II 为 `NOT_ESTABLISHED`，`not verification-ready`。", "",
+             role_statement, "",
+             f"原始归档 SHA256：`{manifest['archive_sha256'] or 'not applicable'}`。",
+             f"文件数：{len(manifest['inventory'])}；逐文件哈希见 `processorfuzz-case-manifest.json`。", "",
+             f"分析选择：SI `{selected['si']}`；ELF `{selected['elf']}`。",
+             "成员选择仅指定分析对象；同名、同目录和显式选择均不证明同一构建或执行。",
+             "SI→ELF、签名→程序、签名同次执行、运行来源绑定均为 `UNKNOWN`。", "",
+             f"SI 标识 `{si.case_id}`；{len(si.instructions)} 条源指令，属于测试描述。",
+             f"ELF SHA256 `{summary['elf_sha256']}`；{summary['architecture']} {summary['bit_width']} 位；"
+             f"Ghidra／ELF 静态分析得到 {summary['instruction_count']} 条指令。",
+             "静态分析和 CFG 不能建立运行 PC、指令顺序或触发成立；详见 `firmware-report.md`。", "",
+             "RTL 指令日志、ISA CSV、ISA 指令日志均缺失；指令计数为 null（未知），不是执行零条。",
+             "未生成运行证据文件；签名文件的 source 为 null，不构造 RuntimeSource 或伪造轨迹哈希。", "",
+             f"签名逐项比较：{diff['matching_fields']} 个相同 word，{len(diff['different_fields'])} 个不同 word；"
+             f"architectural differential 为 `{diff['status']}`。",
+             "签名相同不证明行为一致或安全；签名不同也不证明漏洞。", "",
+             "待绑定／冲突文件：", ""]
+    for row in manifest["unbound_artifacts"]:
+        lines.append(f"- `{row['path']}`：UNBOUND；{row['reason']}。")
+    for row in manifest["conflicting_artifacts"]:
+        lines.append(f"- `{row['path']}`：CONFLICT_WITH_ELF；{row['conflict_count']} 个字节检查冲突。")
+    lines += ["", "缺少可信硬件行为契约、SI／ELF 构建绑定、签名执行上下文、RTL 来源版本及适用的运行验证输入。",
+              "`note.log`、人工 bug 标签、transition 数据及构建产物未转换为执行或因果证据。",
+              "未运行交付包内的程序；不声明硬件触发、偏差、客户固件漏洞或物理芯片适用性。", ""]
+    return "\n".join(lines)
 
 
 def _render_report(manifest, si, summary, rtl, isa, cov_rtl, cov_isa, diff, alignment) -> str:

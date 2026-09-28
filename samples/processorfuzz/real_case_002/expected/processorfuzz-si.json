@@ -1,0 +1,4134 @@
+{
+  "case_id": "processorfuzz-si:8c3defeb2dd5fdafcaa1592d7ac6d7c87f9ce1ead133deab75111e4a34bda765",
+  "execution_mode": "p-m",
+  "header": "p-m",
+  "instructions": [
+    {
+      "label": "_p0",
+      "line": 3,
+      "mnemonic": "xor",
+      "operands": [
+        "x13",
+        "x13",
+        "x13"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_p0:    xor x13, x13, x13                         ",
+      "section": "_p0"
+    },
+    {
+      "label": null,
+      "line": 4,
+      "mnemonic": "addi",
+      "operands": [
+        "x14",
+        "zero",
+        "1"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x14, zero, 1                         ",
+      "section": "_p0"
+    },
+    {
+      "label": null,
+      "line": 5,
+      "mnemonic": "slli",
+      "operands": [
+        "x14",
+        "x14",
+        "27"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        slli x14, x14, 27                         ",
+      "section": "_p0"
+    },
+    {
+      "label": null,
+      "line": 6,
+      "mnemonic": "add",
+      "operands": [
+        "x13",
+        "x13",
+        "x14"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        add x13, x13, x14                         ",
+      "section": "_p0"
+    },
+    {
+      "label": null,
+      "line": 7,
+      "mnemonic": "addi",
+      "operands": [
+        "x14",
+        "zero",
+        "1"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x14, zero, 1                         ",
+      "section": "_p0"
+    },
+    {
+      "label": null,
+      "line": 8,
+      "mnemonic": "slli",
+      "operands": [
+        "x14",
+        "x14",
+        "14"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        slli x14, x14, 14                         ",
+      "section": "_p0"
+    },
+    {
+      "label": null,
+      "line": 9,
+      "mnemonic": "add",
+      "operands": [
+        "x13",
+        "x13",
+        "x14"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        add x13, x13, x14                         ",
+      "section": "_p0"
+    },
+    {
+      "label": null,
+      "line": 10,
+      "mnemonic": "addi",
+      "operands": [
+        "x10",
+        "zero",
+        "1"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x10, zero, 1                         ",
+      "section": "_p0"
+    },
+    {
+      "label": null,
+      "line": 11,
+      "mnemonic": "slli",
+      "operands": [
+        "x10",
+        "x10",
+        "20"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        slli x10, x10, 20                         ",
+      "section": "_p0"
+    },
+    {
+      "label": null,
+      "line": 12,
+      "mnemonic": "add",
+      "operands": [
+        "x13",
+        "x13",
+        "x10"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        add x13, x13, x10                         ",
+      "section": "_p0"
+    },
+    {
+      "label": null,
+      "line": 13,
+      "mnemonic": "csrrc",
+      "operands": [
+        "x13",
+        "fcsr",
+        "x13"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        csrrc x13, fcsr, x13                      ",
+      "section": "_p0"
+    },
+    {
+      "label": "_p1",
+      "line": 14,
+      "mnemonic": "csrrwi",
+      "operands": [
+        "x13",
+        "medeleg",
+        "31"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_p1:    csrrwi x13, medeleg, 31                   ",
+      "section": "_p1"
+    },
+    {
+      "label": "_l0",
+      "line": 15,
+      "mnemonic": "fnmsub.s",
+      "operands": [
+        "f26",
+        "f9",
+        "f26",
+        "f4",
+        "rmm"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l0:    fnmsub.s f26, f9, f26, f4, rmm            0000",
+      "section": "_l0"
+    },
+    {
+      "label": "_l1",
+      "line": 16,
+      "mnemonic": "la",
+      "operands": [
+        "x22",
+        "_l4"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l1:    la x22, _l4                               0000",
+      "section": "_l1"
+    },
+    {
+      "label": null,
+      "line": 17,
+      "mnemonic": "jalr",
+      "operands": [
+        "x21",
+        "0(x22)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        jalr x21, 0(x22)                          0000",
+      "section": "_l1"
+    },
+    {
+      "label": "_l2",
+      "line": 18,
+      "mnemonic": "fcvt.s.wu",
+      "operands": [
+        "f20",
+        "x15",
+        "rup"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l2:    fcvt.s.wu f20, x15, rup                   0000",
+      "section": "_l2"
+    },
+    {
+      "label": "_l3",
+      "line": 19,
+      "mnemonic": "la",
+      "operands": [
+        "x28",
+        "d_4_19"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l3:    la x28, d_4_19                            0000",
+      "section": "_l3"
+    },
+    {
+      "label": null,
+      "line": 20,
+      "mnemonic": "addi",
+      "operands": [
+        "x28",
+        "x28",
+        "24"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x28, x28, 24                         0000",
+      "section": "_l3"
+    },
+    {
+      "label": null,
+      "line": 21,
+      "mnemonic": "amomax.d",
+      "operands": [
+        "x28",
+        "x25",
+        "(x28)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        amomax.d x28, x25, (x28)                  0000",
+      "section": "_l3"
+    },
+    {
+      "label": "_l4",
+      "line": 22,
+      "mnemonic": "fmv.x.w",
+      "operands": [
+        "x13",
+        "f27"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l4:    fmv.x.w x13, f27                          0000",
+      "section": "_l4"
+    },
+    {
+      "label": "_l5",
+      "line": 23,
+      "mnemonic": "la",
+      "operands": [
+        "x3",
+        "d_4_7"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l5:    la x3, d_4_7                              0000",
+      "section": "_l5"
+    },
+    {
+      "label": null,
+      "line": 24,
+      "mnemonic": "addi",
+      "operands": [
+        "x3",
+        "x3",
+        "20"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x3, x3, 20                           0000",
+      "section": "_l5"
+    },
+    {
+      "label": null,
+      "line": 25,
+      "mnemonic": "amoadd.w",
+      "operands": [
+        "x3",
+        "x30",
+        "(x3)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        amoadd.w x3, x30, (x3)                    0000",
+      "section": "_l5"
+    },
+    {
+      "label": "_l6",
+      "line": 26,
+      "mnemonic": "fmsub.s",
+      "operands": [
+        "f21",
+        "f11",
+        "f3",
+        "f9",
+        "dyn"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l6:    fmsub.s f21, f11, f3, f9, dyn             0000",
+      "section": "_l6"
+    },
+    {
+      "label": "_l7",
+      "line": 27,
+      "mnemonic": "sllw",
+      "operands": [
+        "x4",
+        "x0",
+        "x7"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l7:    sllw x4, x0, x7                           0000",
+      "section": "_l7"
+    },
+    {
+      "label": "_l8",
+      "line": 28,
+      "mnemonic": "fsqrt.s",
+      "operands": [
+        "f12",
+        "f4",
+        "rup"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l8:    fsqrt.s f12, f4, rup                      0000",
+      "section": "_l8"
+    },
+    {
+      "label": "_l9",
+      "line": 29,
+      "mnemonic": "addiw",
+      "operands": [
+        "x30",
+        "x22",
+        "-2047"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l9:    addiw x30, x22, -2047                     0000",
+      "section": "_l9"
+    },
+    {
+      "label": "_l10",
+      "line": 30,
+      "mnemonic": "la",
+      "operands": [
+        "x9",
+        "d_3_19"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l10:   la x9, d_3_19                             0000",
+      "section": "_l10"
+    },
+    {
+      "label": null,
+      "line": 31,
+      "mnemonic": "addi",
+      "operands": [
+        "x9",
+        "x9",
+        "-4"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x9, x9, -4                           0000",
+      "section": "_l10"
+    },
+    {
+      "label": null,
+      "line": 32,
+      "mnemonic": "amoadd.w",
+      "operands": [
+        "x14",
+        "x19",
+        "(x9)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        amoadd.w x14, x19, (x9)                   0000",
+      "section": "_l10"
+    },
+    {
+      "label": "_l11",
+      "line": 33,
+      "mnemonic": "la",
+      "operands": [
+        "x16",
+        "d_2_5"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l11:   la x16, d_2_5                             0000",
+      "section": "_l11"
+    },
+    {
+      "label": null,
+      "line": 34,
+      "mnemonic": "addi",
+      "operands": [
+        "x16",
+        "x16",
+        "16"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x16, x16, 16                         0000",
+      "section": "_l11"
+    },
+    {
+      "label": null,
+      "line": 35,
+      "mnemonic": "amoor.d",
+      "operands": [
+        "x10",
+        "x18",
+        "(x16)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        amoor.d x10, x18, (x16)                   0000",
+      "section": "_l11"
+    },
+    {
+      "label": "_l12",
+      "line": 36,
+      "mnemonic": "la",
+      "operands": [
+        "x28",
+        "d_2_24"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l12:   la x28, d_2_24                            0000",
+      "section": "_l12"
+    },
+    {
+      "label": null,
+      "line": 37,
+      "mnemonic": "sd",
+      "operands": [
+        "x23",
+        "0(x28)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        sd x23, 0(x28)                            0000",
+      "section": "_l12"
+    },
+    {
+      "label": "_l13",
+      "line": 38,
+      "mnemonic": "csrrci",
+      "operands": [
+        "x17",
+        "pmpaddr0",
+        "31"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l13:   csrrci x17, pmpaddr0, 31                  0000",
+      "section": "_l13"
+    },
+    {
+      "label": "_l14",
+      "line": 39,
+      "mnemonic": "divw",
+      "operands": [
+        "x11",
+        "x3",
+        "x12"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l14:   divw x11, x3, x12                         0000",
+      "section": "_l14"
+    },
+    {
+      "label": "_l15",
+      "line": 40,
+      "mnemonic": "la",
+      "operands": [
+        "x10",
+        "d_0_3"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l15:   la x10, d_0_3                             0000",
+      "section": "_l15"
+    },
+    {
+      "label": null,
+      "line": 41,
+      "mnemonic": "fsw",
+      "operands": [
+        "f16",
+        "28(x10)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        fsw f16, 28(x10)                          0000",
+      "section": "_l15"
+    },
+    {
+      "label": "_l16",
+      "line": 42,
+      "mnemonic": "fcvt.s.lu",
+      "operands": [
+        "f11",
+        "x23",
+        "rmm"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l16:   fcvt.s.lu f11, x23, rmm                   0000",
+      "section": "_l16"
+    },
+    {
+      "label": "_l17",
+      "line": 43,
+      "mnemonic": "la",
+      "operands": [
+        "x29",
+        "d_5_2"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l17:   la x29, d_5_2                             0000",
+      "section": "_l17"
+    },
+    {
+      "label": null,
+      "line": 44,
+      "mnemonic": "lbu",
+      "operands": [
+        "x24",
+        "31(x29)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        lbu x24, 31(x29)                          0000",
+      "section": "_l17"
+    },
+    {
+      "label": "_l18",
+      "line": 45,
+      "mnemonic": "srai",
+      "operands": [
+        "x6",
+        "x22",
+        "25"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l18:   srai x6, x22, 25                          0000",
+      "section": "_l18"
+    },
+    {
+      "label": "_l19",
+      "line": 46,
+      "mnemonic": "la",
+      "operands": [
+        "x24",
+        "_l39"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l19:   la x24, _l39                              0000",
+      "section": "_l19"
+    },
+    {
+      "label": null,
+      "line": 47,
+      "mnemonic": "flw",
+      "operands": [
+        "f0",
+        "28(x24)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        flw f0, 28(x24)                           0000",
+      "section": "_l19"
+    },
+    {
+      "label": "_l20",
+      "line": 48,
+      "mnemonic": "la",
+      "operands": [
+        "x23",
+        "d_5_9"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l20:   la x23, d_5_9                             0000",
+      "section": "_l20"
+    },
+    {
+      "label": null,
+      "line": 49,
+      "mnemonic": "addi",
+      "operands": [
+        "x23",
+        "x23",
+        "0"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x23, x23, 0                          0000",
+      "section": "_l20"
+    },
+    {
+      "label": null,
+      "line": 50,
+      "mnemonic": "amoand.d",
+      "operands": [
+        "x28",
+        "x19",
+        "(x23)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        amoand.d x28, x19, (x23)                  0000",
+      "section": "_l20"
+    },
+    {
+      "label": "_l21",
+      "line": 51,
+      "mnemonic": "fmin.s",
+      "operands": [
+        "f5",
+        "f30",
+        "f18"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l21:   fmin.s f5, f30, f18                       0000",
+      "section": "_l21"
+    },
+    {
+      "label": "_l22",
+      "line": 52,
+      "mnemonic": "la",
+      "operands": [
+        "x13",
+        "_l57"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l22:   la x13, _l57                              0000",
+      "section": "_l22"
+    },
+    {
+      "label": null,
+      "line": 53,
+      "mnemonic": "csrrw",
+      "operands": [
+        "zero",
+        "mepc",
+        "x13"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        csrrw zero, mepc, x13                     0000",
+      "section": "_l22"
+    },
+    {
+      "label": null,
+      "line": 54,
+      "mnemonic": "mret",
+      "operands": [
+        "0000"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        mret                                      0000",
+      "section": "_l22"
+    },
+    {
+      "label": "_l23",
+      "line": 55,
+      "mnemonic": "addiw",
+      "operands": [
+        "x6",
+        "x24",
+        "-19"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l23:   addiw x6, x24, -19                        0000",
+      "section": "_l23"
+    },
+    {
+      "label": "_l24",
+      "line": 56,
+      "mnemonic": "la",
+      "operands": [
+        "x20",
+        "d_0_16"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l24:   la x20, d_0_16                            0000",
+      "section": "_l24"
+    },
+    {
+      "label": null,
+      "line": 57,
+      "mnemonic": "sb",
+      "operands": [
+        "x8",
+        "-31(x20)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        sb x8, -31(x20)                           0000",
+      "section": "_l24"
+    },
+    {
+      "label": "_l25",
+      "line": 58,
+      "mnemonic": "addw",
+      "operands": [
+        "x13",
+        "x10",
+        "x5"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l25:   addw x13, x10, x5                         0000",
+      "section": "_l25"
+    },
+    {
+      "label": "_l26",
+      "line": 59,
+      "mnemonic": "csrrci",
+      "operands": [
+        "x1",
+        "stvec",
+        "31"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l26:   csrrci x1, stvec, 31                      0000",
+      "section": "_l26"
+    },
+    {
+      "label": "_l27",
+      "line": 60,
+      "mnemonic": "sllw",
+      "operands": [
+        "x28",
+        "x29",
+        "x5"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l27:   sllw x28, x29, x5                         0000",
+      "section": "_l27"
+    },
+    {
+      "label": "_l28",
+      "line": 61,
+      "mnemonic": "xor",
+      "operands": [
+        "x6",
+        "x6",
+        "x6"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l28:   xor x6, x6, x6                            0000",
+      "section": "_l28"
+    },
+    {
+      "label": null,
+      "line": 62,
+      "mnemonic": "addi",
+      "operands": [
+        "x12",
+        "zero",
+        "1"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x12, zero, 1                         0000",
+      "section": "_l28"
+    },
+    {
+      "label": null,
+      "line": 63,
+      "mnemonic": "slli",
+      "operands": [
+        "x12",
+        "x12",
+        "23"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        slli x12, x12, 23                         0000",
+      "section": "_l28"
+    },
+    {
+      "label": null,
+      "line": 64,
+      "mnemonic": "add",
+      "operands": [
+        "x6",
+        "x6",
+        "x12"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        add x6, x6, x12                           0000",
+      "section": "_l28"
+    },
+    {
+      "label": null,
+      "line": 65,
+      "mnemonic": "addi",
+      "operands": [
+        "x28",
+        "zero",
+        "1"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x28, zero, 1                         0000",
+      "section": "_l28"
+    },
+    {
+      "label": null,
+      "line": 66,
+      "mnemonic": "slli",
+      "operands": [
+        "x28",
+        "x28",
+        "3"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        slli x28, x28, 3                          0000",
+      "section": "_l28"
+    },
+    {
+      "label": null,
+      "line": 67,
+      "mnemonic": "add",
+      "operands": [
+        "x6",
+        "x6",
+        "x28"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        add x6, x6, x28                           0000",
+      "section": "_l28"
+    },
+    {
+      "label": null,
+      "line": 68,
+      "mnemonic": "addi",
+      "operands": [
+        "x19",
+        "zero",
+        "3"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x19, zero, 3                         0000",
+      "section": "_l28"
+    },
+    {
+      "label": null,
+      "line": 69,
+      "mnemonic": "slli",
+      "operands": [
+        "x19",
+        "x19",
+        "13"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        slli x19, x19, 13                         0000",
+      "section": "_l28"
+    },
+    {
+      "label": null,
+      "line": 70,
+      "mnemonic": "add",
+      "operands": [
+        "x6",
+        "x6",
+        "x19"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        add x6, x6, x19                           0000",
+      "section": "_l28"
+    },
+    {
+      "label": null,
+      "line": 71,
+      "mnemonic": "csrrc",
+      "operands": [
+        "x7",
+        "mcounteren",
+        "x6"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        csrrc x7, mcounteren, x6                  0000",
+      "section": "_l28"
+    },
+    {
+      "label": "_l29",
+      "line": 72,
+      "mnemonic": "sraiw",
+      "operands": [
+        "x1",
+        "x1",
+        "6"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l29:   sraiw x1, x1, 6                           0000",
+      "section": "_l29"
+    },
+    {
+      "label": "_l30",
+      "line": 73,
+      "mnemonic": "la",
+      "operands": [
+        "x19",
+        "_l31"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l30:   la x19, _l31                              0000",
+      "section": "_l30"
+    },
+    {
+      "label": null,
+      "line": 74,
+      "mnemonic": "flw",
+      "operands": [
+        "f15",
+        "28(x19)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        flw f15, 28(x19)                          0000",
+      "section": "_l30"
+    },
+    {
+      "label": "_l31",
+      "line": 75,
+      "mnemonic": "xor",
+      "operands": [
+        "x2",
+        "x2",
+        "x2"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l31:   xor x2, x2, x2                            0000",
+      "section": "_l31"
+    },
+    {
+      "label": null,
+      "line": 76,
+      "mnemonic": "csrrc",
+      "operands": [
+        "x11",
+        "mcycle",
+        "x2"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        csrrc x11, mcycle, x2                     0000",
+      "section": "_l31"
+    },
+    {
+      "label": "_l32",
+      "line": 77,
+      "mnemonic": "div",
+      "operands": [
+        "x10",
+        "x18",
+        "x6"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l32:   div x10, x18, x6                          0000",
+      "section": "_l32"
+    },
+    {
+      "label": "_l33",
+      "line": 78,
+      "mnemonic": "fence.i",
+      "operands": [
+        "0000"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l33:   fence.i                                   0000",
+      "section": "_l33"
+    },
+    {
+      "label": "_l34",
+      "line": 79,
+      "mnemonic": "fcvt.s.wu",
+      "operands": [
+        "f15",
+        "x3",
+        "rmm"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l34:   fcvt.s.wu f15, x3, rmm                    0000",
+      "section": "_l34"
+    },
+    {
+      "label": "_l35",
+      "line": 80,
+      "mnemonic": "la",
+      "operands": [
+        "x3",
+        "d_5_10"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l35:   la x3, d_5_10                             0000",
+      "section": "_l35"
+    },
+    {
+      "label": null,
+      "line": 81,
+      "mnemonic": "lui",
+      "operands": [
+        "x19",
+        "0xffe00"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        lui x19, 0xffe00                          0000",
+      "section": "_l35"
+    },
+    {
+      "label": null,
+      "line": 82,
+      "mnemonic": "xor",
+      "operands": [
+        "x3",
+        "x3",
+        "x19"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        xor x3, x3, x19                           0000",
+      "section": "_l35"
+    },
+    {
+      "label": null,
+      "line": 83,
+      "mnemonic": "sd",
+      "operands": [
+        "x29",
+        "-8(x3)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        sd x29, -8(x3)                            0000",
+      "section": "_l35"
+    },
+    {
+      "label": "_l36",
+      "line": 84,
+      "mnemonic": "la",
+      "operands": [
+        "x17",
+        "_l73"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l36:   la x17, _l73                              0000",
+      "section": "_l36"
+    },
+    {
+      "label": null,
+      "line": 85,
+      "mnemonic": "csrrw",
+      "operands": [
+        "zero",
+        "sepc",
+        "x17"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        csrrw zero, sepc, x17                     0000",
+      "section": "_l36"
+    },
+    {
+      "label": null,
+      "line": 86,
+      "mnemonic": "sret",
+      "operands": [
+        "0000"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        sret                                      0000",
+      "section": "_l36"
+    },
+    {
+      "label": "_l37",
+      "line": 87,
+      "mnemonic": "la",
+      "operands": [
+        "x1",
+        "d_4_27"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l37:   la x1, d_4_27                             0000",
+      "section": "_l37"
+    },
+    {
+      "label": null,
+      "line": 88,
+      "mnemonic": "addi",
+      "operands": [
+        "x1",
+        "x1",
+        "-0"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x1, x1, -0                           0000",
+      "section": "_l37"
+    },
+    {
+      "label": null,
+      "line": 89,
+      "mnemonic": "amomaxu.d",
+      "operands": [
+        "x3",
+        "x9",
+        "(x1)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        amomaxu.d x3, x9, (x1)                    0000",
+      "section": "_l37"
+    },
+    {
+      "label": "_l38",
+      "line": 90,
+      "mnemonic": "bltu",
+      "operands": [
+        "x30",
+        "x1",
+        "_l73"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l38:   bltu x30, x1, _l73                        0000",
+      "section": "_l38"
+    },
+    {
+      "label": "_l39",
+      "line": 91,
+      "mnemonic": "srli",
+      "operands": [
+        "x5",
+        "x3",
+        "22"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l39:   srli x5, x3, 22                           0000",
+      "section": "_l39"
+    },
+    {
+      "label": "_l40",
+      "line": 92,
+      "mnemonic": "mulhu",
+      "operands": [
+        "x9",
+        "x3",
+        "x29"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l40:   mulhu x9, x3, x29                         0000",
+      "section": "_l40"
+    },
+    {
+      "label": "_l41",
+      "line": 93,
+      "mnemonic": "csrrci",
+      "operands": [
+        "x30",
+        "pmpaddr2",
+        "29"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l41:   csrrci x30, pmpaddr2, 29                  0000",
+      "section": "_l41"
+    },
+    {
+      "label": "_l42",
+      "line": 94,
+      "mnemonic": "fmv.x.w",
+      "operands": [
+        "x28",
+        "f19"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l42:   fmv.x.w x28, f19                          0000",
+      "section": "_l42"
+    },
+    {
+      "label": "_l43",
+      "line": 95,
+      "mnemonic": "srai",
+      "operands": [
+        "x7",
+        "x7",
+        "0"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l43:   srai x7, x7, 0                            0000",
+      "section": "_l43"
+    },
+    {
+      "label": "_l44",
+      "line": 96,
+      "mnemonic": "ori",
+      "operands": [
+        "x14",
+        "x20",
+        "-0"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l44:   ori x14, x20, -0                          0000",
+      "section": "_l44"
+    },
+    {
+      "label": "_l45",
+      "line": 97,
+      "mnemonic": "fmadd.s",
+      "operands": [
+        "f28",
+        "f18",
+        "f31",
+        "f3",
+        "rtz"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l45:   fmadd.s f28, f18, f31, f3, rtz            0000",
+      "section": "_l45"
+    },
+    {
+      "label": "_l46",
+      "line": 98,
+      "mnemonic": "lui",
+      "operands": [
+        "x0",
+        "29"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l46:   lui x0, 29                                0000",
+      "section": "_l46"
+    },
+    {
+      "label": "_l47",
+      "line": 99,
+      "mnemonic": "remuw",
+      "operands": [
+        "x2",
+        "x26",
+        "x13"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l47:   remuw x2, x26, x13                        0000",
+      "section": "_l47"
+    },
+    {
+      "label": "_l48",
+      "line": 100,
+      "mnemonic": "srliw",
+      "operands": [
+        "x6",
+        "x28",
+        "31"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l48:   srliw x6, x28, 31                         0000",
+      "section": "_l48"
+    },
+    {
+      "label": "_l49",
+      "line": 101,
+      "mnemonic": "la",
+      "operands": [
+        "x16",
+        "d_3_19"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l49:   la x16, d_3_19                            0000",
+      "section": "_l49"
+    },
+    {
+      "label": null,
+      "line": 102,
+      "mnemonic": "addi",
+      "operands": [
+        "x16",
+        "x16",
+        "-8"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x16, x16, -8                         0000",
+      "section": "_l49"
+    },
+    {
+      "label": null,
+      "line": 103,
+      "mnemonic": "lr.d",
+      "operands": [
+        "x9",
+        "(x16)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        lr.d x9, (x16)                            0000",
+      "section": "_l49"
+    },
+    {
+      "label": "_l50",
+      "line": 104,
+      "mnemonic": "srli",
+      "operands": [
+        "x17",
+        "x9",
+        "59"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l50:   srli x17, x9, 59                          0000",
+      "section": "_l50"
+    },
+    {
+      "label": "_l51",
+      "line": 105,
+      "mnemonic": "fcvt.lu.s",
+      "operands": [
+        "x6",
+        "f1",
+        "rtz"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l51:   fcvt.lu.s x6, f1, rtz                     0000",
+      "section": "_l51"
+    },
+    {
+      "label": "_l52",
+      "line": 106,
+      "mnemonic": "csrrwi",
+      "operands": [
+        "x25",
+        "satp",
+        "26"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l52:   csrrwi x25, satp, 26                      0000",
+      "section": "_l52"
+    },
+    {
+      "label": "_l53",
+      "line": 107,
+      "mnemonic": "mulh",
+      "operands": [
+        "x21",
+        "x1",
+        "x17"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l53:   mulh x21, x1, x17                         0000",
+      "section": "_l53"
+    },
+    {
+      "label": "_l54",
+      "line": 108,
+      "mnemonic": "la",
+      "operands": [
+        "x6",
+        "d_4_13"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l54:   la x6, d_4_13                             0000",
+      "section": "_l54"
+    },
+    {
+      "label": null,
+      "line": 109,
+      "mnemonic": "addi",
+      "operands": [
+        "x6",
+        "x6",
+        "8"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x6, x6, 8                            0000",
+      "section": "_l54"
+    },
+    {
+      "label": null,
+      "line": 110,
+      "mnemonic": "sc.d",
+      "operands": [
+        "x12",
+        "x6",
+        "(x6)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        sc.d x12, x6, (x6)                        0000",
+      "section": "_l54"
+    },
+    {
+      "label": "_l55",
+      "line": 111,
+      "mnemonic": "la",
+      "operands": [
+        "x15",
+        "d_0_1"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l55:   la x15, d_0_1                             0000",
+      "section": "_l55"
+    },
+    {
+      "label": null,
+      "line": 112,
+      "mnemonic": "addi",
+      "operands": [
+        "x15",
+        "x15",
+        "24"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x15, x15, 24                         0000",
+      "section": "_l55"
+    },
+    {
+      "label": null,
+      "line": 113,
+      "mnemonic": "amominu.d",
+      "operands": [
+        "x9",
+        "x21",
+        "(x15)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        amominu.d x9, x21, (x15)                  0000",
+      "section": "_l55"
+    },
+    {
+      "label": "_l56",
+      "line": 114,
+      "mnemonic": "blt",
+      "operands": [
+        "x15",
+        "x4",
+        "_l148"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l56:   blt x15, x4, _l148                        0000",
+      "section": "_l56"
+    },
+    {
+      "label": "_l57",
+      "line": 115,
+      "mnemonic": "mulhsu",
+      "operands": [
+        "x29",
+        "x3",
+        "x25"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l57:   mulhsu x29, x3, x25                       0000",
+      "section": "_l57"
+    },
+    {
+      "label": "_l58",
+      "line": 116,
+      "mnemonic": "fsgnjx.s",
+      "operands": [
+        "f27",
+        "f5",
+        "f30"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l58:   fsgnjx.s f27, f5, f30                     0000",
+      "section": "_l58"
+    },
+    {
+      "label": "_l59",
+      "line": 117,
+      "mnemonic": "remuw",
+      "operands": [
+        "x28",
+        "x11",
+        "x2"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l59:   remuw x28, x11, x2                        0000",
+      "section": "_l59"
+    },
+    {
+      "label": "_l60",
+      "line": 118,
+      "mnemonic": "sllw",
+      "operands": [
+        "x30",
+        "x21",
+        "x0"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l60:   sllw x30, x21, x0                         0000",
+      "section": "_l60"
+    },
+    {
+      "label": "_l61",
+      "line": 119,
+      "mnemonic": "remuw",
+      "operands": [
+        "x21",
+        "x15",
+        "x24"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l61:   remuw x21, x15, x24                       0000",
+      "section": "_l61"
+    },
+    {
+      "label": "_l62",
+      "line": 120,
+      "mnemonic": "csrrwi",
+      "operands": [
+        "x27",
+        "stval",
+        "7"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l62:   csrrwi x27, stval, 7                      0000",
+      "section": "_l62"
+    },
+    {
+      "label": "_l63",
+      "line": 121,
+      "mnemonic": "bne",
+      "operands": [
+        "x19",
+        "x13",
+        "_l65"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l63:   bne x19, x13, _l65                        0000",
+      "section": "_l63"
+    },
+    {
+      "label": "_l64",
+      "line": 122,
+      "mnemonic": "fmsub.s",
+      "operands": [
+        "f28",
+        "f29",
+        "f14",
+        "f28",
+        "rmm"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l64:   fmsub.s f28, f29, f14, f28, rmm           0000",
+      "section": "_l64"
+    },
+    {
+      "label": "_l65",
+      "line": 123,
+      "mnemonic": "la",
+      "operands": [
+        "x4",
+        "d_2_25"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l65:   la x4, d_2_25                             0000",
+      "section": "_l65"
+    },
+    {
+      "label": null,
+      "line": 124,
+      "mnemonic": "addi",
+      "operands": [
+        "x4",
+        "x4",
+        "-24"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x4, x4, -24                          0000",
+      "section": "_l65"
+    },
+    {
+      "label": null,
+      "line": 125,
+      "mnemonic": "amoadd.d",
+      "operands": [
+        "x19",
+        "x14",
+        "(x4)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        amoadd.d x19, x14, (x4)                   0000",
+      "section": "_l65"
+    },
+    {
+      "label": "_l66",
+      "line": 126,
+      "mnemonic": "fsgnj.s",
+      "operands": [
+        "f4",
+        "f13",
+        "f22"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l66:   fsgnj.s f4, f13, f22                      0000",
+      "section": "_l66"
+    },
+    {
+      "label": "_l67",
+      "line": 127,
+      "mnemonic": "csrrwi",
+      "operands": [
+        "x8",
+        "mtval",
+        "0"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l67:   csrrwi x8, mtval, 0                       0000",
+      "section": "_l67"
+    },
+    {
+      "label": "_l68",
+      "line": 128,
+      "mnemonic": "feq.s",
+      "operands": [
+        "x14",
+        "f0",
+        "f23"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l68:   feq.s x14, f0, f23                        0000",
+      "section": "_l68"
+    },
+    {
+      "label": "_l69",
+      "line": 129,
+      "mnemonic": "fmsub.s",
+      "operands": [
+        "f25",
+        "f30",
+        "f14",
+        "f14",
+        "dyn"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l69:   fmsub.s f25, f30, f14, f14, dyn           0000",
+      "section": "_l69"
+    },
+    {
+      "label": "_l70",
+      "line": 130,
+      "mnemonic": "sllw",
+      "operands": [
+        "x11",
+        "x21",
+        "x14"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l70:   sllw x11, x21, x14                        0000",
+      "section": "_l70"
+    },
+    {
+      "label": "_l71",
+      "line": 131,
+      "mnemonic": "flt.s",
+      "operands": [
+        "x24",
+        "f2",
+        "f22"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l71:   flt.s x24, f2, f22                        0000",
+      "section": "_l71"
+    },
+    {
+      "label": "_l72",
+      "line": 132,
+      "mnemonic": "la",
+      "operands": [
+        "x16",
+        "d_0_17"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l72:   la x16, d_0_17                            0000",
+      "section": "_l72"
+    },
+    {
+      "label": null,
+      "line": 133,
+      "mnemonic": "lui",
+      "operands": [
+        "x28",
+        "0xffe00"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        lui x28, 0xffe00                          0000",
+      "section": "_l72"
+    },
+    {
+      "label": null,
+      "line": 134,
+      "mnemonic": "xor",
+      "operands": [
+        "x16",
+        "x16",
+        "x28"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        xor x16, x16, x28                         0000",
+      "section": "_l72"
+    },
+    {
+      "label": null,
+      "line": 135,
+      "mnemonic": "lwu",
+      "operands": [
+        "x16",
+        "-24(x16)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        lwu x16, -24(x16)                         0000",
+      "section": "_l72"
+    },
+    {
+      "label": "_l73",
+      "line": 136,
+      "mnemonic": "mulhu",
+      "operands": [
+        "x28",
+        "x21",
+        "x8"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l73:   mulhu x28, x21, x8                        0000",
+      "section": "_l73"
+    },
+    {
+      "label": "_l74",
+      "line": 137,
+      "mnemonic": "fcvt.s.wu",
+      "operands": [
+        "f7",
+        "x8",
+        "rup"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l74:   fcvt.s.wu f7, x8, rup                     0000",
+      "section": "_l74"
+    },
+    {
+      "label": "_l75",
+      "line": 138,
+      "mnemonic": "fcvt.s.lu",
+      "operands": [
+        "f22",
+        "x8",
+        "rup"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l75:   fcvt.s.lu f22, x8, rup                    0000",
+      "section": "_l75"
+    },
+    {
+      "label": "_l76",
+      "line": 139,
+      "mnemonic": "divuw",
+      "operands": [
+        "x21",
+        "x6",
+        "x30"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l76:   divuw x21, x6, x30                        0000",
+      "section": "_l76"
+    },
+    {
+      "label": "_l77",
+      "line": 140,
+      "mnemonic": "xor",
+      "operands": [
+        "x24",
+        "x24",
+        "x24"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l77:   xor x24, x24, x24                         0000",
+      "section": "_l77"
+    },
+    {
+      "label": null,
+      "line": 141,
+      "mnemonic": "addi",
+      "operands": [
+        "x20",
+        "zero",
+        "1"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x20, zero, 1                         0000",
+      "section": "_l77"
+    },
+    {
+      "label": null,
+      "line": 142,
+      "mnemonic": "slli",
+      "operands": [
+        "x20",
+        "x20",
+        "9"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        slli x20, x20, 9                          0000",
+      "section": "_l77"
+    },
+    {
+      "label": null,
+      "line": 143,
+      "mnemonic": "add",
+      "operands": [
+        "x24",
+        "x24",
+        "x20"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        add x24, x24, x20                         0000",
+      "section": "_l77"
+    },
+    {
+      "label": null,
+      "line": 144,
+      "mnemonic": "csrrw",
+      "operands": [
+        "x20",
+        "scause",
+        "x24"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        csrrw x20, scause, x24                    0000",
+      "section": "_l77"
+    },
+    {
+      "label": "_l78",
+      "line": 145,
+      "mnemonic": "la",
+      "operands": [
+        "x16",
+        "_l26"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l78:   la x16, _l26                              0000",
+      "section": "_l78"
+    },
+    {
+      "label": null,
+      "line": 146,
+      "mnemonic": "flw",
+      "operands": [
+        "f19",
+        "0(x16)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        flw f19, 0(x16)                           0000",
+      "section": "_l78"
+    },
+    {
+      "label": "_l79",
+      "line": 147,
+      "mnemonic": "csrrwi",
+      "operands": [
+        "x5",
+        "mepc",
+        "31"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l79:   csrrwi x5, mepc, 31                       0000",
+      "section": "_l79"
+    },
+    {
+      "label": "_l80",
+      "line": 148,
+      "mnemonic": "fsgnj.s",
+      "operands": [
+        "f31",
+        "f2",
+        "f8"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l80:   fsgnj.s f31, f2, f8                       0000",
+      "section": "_l80"
+    },
+    {
+      "label": "_l81",
+      "line": 149,
+      "mnemonic": "slliw",
+      "operands": [
+        "x9",
+        "x0",
+        "31"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l81:   slliw x9, x0, 31                          0000",
+      "section": "_l81"
+    },
+    {
+      "label": "_l82",
+      "line": 150,
+      "mnemonic": "la",
+      "operands": [
+        "x16",
+        "_l121"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l82:   la x16, _l121                             0000",
+      "section": "_l82"
+    },
+    {
+      "label": null,
+      "line": 151,
+      "mnemonic": "csrrw",
+      "operands": [
+        "zero",
+        "sepc",
+        "x16"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        csrrw zero, sepc, x16                     0000",
+      "section": "_l82"
+    },
+    {
+      "label": null,
+      "line": 152,
+      "mnemonic": "sret",
+      "operands": [
+        "0000"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        sret                                      0000",
+      "section": "_l82"
+    },
+    {
+      "label": "_l83",
+      "line": 153,
+      "mnemonic": "divu",
+      "operands": [
+        "x23",
+        "x4",
+        "x6"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l83:   divu x23, x4, x6                          0000",
+      "section": "_l83"
+    },
+    {
+      "label": "_l84",
+      "line": 154,
+      "mnemonic": "csrrwi",
+      "operands": [
+        "x10",
+        "pmpaddr9",
+        "0"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l84:   csrrwi x10, pmpaddr9, 0                   0000",
+      "section": "_l84"
+    },
+    {
+      "label": "_l85",
+      "line": 155,
+      "mnemonic": "fmin.s",
+      "operands": [
+        "f3",
+        "f19",
+        "f30"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l85:   fmin.s f3, f19, f30                       0000",
+      "section": "_l85"
+    },
+    {
+      "label": "_l86",
+      "line": 156,
+      "mnemonic": "la",
+      "operands": [
+        "x23",
+        "d_3_22"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l86:   la x23, d_3_22                            0000",
+      "section": "_l86"
+    },
+    {
+      "label": null,
+      "line": 157,
+      "mnemonic": "addi",
+      "operands": [
+        "x23",
+        "x23",
+        "0"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x23, x23, 0                          0000",
+      "section": "_l86"
+    },
+    {
+      "label": null,
+      "line": 158,
+      "mnemonic": "amominu.w",
+      "operands": [
+        "x8",
+        "x29",
+        "(x23)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        amominu.w x8, x29, (x23)                  0000",
+      "section": "_l86"
+    },
+    {
+      "label": "_l87",
+      "line": 159,
+      "mnemonic": "jal",
+      "operands": [
+        "x18",
+        "_l105"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l87:   jal x18, _l105                            0000",
+      "section": "_l87"
+    },
+    {
+      "label": "_l88",
+      "line": 160,
+      "mnemonic": "la",
+      "operands": [
+        "x9",
+        "d_0_6"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l88:   la x9, d_0_6                              0000",
+      "section": "_l88"
+    },
+    {
+      "label": null,
+      "line": 161,
+      "mnemonic": "srai",
+      "operands": [
+        "x9",
+        "x9",
+        "1"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        srai x9, x9, 1                            0000",
+      "section": "_l88"
+    },
+    {
+      "label": null,
+      "line": 162,
+      "mnemonic": "csrrw",
+      "operands": [
+        "x10",
+        "pmpaddr10",
+        "x9"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        csrrw x10, pmpaddr10, x9                  0000",
+      "section": "_l88"
+    },
+    {
+      "label": "_l89",
+      "line": 163,
+      "mnemonic": "slti",
+      "operands": [
+        "x26",
+        "x15",
+        "-1167"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l89:   slti x26, x15, -1167                      0000",
+      "section": "_l89"
+    },
+    {
+      "label": "_l90",
+      "line": 164,
+      "mnemonic": "slliw",
+      "operands": [
+        "x1",
+        "x6",
+        "24"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l90:   slliw x1, x6, 24                          0000",
+      "section": "_l90"
+    },
+    {
+      "label": "_l91",
+      "line": 165,
+      "mnemonic": "csrrsi",
+      "operands": [
+        "x22",
+        "frm",
+        "0"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l91:   csrrsi x22, frm, 0                        0000",
+      "section": "_l91"
+    },
+    {
+      "label": "_l92",
+      "line": 166,
+      "mnemonic": "fcvt.wu.s",
+      "operands": [
+        "x30",
+        "f29",
+        "rup"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l92:   fcvt.wu.s x30, f29, rup                   0000",
+      "section": "_l92"
+    },
+    {
+      "label": "_l93",
+      "line": 167,
+      "mnemonic": "mulhu",
+      "operands": [
+        "x25",
+        "x28",
+        "x12"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l93:   mulhu x25, x28, x12                       0000",
+      "section": "_l93"
+    },
+    {
+      "label": "_l94",
+      "line": 168,
+      "mnemonic": "fmax.s",
+      "operands": [
+        "f15",
+        "f2",
+        "f28"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l94:   fmax.s f15, f2, f28                       0000",
+      "section": "_l94"
+    },
+    {
+      "label": "_l95",
+      "line": 169,
+      "mnemonic": "ori",
+      "operands": [
+        "x26",
+        "x11",
+        "-2030"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l95:   ori x26, x11, -2030                       0000",
+      "section": "_l95"
+    },
+    {
+      "label": "_l96",
+      "line": 170,
+      "mnemonic": "mulhu",
+      "operands": [
+        "x29",
+        "x10",
+        "x6"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l96:   mulhu x29, x10, x6                        0000",
+      "section": "_l96"
+    },
+    {
+      "label": "_l97",
+      "line": 171,
+      "mnemonic": "bgeu",
+      "operands": [
+        "x30",
+        "x3",
+        "_l115"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l97:   bgeu x30, x3, _l115                       0000",
+      "section": "_l97"
+    },
+    {
+      "label": "_l98",
+      "line": 172,
+      "mnemonic": "bgeu",
+      "operands": [
+        "x11",
+        "x7",
+        "_l142"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l98:   bgeu x11, x7, _l142                       0000",
+      "section": "_l98"
+    },
+    {
+      "label": "_l99",
+      "line": 173,
+      "mnemonic": "fmadd.s",
+      "operands": [
+        "f12",
+        "f10",
+        "f24",
+        "f2",
+        "rtz"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l99:   fmadd.s f12, f10, f24, f2, rtz            0000",
+      "section": "_l99"
+    },
+    {
+      "label": "_l100",
+      "line": 174,
+      "mnemonic": "fcvt.w.s",
+      "operands": [
+        "x27",
+        "f14",
+        "dyn"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l100:  fcvt.w.s x27, f14, dyn                    0000",
+      "section": "_l100"
+    },
+    {
+      "label": "_l101",
+      "line": 175,
+      "mnemonic": "la",
+      "operands": [
+        "x13",
+        "d_3_3"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l101:  la x13, d_3_3                             0000",
+      "section": "_l101"
+    },
+    {
+      "label": null,
+      "line": 176,
+      "mnemonic": "addi",
+      "operands": [
+        "x13",
+        "x13",
+        "-0"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x13, x13, -0                         0000",
+      "section": "_l101"
+    },
+    {
+      "label": null,
+      "line": 177,
+      "mnemonic": "amomax.d",
+      "operands": [
+        "x21",
+        "x26",
+        "(x13)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        amomax.d x21, x26, (x13)                  0000",
+      "section": "_l101"
+    },
+    {
+      "label": "_l102",
+      "line": 178,
+      "mnemonic": "remu",
+      "operands": [
+        "x19",
+        "x14",
+        "x15"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l102:  remu x19, x14, x15                        0000",
+      "section": "_l102"
+    },
+    {
+      "label": "_l103",
+      "line": 179,
+      "mnemonic": "la",
+      "operands": [
+        "x24",
+        "d_5_17"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l103:  la x24, d_5_17                            0000",
+      "section": "_l103"
+    },
+    {
+      "label": null,
+      "line": 180,
+      "mnemonic": "addi",
+      "operands": [
+        "x24",
+        "x24",
+        "0"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x24, x24, 0                          0000",
+      "section": "_l103"
+    },
+    {
+      "label": null,
+      "line": 181,
+      "mnemonic": "amoswap.d",
+      "operands": [
+        "x18",
+        "x19",
+        "(x24)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        amoswap.d x18, x19, (x24)                 0000",
+      "section": "_l103"
+    },
+    {
+      "label": "_l104",
+      "line": 182,
+      "mnemonic": "fsqrt.s",
+      "operands": [
+        "f13",
+        "f24",
+        "rne"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l104:  fsqrt.s f13, f24, rne                     0000",
+      "section": "_l104"
+    },
+    {
+      "label": "_l105",
+      "line": 183,
+      "mnemonic": "fsgnjn.s",
+      "operands": [
+        "f20",
+        "f26",
+        "f11"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l105:  fsgnjn.s f20, f26, f11                    0000",
+      "section": "_l105"
+    },
+    {
+      "label": "_l106",
+      "line": 184,
+      "mnemonic": "fcvt.wu.s",
+      "operands": [
+        "x12",
+        "f27",
+        "dyn"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l106:  fcvt.wu.s x12, f27, dyn                   0000",
+      "section": "_l106"
+    },
+    {
+      "label": "_l107",
+      "line": 185,
+      "mnemonic": "la",
+      "operands": [
+        "x29",
+        "d_2_16"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l107:  la x29, d_2_16                            0000",
+      "section": "_l107"
+    },
+    {
+      "label": null,
+      "line": 186,
+      "mnemonic": "addi",
+      "operands": [
+        "x29",
+        "x29",
+        "24"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x29, x29, 24                         0000",
+      "section": "_l107"
+    },
+    {
+      "label": null,
+      "line": 187,
+      "mnemonic": "amoand.w",
+      "operands": [
+        "x30",
+        "x1",
+        "(x29)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        amoand.w x30, x1, (x29)                   0000",
+      "section": "_l107"
+    },
+    {
+      "label": "_l108",
+      "line": 188,
+      "mnemonic": "fcvt.w.s",
+      "operands": [
+        "x18",
+        "f20",
+        "rne"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l108:  fcvt.w.s x18, f20, rne                    0000",
+      "section": "_l108"
+    },
+    {
+      "label": "_l109",
+      "line": 189,
+      "mnemonic": "xor",
+      "operands": [
+        "x26",
+        "x26",
+        "x26"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l109:  xor x26, x26, x26                         0000",
+      "section": "_l109"
+    },
+    {
+      "label": null,
+      "line": 190,
+      "mnemonic": "addi",
+      "operands": [
+        "x4",
+        "zero",
+        "3"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x4, zero, 3                          0000",
+      "section": "_l109"
+    },
+    {
+      "label": null,
+      "line": 191,
+      "mnemonic": "slli",
+      "operands": [
+        "x4",
+        "x4",
+        "10"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        slli x4, x4, 10                           0000",
+      "section": "_l109"
+    },
+    {
+      "label": null,
+      "line": 192,
+      "mnemonic": "add",
+      "operands": [
+        "x26",
+        "x26",
+        "x4"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        add x26, x26, x4                          0000",
+      "section": "_l109"
+    },
+    {
+      "label": null,
+      "line": 193,
+      "mnemonic": "addi",
+      "operands": [
+        "x9",
+        "zero",
+        "3"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x9, zero, 3                          0000",
+      "section": "_l109"
+    },
+    {
+      "label": null,
+      "line": 194,
+      "mnemonic": "slli",
+      "operands": [
+        "x9",
+        "x9",
+        "13"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        slli x9, x9, 13                           0000",
+      "section": "_l109"
+    },
+    {
+      "label": null,
+      "line": 195,
+      "mnemonic": "add",
+      "operands": [
+        "x26",
+        "x26",
+        "x9"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        add x26, x26, x9                          0000",
+      "section": "_l109"
+    },
+    {
+      "label": null,
+      "line": 196,
+      "mnemonic": "csrrs",
+      "operands": [
+        "x29",
+        "pmpcfg0",
+        "x26"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        csrrs x29, pmpcfg0, x26                   0000",
+      "section": "_l109"
+    },
+    {
+      "label": "_l110",
+      "line": 197,
+      "mnemonic": "la",
+      "operands": [
+        "x3",
+        "d_3_11"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l110:  la x3, d_3_11                             0000",
+      "section": "_l110"
+    },
+    {
+      "label": null,
+      "line": 198,
+      "mnemonic": "srai",
+      "operands": [
+        "x3",
+        "x3",
+        "1"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        srai x3, x3, 1                            0000",
+      "section": "_l110"
+    },
+    {
+      "label": null,
+      "line": 199,
+      "mnemonic": "csrrw",
+      "operands": [
+        "x15",
+        "pmpaddr5",
+        "x3"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        csrrw x15, pmpaddr5, x3                   0000",
+      "section": "_l110"
+    },
+    {
+      "label": "_l111",
+      "line": 200,
+      "mnemonic": "la",
+      "operands": [
+        "x14",
+        "d_3_11"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l111:  la x14, d_3_11                            0000",
+      "section": "_l111"
+    },
+    {
+      "label": null,
+      "line": 201,
+      "mnemonic": "addi",
+      "operands": [
+        "x14",
+        "x14",
+        "16"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x14, x14, 16                         0000",
+      "section": "_l111"
+    },
+    {
+      "label": null,
+      "line": 202,
+      "mnemonic": "lr.d",
+      "operands": [
+        "x19",
+        "(x14)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        lr.d x19, (x14)                           0000",
+      "section": "_l111"
+    },
+    {
+      "label": "_l112",
+      "line": 203,
+      "mnemonic": "fcvt.wu.s",
+      "operands": [
+        "x5",
+        "f18",
+        "rne"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l112:  fcvt.wu.s x5, f18, rne                    0000",
+      "section": "_l112"
+    },
+    {
+      "label": "_l113",
+      "line": 204,
+      "mnemonic": "la",
+      "operands": [
+        "x28",
+        "d_2_18"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l113:  la x28, d_2_18                            0000",
+      "section": "_l113"
+    },
+    {
+      "label": null,
+      "line": 205,
+      "mnemonic": "fsw",
+      "operands": [
+        "f10",
+        "-20(x28)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        fsw f10, -20(x28)                         0000",
+      "section": "_l113"
+    },
+    {
+      "label": "_l114",
+      "line": 206,
+      "mnemonic": "remu",
+      "operands": [
+        "x3",
+        "x4",
+        "x14"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l114:  remu x3, x4, x14                          0000",
+      "section": "_l114"
+    },
+    {
+      "label": "_l115",
+      "line": 207,
+      "mnemonic": "mulw",
+      "operands": [
+        "x3",
+        "x21",
+        "x18"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l115:  mulw x3, x21, x18                         0000",
+      "section": "_l115"
+    },
+    {
+      "label": "_l116",
+      "line": 208,
+      "mnemonic": "addi",
+      "operands": [
+        "x4",
+        "x20",
+        "899"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l116:  addi x4, x20, 899                         0000",
+      "section": "_l116"
+    },
+    {
+      "label": "_l117",
+      "line": 209,
+      "mnemonic": "xor",
+      "operands": [
+        "x12",
+        "x12",
+        "x12"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l117:  xor x12, x12, x12                         0000",
+      "section": "_l117"
+    },
+    {
+      "label": null,
+      "line": 210,
+      "mnemonic": "addi",
+      "operands": [
+        "x4",
+        "zero",
+        "3"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x4, zero, 3                          0000",
+      "section": "_l117"
+    },
+    {
+      "label": null,
+      "line": 211,
+      "mnemonic": "slli",
+      "operands": [
+        "x4",
+        "x4",
+        "9"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        slli x4, x4, 9                            0000",
+      "section": "_l117"
+    },
+    {
+      "label": null,
+      "line": 212,
+      "mnemonic": "add",
+      "operands": [
+        "x12",
+        "x12",
+        "x4"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        add x12, x12, x4                          0000",
+      "section": "_l117"
+    },
+    {
+      "label": null,
+      "line": 213,
+      "mnemonic": "csrrs",
+      "operands": [
+        "x4",
+        "mcycle",
+        "x12"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        csrrs x4, mcycle, x12                     0000",
+      "section": "_l117"
+    },
+    {
+      "label": "_l118",
+      "line": 214,
+      "mnemonic": "fnmsub.s",
+      "operands": [
+        "f23",
+        "f31",
+        "f30",
+        "f12",
+        "rdn"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l118:  fnmsub.s f23, f31, f30, f12, rdn          0000",
+      "section": "_l118"
+    },
+    {
+      "label": "_l119",
+      "line": 215,
+      "mnemonic": "divuw",
+      "operands": [
+        "x14",
+        "x7",
+        "x11"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l119:  divuw x14, x7, x11                        0000",
+      "section": "_l119"
+    },
+    {
+      "label": "_l120",
+      "line": 216,
+      "mnemonic": "la",
+      "operands": [
+        "x9",
+        "d_3_7"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l120:  la x9, d_3_7                              0000",
+      "section": "_l120"
+    },
+    {
+      "label": null,
+      "line": 217,
+      "mnemonic": "lh",
+      "operands": [
+        "x17",
+        "4(x9)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        lh x17, 4(x9)                             0000",
+      "section": "_l120"
+    },
+    {
+      "label": "_l121",
+      "line": 218,
+      "mnemonic": "sraw",
+      "operands": [
+        "x14",
+        "x13",
+        "x22"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l121:  sraw x14, x13, x22                        0000",
+      "section": "_l121"
+    },
+    {
+      "label": "_l122",
+      "line": 219,
+      "mnemonic": "divu",
+      "operands": [
+        "x18",
+        "x22",
+        "x28"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l122:  divu x18, x22, x28                        0000",
+      "section": "_l122"
+    },
+    {
+      "label": "_l123",
+      "line": 220,
+      "mnemonic": "slli",
+      "operands": [
+        "x30",
+        "x30",
+        "63"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l123:  slli x30, x30, 63                         0000",
+      "section": "_l123"
+    },
+    {
+      "label": "_l124",
+      "line": 221,
+      "mnemonic": "remu",
+      "operands": [
+        "x10",
+        "x16",
+        "x21"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l124:  remu x10, x16, x21                        0000",
+      "section": "_l124"
+    },
+    {
+      "label": "_l125",
+      "line": 222,
+      "mnemonic": "fmin.s",
+      "operands": [
+        "f15",
+        "f15",
+        "f23"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l125:  fmin.s f15, f15, f23                      0000",
+      "section": "_l125"
+    },
+    {
+      "label": "_l126",
+      "line": 223,
+      "mnemonic": "div",
+      "operands": [
+        "x14",
+        "x5",
+        "x17"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l126:  div x14, x5, x17                          0000",
+      "section": "_l126"
+    },
+    {
+      "label": "_l127",
+      "line": 224,
+      "mnemonic": "slliw",
+      "operands": [
+        "x22",
+        "x8",
+        "4"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l127:  slliw x22, x8, 4                          0000",
+      "section": "_l127"
+    },
+    {
+      "label": "_l128",
+      "line": 225,
+      "mnemonic": "la",
+      "operands": [
+        "x1",
+        "d_0_23"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l128:  la x1, d_0_23                             0000",
+      "section": "_l128"
+    },
+    {
+      "label": null,
+      "line": 226,
+      "mnemonic": "sb",
+      "operands": [
+        "x20",
+        "10(x1)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        sb x20, 10(x1)                            0000",
+      "section": "_l128"
+    },
+    {
+      "label": "_l129",
+      "line": 227,
+      "mnemonic": "fcvt.lu.s",
+      "operands": [
+        "x29",
+        "f29",
+        "dyn"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l129:  fcvt.lu.s x29, f29, dyn                   0000",
+      "section": "_l129"
+    },
+    {
+      "label": "_l130",
+      "line": 228,
+      "mnemonic": "la",
+      "operands": [
+        "x26",
+        "d_4_20"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l130:  la x26, d_4_20                            0000",
+      "section": "_l130"
+    },
+    {
+      "label": null,
+      "line": 229,
+      "mnemonic": "addi",
+      "operands": [
+        "x26",
+        "x26",
+        "0"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x26, x26, 0                          0000",
+      "section": "_l130"
+    },
+    {
+      "label": null,
+      "line": 230,
+      "mnemonic": "amoadd.d",
+      "operands": [
+        "x16",
+        "x2",
+        "(x26)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        amoadd.d x16, x2, (x26)                   0000",
+      "section": "_l130"
+    },
+    {
+      "label": "_l131",
+      "line": 231,
+      "mnemonic": "la",
+      "operands": [
+        "x29",
+        "d_2_4"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l131:  la x29, d_2_4                             0000",
+      "section": "_l131"
+    },
+    {
+      "label": null,
+      "line": 232,
+      "mnemonic": "lwu",
+      "operands": [
+        "x24",
+        "-0(x29)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        lwu x24, -0(x29)                          0000",
+      "section": "_l131"
+    },
+    {
+      "label": "_l132",
+      "line": 233,
+      "mnemonic": "mul",
+      "operands": [
+        "x18",
+        "x0",
+        "x18"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l132:  mul x18, x0, x18                          0000",
+      "section": "_l132"
+    },
+    {
+      "label": "_l133",
+      "line": 234,
+      "mnemonic": "fnmadd.s",
+      "operands": [
+        "f4",
+        "f21",
+        "f30",
+        "f3",
+        "rdn"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l133:  fnmadd.s f4, f21, f30, f3, rdn            0000",
+      "section": "_l133"
+    },
+    {
+      "label": "_l134",
+      "line": 235,
+      "mnemonic": "bge",
+      "operands": [
+        "x25",
+        "x11",
+        "_l152"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l134:  bge x25, x11, _l152                       0000",
+      "section": "_l134"
+    },
+    {
+      "label": "_l135",
+      "line": 236,
+      "mnemonic": "srlw",
+      "operands": [
+        "x25",
+        "x3",
+        "x11"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l135:  srlw x25, x3, x11                         0000",
+      "section": "_l135"
+    },
+    {
+      "label": "_l136",
+      "line": 237,
+      "mnemonic": "srliw",
+      "operands": [
+        "x10",
+        "x13",
+        "27"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l136:  srliw x10, x13, 27                        0000",
+      "section": "_l136"
+    },
+    {
+      "label": "_l137",
+      "line": 238,
+      "mnemonic": "la",
+      "operands": [
+        "x17",
+        "d_5_2"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l137:  la x17, d_5_2                             0000",
+      "section": "_l137"
+    },
+    {
+      "label": null,
+      "line": 239,
+      "mnemonic": "addi",
+      "operands": [
+        "x17",
+        "x17",
+        "4"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x17, x17, 4                          0000",
+      "section": "_l137"
+    },
+    {
+      "label": null,
+      "line": 240,
+      "mnemonic": "amoor.w",
+      "operands": [
+        "x27",
+        "x30",
+        "(x17)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        amoor.w x27, x30, (x17)                   0000",
+      "section": "_l137"
+    },
+    {
+      "label": "_l138",
+      "line": 241,
+      "mnemonic": "la",
+      "operands": [
+        "x20",
+        "d_1_13"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l138:  la x20, d_1_13                            0000",
+      "section": "_l138"
+    },
+    {
+      "label": null,
+      "line": 242,
+      "mnemonic": "lbu",
+      "operands": [
+        "x19",
+        "31(x20)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        lbu x19, 31(x20)                          0000",
+      "section": "_l138"
+    },
+    {
+      "label": "_l139",
+      "line": 243,
+      "mnemonic": "la",
+      "operands": [
+        "x29",
+        "d_2_25"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l139:  la x29, d_2_25                            0000",
+      "section": "_l139"
+    },
+    {
+      "label": null,
+      "line": 244,
+      "mnemonic": "addi",
+      "operands": [
+        "x29",
+        "x29",
+        "-8"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x29, x29, -8                         0000",
+      "section": "_l139"
+    },
+    {
+      "label": null,
+      "line": 245,
+      "mnemonic": "lui",
+      "operands": [
+        "x4",
+        "0xffe00"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        lui x4, 0xffe00                           0000",
+      "section": "_l139"
+    },
+    {
+      "label": null,
+      "line": 246,
+      "mnemonic": "xor",
+      "operands": [
+        "x29",
+        "x29",
+        "x4"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        xor x29, x29, x4                          0000",
+      "section": "_l139"
+    },
+    {
+      "label": null,
+      "line": 247,
+      "mnemonic": "amoswap.d",
+      "operands": [
+        "x23",
+        "x4",
+        "(x29)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        amoswap.d x23, x4, (x29)                  0000",
+      "section": "_l139"
+    },
+    {
+      "label": "_l140",
+      "line": 248,
+      "mnemonic": "la",
+      "operands": [
+        "x22",
+        "_l144"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l140:  la x22, _l144                             0000",
+      "section": "_l140"
+    },
+    {
+      "label": null,
+      "line": 249,
+      "mnemonic": "csrrw",
+      "operands": [
+        "zero",
+        "mepc",
+        "x22"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        csrrw zero, mepc, x22                     0000",
+      "section": "_l140"
+    },
+    {
+      "label": null,
+      "line": 250,
+      "mnemonic": "mret",
+      "operands": [
+        "0000"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        mret                                      0000",
+      "section": "_l140"
+    },
+    {
+      "label": "_l141",
+      "line": 251,
+      "mnemonic": "bgeu",
+      "operands": [
+        "x24",
+        "x17",
+        "_l153"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l141:  bgeu x24, x17, _l153                      0000",
+      "section": "_l141"
+    },
+    {
+      "label": "_l142",
+      "line": 252,
+      "mnemonic": "div",
+      "operands": [
+        "x19",
+        "x11",
+        "x19"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l142:  div x19, x11, x19                         0000",
+      "section": "_l142"
+    },
+    {
+      "label": "_l143",
+      "line": 253,
+      "mnemonic": "fsgnj.s",
+      "operands": [
+        "f10",
+        "f8",
+        "f28"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l143:  fsgnj.s f10, f8, f28                      0000",
+      "section": "_l143"
+    },
+    {
+      "label": "_l144",
+      "line": 254,
+      "mnemonic": "fmul.s",
+      "operands": [
+        "f16",
+        "f5",
+        "f12",
+        "rmm"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l144:  fmul.s f16, f5, f12, rmm                  0000",
+      "section": "_l144"
+    },
+    {
+      "label": "_l145",
+      "line": 255,
+      "mnemonic": "srai",
+      "operands": [
+        "x17",
+        "x16",
+        "53"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l145:  srai x17, x16, 53                         0000",
+      "section": "_l145"
+    },
+    {
+      "label": "_l146",
+      "line": 256,
+      "mnemonic": "jal",
+      "operands": [
+        "x5",
+        "_l149"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l146:  jal x5, _l149                             0000",
+      "section": "_l146"
+    },
+    {
+      "label": "_l147",
+      "line": 257,
+      "mnemonic": "la",
+      "operands": [
+        "x22",
+        "d_5_22"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l147:  la x22, d_5_22                            0000",
+      "section": "_l147"
+    },
+    {
+      "label": null,
+      "line": 258,
+      "mnemonic": "addi",
+      "operands": [
+        "x22",
+        "x22",
+        "-28"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x22, x22, -28                        0000",
+      "section": "_l147"
+    },
+    {
+      "label": null,
+      "line": 259,
+      "mnemonic": "amomin.w",
+      "operands": [
+        "x22",
+        "x24",
+        "(x22)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        amomin.w x22, x24, (x22)                  0000",
+      "section": "_l147"
+    },
+    {
+      "label": "_l148",
+      "line": 260,
+      "mnemonic": "blt",
+      "operands": [
+        "x26",
+        "x4",
+        "_l149"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l148:  blt x26, x4, _l149                        0000",
+      "section": "_l148"
+    },
+    {
+      "label": "_l149",
+      "line": 261,
+      "mnemonic": "la",
+      "operands": [
+        "x17",
+        "d_4_25"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l149:  la x17, d_4_25                            0000",
+      "section": "_l149"
+    },
+    {
+      "label": null,
+      "line": 262,
+      "mnemonic": "lbu",
+      "operands": [
+        "x12",
+        "-29(x17)"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        lbu x12, -29(x17)                         0000",
+      "section": "_l149"
+    },
+    {
+      "label": "_l150",
+      "line": 263,
+      "mnemonic": "srai",
+      "operands": [
+        "x9",
+        "x3",
+        "0"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l150:  srai x9, x3, 0                            0000",
+      "section": "_l150"
+    },
+    {
+      "label": "_l151",
+      "line": 264,
+      "mnemonic": "bltu",
+      "operands": [
+        "x27",
+        "x27",
+        "_l153"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l151:  bltu x27, x27, _l153                      0000",
+      "section": "_l151"
+    },
+    {
+      "label": "_l152",
+      "line": 265,
+      "mnemonic": "fence",
+      "operands": [
+        "0000"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l152:  fence                                     0000",
+      "section": "_l152"
+    },
+    {
+      "label": "_l153",
+      "line": 266,
+      "mnemonic": "li",
+      "operands": [
+        "x22",
+        "0"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_l153:  li x22, 0                                 0000",
+      "section": "_l153"
+    },
+    {
+      "label": null,
+      "line": 267,
+      "mnemonic": "la",
+      "operands": [
+        "x2",
+        "pt3"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        la x2, pt3                                0000",
+      "section": "_l153"
+    },
+    {
+      "label": null,
+      "line": 268,
+      "mnemonic": "addi",
+      "operands": [
+        "x2",
+        "x2",
+        "48"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        addi x2, x2, 48                           0000",
+      "section": "_l153"
+    },
+    {
+      "label": null,
+      "line": 269,
+      "mnemonic": "sfence.vma",
+      "operands": [
+        "x22",
+        "x2"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "        sfence.vma x22, x2                        0000",
+      "section": "_l153"
+    },
+    {
+      "label": "_s0",
+      "line": 270,
+      "mnemonic": "feq.s",
+      "operands": [
+        "x23",
+        "f29",
+        "f17"
+      ],
+      "parse_status": "parsed",
+      "raw_text": "_s0:    feq.s x23, f29, f17                       ",
+      "section": "_s0"
+    }
+  ],
+  "labels": [
+    "_p0",
+    "_p1",
+    "_l0",
+    "_l1",
+    "_l2",
+    "_l3",
+    "_l4",
+    "_l5",
+    "_l6",
+    "_l7",
+    "_l8",
+    "_l9",
+    "_l10",
+    "_l11",
+    "_l12",
+    "_l13",
+    "_l14",
+    "_l15",
+    "_l16",
+    "_l17",
+    "_l18",
+    "_l19",
+    "_l20",
+    "_l21",
+    "_l22",
+    "_l23",
+    "_l24",
+    "_l25",
+    "_l26",
+    "_l27",
+    "_l28",
+    "_l29",
+    "_l30",
+    "_l31",
+    "_l32",
+    "_l33",
+    "_l34",
+    "_l35",
+    "_l36",
+    "_l37",
+    "_l38",
+    "_l39",
+    "_l40",
+    "_l41",
+    "_l42",
+    "_l43",
+    "_l44",
+    "_l45",
+    "_l46",
+    "_l47",
+    "_l48",
+    "_l49",
+    "_l50",
+    "_l51",
+    "_l52",
+    "_l53",
+    "_l54",
+    "_l55",
+    "_l56",
+    "_l57",
+    "_l58",
+    "_l59",
+    "_l60",
+    "_l61",
+    "_l62",
+    "_l63",
+    "_l64",
+    "_l65",
+    "_l66",
+    "_l67",
+    "_l68",
+    "_l69",
+    "_l70",
+    "_l71",
+    "_l72",
+    "_l73",
+    "_l74",
+    "_l75",
+    "_l76",
+    "_l77",
+    "_l78",
+    "_l79",
+    "_l80",
+    "_l81",
+    "_l82",
+    "_l83",
+    "_l84",
+    "_l85",
+    "_l86",
+    "_l87",
+    "_l88",
+    "_l89",
+    "_l90",
+    "_l91",
+    "_l92",
+    "_l93",
+    "_l94",
+    "_l95",
+    "_l96",
+    "_l97",
+    "_l98",
+    "_l99",
+    "_l100",
+    "_l101",
+    "_l102",
+    "_l103",
+    "_l104",
+    "_l105",
+    "_l106",
+    "_l107",
+    "_l108",
+    "_l109",
+    "_l110",
+    "_l111",
+    "_l112",
+    "_l113",
+    "_l114",
+    "_l115",
+    "_l116",
+    "_l117",
+    "_l118",
+    "_l119",
+    "_l120",
+    "_l121",
+    "_l122",
+    "_l123",
+    "_l124",
+    "_l125",
+    "_l126",
+    "_l127",
+    "_l128",
+    "_l129",
+    "_l130",
+    "_l131",
+    "_l132",
+    "_l133",
+    "_l134",
+    "_l135",
+    "_l136",
+    "_l137",
+    "_l138",
+    "_l139",
+    "_l140",
+    "_l141",
+    "_l142",
+    "_l143",
+    "_l144",
+    "_l145",
+    "_l146",
+    "_l147",
+    "_l148",
+    "_l149",
+    "_l150",
+    "_l151",
+    "_l152",
+    "_l153",
+    "_s0",
+    "data"
+  ],
+  "raw_sha256": "467c579fd35de2cadb26d734532e600c84b87f8430ba2ec3b0267b2a4afa4ca8",
+  "schema_version": "processorfuzz-si/v1",
+  "sections": [
+    "_p0",
+    "_p1",
+    "_l0",
+    "_l1",
+    "_l2",
+    "_l3",
+    "_l4",
+    "_l5",
+    "_l6",
+    "_l7",
+    "_l8",
+    "_l9",
+    "_l10",
+    "_l11",
+    "_l12",
+    "_l13",
+    "_l14",
+    "_l15",
+    "_l16",
+    "_l17",
+    "_l18",
+    "_l19",
+    "_l20",
+    "_l21",
+    "_l22",
+    "_l23",
+    "_l24",
+    "_l25",
+    "_l26",
+    "_l27",
+    "_l28",
+    "_l29",
+    "_l30",
+    "_l31",
+    "_l32",
+    "_l33",
+    "_l34",
+    "_l35",
+    "_l36",
+    "_l37",
+    "_l38",
+    "_l39",
+    "_l40",
+    "_l41",
+    "_l42",
+    "_l43",
+    "_l44",
+    "_l45",
+    "_l46",
+    "_l47",
+    "_l48",
+    "_l49",
+    "_l50",
+    "_l51",
+    "_l52",
+    "_l53",
+    "_l54",
+    "_l55",
+    "_l56",
+    "_l57",
+    "_l58",
+    "_l59",
+    "_l60",
+    "_l61",
+    "_l62",
+    "_l63",
+    "_l64",
+    "_l65",
+    "_l66",
+    "_l67",
+    "_l68",
+    "_l69",
+    "_l70",
+    "_l71",
+    "_l72",
+    "_l73",
+    "_l74",
+    "_l75",
+    "_l76",
+    "_l77",
+    "_l78",
+    "_l79",
+    "_l80",
+    "_l81",
+    "_l82",
+    "_l83",
+    "_l84",
+    "_l85",
+    "_l86",
+    "_l87",
+    "_l88",
+    "_l89",
+    "_l90",
+    "_l91",
+    "_l92",
+    "_l93",
+    "_l94",
+    "_l95",
+    "_l96",
+    "_l97",
+    "_l98",
+    "_l99",
+    "_l100",
+    "_l101",
+    "_l102",
+    "_l103",
+    "_l104",
+    "_l105",
+    "_l106",
+    "_l107",
+    "_l108",
+    "_l109",
+    "_l110",
+    "_l111",
+    "_l112",
+    "_l113",
+    "_l114",
+    "_l115",
+    "_l116",
+    "_l117",
+    "_l118",
+    "_l119",
+    "_l120",
+    "_l121",
+    "_l122",
+    "_l123",
+    "_l124",
+    "_l125",
+    "_l126",
+    "_l127",
+    "_l128",
+    "_l129",
+    "_l130",
+    "_l131",
+    "_l132",
+    "_l133",
+    "_l134",
+    "_l135",
+    "_l136",
+    "_l137",
+    "_l138",
+    "_l139",
+    "_l140",
+    "_l141",
+    "_l142",
+    "_l143",
+    "_l144",
+    "_l145",
+    "_l146",
+    "_l147",
+    "_l148",
+    "_l149",
+    "_l150",
+    "_l151",
+    "_l152",
+    "_l153",
+    "_s0",
+    "data"
+  ],
+  "unparsed_lines": [
+    272,
+    273,
+    274,
+    275,
+    276,
+    277,
+    278,
+    279,
+    280,
+    281,
+    282,
+    283,
+    284,
+    285,
+    286,
+    287,
+    288,
+    289,
+    290,
+    291,
+    292,
+    293,
+    294,
+    295,
+    296,
+    297,
+    298,
+    299,
+    300,
+    301,
+    302,
+    303,
+    304,
+    305,
+    306,
+    307,
+    308,
+    309,
+    310,
+    311,
+    312,
+    313,
+    314,
+    315,
+    316,
+    317,
+    318,
+    319,
+    320,
+    321,
+    322,
+    323,
+    324,
+    325,
+    326,
+    327,
+    328,
+    329,
+    330,
+    331,
+    332,
+    333,
+    334,
+    335,
+    336,
+    337,
+    338,
+    339,
+    340,
+    341,
+    342,
+    343,
+    344,
+    345,
+    346,
+    347,
+    348,
+    349,
+    350,
+    351,
+    352,
+    353,
+    354,
+    355,
+    356,
+    357,
+    358,
+    359,
+    360,
+    361,
+    362,
+    363,
+    364,
+    365,
+    366,
+    367,
+    368,
+    369,
+    370,
+    371,
+    372,
+    373,
+    374,
+    375,
+    376,
+    377,
+    378,
+    379,
+    380,
+    381,
+    382,
+    383,
+    384,
+    385,
+    386,
+    387,
+    388,
+    389,
+    390,
+    391,
+    392,
+    393,
+    394,
+    395,
+    396,
+    397,
+    398,
+    399,
+    400,
+    401,
+    402,
+    403,
+    404,
+    405,
+    406,
+    407,
+    408,
+    409,
+    410,
+    411,
+    412,
+    413,
+    414,
+    415,
+    416,
+    417,
+    418,
+    419,
+    420,
+    421,
+    422,
+    423,
+    424,
+    425,
+    426,
+    427,
+    428,
+    429,
+    430,
+    431,
+    432,
+    433,
+    434,
+    435,
+    436,
+    437,
+    438,
+    439,
+    440,
+    441,
+    442,
+    443,
+    444,
+    445,
+    446,
+    447,
+    448,
+    449,
+    450,
+    451,
+    452,
+    453,
+    454,
+    455,
+    456,
+    457,
+    458,
+    459,
+    460,
+    461,
+    462,
+    463,
+    464,
+    465,
+    466,
+    467,
+    468,
+    469,
+    470,
+    471,
+    472,
+    473,
+    474,
+    475,
+    476,
+    477,
+    478,
+    479,
+    480,
+    481,
+    482,
+    483,
+    484,
+    485,
+    486,
+    487,
+    488,
+    489,
+    490,
+    491,
+    492,
+    493,
+    494,
+    495,
+    496,
+    497,
+    498,
+    499,
+    500,
+    501,
+    502,
+    503,
+    504,
+    505,
+    506,
+    507,
+    508,
+    509,
+    510,
+    511,
+    512,
+    513,
+    514,
+    515,
+    516,
+    517,
+    518,
+    519,
+    520,
+    521,
+    522,
+    523,
+    524,
+    525,
+    526,
+    527,
+    528,
+    529,
+    530,
+    531,
+    532,
+    533,
+    534,
+    535,
+    536,
+    537,
+    538,
+    539,
+    540,
+    541,
+    542,
+    543,
+    544,
+    545,
+    546,
+    547,
+    548,
+    549,
+    550,
+    551,
+    552,
+    553,
+    554,
+    555,
+    556,
+    557,
+    558,
+    559,
+    560,
+    561,
+    562,
+    563,
+    564,
+    565,
+    566,
+    567,
+    568,
+    569,
+    570,
+    571,
+    572,
+    573,
+    574,
+    575,
+    576,
+    577,
+    578,
+    579,
+    580,
+    581,
+    582,
+    583,
+    584,
+    585,
+    586,
+    587,
+    588,
+    589,
+    590,
+    591,
+    592,
+    593,
+    594,
+    595,
+    596,
+    597,
+    598,
+    599,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605,
+    606,
+    607,
+    608,
+    609,
+    610,
+    611,
+    612,
+    613,
+    614,
+    615,
+    616,
+    617,
+    618,
+    619,
+    620,
+    621,
+    622,
+    623,
+    624,
+    625,
+    626,
+    627,
+    628,
+    629,
+    630,
+    631,
+    632,
+    633,
+    634,
+    635,
+    636,
+    637,
+    638,
+    639,
+    640,
+    641,
+    642,
+    643,
+    644,
+    645,
+    646,
+    647,
+    648,
+    649,
+    650,
+    651,
+    652,
+    653,
+    654,
+    655
+  ]
+}

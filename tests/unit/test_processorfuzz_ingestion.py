@@ -14,7 +14,7 @@ from chipchain.runtime.processorfuzz import (
     align_traces, differential, parse_isa_csv, parse_rtl_trace, parse_signature,
 )
 from chipchain.workflow.processorfuzz import (
-    _package, ProcessorFuzzRoleDeclaration, HARDWARE_TRIGGER_VALIDATION, UNCLASSIFIED_ROLE,
+    _package, _select, ProcessorFuzzRoleDeclaration, HARDWARE_TRIGGER_VALIDATION, UNCLASSIFIED_ROLE,
 )
 
 
@@ -109,3 +109,51 @@ def test_signature_difference_requires_context_binding():
                           execution_context_binding="UNKNOWN")
     assert result["raw_values_differ"]
     assert result["status"] == "UNKNOWN"
+
+
+@pytest.mark.parametrize("different", [False, True])
+def test_signatures_without_traces_never_establish_differential(different):
+    rtl_bytes = ("0" * 32 + "\n").encode()
+    isa_bytes = (("1" if different else "0") * 32 + "\n").encode()
+    rtl = parse_signature(rtl_bytes, None, "rtl")
+    isa = parse_signature(isa_bytes, None, "isa_reference")
+    assert rtl["source"] is isa["source"] is None
+    assert rtl["sha256"] == sha256(rtl_bytes).hexdigest()
+    result = differential(rtl, isa, testcase_binding="BOUND", firmware_binding="BOUND",
+                          execution_context_binding="BOUND")
+    assert result["raw_values_differ"] is different
+    assert len(result["different_fields"]) == int(different)
+    assert result["status"] == "UNKNOWN"
+    assert all(result[key] == "UNKNOWN" for key in (
+        "same_testcase_binding", "same_firmware_binding", "same_execution_context_binding"))
+
+
+@pytest.mark.parametrize("data", [b"", b"0\n", b"g" * 32, b"\xff" * 32])
+def test_unbound_signature_still_rejects_invalid_words(data):
+    with pytest.raises(ValueError):
+        parse_signature(data, None, "rtl")
+
+
+def test_signature_missing_source_and_length_conflict():
+    data = b"0" * 32 + b"\n"
+    source = RuntimeSource(case_id="case", elf_sha256="0" * 64, si_sha256="1" * 64,
+                           trace_sha256=sha256(data).hexdigest(),
+                           rtl_trace_sha256="2" * 64, isa_trace_sha256="3" * 64)
+    rtl = parse_signature(data, source, "rtl")
+    isa = parse_signature(data, None, "isa_reference")
+    assert differential(rtl, isa, testcase_binding="BOUND", firmware_binding="BOUND",
+                        execution_context_binding="BOUND")["status"] == "UNKNOWN"
+    isa = parse_signature(data * 2, None, "isa_reference")
+    assert differential(rtl, isa, testcase_binding="BOUND", firmware_binding="BOUND",
+                        execution_context_binding="BOUND")["status"] == "CONFLICT"
+
+
+def test_member_selection_never_resolves_ambiguity_implicitly():
+    files = {"arbitrary/one.si": b"p-m\nli x1, 1", "elsewhere/two.si": b"p-m\nli x1, 2",
+             "arbitrary/one.elf": b"elf bytes"}
+    with pytest.raises(ValueError, match="Ambiguous si"):
+        _select(files, "si", None)
+    assert _select(files, "si", "elsewhere/two.si") == ("elsewhere/two.si", files["elsewhere/two.si"])
+    for member in ("missing.si", "arbitrary/one.elf", "../arbitrary/one.si"):
+        with pytest.raises(ValueError, match="absent or has the wrong"):
+            _select(files, "si", member)

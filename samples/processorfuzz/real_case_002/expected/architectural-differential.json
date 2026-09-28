@@ -1,0 +1,13 @@
+{
+  "comparison_scope": "raw 128-bit signature words by exact index; register attribution unknown",
+  "different_fields": [],
+  "differential_id": "architectural-differential:96f0d0ef4f90f3c9d36d4c2146886ffa2498b6b1759b0bba6b7fddd1a44bfe64",
+  "matching_fields": 254,
+  "raw_values_differ": false,
+  "reference_artifact_id": "sha256:c7188db1f23a65bdc37b0affffcaf20040d564216b79452fb2451fd4b63ff1da",
+  "rtl_artifact_id": "sha256:c7188db1f23a65bdc37b0affffcaf20040d564216b79452fb2451fd4b63ff1da",
+  "same_execution_context_binding": "UNKNOWN",
+  "same_firmware_binding": "UNKNOWN",
+  "same_testcase_binding": "UNKNOWN",
+  "status": "UNKNOWN"
+}
