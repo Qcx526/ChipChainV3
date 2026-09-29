@@ -4,13 +4,16 @@ from __future__ import annotations
 import json
 from hashlib import sha256
 from pathlib import Path
+import re
 import shutil
 
 import pytest
 
 from chipchain.cli import main
+from chipchain.cross_layer.case_assembly import prepare_case
+from chipchain.cross_layer.case_assembly_customer import render_customer_report
 from chipchain.cross_layer.type2_verifier import RULE as FROZEN_VERIFIER_RULE
-from chipchain.firmware.static_ir import content_id
+from chipchain.firmware.static_ir import FirmwareStaticAnalysis, content_id
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -18,7 +21,7 @@ FIRMWARE = ROOT / "samples/firmware/riscv/processorfuzz_real_case_001/expected"
 HARDWARE = ROOT / "samples/processorfuzz/real_case_001/expected"
 OUTPUT_NAMES = {
     "case-manifest.json", "association.json", "verification-readiness.json",
-    "analysis-chain.json", "report.md",
+    "analysis-chain.json", "report.md", "attack-chain-report.md",
 }
 FIRMWARE_SHA = {
     "positive": "35f9fff9c00e6a93bb9e6884b8604cd3d36dd35f7fdea408412633c5b7ae9fe4",
@@ -36,6 +39,16 @@ V1_JSON_SHA = {
         "case-manifest.json": "e9f137edecf75948cba5109b077ff6da3bd5faf438312c7c9b5b0684da21f1ce",
         "association.json": "13455b0e080eca42e1ea5e9ebd7d363487b8caf9f076041ee88af76524a55ae8",
         "verification-readiness.json": "329a94bbf9aa50b76b4b98ee2123a14ffe2c6417743fe37fa72a04b11af19318",
+    },
+}
+FROZEN_TRACE_SHA = {
+    "positive": {
+        "analysis-chain.json": "4ff7a1570cbe9fa114fe361a7a41efabd931f5c1911f46b1e501b868ce6cf842",
+        "report.md": "a8cace13c7624954d2c06fff8175c2850700156964394e1695fdd6ec5184bec8",
+    },
+    "negative_trigger": {
+        "analysis-chain.json": "20424c222cc25f7bd6dd31f3d9efad0a3c3d9edb078b55c34382859b004eee5e",
+        "report.md": "176b8bfe2918308f209071d83e438d9edf0c814ef38714fb4943374e1dfc7d0c",
     },
 }
 
@@ -68,6 +81,8 @@ def test_prepare_realistic_firmware_and_hardware_outputs(
         assert (first / name).read_bytes() == (second / name).read_bytes(), name
         assert str(tmp_path).encode() not in (first / name).read_bytes()
     for name, digest in V1_JSON_SHA[variant].items():
+        assert sha256((first / name).read_bytes()).hexdigest() == digest
+    for name, digest in FROZEN_TRACE_SHA[variant].items():
         assert sha256((first / name).read_bytes()).hexdigest() == digest
 
     manifest = read_json(first, "case-manifest.json")
@@ -245,6 +260,42 @@ def test_prepare_realistic_firmware_and_hardware_outputs(
         assert "不等于触发反证、运行反证或硬件安全" in report
         assert "TLB_INVALIDATE ×0" in report
 
+    customer = (first / "attack-chain-report.md").read_text()
+    assert customer.startswith("# ChipChain Type-II 跨层攻击链分析报告\n")
+    assert re.search(r"\b[0-9a-f]{64}\b", customer) is None
+    assert not any(token in customer for token in (
+        "fwbehavior:", "general-fwcap:", "firmware-static:", "processorfuzz-manifest:",
+        "type2-case-assembly:", "schema_version"))
+    expected_path = ("main", "app_run", "controller_step", "controller_dispatch",
+                     "pager_apply", "pager_commit", "arch_translation_sync")
+    assert " → ".join(expected_path) in customer
+    assert "**可读链条（静态候选；缺失环节如实标明）**" in customer
+    assert "权威硬件触发条件：未建立\n↓\n本固件的异常后果：未建立" in customer
+    assert "**静态调用路径**" in customer
+    assert "运行时实际执行路径**：当前没有" in customer
+    functions = {item["name"]: item for item in fw_analysis["functions"]}
+    for caller, callee in zip(expected_path, expected_path[1:]):
+        assert any(call["direct"] and functions[caller]["fact_id"] in call[
+            "caller_function_ids"] and call["target_function_id"] == functions[callee][
+                "fact_id"] and call["target"] == functions[callee]["entry"]
+                   for call in fw_analysis["calls"])
+    assert "外部输入值：当前分析材料未建立" in customer
+    assert "当前材料尚未建立权威硬件行为契约" in customer
+    assert "本固件的硬件异常或安全后果：当前材料尚不能确定" in customer
+    assert "完整 Type-II 攻击链尚未验证" in customer
+    assert "command.type = MAP" not in customer
+    if variant == "positive":
+        assert "sfence.vma zero,zero" in customer
+        assert "TLB_INVALIDATE：发现同类软件静态操作" in customer
+        assert "地址转换/TLB 相关缓存失效请求" in customer
+    else:
+        assert "fence 0x3,0x3" in customer
+        assert "arch_memory_order" in customer
+        assert "同类操作共有 2 处" in customer
+        assert "TLB_INVALIDATE：未发现同类受支持的软件静态操作" in customer
+        assert "未发现与硬件测试程序中 TLB_INVALIDATE 同类的受支持操作" in customer
+        assert "sfence.vma zero,zero" not in customer
+
 
 @pytest.mark.parametrize("variant,alias", [
     ("positive", "negative_trigger"),
@@ -274,6 +325,22 @@ def test_signature_only_hardware_chain_does_not_invent_runtime(tmp_path: Path) -
     assert chain["stages"][5]["outputs"]["rtl_trace_sha256"] is None
     assert chain["stages"][5]["result"] == "UNKNOWN"
     assert "本包未提供规范指令级 RTL/ISA trace 输出" in (output / "report.md").read_text()
+    assert "未记录原始签名数值差异" in (output / "attack-chain-report.md").read_text()
+
+
+def test_customer_static_path_requires_canonical_direct_calls() -> None:
+    prepared = prepare_case(FIRMWARE / "positive", HARDWARE)
+    payload = read_json(FIRMWARE / "positive", "firmware-analysis.json")
+    payload["calls"] = []
+    payload["analysis_id"] = content_id(
+        "firmware-static", {key: value for key, value in payload.items() if key != "analysis_id"})
+    without_calls = FirmwareStaticAnalysis.model_validate(payload)
+    report = render_customer_report(
+        firmware=without_calls, chain=prepared.analysis_chain,
+        association=prepared.association, readiness=prepared.readiness)
+    assert "未建立完整静态调用路径" in report
+    assert "main → app_run" not in report
+    assert "sfence.vma zero,zero" in report
 
 
 def test_firmware_summary_elf_disagreement_is_rejected(tmp_path: Path) -> None:

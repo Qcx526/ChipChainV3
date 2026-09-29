@@ -13,6 +13,7 @@ import re
 
 from chipchain.cross_layer.type2_verifier import RULE as FROZEN_VERIFIER_RULE
 from chipchain.cross_layer.case_assembly_trace import build_analysis_chain, render_analysis_report
+from chipchain.cross_layer.case_assembly_customer import render_customer_report
 from chipchain.firmware.processorfuzz_si import ProcessorFuzzSiTestcase
 from chipchain.firmware.ghidra_models import GhidraExport
 from chipchain.firmware.report import firmware_summary
@@ -60,6 +61,7 @@ class PreparedCase:
     readiness: dict
     analysis_chain: dict
     report: str
+    customer_report: str
 
 
 def _object_no_duplicates(pairs: list[tuple[str, object]]) -> dict:
@@ -389,7 +391,9 @@ def prepare_case(firmware_directory: str | Path, hardware_directory: str | Path)
         candidate_kinds=tuple(sorted(kind.value for kind in CANDIDATE_KINDS)),
     )
     return PreparedCase(case_manifest, association, readiness, chain,
-                        render_analysis_report(chain))
+                        render_analysis_report(chain),
+                        render_customer_report(firmware=firmware, chain=chain,
+                                               association=association, readiness=readiness))
 
 
 def write_case(prepared: PreparedCase, output_directory: str | Path) -> Path:
@@ -405,4 +409,6 @@ def write_case(prepared: PreparedCase, output_directory: str | Path) -> Path:
         (target / name).write_text(json.dumps(value, sort_keys=True, ensure_ascii=False,
                                              indent=2, allow_nan=False) + "\n", encoding="utf-8")
     (target / "report.md").write_text(prepared.report, encoding="utf-8")
+    (target / "attack-chain-report.md").write_text(prepared.customer_report,
+                                                    encoding="utf-8")
     return target
