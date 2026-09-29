@@ -40,10 +40,10 @@ alternate project-local install directory:
 is supplied. A valid installation is reused; an invalid existing directory
 is left untouched. `--verify-only` does not install or download. `--offline`
 forbids a download. Without an installation, explicit archive, or cached
-bundle, setup attempts the exact `chipchain_release_asset_url` in `SOURCE`.
-That URL is a planned ChipChain Release asset and may not exist until the
-reviewed bundle is published. The cached bundle and `install/` are ignored by
-Git. They are not part of a source checkout.
+bundle, setup downloads the published `v3-qemu-runtime-foundation-stable`
+ChipChain Release asset at the exact `chipchain_release_asset_url` in `SOURCE`.
+The cached bundle and `install/` are ignored by Git. They are not part of a
+source checkout.
 
 The maintainer build command is:
 
@@ -68,7 +68,7 @@ is used. The builder does not publish a Release or commit the bundle.
 
 `VERSION` names the supported guests and host floor. `SOURCE` records the
 official archive, tag, source SHA256, signature key, Capstone source, build
-configuration, bundle name and SHA256, and future release URL. `SHA256SUMS`
+configuration, bundle name and SHA256, and published release asset URL. `SHA256SUMS`
 pins every regular installed file relative to the installation root. Setup
 checks that manifest, all six binary versions and machine lists, and bounded
 plugin-load probes on AArch64, RISC-V 64, and PowerPC 64. It always invokes

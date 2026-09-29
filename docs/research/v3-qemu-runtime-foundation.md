@@ -32,6 +32,34 @@ The local bundle is `tools/qemu/qemu_11.1.1-chipchain-linux-x86_64.tar.xz`, SHA2
 
 The builder's six version/machine probes and three representative plugin smokes passed. The customer setup script installed the pinned archive into `tools/qemu/install/` and passed `--verify-only` there. It also installed the same archive to ignored `output/qemu-foundation/alternate-install/` with `--offline --archive --install-dir`, then passed `--verify-only --install-dir` there. Both installations validated all six binaries and AArch64, RV64 and PPC64 plugin loading. The three representative binaries expose `-device loader,help`; this only establishes loader availability, not board compatibility.
 
+## Published customer setup acceptance
+
+The pinned QEMU bundle was published as the GitHub Release asset referenced by
+`tools/qemu/SOURCE`.
+
+A fresh repository clone with no existing `tools/qemu/install/`, no cached
+QEMU bundle, no `--archive`, and no `--offline` successfully completed:
+
+```bash
+./scripts/setup_qemu.sh
+```
+
+The setup downloaded the exact pinned Release asset, verified the archive
+SHA256, validated all six system emulators, and passed representative
+plugin-load smoke checks for AArch64, RISC-V 64, and PowerPC 64.
+
+A subsequent:
+```bash
+./scripts/setup_qemu.sh --verify-only
+```
+also passed.
+
+This establishes the default online customer installation path for the
+published project-managed QEMU bundle. It does not establish firmware/board
+compatibility for arbitrary ARM, RISC-V, or PowerPC binaries, and it does not
+change the scientific status of QEMU diagnostic logs. QEMU execution remains
+distinct from ProcessorFuzz RTL execution and physical-silicon evidence.
+
 ## First RV64 execution feasibility
 
 The ELF entry `0x80000000` and the key instruction PC `0x80000064` were derived from each frozen `firmware-analysis.json`, then checked against the ELF bytes. The explicit `RISCV64_FW_FEASIBILITY` profile selects the local `qemu-system-riscv64`, machine `virt`, TCG, one vCPU, no BIOS, and generic ELF loader. This profile is benchmark-specific and does not imply an automatic profile for other RV64 firmware.
