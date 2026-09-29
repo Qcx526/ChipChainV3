@@ -31,5 +31,7 @@ htmlcov/
 # Project-managed tool installations stay local; their pinned metadata is tracked.
 /tools/ghidra/install/
 /tools/ghidra/*.tar.gz
+/tools/qemu/install/
+/tools/qemu/qemu_*-chipchain-*.tar.xz
 /tools/toolchains/install/
 /tools/toolchains/downloads/

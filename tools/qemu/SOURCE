@@ -1,0 +1,21 @@
+official_source_url=https://download.qemu.org/qemu-11.1.1.tar.xz
+official_version=11.1.1
+official_tag=v11.1.1
+official_tag_commit=c3d48b7d1e89604920e5b81b91140c2ad39a1943
+official_source_archive=qemu-11.1.1.tar.xz
+official_source_sha256=079ffbff8a7111bbc89022107cbabf3bbfd614d5fc9d7cc675991196aca12482
+official_signature_url=https://download.qemu.org/qemu-11.1.1.tar.xz.sig
+official_signing_fingerprint=CEACC9E15534EBABB82D3FA03353C9CEF108B584
+official_signature_status=verified_good_signature_with_pinned_release_key
+capstone_source_url=https://github.com/capstone-engine/capstone/archive/refs/tags/5.0.9.tar.gz
+capstone_version=5.0.9
+capstone_tag_commit=841cee33c3c630cf7d321a64f47aefe7b0b8da99
+capstone_source_sha256=0619da31af08152600af95c481527ef6d756c0a8404fca7544a4fdf6dfc2c0f9
+chipchain_bundle_filename=qemu_11.1.1-chipchain-linux-x86_64.tar.xz
+chipchain_bundle_sha256=ee91518f709ab198ad55440b424e7e1022711e909ffea7f8e3ee770e4e40f4f8
+chipchain_release_asset_url=https://github.com/Qcx526/ChipChainV3/releases/download/v3-qemu-runtime-foundation-stable/qemu_11.1.1-chipchain-linux-x86_64.tar.xz
+build_host=Linux_x86_64_glibc_2.35
+build_glibc=2.35
+build_configuration=--prefix=/opt/chipchain/qemu --target-list=arm-softmmu,aarch64-softmmu,riscv32-softmmu,riscv64-softmmu,ppc-softmmu,ppc64-softmmu --enable-system --enable-tcg --enable-plugins --enable-capstone --enable-fdt=internal --enable-pixman --enable-relocatable --disable-rust --disable-docs --disable-gtk --disable-sdl --disable-curses --disable-vnc --disable-kvm --disable-tools --disable-slirp --disable-guest-agent --disable-virtfs --disable-modules --disable-debug-info --enable-strip
+plugin_configuration=TCG_plugins_enabled;QEMU_contrib_plugins/libexeclog.so
+capstone_status=enabled_5.0.9-static_arm_aarch64_powerpc_riscv

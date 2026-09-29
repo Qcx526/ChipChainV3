@@ -1,0 +1,5 @@
+QEMU 11.1.1
+supported_guest_families=arm,riscv,powerpc
+supported_system_targets=arm-softmmu,aarch64-softmmu,riscv32-softmmu,riscv64-softmmu,ppc-softmmu,ppc64-softmmu
+supported_host=linux-x86_64
+minimum_glibc=2.35
