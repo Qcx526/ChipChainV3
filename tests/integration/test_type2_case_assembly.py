@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+from hashlib import sha256
 from pathlib import Path
 import shutil
 
@@ -16,11 +17,26 @@ ROOT = Path(__file__).resolve().parents[2]
 FIRMWARE = ROOT / "samples/firmware/riscv/processorfuzz_real_case_001/expected"
 HARDWARE = ROOT / "samples/processorfuzz/real_case_001/expected"
 OUTPUT_NAMES = {
-    "case-manifest.json", "association.json", "verification-readiness.json", "report.md",
+    "case-manifest.json", "association.json", "verification-readiness.json",
+    "analysis-chain.json", "report.md",
 }
 FIRMWARE_SHA = {
     "positive": "35f9fff9c00e6a93bb9e6884b8604cd3d36dd35f7fdea408412633c5b7ae9fe4",
     "negative_trigger": "2b6275ffb203f5ffc5411bb9200f5eafaab61fe6615a403697ecabace469e7cd",
+}
+# Frozen V1 output bytes: these three scientific projections must not change
+# when the explanatory chain or report changes. No ignored output is required.
+V1_JSON_SHA = {
+    "positive": {
+        "case-manifest.json": "28a612691390f4000b90ad0f53fff3fe8203905d033fe2cc86d5ebe5020c3d4e",
+        "association.json": "94a17e7f676ce6ea6b8b3f476decee8f42143f5727643f6968eb2f626d74ec2d",
+        "verification-readiness.json": "2715691884d894cdfd1e4773a70b73ba4adcba7978e87f1bbc42c12f337a23d7",
+    },
+    "negative_trigger": {
+        "case-manifest.json": "e9f137edecf75948cba5109b077ff6da3bd5faf438312c7c9b5b0684da21f1ce",
+        "association.json": "13455b0e080eca42e1ea5e9ebd7d363487b8caf9f076041ee88af76524a55ae8",
+        "verification-readiness.json": "329a94bbf9aa50b76b4b98ee2123a14ffe2c6417743fe37fa72a04b11af19318",
+    },
 }
 
 
@@ -51,6 +67,8 @@ def test_prepare_realistic_firmware_and_hardware_outputs(
     for name in OUTPUT_NAMES:
         assert (first / name).read_bytes() == (second / name).read_bytes(), name
         assert str(tmp_path).encode() not in (first / name).read_bytes()
+    for name, digest in V1_JSON_SHA[variant].items():
+        assert sha256((first / name).read_bytes()).hexdigest() == digest
 
     manifest = read_json(first, "case-manifest.json")
     association = read_json(first, "association.json")
@@ -58,6 +76,9 @@ def test_prepare_realistic_firmware_and_hardware_outputs(
     fw_analysis = read_json(firmware, "firmware-analysis.json")
     hw_manifest = read_json(HARDWARE, "processorfuzz-case-manifest.json")
     hw_caps = read_json(HARDWARE, "static-capabilities.json")
+    hw_analysis = read_json(HARDWARE, "firmware-analysis.json")
+    differential = read_json(HARDWARE, "architectural-differential.json")
+    chain = read_json(first, "analysis-chain.json")
 
     assert manifest["case_id"]
     assert manifest["firmware_side"]["analysis_id"] == fw_analysis["analysis_id"]
@@ -117,14 +138,112 @@ def test_prepare_realistic_firmware_and_hardware_outputs(
     assert readiness["frozen_verifier_manifest_emitted"] is False
     assert not (first / "verification.json").exists()
     assert not (first / "verified-attack-chain.json").exists()
+    assert chain["schema_version"] == "type2-analysis-chain/v1"
+    assert chain["case_id"] == manifest["case_id"]
+    assert chain["artifact_role"] == "explanatory_derivation_projection"
+    assert chain["scientific_evidence"] is False
+    stages = chain["stages"]
+    assert [stage["stage_id"] for stage in stages] == [f"S{number}" for number in range(1, 9)]
+    assert all({"operation", "implementation_function", "inputs", "checks_or_rule",
+                "outputs", "result", "scientific_boundary"} <= stage.keys() for stage in stages)
+    fw_tlb = next(row for row in stages[0]["outputs"]["supported_candidate_kind_facts"]
+                  if row["kind"] == "TLB_INVALIDATE")
+    assert fw_tlb["fact_ids"] == sorted(tlb_firmware_facts)
+    assert fw_tlb["count"] == len(tlb_firmware_facts)
+    hw_tlb = next(row for row in stages[1]["outputs"]["supported_candidate_kind_capabilities"]
+                  if row["kind"] == "TLB_INVALIDATE")
+    assert hw_tlb["capability_ids"] == sorted(tlb_hardware_caps)
+    assert hw_tlb["count"] == len(tlb_hardware_caps)
+    for row in stages[0]["outputs"]["supported_candidate_kind_facts"]:
+        ids = sorted(b["fact_id"] for b in fw_analysis["behaviors"]
+                     if b["kind"] == row["kind"] and b["semantic_status"] == "supported")
+        assert row["fact_ids"] == ids
+        assert row["count"] == len(ids)
+    for row in stages[1]["outputs"]["supported_candidate_kind_capabilities"]:
+        ids = sorted(c["capability_id"] for c in hw_caps["capabilities"]
+                     if c["kind"] == row["kind"] and c["semantic_status"] == "supported")
+        assert row["capability_ids"] == ids
+        assert row["count"] == len(ids)
+    assert stages[2]["result"] == manifest["identity_relation"]["status"]
+    assert stages[3]["result"] == association["architecture_compatibility"]["status"]
+    assert len(stages[4]["outputs"]["relations"]) == len(relations)
+    for item in stages[4]["outputs"]["relations"]:
+        source = relations[item["kind"]]
+        assert item["status"] == source["status"]
+        assert [row["fact_id"] for row in item["firmware_facts"]] == source[
+            "firmware_behavior_fact_ids"]
+        assert [row["capability_id"] for row in item["hardware_capabilities"]] == source[
+            "hardware_test_static_capability_ids"]
+        for row in item["firmware_facts"]:
+            fact = next(b for b in fw_analysis["behaviors"] if b["fact_id"] == row["fact_id"])
+            instruction = next(i for i in fw_analysis["instructions"]
+                               if i["fact_id"] == fact["instruction_id"])
+            assert row["source_instruction"] == {
+                "instruction_id": instruction["fact_id"], "pc": instruction["pc"],
+                "mnemonic": instruction["mnemonic"], "operands": instruction["operands"]}
+        for row in item["hardware_capabilities"]:
+            cap = next(c for c in hw_caps["capabilities"]
+                       if c["capability_id"] == row["capability_id"])
+            fact = next(b for b in hw_analysis["behaviors"]
+                        if b["fact_id"] == cap["behavior_fact_id"])
+            instruction = next(i for i in hw_analysis["instructions"]
+                               if i["fact_id"] == fact["instruction_id"])
+            assert row["behavior_fact_id"] == fact["fact_id"]
+            assert row["source_instruction"] == {
+                "instruction_id": instruction["fact_id"], "pc": instruction["pc"],
+                "mnemonic": instruction["mnemonic"], "operands": instruction["operands"]}
+            assert row["execution_status"] == "STATIC_ONLY"
+    tlb_chain = next(item for item in stages[4]["outputs"]["relations"]
+                     if item["kind"] == "TLB_INVALIDATE")
+    assert tlb_chain["status"] == tlb_status
+    assert tlb_chain["firmware_fact_count"] == (1 if variant == "positive" else 0)
+    assert tlb_chain["hardware_capability_count"] == 2
+    assert tlb_chain["hardware_reference_source"] == (
+        "selected_processorfuzz_test_elf_static_analysis")
+    assert {item["artifact"] for item in stages[5]["outputs"]["runtime_material"]} == {
+        "rtl-runtime-evidence.json", "isa-reference-evidence.json"}
+    for item in stages[5]["outputs"]["runtime_material"]:
+        trace = read_json(HARDWARE, item["artifact"])
+        assert item["source_elf_sha256"] == trace["source"]["elf_sha256"] == hw_manifest[
+            "elf_sha256"]
+        assert item["source_elf_sha256"] != manifest["firmware_side"]["elf_sha256"]
+        assert item["trace_sha256"] == trace["source"]["trace_sha256"]
+    assert stages[5]["result"] == association["runtime_binding_status"] == "UNKNOWN"
+    assert stages[6]["outputs"]["differential_id"] == differential["differential_id"]
+    assert stages[6]["outputs"]["raw_differing_word_count"] == len(
+        differential["different_fields"])
+    assert stages[6]["outputs"]["raw_values_differ"] == differential["raw_values_differ"]
+    for field in ("same_testcase_binding", "same_firmware_binding",
+                  "same_execution_context_binding"):
+        assert stages[6]["outputs"][field] == differential[field]
+    assert stages[6]["result"] == differential["status"] == "UNKNOWN"
+    assert {row["requirement"] for row in stages[7]["outputs"]["requirements"]} == (
+        set(readiness["missing_requirements"]) |
+        set(readiness["hardware_package_evidence_gaps"]))
+    assert stages[7]["outputs"]["verifier_applicability_status"] == "NOT_APPLICABLE"
+    requirement_rows = stages[7]["outputs"]["requirements"]
+    assert {row["requirement"] for row in requirement_rows
+            if row["group"] == "frozen_verifier_baseline"} == set(readiness["missing_requirements"])
+    assert {row["requirement"] for row in requirement_rows
+            if row["group"] == "hardware_package_provenance"} == set(
+                readiness["hardware_package_evidence_gaps"])
+    assert all(row["evaluation"] == "MISSING" and row["required_by"] and row["reason"]
+               for row in requirement_rows)
+    assert stages[7]["result"]["verification_ready"] == readiness["ready"] is False
+    assert chain["final_result"]["semantic_candidate_statuses"] == stages[4]["result"]
+    assert chain["final_result"]["hardware_package_type2_status"] == "NOT_ESTABLISHED"
     report = (first / "report.md").read_text()
-    assert "Type-II" in report
+    assert "# ChipChain Type-II 跨层分析链报告" in report
+    assert "## 10. 完整推导链" in report
     assert "NOT_ESTABLISHED" in report
-    assert "所选测试 ELF 的静态分析" in report
-    assert "不是 SI、RTL/ISA trace、签名、HardwareBehaviorContract" in report
-    assert "补齐上述缺口也不能直接用它验证 ProcessorFuzz/TLB 案例" in report
+    assert "硬件团队所选测试 ELF 的静态事实" in report
+    assert "补齐上述缺口也不能直接用该冻结 verifier 验证" in report
+    assert f"TLB_INVALIDATE → {tlb_status}" in report
+    assert "authoritative HBC → MISSING" in report
+    assert "verification_ready → false" in report
     if variant == "negative_trigger":
-        assert "不构成触发反证或硬件安全证明" in report
+        assert "不等于触发反证、运行反证或硬件安全" in report
+        assert "TLB_INVALIDATE ×0" in report
 
 
 @pytest.mark.parametrize("variant,alias", [
@@ -144,6 +263,17 @@ def test_case_meaning_does_not_come_from_input_directory_name(
     assert prepare(copied_firmware, copied_hardware, renamed_output) == 0
     for name in OUTPUT_NAMES:
         assert (original_output / name).read_bytes() == (renamed_output / name).read_bytes()
+
+
+def test_signature_only_hardware_chain_does_not_invent_runtime(tmp_path: Path) -> None:
+    hardware = ROOT / "samples/processorfuzz/real_case_002/expected"
+    output = tmp_path / "signature-only"
+    assert prepare(FIRMWARE / "positive", hardware, output) == 0
+    chain = read_json(output, "analysis-chain.json")
+    assert chain["stages"][5]["outputs"]["runtime_material"] == []
+    assert chain["stages"][5]["outputs"]["rtl_trace_sha256"] is None
+    assert chain["stages"][5]["result"] == "UNKNOWN"
+    assert "本包未提供规范指令级 RTL/ISA trace 输出" in (output / "report.md").read_text()
 
 
 def test_firmware_summary_elf_disagreement_is_rejected(tmp_path: Path) -> None:

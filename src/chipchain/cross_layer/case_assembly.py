@@ -7,12 +7,12 @@ from __future__ import annotations
 
 from collections import Counter
 from dataclasses import dataclass
-from hashlib import sha256
 import json
 from pathlib import Path
 import re
 
 from chipchain.cross_layer.type2_verifier import RULE as FROZEN_VERIFIER_RULE
+from chipchain.cross_layer.case_assembly_trace import build_analysis_chain, render_analysis_report
 from chipchain.firmware.processorfuzz_si import ProcessorFuzzSiTestcase
 from chipchain.firmware.ghidra_models import GhidraExport
 from chipchain.firmware.report import firmware_summary
@@ -58,6 +58,7 @@ class PreparedCase:
     case_manifest: dict
     association: dict
     readiness: dict
+    analysis_chain: dict
     report: str
 
 
@@ -369,88 +370,26 @@ def prepare_case(firmware_directory: str | Path, hardware_directory: str | Path)
         "verifier_invoked": False,
         "frozen_verifier_manifest_emitted": False,
     }
-    return PreparedCase(case_manifest, association, readiness,
-                        _report(case_manifest, association, readiness))
-
-
-def _report(manifest: dict, association: dict, readiness: dict) -> str:
-    firmware, hardware = manifest["firmware_side"], manifest["hardware_side"]
-    relation = association["firmware_identity_relation"]["status"]
-    distinct = relation == "DISTINCT_FIRMWARE"
-    lines = [
-        "# ChipChain Type-II 案例装配报告", "",
-        "**案例装配完成；Type-II 验证尚未就绪，也没有运行冻结 verifier。**", "",
-        "## 1. 案例概要", "",
-        f"- 案例 ID：`{manifest['case_id']}`",
-        f"- 架构兼容：`{association['architecture_compatibility']['status']}`",
-        "- 装配成功不等于 Type-II 验证成功。", "",
-        "- 本阶段核对规范输出之间的一致性；没有在装配时重新读取原始 ELF 或 ZIP。", "",
-        "## 2. 固件侧身份", "",
-        f"- 静态分析：`{firmware['analysis_id']}`",
-        f"- ELF SHA256：`{firmware['elf_sha256']}`",
-        f"- 架构：{firmware['architecture']} / {firmware['bit_width']}-bit / {firmware['endianness']}",
-        "- 静态分析不证明固件来源或运行情况。本项目的 FW-POS/FW-NEG 基准是现实风格合成固件，不是客户生产固件；不能仅凭输入目录名为任意 ELF 指派该身份。", "",
-        "## 3. 硬件侧身份", "",
-        f"- ProcessorFuzz manifest：`{hardware['manifest_id']}`",
-        f"- 包 SHA256：`{hardware['archive_sha256'] or '未提供（目录输入）'}`",
-        f"- 选定测试 ELF SHA256：`{hardware['selected_test_elf_sha256']}`",
-        f"- 包角色：`{hardware['package_role']}`；包内 ELF 角色：`{hardware['firmware_role']}`。", "",
-        "## 4. 身份分离", "",
-        f"- 固件 ELF 与硬件测试 ELF：`{relation}`。",
-        ("- 两份 ELF 的 SHA256 不同；ProcessorFuzz trace、ISA trace 和签名不能转绑到所给固件。"
-         if distinct else "- ELF 字节相同也不自动证明同次执行或来源绑定。"), "",
-        "## 5. 静态语义候选", "",
-        "硬件侧的参考事实来自 ProcessorFuzz 所选测试 ELF 的静态分析及其 general-static-capability 投影，"
-        "不是 SI、RTL/ISA trace、签名、HardwareBehaviorContract 或已验证的硬件行为。", "",
-        "下表只比较经过规范静态分析的行为种类；未匹配具体操作数、资源实例、执行顺序、"
-        "有效上下文或 RTL 修订。共同种类不是资源绑定、触发或运行证据。", "",
-        "| 行为种类 | 静态关联 | 固件事实数 | 测试 ELF 静态 capability 数 |",
-        "| --- | --- | ---: | ---: |",
-    ]
-    for item in association["semantic_candidate_relations"]:
-        lines.append(f"| `{item['kind']}` | `{item['status']}` | "
-                     f"{len(item['firmware_behavior_fact_ids'])} | "
-                     f"{len(item['hardware_test_static_capability_ids'])} |")
-    if not association["semantic_candidate_relations"]:
-        lines.append("| 无可比较的已支持种类 | `UNKNOWN` | 0 | 0 |")
-    tlb = next((item for item in association["semantic_candidate_relations"]
-                if item["kind"] == "TLB_INVALIDATE"), None)
-    if tlb is not None:
-        lines += ["", ("所给固件与包内测试 ELF 有 `TLB_INVALIDATE` 种类的静态候选；"
-                        "这不证明操作数相同或指令曾执行。"
-                        if tlb["status"] == "SUPPORTED_CANDIDATE" else
-                        "相对于包内测试 ELF 的 `TLB_INVALIDATE` 静态参考种类，所给固件没有"
-                        "同种类的规范静态事实；这不构成触发反证或硬件安全证明。")]
-    lines += ["", "## 6. 运行与硬件证据", "",
-              f"- 固件运行来源绑定：`{association['runtime_binding_status']}`。",
-              f"- 硬件资源绑定：`{association['resource_binding_status']}`。",
-              f"- 所给固件的硬件触发：`{association['hardware_trigger_status']}`。",
-              f"- 原硬件包的 Type-II 候选/验证状态：`{association['hardware_package_candidate_status']}` / "
-              f"`{association['hardware_package_verification_status']}`。",
-              f"- 硬件包原始签名差异的正式状态：`{association['hardware_differential_status']}`。",
-              ("- 硬件包 trace 的 source 字段指向所选测试 ELF，但来源和执行绑定仍不完整；"
-               "它们不是所给固件的运行证据。" if any(
-                   item["kind"] == "hardware_test_rtl_trace" for item in readiness["available_evidence"])
-               else "- 硬件包没有指令级运行 trace；签名比较不能补足所给固件的运行证据。"), "",
-              "## 7. 缺失的验证条件", "",
-              "按当前冻结 verifier 的证据输入契约，现有两种公开分析输出缺少以下基础材料；"
-              "这不是穷尽的通用 verifier 检查清单：", ""]
-    lines.extend(f"- `{item}`" for item in readiness["missing_requirements"])
-    lines += ["", "硬件包自身另有以下来源/资源证据缺口，不能把它们等同于 verifier 的输入字段：", ""]
-    lines.extend(f"- `{item}`" for item in readiness["hardware_package_evidence_gaps"])
-    if readiness["blocking_conflicts"]:
-        lines += ["", "架构冲突：" + ", ".join(readiness["blocking_conflicts"])]
-    lines += ["", "## 8. 验证准备度", "",
-              f"- `ready={str(readiness['ready']).lower()}`；状态 `{readiness['status']}`。",
-              f"- 当前冻结规则 `{readiness['verifier_rule_version']}` 对本案例："
-              f"`{readiness['verifier_applicability_status']}`。它只适用于固定的受控 Ibex MMIO "
-              "Reference/Variant 证据；补齐上述缺口也不能直接用它验证 ProcessorFuzz/TLB 案例。",
-              "- 没有构造冻结 verifier 的输入 manifest，也没有产生 VERIFIED 结论。", "",
-              "## 9. 科学边界", "",
-              "静态事实不等于运行事实；静态语义相似不等于相同固件或同次执行。",
-              "硬件测试包不能证明客户固件满足触发条件、发生偏差或存在漏洞。",
-              "模拟/分析结果不代表物理硅片适用性。", ""]
-    return "\n".join(lines)
+    runtime_material = []
+    if hw_manifest["selected_paths"]["rtl_trace"] is not None:
+        for name in ("rtl-runtime-evidence.json", "isa-reference-evidence.json"):
+            trace = _dict(_json(hardware_dir, name), name)
+            runtime_material.append({
+                "artifact": name, "source_elf_sha256": trace["source"]["elf_sha256"],
+                "trace_sha256": trace["source"]["trace_sha256"],
+                "elf_byte_coverage_status": trace["elf_byte_coverage"]["status"],
+            })
+    chain = build_analysis_chain(
+        firmware=firmware, hardware=hardware, hardware_manifest=hw_manifest,
+        hardware_caps=caps,
+        differential=_dict(_json(hardware_dir, "architectural-differential.json"),
+                           "architectural-differential.json"),
+        runtime_material=runtime_material, case_manifest=case_manifest,
+        association=association, readiness=readiness,
+        candidate_kinds=tuple(sorted(kind.value for kind in CANDIDATE_KINDS)),
+    )
+    return PreparedCase(case_manifest, association, readiness, chain,
+                        render_analysis_report(chain))
 
 
 def write_case(prepared: PreparedCase, output_directory: str | Path) -> Path:
@@ -461,7 +400,8 @@ def write_case(prepared: PreparedCase, output_directory: str | Path) -> Path:
     target.mkdir(parents=True, exist_ok=True)
     for name, value in (("case-manifest.json", prepared.case_manifest),
                         ("association.json", prepared.association),
-                        ("verification-readiness.json", prepared.readiness)):
+                        ("verification-readiness.json", prepared.readiness),
+                        ("analysis-chain.json", prepared.analysis_chain)):
         (target / name).write_text(json.dumps(value, sort_keys=True, ensure_ascii=False,
                                              indent=2, allow_nan=False) + "\n", encoding="utf-8")
     (target / "report.md").write_text(prepared.report, encoding="utf-8")
