@@ -80,5 +80,8 @@ machine, CPU, and load profile. Machine availability does not establish
 equivalence to a target board. QEMU diagnostic observations are distinct
 from ProcessorFuzz RTL execution and from physical silicon evidence; they
 cannot establish a hardware vulnerability trigger by themselves. The
-execution-log plugin output is diagnostic until a separate, source-bound
-runtime evidence model is defined.
+bundled execution-log plugin output remains diagnostic. The additive
+[runtime evidence layer](../../docs/research/v3-qemu-runtime-evidence-v1.md)
+uses a separately compiled [ChipChain trace plugin](plugins/README.md) to acquire
+source-bound firmware instruction callbacks. It does not modify this installation
+or promote QEMU observations into hardware-trigger evidence.

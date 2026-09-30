@@ -139,7 +139,8 @@ def _human_relation(kind: str, status: str) -> str:
 
 
 def render_customer_report(*, firmware: FirmwareStaticAnalysis, chain: dict,
-                           association: dict, readiness: dict) -> str:
+                           association: dict, readiness: dict,
+                           runtime_projection: dict | None = None) -> str:
     """Render one case without revealing internal IDs or inventing a runtime path."""
     relations = chain["stages"][4]["outputs"]["relations"]
     operations = _operations(firmware, chain)
@@ -155,6 +156,15 @@ def render_customer_report(*, firmware: FirmwareStaticAnalysis, chain: dict,
     else:
         focus_summary = f"当前固件静态分析未发现与硬件测试程序中 {focus['kind']} 同类的受支持操作"
     primary_text = _instruction_text(primary["instruction"]) if primary else "尚无可展示的同类指令"
+    runtime_fact = next((row for row in runtime_projection["firmware_facts"]
+                         if primary and primary["behavior"] and row["static_behavior_id"]
+                         == primary["behavior"].fact_id), None) if runtime_projection else None
+    primary_observed = runtime_fact is not None and runtime_fact["status"] == "SUPPORTED"
+    runtime_summary = (
+        "关键指令已在该固件的来源绑定 QEMU 环境中观察到指令执行回调"
+        if primary_observed else
+        "当前有界 QEMU 运行未建立展示重点指令的执行支持"
+    ) if runtime_projection is not None else "尚未获得所给固件的实际执行路径"
     path = " → ".join(primary["path"]) if primary and primary["path"] else "未建立完整静态调用路径"
     operands = ("、".join(primary["instruction"].operands)
                 if primary and primary["instruction"] and primary["instruction"].operands
@@ -169,6 +179,8 @@ def render_customer_report(*, firmware: FirmwareStaticAnalysis, chain: dict,
         if item["source_instruction"] is not None
     }) if hardware_relation else []
     source_runtime = association["runtime_binding_status"]
+    if runtime_projection is not None:
+        source_runtime = runtime_projection["runtime_binding_status"]
     trigger = association["hardware_trigger_status"]
     raw_differences = chain["stages"][6]["outputs"]["raw_differing_word_count"]
     differential = association["hardware_differential_status"]
@@ -183,7 +195,9 @@ def render_customer_report(*, firmware: FirmwareStaticAnalysis, chain: dict,
     lines = [
         "# ChipChain Type-II 跨层攻击链分析报告", "",
         "## 1. 结论摘要", "",
-        f"**{focus_summary}；完整 Type-II 攻击链尚未验证。**",
+        (f"**{focus_summary}；软件侧静态候选得到 QEMU 运行时执行支持；"
+         "完整 Type-II 攻击链尚未验证。**" if primary_observed else
+         f"**{focus_summary}；完整 Type-II 攻击链尚未验证。**"),
         "", "| 项目 | 结果 |", "| --- | --- |",
         "| 输入/前置条件 | 外部输入值及实际分支条件未建立 |",
         f"| 关键调用路径 | {path}（静态连通，非运行记录） |",
@@ -193,7 +207,7 @@ def render_customer_report(*, firmware: FirmwareStaticAnalysis, chain: dict,
         (f"| 软件侧敏感行为 | {primary_kind}：{KIND_LABELS.get(primary_kind, '静态操作')}；"
          "仅为静态候选 |" if primary else
          "| 软件侧敏感行为 | 现有规范分析中未找到可展示的同类受支持操作 |"),
-        "| 运行时执行 | 尚未获得所给固件的实际执行路径 |",
+        f"| 运行时执行 | {runtime_summary} |",
         "| 真实硬件触发 | 当前材料尚未建立 |",
         "| 异常后果 | 尚不能确定本固件是否产生硬件异常 |",
         "| 攻击链状态 | 完整 Type-II 链条未验证 |", "",
@@ -217,11 +231,32 @@ def render_customer_report(*, firmware: FirmwareStaticAnalysis, chain: dict,
     else:
         lines += ["无法从现有直连调用事实建立完整路径。", ""]
     lines += [(
+        "**运行时指令观测**：" + runtime_summary + "。本阶段记录指令观测及其顺序，"
+        "没有据此重建完整函数调用栈；上方调用路径仍为静态路径。"
+        if runtime_projection is not None else
         "**运行时实际执行路径**：当前没有该固件的来源绑定运行证据。"
         if source_runtime == "UNKNOWN" else
         "**运行时实际执行路径**：现有报告输入没有可呈现的来源绑定函数路径。"
-    ), "",
-              "## 4. 关键函数与关键操作", ""]
+    ), ""]
+    if runtime_projection is not None:
+        lines += ["| 固件静态操作 | PC | 声明的 QEMU 运行中的执行支持 |",
+                  "| --- | --- | --- |"]
+        for row in runtime_projection["firmware_facts"]:
+            result = ("已观察，指令字节与来源 ELF 精确匹配"
+                      if row["status"] == "SUPPORTED" else
+                      "此有界运行中未观察到；不能推断不可执行"
+                      if row["reason"] == "NOT_OBSERVED_IN_THIS_RUN" else
+                      "尚未建立受支持的语义对应；不能推断不可执行")
+            lines.append(f"| {row['kind']} | `0x{row['pc']:x}` | {result} |")
+        lines += ["", "- SUPPORTED 仅表示该静态事实具有来源绑定、解码兼容的 QEMU 指令执行回调观测；不证明指令或内存副作用完成，也不代表目标硬件执行或物理退休。",
+                  "- 相同 vCPU 的事件序号仅表示本次声明运行中观测到的先后；"
+                  "不能推广为所有输入下的顺序，也不是硬件时序。"]
+        for row in runtime_projection["candidate_kind_support"]:
+            if row["reason"] == "NO_SUPPORTED_STATIC_KIND_FACT":
+                lines.append(f"- `{row['kind']}`：尚未建立该固件运行中对应行为的执行支持；"
+                             "这不证明行为不可能发生，也不证明硬件安全。")
+        lines.append("")
+    lines += ["## 4. 关键函数与关键操作", ""]
     if operations:
         lines += ["| 静态函数 | 规范指令 | 软件语义 |", "| --- | --- | --- |"]
         for row in operations:
@@ -251,7 +286,9 @@ def render_customer_report(*, firmware: FirmwareStaticAnalysis, chain: dict,
         lines.append(f"| {item['kind']} | {_human_relation(item['kind'], item['status'])} |")
     lines += ["", "相同操作种类并不证明操作数、资源实例、执行顺序或硬件版本相同。", "",
               "## 6. 硬件触发条件", "",
-              "- 软件侧：上表仅给出静态行为种类的候选关系。",
+              ("- 软件侧：静态行为种类候选及其 QEMU 执行支持见上表。"
+               if runtime_projection is not None else
+               "- 软件侧：上表仅给出静态行为种类的候选关系。"),
               "- 真实硬件触发条件：当前材料尚未建立权威硬件行为契约。",
               "- 因此尚未验证所给固件会触发真实硬件条件。", "",
               "## 7. 可能或已观察后果", "",
@@ -259,8 +296,11 @@ def render_customer_report(*, firmware: FirmwareStaticAnalysis, chain: dict,
               "- 包内原始数值比较不能自动归因于所给固件，也不能单独确认硬件异常。",
               "- 本固件的硬件异常或安全后果：当前材料尚不能确定。", "",
               "## 8. 当前验证状态", "",
-              f"- {focus_summary}；这不证明实际执行、硬件触发或硬件安全。",
-              ("- 尚未获得所给固件的来源绑定运行证据。" if source_runtime == "UNKNOWN"
+              (f"- {focus_summary}；QEMU 支持仅适用于上表中已观察到的固件指令，"
+               "不证明硬件触发或硬件安全。" if runtime_projection is not None else
+               f"- {focus_summary}；这不证明实际执行、硬件触发或硬件安全。"),
+              ("- " + runtime_summary + "。" if runtime_projection is not None else
+               "- 尚未获得所给固件的来源绑定运行证据。" if source_runtime == "UNKNOWN"
                else "- 运行来源状态已更新；本报告仍未获得可呈现的实际执行路径。"),
               ("- 尚未验证真实硬件触发。" if trigger == "NOT_ESTABLISHED"
                else "- 硬件触发状态需以科学关联产物为准。"),
@@ -270,4 +310,7 @@ def render_customer_report(*, firmware: FirmwareStaticAnalysis, chain: dict,
                "不适用于此硬件测试材料。" if not readiness["ready"] else
                "- 准备度状态已更新；是否形成验证结果仍以独立 verifier 输出为准。"),
               "- 本报告是展示投影。详细来源、事实及对象标识保留在同目录的科学产物中。", ""]
+    if runtime_projection is not None:
+        lines += ["- 固件运行支持详见新增 `runtime-projection.json`；原有装配产物保留"
+                  "不含运行输入的基线结果及案例身份。整体验证准备度仍为不足。", ""]
     return "\n".join(lines)

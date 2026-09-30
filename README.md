@@ -70,7 +70,25 @@ For bounded firmware-execution diagnostics, ChipChain also pins QEMU 11.1.1 unde
 ./scripts/setup_qemu.sh --verify-only
 ```
 
-`./scripts/setup_qemu.sh --offline --archive /path/to/qemu_11.1.1-chipchain-linux-x86_64.tar.xz` installs a supplied copy without network access. `--install-dir output/qemu-alternate` selects an explicit alternate installation and can be combined with the offline options. Setup never substitutes a QEMU executable from `PATH`. The six installed emulators make architecture-specific profiles possible, but only the RV64 realistic synthetic benchmark has a diagnostic run in this phase. These QEMU logs are not canonical runtime evidence, ProcessorFuzz RTL evidence, or physical-chip observations; they do not change Type-II or customer attack-chain conclusions. See the [runtime foundation record](docs/research/v3-qemu-runtime-foundation.md).
+`./scripts/setup_qemu.sh --offline --archive /path/to/qemu_11.1.1-chipchain-linux-x86_64.tar.xz` installs a supplied copy without network access. `--install-dir output/qemu-alternate` selects an explicit alternate installation and can be combined with the offline options. Setup never substitutes a QEMU executable from `PATH`. The foundation's `execlog` smoke logs remain diagnostic; see the [runtime foundation record](docs/research/v3-qemu-runtime-foundation.md).
+
+For canonical firmware runtime evidence, use the explicit RV64 benchmark profile below. The new [runtime evidence layer](docs/research/v3-qemu-runtime-evidence-v1.md) compiles a small project trace plugin with host `cc`, records a deterministic single-vCPU prefix, and binds every observed instruction byte to the exact ELF. The shared schema supports ARM, RISC-V and PowerPC identities; only RISC-V has an implemented runtime semantic decoder and validated execution profile in V1. Architecture detection does not select a board automatically.
+
+```bash
+chipchain runtime qemu \
+  --elf samples/firmware/riscv/processorfuzz_real_case_001/positive/firmware.elf \
+  --firmware samples/firmware/riscv/processorfuzz_real_case_001/expected/positive \
+  --profile riscv64-fw-feasibility \
+  --target-pc 0x80000064 --successors 8 --max-events 20000 \
+  --output output/qemu-runtime-fw-pos
+chipchain type2 prepare \
+  --firmware samples/firmware/riscv/processorfuzz_real_case_001/expected/positive \
+  --hardware samples/processorfuzz/real_case_001/expected \
+  --runtime output/qemu-runtime-fw-pos \
+  --output output/type2-with-runtime
+```
+
+Use a new or empty output directory. `--target-pc` must identify a canonical static instruction; omitting it records exactly `--max-events` callbacks. A watchdog rejects incomplete acquisition. The output retains the exact ELF, plugin, raw stream and five canonical JSON projections for offline replay. Adding `--runtime` emits `runtime-projection.json` and enhances `attack-chain-report.md`; the base case identity and five baseline outputs remain unchanged. Without `--runtime`, all six existing case outputs retain their frozen behavior. QEMU instruction callbacks support firmware-side execution only: hardware trigger, deviation, silicon applicability and full Type-II verification remain unestablished.
 
 The tracked [canonical demo artifacts](artifacts/demo) can be inspected without Ghidra. To run new raw-ELF static analysis, install and verify the pinned Ghidra distribution first. `--ghidra-home /explicit/path` remains available for an explicitly managed installation.
 

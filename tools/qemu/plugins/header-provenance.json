@@ -1,0 +1,12 @@
+{
+  "api_version": 7,
+  "license": "GPL-2.0-or-later",
+  "schema_version": "qemu-plugin-header-provenance/v1",
+  "subset_sha256": "b097fe65bcfdb50949a824c65be796a5d5925c0f72033c06e086b8addacb4678",
+  "upstream_commit": "c3d48b7d1e89604920e5b81b91140c2ad39a1943",
+  "upstream_header": "include/plugins/qemu-plugin.h",
+  "upstream_header_sha256": "335d4e472067e914add598b60d1f7cf0dc029cd48f62f66656d6a88c54d8d9f9",
+  "upstream_project": "QEMU",
+  "upstream_tag": "v11.1.1",
+  "upstream_version": "11.1.1"
+}

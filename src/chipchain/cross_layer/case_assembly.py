@@ -62,6 +62,7 @@ class PreparedCase:
     analysis_chain: dict
     report: str
     customer_report: str
+    runtime_projection: dict | None = None
 
 
 def _object_no_duplicates(pairs: list[tuple[str, object]]) -> dict:
@@ -265,7 +266,8 @@ def _candidate_relations(firmware: FirmwareStaticAnalysis, hardware_caps: list[d
     return relations
 
 
-def prepare_case(firmware_directory: str | Path, hardware_directory: str | Path) -> PreparedCase:
+def prepare_case(firmware_directory: str | Path, hardware_directory: str | Path, *,
+                 runtime_directory: str | Path | None = None) -> PreparedCase:
     """Validate two independent canonical analyses and assemble without writing."""
     firmware_dir, hardware_dir = Path(firmware_directory), Path(hardware_directory)
     if not firmware_dir.is_dir() or not hardware_dir.is_dir():
@@ -390,10 +392,20 @@ def prepare_case(firmware_directory: str | Path, hardware_directory: str | Path)
         association=association, readiness=readiness,
         candidate_kinds=tuple(sorted(kind.value for kind in CANDIDATE_KINDS)),
     )
+    runtime_projection = None
+    if runtime_directory is not None:
+        from chipchain.runtime.artifacts import load_runtime_evidence
+        from chipchain.cross_layer.case_assembly_runtime import build_runtime_projection
+        runtime_evidence = load_runtime_evidence(Path(runtime_directory), analysis=firmware)
+        runtime_projection = build_runtime_projection(
+            firmware=firmware, evidence=runtime_evidence, case_manifest=case_manifest,
+            association=association, readiness=readiness)
     return PreparedCase(case_manifest, association, readiness, chain,
                         render_analysis_report(chain),
                         render_customer_report(firmware=firmware, chain=chain,
-                                               association=association, readiness=readiness))
+                                               association=association, readiness=readiness,
+                                               runtime_projection=runtime_projection),
+                        runtime_projection)
 
 
 def write_case(prepared: PreparedCase, output_directory: str | Path) -> Path:
@@ -411,4 +423,8 @@ def write_case(prepared: PreparedCase, output_directory: str | Path) -> Path:
     (target / "report.md").write_text(prepared.report, encoding="utf-8")
     (target / "attack-chain-report.md").write_text(prepared.customer_report,
                                                     encoding="utf-8")
+    if prepared.runtime_projection is not None:
+        (target / "runtime-projection.json").write_text(json.dumps(
+            prepared.runtime_projection, sort_keys=True, ensure_ascii=False, indent=2,
+            allow_nan=False) + "\n", encoding="utf-8")
     return target
