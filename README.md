@@ -149,6 +149,8 @@ FW-POS and FW-NEG-TRIGGER are independently authored **realistic synthetic firmw
 
 New hardware-team deliveries follow the developer-only [Hardware Sample Adaptation Guide](docs/hardware-sample-adaptation.md). Its inspection utility produces a bounded inventory and brief for adapter development; those diagnostics are not scientific evidence or Type-II conclusions.
 
+Rocket RTL reproduction uses a separate explicit [research smoke](experiments/rtl/rocket/README.md), with its [feasibility review](docs/research/rocket-rtl-feasibility-v1.md). User RTL stays read-only in ignored `samples/rtl-input/`; builds and raw observations stay in `output/rtl-rocket-feasibility/`. These diagnostics do not extend the frozen verifier or establish a verified hardware vulnerability.
+
 The examples include small synthetic artifacts under `examples/type2_positive/fixtures/`; the negative and unknown manifests reuse these files. Their frozen scientific identities are replayed from the included bytes. `samples/firmware/{arm,riscv,powerpc}` now contain tracked synthetic instruction-coverage samples; other real research inputs in `samples/` remain ignored. `output/` is an ignored result workspace. See [examples](examples/README.md) and [samples](samples/README.md).
 The portable fixtures contain pinned source manifests and changed peripheral bytes, not the full RTL source tree or a simulator executable. They replay the frozen evidence chain; independent regeneration of source/platform attestations requires the separately retained local research workspace.
 

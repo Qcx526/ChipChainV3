@@ -28,6 +28,9 @@ htmlcov/
 # Local import provenance contains machine-specific paths and real sample hashes.
 /samples/local-manifest.json
 
+# User-delivered RTL archives and source remain read-only local inputs.
+/samples/rtl-input/
+
 # Project-managed tool installations stay local; their pinned metadata is tracked.
 /tools/ghidra/install/
 /tools/ghidra/*.tar.gz
