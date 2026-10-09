@@ -4,6 +4,8 @@
 
 本报告是研究判断，不创建 HardwareBehaviorContract 或正式 Runtime Evidence。机器清单在 [真实固件输出](../../output/r5-real-firmware/report.md)和[候选索引](../../output/r5-hardware-candidates/hardware-candidates.json)；所有第三方源码、工具链及运行日志都留在被 Git 忽略的 `output/`。本轮没有修改上游固件、原始样本或冻结的科学核心。
 
+**本地链接说明。** 本文所有指向 `output/` 的相对链接都依赖本机被 Git 忽略的研究工作区，属于本地验收记录；它们不随仓库提交，在 GitHub、全新 clone 或其他机器上不会自动存在。本文保留的 commit、ELF SHA256、PC、字节和证据边界可直接阅读，上游固定版本链接可用于查看公开源码。本地日志和 JSON 的完整核查则需要原实验工作区或另行提供的产物，不能仅凭这些链接宣称已复现。
+
 ## 第一章：为什么从合成固件转向真实固件
 
 先前 FW-POS 是项目作者为受控基准编写的现实化合成程序，其中 `arch_translation_sync()` 和 `sfence.vma` 的出现由实验设计保证。它证明工具能识别和连接预设行为，不能回答普通固件在维护处理器时是否自然产生相应操作。ProcessorFuzz 包里的 ELF 则是硬件部门的 trigger-test 程序，不能代表客户固件。
@@ -28,15 +30,15 @@ R4 已把 `real_case_001` 的三处签名差异解释到两个实现选项：wor
 
 **PMP 粒度探测。** 上游 `sbi_hart_init()` 调用 `hart_detect_features()`；编译优化将 `hart_pmp_get_allowed_addr()` 内联。它先写 `pmpcfg0=OFF`，再向 `pmpaddr0` 写地址掩码，最后读回。若 CSR 可用且访问未陷入异常，读回值用于计算 `pmp_log2gran` 与地址位数。这样做是正常启动时适配硬件保护单元：固件须先知道最小保护区域，再布置不同执行域。对应的真实 ELF PC 分别是 `0x8000ec30`、`0x8000ec56`、`0x8000ec74`；其小端字节和源码行见下一章及[行为清单](../../output/r5-real-firmware/real-firmware-behavior-analysis.md)。[固定源码 `sbi_hart.c`](https://github.com/riscv-software-src/opensbi/blob/a32a91069119e7a5aa31e6bc51d5e00860be3d80/lib/sbi/sbi_hart.c#L774-L793)直接给出这个顺序。RISC-V 的[固定特权规范文本](https://github.com/riscv/riscv-isa-manual/blob/98964261c931d51884f733664b22efe43de93033/src/machine.tex)也描述同样的粒度探测方法，并规定较粗粒度下 OFF/TOR 的相关 `pmpaddr` 低位读零。
 
-**保护域配置。** `sbi_init()` 的静态直接调用进入 `sbi_hart_pmp_configure()`；`pmp_set()` 对选中的配置项通过 `csr_read_num`/`csr_write_num` 更新 PMP CSR。保护域区域、条目数与硬件特性影响所走分支。若实现 S-mode，源码在 PMP 更新后执行 `sfence.vma`；ELF 中 `0x8000e564` 的字节 `73000012` 与上游第 592 行相符。它用于同步 PMP 与地址转换缓存，符合特权规范的要求。存在该指令不表示某次启动确实经过这一分支。
+**保护域配置。** Ghidra 调用事实记录 `sbi_init()` 到 `sbi_hart_pmp_configure()` 的静态关系；`pmp_set()` 对选中的配置项通过 `csr_read_num`/`csr_write_num` 更新 PMP CSR。保护域区域、条目数与硬件特性影响所走分支。若实现 S-mode，源码在 PMP 更新后执行 `sfence.vma`；ELF 中 `0x8000e564` 的字节 `73000012` 与上游第 592 行相符。它用于同步 PMP 与地址转换缓存，符合特权规范的要求。存在该指令不表示某次启动确实经过这一分支。
 
-**远程刷新与指令缓存。** `sbi_ecall_rfence_handler()` 的直接调用位置 `0x8000ac36` 通向 `sbi_tlb_request()`；队列处理函数 `tlb_entry_local_process()` 依据请求类型及范围调用局部刷新逻辑。优化后多个分支在同一函数内含 `sfence.vma`：`0x800064a6`、`0x800064d8`、`0x80006552`、`0x80006558`；`0x8000646c` 是 `fence.i`。这服务于正常 SBI RFENCE 请求，而非为了本研究植入的指令。服务调用、目标 hart、ASID 和范围是必要运行上下文；当前 smoke 未观察到这些具体请求。[上游实现](https://github.com/riscv-software-src/opensbi/blob/a32a91069119e7a5aa31e6bc51d5e00860be3d80/lib/sbi/sbi_tlb.c)。
+**远程刷新与指令缓存。** Ghidra 调用事实将 `sbi_ecall_rfence_handler()` 中的位置 `0x8000ac36` 关联到 `sbi_tlb_request()`；队列处理函数 `tlb_entry_local_process()` 依据请求类型及范围调用局部刷新逻辑。优化后多个分支在同一函数内含 `sfence.vma`：`0x800064a6`、`0x800064d8`、`0x80006552`、`0x80006558`；`0x8000646c` 是 `fence.i`。这服务于正常 SBI RFENCE 请求，而非为了本研究植入的指令。服务调用、目标 hart、ASID 和范围是必要运行上下文；当前 smoke 未观察到这些具体请求。[上游实现](https://github.com/riscv-software-src/opensbi/blob/a32a91069119e7a5aa31e6bc51d5e00860be3d80/lib/sbi/sbi_tlb.c)。
 
-**模式切换、异常及中断。** `sbi_hart_switch_mode()` 在 `0x80010d80` 读 `mstatus`，在 `0x80010db8` 写 MPP/MPIE 后的状态，在 `0x80010dbc` 写 `mepc`，最终于 `0x80010dcc` 执行 `mret`，将运行交给后续模式。`_trap_handler` 通过 `0x80000470` 的静态调用进入 `sbi_trap_handler()` 并在 `0x800004f0` 返回；实际返回须有相应异常运行事件。`sbi_hart_reinit()` 另在 `0x8000ea50` 将 `mie` 清零，以避免初始化期间处理未准备的中断。写零不构成对 CVA6 “无 S-mode 时错误保留 supervisor 中断位”问题的有效测试。
+**模式切换、异常及中断。** `sbi_hart_switch_mode()` 在 `0x80010d80` 读 `mstatus`，在 `0x80010db8` 写 MPP/MPIE 后的状态，在 `0x80010dbc` 写 `mepc`，最终于 `0x80010dcc` 执行 `mret`，将运行交给后续模式。Ghidra 调用事实将 `_trap_handler` 的 `0x80000470` 关联到 `sbi_trap_handler()`，静态指令记录在 `0x800004f0` 包含 `mret`；实际返回须有相应异常运行事件。`sbi_hart_reinit()` 另在 `0x8000ea50` 将 `mie` 清零，以避免初始化期间处理未准备的中断。写零不构成对 CVA6 “无 S-mode 时错误保留 supervisor 中断位”问题的有效测试。
 
 ## 第四章：从功能到指令的来源链
 
-机器层沿一条明确的链核对：**官方 commit 与干净源码 → 完整 build 命令及编译器 → ELF SHA/段 → canonical Ghidra IR → 同一 ELF 的 DWARF 行表 → 原 checkout 的源码文件字节**。最终复现命令和 5,069 条选定函数指令记录在[源码映射](../../output/r5-real-firmware/source-grounding-004/source-to-instruction-mapping.json)。这 5,069 条的 `SUPPORTED_STATIC` 只表示 ELF 指令字节、唯一函数归属及编译行号/源文件字节都可核对；其中可能仍有共享语义 `UNKNOWN`，绝不等于执行或触发。
+机器层沿一条明确的链核对：**官方 commit 与干净源码 → 完整 build 命令及编译器 → ELF SHA/段 → canonical Ghidra IR → 同一 ELF 的 DWARF 行表 → 原 checkout 的源码文件字节**。本次审核使用同一 ELF、canonical IR 和源码只读重算，5,069 条选定函数指令记录在[审核后的源码映射](../../output/r5-real-firmware/review-hardening/source-grounding/source-to-instruction-mapping.json)，命令和工具 SHA 在[审核重算记录](../../output/r5-real-firmware/review-hardening/replay-invocation.json)。这 5,069 条的 `SUPPORTED_STATIC` 只表示 ELF 指令字节、唯一函数归属及编译行号/源文件字节都可核对；其中可能仍有共享语义 `UNKNOWN`，绝不等于执行或触发。[初次映射](../../output/r5-real-firmware/source-grounding-004/source-to-instruction-mapping.json)保留为历史产物，其中旧的 `CONFIRMED_STATIC` 调用标签仅代表当时的 Ghidra 元数据一致性检查，不能解释为编码目标已验证。
 
 | 正常功能及上层关系 | ELF PC / 小端字节 | 静态指令 | 原源码位置 | 当前证据等级 |
 |---|---|---|---|---|
@@ -47,7 +49,9 @@ R4 已把 `real_case_001` 的三处签名差异解释到两个实现选项：wor
 | PMP 更新后的同步 | `0x8000e564` / `73000012` | `sfence.vma zero,zero` | `lib/sbi/sbi_hart.c:592` | 静态分支成立；运行未观测 |
 | 切换到后续模式 | `0x80010dcc` / `73002030` | `mret` | `lib/sbi/sbi_hart.c:1145` | 静态函数归属成立；运行 PC 未观测 |
 
-这里的源码行是编译器提供的行号，优化或内联会把辅助函数的代码合并进 `sbi_hart_init()`；它不是动态调用记录。调用图里确认的直接边，如 `sbi_init → sbi_hart_init` 与 `sbi_init → sbi_hart_pmp_configure`，只证明相应调用指令存在。队列 callback 之间不是完整直接调用链，报告不会把它们强行连成一次执行。可疑的多重归属、缺失行号或不在 checkout 中的路径由[研究辅助工具](../../experiments/firmware/source_grounding.py)明确输出 `AMBIGUOUS`/`UNKNOWN`。
+这里的源码行是编译器提供的行号，优化或内联会把辅助函数的代码合并进 `sbi_hart_init()`；它不是动态调用记录。Ghidra 导出的直接调用事实，如 `sbi_init → sbi_hart_init` 与 `sbi_init → sbi_hart_pmp_configure`，只通过调用位置、唯一调用方及目标函数入口的元数据一致性检查。指令记录与 ELF 字节相等，不等于独立解码了调用 opcode 和编码目标。队列 callback 之间不是完整直接调用链，报告不会把它们强行连成一次执行。可疑的多重归属、缺失行号或不在 checkout 中的路径由[研究辅助工具](../../experiments/firmware/source_grounding.py)明确输出 `AMBIGUOUS`/`UNKNOWN`。
+
+审核后的 204 个调用事实状态均为 `CONSISTENT_GHIDRA_CALL_FACT`，`target_basis=GHIDRA_CALL_FACT`。这些 target 是 Ghidra 声明的目标；`encoded_target_resolution=NOT_ESTABLISHED`、`encoded_target=null`，工具明确标记 `independent_call_target_decoding=NOT_PERFORMED`。缺少指令或目标、重复/冲突的调用位置、调用方不一致或目标函数入口歧义时，调用状态为 `UNKNOWN`。即使另有 `DIRECT_CALL` 行为标签或源码关系相符，也不自动升级编码目标、运行可达性或触发性。
 
 上游 `REPRODUCIBLE=y` 使用 `-ffile-prefix-map=<source-root>=`，DWARF 中出现 `/lib/sbi/...` 这样的虚拟路径。工具只有在显式传入 `/=.` 且核对实际编译命令确有上述 prefix map 时，才把它反向关联到固定 checkout；没有通过 basename 猜测来源。首次未显式提供映射的调查保留 UNKNOWN；正确映射的最终结果保留单独 ID 和命令记录。这个地址重定位和 RISC-V CSR 语义解释都留在本次研究输入，没有进入架构中立共享判定。
 
@@ -93,7 +97,9 @@ R4 已把 `real_case_001` 的三处签名差异解释到两个实现选项：wor
 
 本轮分层状态为：OpenSBI 静态行为和源码关系 **SUPPORTED_STATIC**；QEMU 上软件启动及测试 payload 输出 **OBSERVED_BOOT_DIAGNOSTIC**；上述选定 PC 的 canonical runtime **NOT_ESTABLISHED**；CVA6 目标 revision 上的触发 **UNKNOWN**；客观硬件偏差、安全影响及 Type-II 链 **NOT_ESTABLISHED / NOT_VERIFIED**。没有将 QEMU 记录重标为 RTL 证据，也没有由公开补丁自动生成 HardwareBehaviorContract。现有 CAP0 `SourceKind` 对一般真实 Ghidra 源码没有诚实的来源值，本轮使用独立研究映射，避免借 `synthetic_fixture` 冒充真实固件能力。ARM 和 PowerPC 前端及科学核心保持原状。
 
-受保护初始快照有 40,077 个文件或链接。逐项 SHA/链接目标核对后，原有字节仅 README 的本轮说明发生预期变化；全部受保护 R3/R4 输出、真实 ProcessorFuzz 样本、QEMU 证据和六个冻结核心文件一致，保护目录无新增文件。ChipChain HEAD 仍为 `8bf7c85528e6cd50efd5a2184e912d0d43b51810`；`v3-rocket-rtl-differential-r4-stable` tag object 仍为 `81b1f5464aadd71021f8a8a9c1169e96853ca0dc`，其他 stable tag 引用也未变。P1/N1/N2/U1 黄金 ID 已从原集成入口实际重放并保持不变；详见[冻结核心与黄金 ID 对照](../../output/r5-real-firmware/validation/frozen-core-and-goldens.json)和[保护审计](../../output/r5-real-firmware/audit/protection-result.json)。完整回归 `677 passed in 81.45s (0:01:21)`；`pip check`、`compileall` 和 `git diff --check` 均通过。没有运行 HWE Docker，也没有把第三方源树、测试固件或大体量产物加入 Git。
+受保护初始快照有 40,077 个文件或链接。逐项 SHA/链接目标核对后，原有字节仅 README 的本轮说明发生预期变化；全部受保护 R3/R4 输出、真实 ProcessorFuzz 样本、QEMU 证据和六个冻结核心文件一致，保护目录无新增文件。上述初次 R5-A/C 验收时 ChipChain HEAD 为 `8bf7c85528e6cd50efd5a2184e912d0d43b51810`；`v3-rocket-rtl-differential-r4-stable` tag object 仍为 `81b1f5464aadd71021f8a8a9c1169e96853ca0dc`，其他 stable tag 引用也未变。P1/N1/N2/U1 黄金 ID 已从原集成入口实际重放并保持不变；详见[冻结核心与黄金 ID 对照](../../output/r5-real-firmware/validation/frozen-core-and-goldens.json)和[保护审计](../../output/r5-real-firmware/audit/protection-result.json)。初次完整回归 `677 passed in 81.45s (0:01:21)`；`pip check`、`compileall` 和 `git diff --check` 均通过。没有运行 HWE Docker，也没有把第三方源树、测试固件或大体量产物加入 Git。
+
+本次 R5-A/C review hardening 从已提交的 `3da1c76cf51712291e610ce96c17ec24dbe0420e` 开始，只修改研究辅助工具、其合成测试和本文。新增 15 个失败时保持未知的测试，覆盖 ARM/RISC-V/PowerPC 的一致元数据与任意字节、错误引用及调用歧义；辅助工具测试为 `49 passed in 0.20s`，全套离线回归为 **`692 passed in 68.42s (0:01:08)`**。`pip check`、`compileall` 和 `git diff --check` 通过。45,413 个文件或链接的审核快照中，除上述三个允许修改的文件外全部一致，保护目录无新增文件；六个冻结核心 SHA、OpenSBI/RTL 输入、R3/R4 结论、HEAD 和所有 tags 保持不变。P1/N1/N2/U1 从原集成入口实际重放，四个黄金 ID 不变；详见[本次保护与黄金 ID 审计](../../output/r5-real-firmware/review-hardening/audit/review-result.json)。旧映射保持原字节，新研究诊断 ID 因明确调用证据语义而变化，不改写 canonical IR 或科学对象。没有新构建、仿真、网络或 LLM 调用，也没有 Git add/commit/merge/push/tag。
 
 ## 第十章：下一阶段最小建议
 

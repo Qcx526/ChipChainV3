@@ -193,22 +193,39 @@ def ground_source(elf_bytes: bytes, analysis: FirmwareStaticAnalysis | bytes,
                         "grounding_status": "AMBIGUOUS" if "AMBIGUOUS" in (ownership, source_status)
                         else "SUPPORTED_STATIC" if ownership == "UNIQUE" and source_status == "BOUND_COMPILE_METADATA"
                         else "UNKNOWN"})
+    sites_by_pc, calls_by_pc, functions_by_entry = {}, {}, {}
+    for instruction in static.instructions:
+        sites_by_pc.setdefault(instruction.pc, []).append(instruction)
+    for call in static.calls:
+        calls_by_pc.setdefault(call.pc, []).append(call)
+    for function in static.functions:
+        functions_by_entry.setdefault(function.entry, []).append(function)
     calls = []
     for call in sorted(static.calls, key=lambda x: x.pc):
         if not call.direct or not selected.intersection(call.caller_function_ids):
             continue
-        site = next((i for i in static.instructions if i.pc == call.pc), None)
+        sites = sites_by_pc.get(call.pc, [])
+        site = sites[0] if len(sites) == 1 else None
         target = registry.get(call.target_function_id)
-        valid = (site is not None and len(site.function_ids) == 1 and
-                 set(call.caller_function_ids) == set(site.function_ids) and
-                 target is not None and target.entry == call.target)
-        calls.append({**call.model_dump(mode="json"), "status": "CONFIRMED_STATIC" if valid else "UNKNOWN"})
+        consistent = (site is not None and len(calls_by_pc[call.pc]) == 1 and
+                      len(site.function_ids) == len(call.caller_function_ids) == 1 and
+                      call.caller_function_ids == site.function_ids and
+                      target is not None and target.entry == call.target and
+                      len(functions_by_entry.get(call.target, [])) == 1)
+        # Byte equality validates the instruction record, not its opcode or target.
+        # Ghidra operands/behavior facts are not an independent encoded-target decoder.
+        calls.append({**call.model_dump(mode="json"),
+                      "status": "CONSISTENT_GHIDRA_CALL_FACT" if consistent else "UNKNOWN",
+                      "target_basis": "GHIDRA_CALL_FACT",
+                      "encoded_target_resolution": "NOT_ESTABLISHED",
+                      "encoded_target": None})
     payload = {"role": "research_diagnostic", "elf_sha256": image.identity.sha256,
                "analysis_id": static.analysis_id, "source_commit": source_commit,
                "explicit_dwarf_path_maps": [{"prefix": p, "checkout_relative": t} for p, t in path_maps],
                "functions": [f.model_dump(mode="json") for f in static.functions if f.fact_id in selected],
                "instructions": records, "direct_calls": calls,
-               "limits": {"static_only": True, "runtime_execution": "NOT_ESTABLISHED",
+               "limits": {"static_only": True, "independent_call_target_decoding": "NOT_PERFORMED",
+                          "runtime_execution": "NOT_ESTABLISHED",
                           "triggerability": "UNKNOWN", "hardware_deviation": "NOT_ESTABLISHED",
                           "source_commit_build_binding": "REQUIRES_EXTERNAL_BUILD_PROVENANCE"}}
     return {**payload, "diagnostic_id": content_id("research-source-grounding", payload)}
@@ -218,6 +235,10 @@ def render_report(result: dict) -> str:
     lines = ["# 固件源码与指令来源调查", "",
              "本调查把同一 ELF 的指令、编译器行号信息和选定源码字节连接起来。"
              "行号是编译元数据，调用关系仅为静态关系；尚未证明这些功能实际执行或满足硬件触发条件。", "",
+             "CONSISTENT_GHIDRA_CALL_FACT 仅表示 Ghidra 调用事实与已核对字节的指令记录、"
+             "唯一调用位置及函数元数据一致。target 来自 Ghidra；没有独立解码调用指令或其编码目标，"
+             "encoded_target_resolution 始终为 NOT_ESTABLISHED，encoded_target 为 null。"
+             "缺失或歧义的调用元数据保留 UNKNOWN。", "",
              "源码 checkout 身份不能替代同一次构建记录；源码到 ELF 的完整来源还须核对构建日志和输入身份。", "",
              "| PC | 指令 | 所属函数 | 源码定位 |", "|---|---|---|---|"]
     for record in result["instructions"]:

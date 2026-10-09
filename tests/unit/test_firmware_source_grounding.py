@@ -70,9 +70,105 @@ def test_source_mapping_is_architecture_neutral_and_exact(architecture):
     assert record["source_status"] == "BOUND_COMPILE_METADATA"
     assert record["source_candidates"][0]["line_text"] == "normal operation"
     assert record["source_candidates"][0]["line_bytes_hex"] == b"normal operation".hex()
-    assert result["direct_calls"][0]["status"] == "CONFIRMED_STATIC"
+    call, = result["direct_calls"]
+    assert call["status"] == "CONSISTENT_GHIDRA_CALL_FACT"
+    assert call["target_basis"] == "GHIDRA_CALL_FACT"
+    assert call["encoded_target_resolution"] == "NOT_ESTABLISHED"
+    assert call["encoded_target"] is None
+    assert result["limits"]["independent_call_target_decoding"] == "NOT_PERFORMED"
     assert result["limits"]["runtime_execution"] == "NOT_ESTABLISHED"
     assert result["limits"]["triggerability"] == "UNKNOWN"
+
+
+def reidentify_calls(value):
+    """Keep content IDs valid so cross-reference tests reach the diagnostic join."""
+    for call in value["calls"]:
+        call["fact_id"] = content_id("fwcall", {"elf": value["artifact"]["sha256"],
+                                              **{k: v for k, v in call.items() if k != "fact_id"}})
+    value["analysis_id"] = content_id("firmware-static", {k: v for k, v in value.items() if k != "analysis_id"})
+    return json.dumps(value).encode()
+
+
+@pytest.mark.parametrize("architecture", ["arm", "riscv", "powerpc"])
+def test_coherent_ghidra_targets_and_behavior_labels_do_not_decode_instruction_bytes(architecture):
+    elf, model = fixture(architecture=architecture)
+    original = api.ground_source(elf, model, (), {}, source_commit=COMMIT)
+    value = model.model_dump(mode="json")
+    call = value["calls"][0]
+    # Same arbitrary bytes, a different internally coherent Ghidra target, and a
+    # DIRECT_CALL label still provide no independent decoding of an encoded target.
+    call["target"] = BASE
+    call["target_function_id"] = value["functions"][0]["fact_id"]
+    value["instructions"][0].update(mnemonic="call", operands=[hex(BASE)], text=f"call {hex(BASE)}")
+    semantic = {"kind": "DIRECT_CALL", "semantic_status": "supported", "target": BASE}
+    behavior = value["behaviors"][0]
+    value["behaviors"][0] = StaticBehaviorFact.model_validate({
+        **semantic, "instruction_id": behavior["instruction_id"], "pc": BASE,
+        "fact_id": content_id("fwbehavior", {
+            "instruction": behavior["instruction_id"], "semantic": semantic})}).model_dump(mode="json")
+    changed = api.ground_source(elf, reidentify_calls(value), (), {}, source_commit=COMMIT)
+    assert original["direct_calls"][0]["target"] != changed["direct_calls"][0]["target"]
+    assert original["instructions"][0]["raw_bytes"] == changed["instructions"][0]["raw_bytes"]
+    for result in (original, changed):
+        call, = result["direct_calls"]
+        assert call["status"] == "CONSISTENT_GHIDRA_CALL_FACT"
+        assert call["encoded_target_resolution"] == "NOT_ESTABLISHED"
+        assert call["encoded_target"] is None
+        assert result["limits"]["runtime_execution"] == "NOT_ESTABLISHED"
+        assert result["limits"]["triggerability"] == "UNKNOWN"
+
+
+@pytest.mark.parametrize("problem", ["missing_site", "caller_mismatch", "duplicated_caller",
+    "missing_target", "missing_target_function", "unknown_target_function", "target_entry_mismatch",
+    "conflicting_direct_calls", "direct_indirect_conflict", "ambiguous_instruction", "ambiguous_target_function"])
+def test_missing_or_conflicting_call_metadata_remains_unknown(problem):
+    elf, model = fixture()
+    value = model.model_dump(mode="json")
+    call = value["calls"][0]
+    if problem == "missing_site":
+        call["pc"] = BASE + 1
+    elif problem == "caller_mismatch":
+        call["pc"] = BASE + 4  # Service owns the site; the call claims entry owns it.
+    elif problem == "duplicated_caller":
+        call["caller_function_ids"] *= 2
+    elif problem == "missing_target":
+        call["target"] = None
+    elif problem == "missing_target_function":
+        call["target_function_id"] = None
+    elif problem == "unknown_target_function":
+        call["target_function_id"] = "fwfunction:" + "f" * 64
+    elif problem == "target_entry_mismatch":
+        call["target"] = BASE + 8
+    elif problem in {"conflicting_direct_calls", "direct_indirect_conflict"}:
+        other = {**call, "target": BASE, "target_function_id": value["functions"][0]["fact_id"]}
+        if problem == "direct_indirect_conflict":
+            other.update(direct=False, target=None, target_function_id=None)
+        value["calls"].append(other)
+    elif problem == "ambiguous_instruction":
+        other = {**value["instructions"][0], "raw_bytes": "0102"}
+        other["fact_id"] = content_id("fwinstruction", {"elf": value["artifact"]["sha256"],
+                                                       "pc": BASE, "bytes": other["raw_bytes"]})
+        value["instructions"].append(other)
+    else:
+        other = {**value["functions"][1], "name": "service_alias"}
+        other["fact_id"] = content_id("fwfunction", {"elf": value["artifact"]["sha256"],
+                                                   **{k: v for k, v in other.items() if k != "fact_id"}})
+        value["functions"].append(other)
+        value["instructions"][1]["function_ids"].append(other["fact_id"])
+    result = api.ground_source(elf, reidentify_calls(value), (), {}, source_commit=COMMIT, functions=("entry",))
+    assert result["direct_calls"]
+    assert all(c["status"] == "UNKNOWN" for c in result["direct_calls"])
+    assert all(c["encoded_target_resolution"] == "NOT_ESTABLISHED" and c["encoded_target"] is None
+               for c in result["direct_calls"])
+
+
+def test_call_content_identity_conflict_is_rejected():
+    elf, model = fixture()
+    value = model.model_dump(mode="json")
+    value["calls"][0]["target"] = BASE
+    value["analysis_id"] = content_id("firmware-static", {k: v for k, v in value.items() if k != "analysis_id"})
+    with pytest.raises(ValueError, match="Call fact identity mismatch"):
+        api.ground_source(elf, json.dumps(value).encode(), (), {}, source_commit=COMMIT)
 
 
 @pytest.mark.parametrize("problem", ["no_intervals", "no_source", "line_missing", "past_file", "crosses_interval"])
@@ -205,6 +301,8 @@ def test_deterministic_identity_includes_exact_source_bytes_and_static_limits():
     assert first["limits"]["source_commit_build_binding"] == "REQUIRES_EXTERNAL_BUILD_PROVENANCE"
     report = api.render_report(first)
     assert "行号是编译元数据" in report and "仅为静态关系" in report
+    assert "CONSISTENT_GHIDRA_CALL_FACT" in report and "没有独立解码" in report
+    assert "encoded_target_resolution 始终为 NOT_ESTABLISHED" in report
     assert "0x1000" in report and "src/service.c:2" in report
 
 
