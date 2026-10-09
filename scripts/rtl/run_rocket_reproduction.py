@@ -153,9 +153,13 @@ def execute(command, *, cwd, env, timeout, log_prefix):
 
 def run(args):
     output = args.output.resolve()
-    boundary = Path(__file__).resolve().parents[2] / 'output/rtl-rocket-feasibility'
+    repository_output = Path(__file__).resolve().parents[2] / 'output'
+    boundary = getattr(args, 'output_root', None) or repository_output / 'rtl-rocket-feasibility'
+    boundary = boundary.resolve()
+    if not boundary.is_relative_to(repository_output.resolve()) or boundary == repository_output.resolve():
+        raise ValueError('Research output root must be an explicit child of repository output')
     if not output.is_relative_to(boundary) or output == boundary:
-        raise ValueError('Research outputs must use a child of output/rtl-rocket-feasibility')
+        raise ValueError('Research outputs must use a child of the declared research output root')
     if output.exists() and any(output.iterdir()):
         raise ValueError('Output must be new or empty')
     output.mkdir(parents=True,exist_ok=True)
@@ -283,6 +287,8 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     for name in ('rtl','elf','hex','upstream','verilator','python','output'):
         p.add_argument('--'+name,type=Path,required=True)
+    p.add_argument('--output-root',type=Path,
+                   help='Explicit research root below repository output; defaults to output/rtl-rocket-feasibility')
     for name in ('rtl-sha256','elf-sha256','upstream-commit'):p.add_argument('--'+name,required=True)
     p.add_argument('--top',required=True)
     p.add_argument('--compile-arg',action='append',default=[])

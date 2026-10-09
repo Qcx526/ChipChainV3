@@ -151,6 +151,8 @@ New hardware-team deliveries follow the developer-only [Hardware Sample Adaptati
 
 Rocket RTL reproduction uses a separate explicit [research smoke](experiments/rtl/rocket/README.md), with its [feasibility review](docs/research/rocket-rtl-feasibility-v1.md). User RTL stays read-only in ignored `samples/rtl-input/`; builds and raw observations stay in `output/rtl-rocket-feasibility/`. These diagnostics do not extend the frozen verifier or establish a verified hardware vulnerability.
 
+The [R4 differential investigation](docs/research/rocket-rtl-differential-root-cause-v1.md) maps signature differences back to byte-validated instructions and source-defined traces. Actual isolated RTL/Spike controls explain the three observed differences through FS/SD status handling and an illegal-instruction `mtval` reporting option. New diagnostic outputs stay in `output/rtl-differential-r4/`; these results do not establish an architectural violation or verified Type-II chain.
+
 The examples include small synthetic artifacts under `examples/type2_positive/fixtures/`; the negative and unknown manifests reuse these files. Their frozen scientific identities are replayed from the included bytes. `samples/firmware/{arm,riscv,powerpc}` now contain tracked synthetic instruction-coverage samples; other real research inputs in `samples/` remain ignored. `output/` is an ignored result workspace. See [examples](examples/README.md) and [samples](samples/README.md).
 The portable fixtures contain pinned source manifests and changed peripheral bytes, not the full RTL source tree or a simulator executable. They replay the frozen evidence chain; independent regeneration of source/platform attestations requires the separately retained local research workspace.
 
